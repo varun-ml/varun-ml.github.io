@@ -18,7 +18,7 @@
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</guid>
       <description>What are Denoising Diffusion Models? Denoising Diffusion Models, commonly referred to as &amp;ldquo;Diffusion models&amp;rdquo;, are a class of generative models based on the Variational Auto Encoder (VAE) architecture. These models are called likelihood-based models because they assign a high likelihood to the observed data samples. In contrast to other generative models, such as GANs, which learn the sampling process of a complex distribution and are trained adversarially.
-VAE&amp;rsquo;s Let&amp;rsquo;s take a detour and understand VAEs, as it will help with some intuition.</description>
+These models are currently the State of the art for Image generation.</description>
     </item>
     
     <item>
