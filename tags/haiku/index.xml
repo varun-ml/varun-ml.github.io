@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>haiku on wity&#39;ai</title>
+    <link>https://varun-ml.github.io/tags/haiku/</link>
+    <description>Recent content in haiku on wity&#39;ai</description>
+    <image>
+      <url>https://varun-ml.github.io/images/varun.png</url>
+      <link>https://varun-ml.github.io/images/varun.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Dec 2022 12:49:17 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/haiku/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Code: Diffusion Model Notebooks</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</link>
+      <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</guid>
+      <description> Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Implementation Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts EMINST De-noising and Conditional generation Colab EMNIST </description>
+    </item>
+    
+    <item>
+      <title>Code: Cohere Research Scholar Notebook</title>
+      <link>https://varun-ml.github.io/posts/cohere/cohere-research-scholar/</link>
+      <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/cohere/cohere-research-scholar/</guid>
+      <description> Notebook Github Link Colab Co;here Research Scholar Assignment Github </description>
+    </item>
+    
+  </channel>
+</rss>

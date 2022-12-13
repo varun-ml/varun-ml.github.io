@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on wity&#39;ai</title>
+    <link>https://varun-ml.github.io/tags/</link>
+    <description>Recent content in Tags on wity&#39;ai</description>
+    <image>
+      <url>https://varun-ml.github.io/images/varun.png</url>
+      <link>https://varun-ml.github.io/images/varun.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Dec 2022 11:28:30 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDPM</title>
+      <link>https://varun-ml.github.io/tags/ddpm/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/ddpm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>de-noising</title>
+      <link>https://varun-ml.github.io/tags/de-noising/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/de-noising/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diffusion model</title>
+      <link>https://varun-ml.github.io/tags/diffusion-model/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/diffusion-model/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diffusion model series</title>
+      <link>https://varun-ml.github.io/tags/diffusion-model-series/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/diffusion-model-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>generative ai</title>
+      <link>https://varun-ml.github.io/tags/generative-ai/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/generative-ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jupyter</title>
+      <link>https://varun-ml.github.io/tags/jupyter/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pytorch</title>
+      <link>https://varun-ml.github.io/tags/pytorch/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://varun-ml.github.io/tags/tutorial/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>code</title>
+      <link>https://varun-ml.github.io/tags/code/</link>
+      <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>emnist</title>
+      <link>https://varun-ml.github.io/tags/emnist/</link>
+      <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/emnist/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>haiku</title>
+      <link>https://varun-ml.github.io/tags/haiku/</link>
+      <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/haiku/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jax</title>
+      <link>https://varun-ml.github.io/tags/jax/</link>
+      <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/jax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CIFAR</title>
+      <link>https://varun-ml.github.io/tags/cifar/</link>
+      <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/cifar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>co;here</title>
+      <link>https://varun-ml.github.io/tags/cohere/</link>
+      <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/cohere/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>colab</title>
+      <link>https://varun-ml.github.io/tags/colab/</link>
+      <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/colab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>model compression</title>
+      <link>https://varun-ml.github.io/tags/model-compression/</link>
+      <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/model-compression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optax</title>
+      <link>https://varun-ml.github.io/tags/optax/</link>
+      <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/optax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>structured pruning</title>
+      <link>https://varun-ml.github.io/tags/structured-pruning/</link>
+      <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/structured-pruning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SVD</title>
+      <link>https://varun-ml.github.io/tags/svd/</link>
+      <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/svd/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

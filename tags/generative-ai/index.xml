@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>generative ai on wity&#39;ai</title>
+    <link>https://varun-ml.github.io/tags/generative-ai/</link>
+    <description>Recent content in generative ai on wity&#39;ai</description>
+    <image>
+      <url>https://varun-ml.github.io/images/varun.png</url>
+      <link>https://varun-ml.github.io/images/varun.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Dec 2022 11:28:30 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/generative-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Denoising Diffusion Models Part 1: Estimating True Distribution</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</link>
+      <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</guid>
+      <description>What are Denoising Diffusion Models? Denoising Diffusion models, commonly referred to as Diffusion models, are a class of generative models based on the Variational Auto Encoder (VAE) architecture. These models are called likelihood-based models because they assign a high likelihood to the observed data samples. In contrast to other generative models, such as GANs, which learn the sampling process of a complex distribution and are trained adversarially.
+VAE&amp;rsquo;s Let&amp;rsquo;s take a detour and understand VAEs, as it will help with some intuition.</description>
+    </item>
+    
+    <item>
+      <title>Code: Diffusion Model Notebooks</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</link>
+      <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</guid>
+      <description> Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Implementation Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts EMINST De-noising and Conditional generation Colab EMNIST </description>
+    </item>
+    
+  </channel>
+</rss>
