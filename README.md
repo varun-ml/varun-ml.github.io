@@ -1,2 +1,4 @@
 # varun-ml.github.io
-https://varun-ml.github.io , wity'ml page, varun's personal blog
+
+### varun's personal blog
+[wity'ml](https://varun-ml.github.io)
