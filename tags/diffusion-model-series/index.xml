@@ -10,7 +10,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Dec 2022 11:28:30 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/diffusion-model-series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Dec 2022 17:39:20 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/diffusion-model-series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Denoising Diffusion Models Part 1: Estimating True Distribution</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</link>
@@ -22,12 +22,39 @@ These models are currently the State of the art for Image generation.</descripti
     </item>
     
     <item>
+      <title>Denoising Diffusion Models Part 2: Improving Diffusion Models</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</link>
+      <pubDate>Fri, 09 Dec 2022 17:38:49 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Denoising Diffusion Models Part 3: Generating Characters and numbers with Diffusion Models</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</link>
+      <pubDate>Fri, 09 Dec 2022 17:38:58 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Code: Diffusion Model Notebooks</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</link>
       <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</guid>
       <description> Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Implementation Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts EMINST De-noising and Conditional generation Colab EMNIST </description>
+    </item>
+    
+    <item>
+      <title>(Bonus) Denoising Diffusion Models Resources</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</link>
+      <pubDate>Fri, 09 Dec 2022 17:39:20 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</guid>
+      <description></description>
     </item>
     
   </channel>

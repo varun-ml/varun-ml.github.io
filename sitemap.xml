@@ -5,8 +5,83 @@
     <loc>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</loc>
     <lastmod>2022-12-09T11:28:30+05:30</lastmod>
   </url><url>
+    <loc>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</loc>
+    <lastmod>2022-12-09T17:38:49+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</loc>
+    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
+  </url><url>
     <loc>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</loc>
     <lastmod>2022-12-05T12:49:17+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/annotated-diffusion-models/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/diffusion-model/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/diffusion-model-resources/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/diffusion-model-series/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/github-repos/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/ml-blogs/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/posts/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/emnist/</loc>
+    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/generative-ai/</loc>
+    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/haiku/</loc>
+    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/jax/</loc>
+    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/optax/</loc>
+    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/u-net/</loc>
+    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/classifier-free-guidance/</loc>
+    <lastmod>2022-12-09T17:38:49+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/conditioned-generation/</loc>
+    <lastmod>2022-12-09T17:38:49+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/error-estimation/</loc>
+    <lastmod>2022-12-09T17:38:49+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/score-estimation/</loc>
+    <lastmod>2022-12-09T17:38:49+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/timestep-embedding/</loc>
+    <lastmod>2022-12-09T17:38:49+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/torch/</loc>
+    <lastmod>2022-12-09T17:38:49+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/tags/tutorial/</loc>
+    <lastmod>2022-12-09T17:38:49+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/tags/ddpm/</loc>
     <lastmod>2022-12-09T11:28:30+05:30</lastmod>
@@ -14,43 +89,13 @@
     <loc>https://varun-ml.github.io/tags/de-noising/</loc>
     <lastmod>2022-12-09T11:28:30+05:30</lastmod>
   </url><url>
-    <loc>https://varun-ml.github.io/tags/diffusion-model/</loc>
-    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/tags/diffusion-model-series/</loc>
-    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/tags/generative-ai/</loc>
-    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
-  </url><url>
     <loc>https://varun-ml.github.io/tags/jupyter/</loc>
-    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/posts/</loc>
     <lastmod>2022-12-09T11:28:30+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/tags/pytorch/</loc>
     <lastmod>2022-12-09T11:28:30+05:30</lastmod>
   </url><url>
-    <loc>https://varun-ml.github.io/tags/</loc>
-    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/tags/tutorial/</loc>
-    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/</loc>
-    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
-  </url><url>
     <loc>https://varun-ml.github.io/tags/code/</loc>
-    <lastmod>2022-12-05T12:49:17+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/tags/emnist/</loc>
-    <lastmod>2022-12-05T12:49:17+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/tags/haiku/</loc>
-    <lastmod>2022-12-05T12:49:17+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/tags/jax/</loc>
     <lastmod>2022-12-05T12:49:17+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/tags/cifar/</loc>
@@ -68,16 +113,11 @@
     <loc>https://varun-ml.github.io/tags/model-compression/</loc>
     <lastmod>2022-11-07T01:17:43+05:30</lastmod>
   </url><url>
-    <loc>https://varun-ml.github.io/tags/optax/</loc>
-    <lastmod>2022-11-07T01:17:43+05:30</lastmod>
-  </url><url>
     <loc>https://varun-ml.github.io/tags/structured-pruning/</loc>
     <lastmod>2022-11-07T01:17:43+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/tags/svd/</loc>
     <lastmod>2022-11-07T01:17:43+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/posts/2022-12-13/</loc>
   </url><url>
     <loc>https://varun-ml.github.io/archives/</loc>
   </url><url>
