@@ -17,7 +17,8 @@
       <pubDate>Fri, 09 Dec 2022 17:38:49 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</guid>
-      <description></description>
+      <description>Code for this blog post: Notebook Github Link Colab Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts Topics to cover We have done most of the heavy-lifting in Part 1 of this series on Diffusion Models. To be able to use them well in practice, we might need to make some more improvements. That&amp;rsquo;s what we will do.
+Time step embedding and concatenation/fusion to the input data.</description>
     </item>
     
     <item>
@@ -35,7 +36,8 @@
       <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</guid>
-      <description> Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Implementation Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts EMINST De-noising and Conditional generation Colab EMNIST </description>
+      <description>If you have suggestions, please feel free to contribute to Github Repo.
+Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Implementation Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts EMINST De-noising and Conditional generation Colab EMNIST </description>
     </item>
     
   </channel>
