@@ -79,6 +79,15 @@ Handle Katex Create a shortcode for katex with {{ .Inner }}. This would ensure a
     </item>
     
     
+    <item>
+      <title>Questions</title>
+      <link>https://varun-ml.github.io/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://varun-ml.github.io/faq/</guid>
+      <description>faq</description>
+    </item>
+    
     
   </channel>
 </rss>
