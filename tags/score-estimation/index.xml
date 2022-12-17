@@ -17,7 +17,7 @@
       <pubDate>Fri, 09 Dec 2022 17:38:49 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</guid>
-      <description>Code for this blog post: Notebook Github Link Colab Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts Topics to cover We have done most of the heavy-lifting in Part 1 of this series on Diffusion Models. To be able to use them well in practice, we might need to make some more improvements. That&amp;rsquo;s what we will do.
+      <description>Code for this blog post: Notebook Github Link Colab Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts Topics to cover We have done most of the heavy-lifting in Part 1 of this series on Diffusion Models. To be able to use them well in practice, we may need to make some more improvements. That&amp;rsquo;s what we will do.
 Time step embedding and concatenation/fusion to the input data.</description>
     </item>
     
