@@ -12,12 +12,13 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Dec 2022 17:39:20 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/github-repos/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>(Bonus) Denoising Diffusion Models Resources</title>
+      <title>Denoising Diffusion Models Resources</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</link>
       <pubDate>Fri, 09 Dec 2022 17:39:20 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</guid>
-      <description></description>
+      <description>Here are some resources that I have found useful/interesting. Highlighting ones that I recommend going over.
+Papers Paper Title Paper Link Have I Read it? DDPM DDMP Yeah Improved DDPM IDDPM Yeah Stable Diffusion Stable Diffusion No Variational Diffusion Models VDM Yes Cold Diffusion Cold Diffusion No Understanding Diffusion Models: A Unified Perspective Tutorial Yes Glide Glide No Blogs Author Description Link Lilian Weng Comprehensive coverage of Diffusion models theory (Advanced) lil&amp;rsquo;log diffusion models Yang Song This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced) score based generative models AI Summer School Easy to follow but comprehensive coverage of Diffusion models ai summer school Hugging Face Annotated discussion of diffusion model with code annotated diffusion models Alex Alemi Blog on Variational Diffusion Loss variational diffusion models YouTube Educators Channel Description Link AI Coffee Break with Letitia Byte sized content on Diffusion models diffusion models explained Yannic DDPM paper explained DDMP explained Aleksa Gordić - The AI Epiphany ML coding series on Improved DDPM codebase coding series GitHub Repos Repo Description Repo Link Colab Stable Diffusion Stable Diffusion LucidRains Denoising Diffusion Models LucidRains Variational Diffusion models VDM DDPM DDPM YiYi XU (Flax+JAX) Flax Denoising Diffusion Glide Glide Notebooks Play with Diffusion Models </description>
     </item>
     
   </channel>

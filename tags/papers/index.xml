@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>annotated diffusion models on wity&#39;ai</title>
-    <link>https://varun-ml.github.io/tags/annotated-diffusion-models/</link>
-    <description>Recent content in annotated diffusion models on wity&#39;ai</description>
+    <title>papers on wity&#39;ai</title>
+    <link>https://varun-ml.github.io/tags/papers/</link>
+    <description>Recent content in papers on wity&#39;ai</description>
     <image>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Dec 2022 17:39:20 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/annotated-diffusion-models/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Dec 2022 17:39:20 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/papers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Denoising Diffusion Models Resources</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</link>
