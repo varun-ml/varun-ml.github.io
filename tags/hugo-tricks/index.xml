@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>hugo tricks on wity&#39;ai</title>
+    <link>https://varun-ml.github.io/tags/hugo-tricks/</link>
+    <description>Recent content in hugo tricks on wity&#39;ai</description>
+    <image>
+      <url>https://varun-ml.github.io/images/varun.png</url>
+      <link>https://varun-ml.github.io/images/varun.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Dec 2022 15:17:16 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/hugo-tricks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tips and tricks for hugo</title>
+      <link>https://varun-ml.github.io/posts/hugo/tips/</link>
+      <pubDate>Sat, 17 Dec 2022 15:17:16 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/hugo/tips/</guid>
+      <description>Opening Links in New page Override default behaviour by adding a render-link.html file under layouts. Follow this page for more details.
+Handle Katex Create a shortcode for katex with {{ .Inner }}. This would ensure all text meant for Katex is not processed. Use shortcode \{\{&amp;lt; katex &amp;gt;\}\} before any katex code. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 \{\{&amp;lt; katex &amp;gt;\}\} # remove \ here $$ \begin{align} q(x_t|x_0) &amp;amp;= N(\sqrt\alpha_tx_{t-1}, (1 - \alpha_t )I) \cr &amp;amp;= \sqrt\alpha_t x_{t-1} + \sqrt{(1-\alpha_t)}\ast\epsilon_t \cr &amp;amp;= \sqrt\alpha_t(\sqrt\alpha_t x_{t-2} + \sqrt{(1-\alpha_{t-1})}\ast\epsilon_{t-1}) + \sqrt(1-\alpha_t)\ast\epsilon_t \cr &amp;amp;= \sqrt\alpha_t\sqrt\alpha_t x_{t-2} + \sqrt\alpha_t\sqrt{(1-\alpha_{t-1})}\ast\epsilon_{t-1} + \sqrt(1-\alpha_t)\ast\epsilon_t \cr &amp;amp;= \sqrt\alpha_t\sqrt\alpha_tx_{t-2} + \sqrt{(1-\alpha_t\alpha_{t-1})}\ast\epsilon_{t-1}^\ast \quad where \thinspace \epsilon_{t-1}^\ast\in N(0, I) \cr &amp;amp;= .</description>
+    </item>
+    
+  </channel>
+</rss>

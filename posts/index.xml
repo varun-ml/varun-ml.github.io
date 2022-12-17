@@ -10,7 +10,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Dec 2022 17:39:20 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Dec 2022 15:17:16 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Denoising Diffusion Models Part 1: Estimating True Distribution</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</link>
@@ -36,11 +36,11 @@ Time step embedding and concatenation/fusion to the input data.</description>
       <pubDate>Fri, 09 Dec 2022 17:38:58 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</guid>
-      <description></description>
+      <description> Notebook Github Link Colab EMINST De-noising and Conditional generation Colab EMNIST </description>
     </item>
     
     <item>
-      <title>Code: Diffusion Model Notebooks</title>
+      <title>Diffusion Model Jupyter and Colab Notebooks</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</link>
       <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
       
@@ -56,11 +56,21 @@ Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Imple
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</guid>
       <description>Here are some resources that I have found useful/interesting. Highlighting ones that I recommend going over.
-Papers Paper Title Paper Link Have I Read it? DDPM DDMP Yeah Improved DDPM IDDPM Yeah Stable Diffusion Stable Diffusion No Variational Diffusion Models VDM Yes Cold Diffusion Cold Diffusion No Understanding Diffusion Models: A Unified Perspective Tutorial Yes Glide Glide No Blogs Author Description Link Lilian Weng Comprehensive coverage of Diffusion models theory (Advanced) lil&amp;rsquo;log diffusion models Yang Song This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced) score based generative models AI Summer School Easy to follow but comprehensive coverage of Diffusion models ai summer school Hugging Face Annotated discussion of diffusion model with code annotated diffusion models Alex Alemi Blog on Variational Diffusion Loss variational diffusion models YouTube Educators Channel Description Link AI Coffee Break with Letitia Byte sized content on Diffusion models diffusion models explained Yannic DDPM paper explained DDMP explained Aleksa Gordić - The AI Epiphany ML coding series on Improved DDPM codebase coding series GitHub Repos Repo Description Repo Link Colab Stable Diffusion Stable Diffusion LucidRains Denoising Diffusion Models LucidRains Variational Diffusion models VDM DDPM DDPM YiYi XU (Flax+JAX) Flax Denoising Diffusion Glide Glide Notebooks Play with Diffusion Models </description>
+Papers Paper Title Paper Link Have I Read it? DDPM DDMP Yeah Improved DDPM IDDPM Yeah Stable Diffusion Stable Diffusion No Variational Diffusion Models VDM Yes Cold Diffusion Cold Diffusion No Understanding Diffusion Models: A Unified Perspective Tutorial Yes Glide Glide No Blogs Author Description Link Lilian Weng Comprehensive coverage of Diffusion models theory (Advanced) lil&amp;rsquo;log diffusion models Yang Song This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced) score based generative models AI Summer School Easy to follow but comprehensive coverage of Diffusion models ai summer school Hugging Face Annotated discussion of diffusion model with code annotated diffusion models Alex Alemi Blog on Variational Diffusion Loss variational diffusion models YouTube Educators Channel Description Link AI Coffee Break with Letitia Byte sized content on Diffusion models diffusion models explained Yannic DDPM paper explained DDMP explained Aleksa Gordić - The AI Epiphany ML coding series on Improved DDPM codebase coding series GitHub Repos Repo Description Repo Link Colab Stable Diffusion Stable Diffusion LucidRains Denoising Diffusion Models LucidRains Variational Diffusion models VDM DDPM DDPM YiYi XU (Flax+JAX) Flax Denoising Diffusion Glide Glide Notebooks Play with Diffusion Models Description Link Play with Stable Diffusion v2 SD II Stable Boost: Personalized Photos Stable Boost Image variations with Stable Diffusion SD variations </description>
     </item>
     
     <item>
-      <title>Code: Cohere Research Scholar Notebook</title>
+      <title>Tips and tricks for hugo</title>
+      <link>https://varun-ml.github.io/posts/hugo/tips/</link>
+      <pubDate>Sat, 17 Dec 2022 15:17:16 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/hugo/tips/</guid>
+      <description>Opening Links in New page Override default behaviour by adding a render-link.html file under layouts. Follow this page for more details.
+Handle Katex Create a shortcode for katex with {{ .Inner }}. This would ensure all text meant for Katex is not processed. Use shortcode \{\{&amp;lt; katex &amp;gt;\}\} before any katex code. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 \{\{&amp;lt; katex &amp;gt;\}\} # remove \ here $$ \begin{align} q(x_t|x_0) &amp;amp;= N(\sqrt\alpha_tx_{t-1}, (1 - \alpha_t )I) \cr &amp;amp;= \sqrt\alpha_t x_{t-1} + \sqrt{(1-\alpha_t)}\ast\epsilon_t \cr &amp;amp;= \sqrt\alpha_t(\sqrt\alpha_t x_{t-2} + \sqrt{(1-\alpha_{t-1})}\ast\epsilon_{t-1}) + \sqrt(1-\alpha_t)\ast\epsilon_t \cr &amp;amp;= \sqrt\alpha_t\sqrt\alpha_t x_{t-2} + \sqrt\alpha_t\sqrt{(1-\alpha_{t-1})}\ast\epsilon_{t-1} + \sqrt(1-\alpha_t)\ast\epsilon_t \cr &amp;amp;= \sqrt\alpha_t\sqrt\alpha_tx_{t-2} + \sqrt{(1-\alpha_t\alpha_{t-1})}\ast\epsilon_{t-1}^\ast \quad where \thinspace \epsilon_{t-1}^\ast\in N(0, I) \cr &amp;amp;= .</description>
+    </item>
+    
+    <item>
+      <title>Cohere Research Scholar Notebook</title>
       <link>https://varun-ml.github.io/posts/cohere/cohere-research-scholar/</link>
       <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
       

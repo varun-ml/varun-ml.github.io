@@ -36,11 +36,11 @@ Time step embedding and concatenation/fusion to the input data.</description>
       <pubDate>Fri, 09 Dec 2022 17:38:58 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</guid>
-      <description></description>
+      <description> Notebook Github Link Colab EMINST De-noising and Conditional generation Colab EMNIST </description>
     </item>
     
     <item>
-      <title>Code: Diffusion Model Notebooks</title>
+      <title>Diffusion Model Jupyter and Colab Notebooks</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</link>
       <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
       

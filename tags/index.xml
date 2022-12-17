@@ -10,7 +10,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Dec 2022 17:39:20 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Dec 2022 15:17:16 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo tips</title>
+      <link>https://varun-ml.github.io/tags/hugo-tips/</link>
+      <pubDate>Sat, 17 Dec 2022 15:17:16 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/hugo-tips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo tricks</title>
+      <link>https://varun-ml.github.io/tags/hugo-tricks/</link>
+      <pubDate>Sat, 17 Dec 2022 15:17:16 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/tags/hugo-tricks/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>annotated diffusion models</title>
       <link>https://varun-ml.github.io/tags/annotated-diffusion-models/</link>
