@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</loc>
-    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
+    <loc>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</loc>
+    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</loc>
     <lastmod>2022-12-09T17:38:49+05:30</lastmod>
   </url><url>
-    <loc>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</loc>
-    <lastmod>2022-12-09T17:38:58+05:30</lastmod>
-  </url><url>
-    <loc>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</loc>
-    <lastmod>2022-12-05T12:49:17+05:30</lastmod>
+    <loc>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</loc>
+    <lastmod>2022-12-09T11:28:30+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</loc>
     <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
+    <loc>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</loc>
+    <lastmod>2022-12-05T12:49:17+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/posts/hugo/tips/</loc>
     <lastmod>2022-12-17T15:17:16+05:30</lastmod>
@@ -41,16 +41,22 @@
     <loc>https://varun-ml.github.io/tags/diffusion-model/</loc>
     <lastmod>2022-12-09T17:39:20+05:30</lastmod>
   </url><url>
+    <loc>https://varun-ml.github.io/tags/diffusion-model-blog/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
     <loc>https://varun-ml.github.io/tags/diffusion-model-resources/</loc>
     <lastmod>2022-12-09T17:39:20+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/tags/diffusion-model-series/</loc>
     <lastmod>2022-12-09T17:39:20+05:30</lastmod>
   </url><url>
+    <loc>https://varun-ml.github.io/tags/diffusion-model-tutorial/</loc>
+    <lastmod>2022-12-09T17:39:20+05:30</lastmod>
+  </url><url>
     <loc>https://varun-ml.github.io/tags/github-repos/</loc>
     <lastmod>2022-12-09T17:39:20+05:30</lastmod>
   </url><url>
-    <loc>https://varun-ml.github.io/tags/ml-blogs/</loc>
+    <loc>https://varun-ml.github.io/tags/google-colab/</loc>
     <lastmod>2022-12-09T17:39:20+05:30</lastmod>
   </url><url>
     <loc>https://varun-ml.github.io/tags/papers/</loc>

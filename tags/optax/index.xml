@@ -17,7 +17,8 @@
       <pubDate>Fri, 09 Dec 2022 17:38:58 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</guid>
-      <description> Notebook Github Link Colab EMINST De-noising and Conditional generation Colab EMNIST </description>
+      <description>Notebook Github Link Colab EMINST Denoising and Conditional generation Colab EMNIST Introduction We have introduced most of the concepts in the previous two blogs. In this blog post, we will see how the concepts translate to code. If you want to check out the earlier posts, you can find them here, diffusion model intro 1, and diffusion model intro 2.
+EMNIST dataset Extended-MNIST dataset, as the name suggests, is an extension of the popular MNIST dataset.</description>
     </item>
     
     <item>

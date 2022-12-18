@@ -12,6 +12,16 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Dec 2022 17:38:58 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/emnist/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Denoising Diffusion Models Part 3: Generating Characters and numbers with Diffusion Models</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</link>
+      <pubDate>Fri, 09 Dec 2022 17:38:58 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</guid>
+      <description>Notebook Github Link Colab EMINST Denoising and Conditional generation Colab EMNIST Introduction We have introduced most of the concepts in the previous two blogs. In this blog post, we will see how the concepts translate to code. If you want to check out the earlier posts, you can find them here, diffusion model intro 1, and diffusion model intro 2.
+EMNIST dataset Extended-MNIST dataset, as the name suggests, is an extension of the popular MNIST dataset.</description>
+    </item>
+    
+    <item>
       <title>Denoising Diffusion Models Part 2: Improving Diffusion Models</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</link>
       <pubDate>Fri, 09 Dec 2022 17:38:49 +0530</pubDate>
@@ -22,22 +32,13 @@ Time step embedding and concatenation/fusion to the input data.</description>
     </item>
     
     <item>
-      <title>Denoising Diffusion Models Part 3: Generating Characters and numbers with Diffusion Models</title>
-      <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</link>
-      <pubDate>Fri, 09 Dec 2022 17:38:58 +0530</pubDate>
-      
-      <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</guid>
-      <description> Notebook Github Link Colab EMINST De-noising and Conditional generation Colab EMNIST </description>
-    </item>
-    
-    <item>
       <title>Diffusion Model Jupyter and Colab Notebooks</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</link>
       <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</guid>
-      <description>If you have suggestions, please feel free to contribute to Github Repo.
-Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Implementation Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts EMINST De-noising and Conditional generation Colab EMNIST </description>
+      <description>The code accompanying the tutorials on denoising diffusion models.
+Notebook Description GitHub Link Colab Basic: Predicting Original Distribution Introduces Diffusion model concepts with PyTorch Vanilla Implementation Predicting Error and Score Function Diffusion models while predicting error with PyTorch Error / Score Prediction Classifier free Guidance and other improvements Diffusion models with Time Step Embeddings, Classifier Free Guidance, and time step striding to improve sampling from a diffusion model Advanced concepts EMINST Denoising and Conditional generation Working on EMNIST data Colab EMNIST If you have suggestions, please feel free to contribute to GitHub Repo.</description>
     </item>
     
   </channel>

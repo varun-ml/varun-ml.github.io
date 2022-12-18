@@ -26,8 +26,8 @@
       <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</guid>
-      <description>If you have suggestions, please feel free to contribute to Github Repo.
-Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Implementation Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts EMINST De-noising and Conditional generation Colab EMNIST </description>
+      <description>The code accompanying the tutorials on denoising diffusion models.
+Notebook Description GitHub Link Colab Basic: Predicting Original Distribution Introduces Diffusion model concepts with PyTorch Vanilla Implementation Predicting Error and Score Function Diffusion models while predicting error with PyTorch Error / Score Prediction Classifier free Guidance and other improvements Diffusion models with Time Step Embeddings, Classifier Free Guidance, and time step striding to improve sampling from a diffusion model Advanced concepts EMINST Denoising and Conditional generation Working on EMNIST data Colab EMNIST If you have suggestions, please feel free to contribute to GitHub Repo.</description>
     </item>
     
   </channel>
