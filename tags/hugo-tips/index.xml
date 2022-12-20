@@ -20,6 +20,119 @@
       <description>Tips and tricks for Hugo/PaperMod that I have used.
 Opening Links in New page Override default behaviour by adding a render-link.html file under layouts. Follow this page for more details.
 Handle Katex Enable Maths on the markdown page: 1 2 math: true markup: &amp;#34;mmark&amp;#34; Create a shortcode for katex with {{ .Inner }}. This would ensure all text meant for Katex is not processed. Use shortcode \{\{&amp;lt; katex &amp;gt;\}\} before any katex code.</description>
+      <content:encoded><![CDATA[<p>Tips and tricks for Hugo/PaperMod that I have used.</p>
+<h2 id="opening-links-in-new-page">Opening Links in New page</h2>
+<p>Override default behaviour by adding a render-link.html file under layouts. <a href="https://digitaldrummerj.me/hugo-links-to-other-pages/" target="_blank" >Follow this page for more details.</a></p>
+<h2 id="handle-katex">Handle Katex</h2>
+<ul>
+<li>Enable Maths on the markdown page:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-0-1"><a class="lnlinks" href="#hl-0-1">1</a>
+</span><span class="lnt" id="hl-0-2"><a class="lnlinks" href="#hl-0-2">2</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">math</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">markup</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;mmark&#34;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Create a shortcode for katex with <code>{{ .Inner }}</code>. This would ensure all text meant for Katex is not processed.</li>
+<li>Use shortcode <code>\{\{&lt; katex &gt;\}\}</code> before any katex code.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-1-1"><a class="lnlinks" href="#hl-1-1"> 1</a>
+</span><span class="lnt" id="hl-1-2"><a class="lnlinks" href="#hl-1-2"> 2</a>
+</span><span class="lnt" id="hl-1-3"><a class="lnlinks" href="#hl-1-3"> 3</a>
+</span><span class="lnt" id="hl-1-4"><a class="lnlinks" href="#hl-1-4"> 4</a>
+</span><span class="lnt" id="hl-1-5"><a class="lnlinks" href="#hl-1-5"> 5</a>
+</span><span class="lnt" id="hl-1-6"><a class="lnlinks" href="#hl-1-6"> 6</a>
+</span><span class="lnt" id="hl-1-7"><a class="lnlinks" href="#hl-1-7"> 7</a>
+</span><span class="lnt" id="hl-1-8"><a class="lnlinks" href="#hl-1-8"> 8</a>
+</span><span class="lnt" id="hl-1-9"><a class="lnlinks" href="#hl-1-9"> 9</a>
+</span><span class="lnt" id="hl-1-10"><a class="lnlinks" href="#hl-1-10">10</a>
+</span><span class="lnt" id="hl-1-11"><a class="lnlinks" href="#hl-1-11">11</a>
+</span><span class="lnt" id="hl-1-12"><a class="lnlinks" href="#hl-1-12">12</a>
+</span><span class="lnt" id="hl-1-13"><a class="lnlinks" href="#hl-1-13">13</a>
+</span><span class="lnt" id="hl-1-14"><a class="lnlinks" href="#hl-1-14">14</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\{\{</span>&lt; katex &gt;<span class="k">\}\}</span> # remove <span class="k">\ </span>here
+</span></span><span class="line"><span class="cl"><span class="sb">$$</span><span class="nb">  
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span><span class="nv">\begin</span><span class="nb">{align} 
+</span></span></span><span class="line"><span class="cl"><span class="nb">q</span><span class="o">(</span><span class="nb">x_t|x_</span><span class="m">0</span><span class="o">)</span><span class="nb"> &amp;</span><span class="o">=</span><span class="nb"> N</span><span class="o">(</span><span class="nv">\sqrt\alpha</span><span class="nb">_tx_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">}, </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="nv">\alpha</span><span class="nb">_t </span><span class="o">)</span><span class="nb">I</span><span class="o">)</span><span class="nb"> </span><span class="nv">\cr</span><span class="nb">   
+</span></span></span><span class="line"><span class="cl"><span class="nb">&amp;</span><span class="o">=</span><span class="nb"> </span><span class="nv">\sqrt\alpha</span><span class="nb">_t x_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{</span><span class="o">(</span><span class="m">1</span><span class="o">-</span><span class="nv">\alpha</span><span class="nb">_t</span><span class="o">)</span><span class="nb">}</span><span class="nv">\ast\epsilon</span><span class="nb">_t </span><span class="nv">\cr</span><span class="nb">   
+</span></span></span><span class="line"><span class="cl"><span class="nb">&amp;</span><span class="o">=</span><span class="nb"> </span><span class="nv">\sqrt\alpha</span><span class="nb">_t</span><span class="o">(</span><span class="nv">\sqrt\alpha</span><span class="nb">_t x_{t</span><span class="o">-</span><span class="m">2</span><span class="nb">} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{</span><span class="o">(</span><span class="m">1</span><span class="o">-</span><span class="nv">\alpha</span><span class="nb">_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="o">)</span><span class="nb">}</span><span class="nv">\ast\epsilon</span><span class="nb">_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="o">)</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="o">(</span><span class="m">1</span><span class="o">-</span><span class="nv">\alpha</span><span class="nb">_t</span><span class="o">)</span><span class="nv">\ast\epsilon</span><span class="nb">_t </span><span class="nv">\cr</span><span class="nb">  
+</span></span></span><span class="line"><span class="cl"><span class="nb">&amp;</span><span class="o">=</span><span class="nb"> </span><span class="nv">\sqrt\alpha</span><span class="nb">_t</span><span class="nv">\sqrt\alpha</span><span class="nb">_t x_{t</span><span class="o">-</span><span class="m">2</span><span class="nb">} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt\alpha</span><span class="nb">_t</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="o">(</span><span class="m">1</span><span class="o">-</span><span class="nv">\alpha</span><span class="nb">_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="o">)</span><span class="nb">}</span><span class="nv">\ast\epsilon</span><span class="nb">_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="o">(</span><span class="m">1</span><span class="o">-</span><span class="nv">\alpha</span><span class="nb">_t</span><span class="o">)</span><span class="nv">\ast\epsilon</span><span class="nb">_t </span><span class="nv">\cr</span><span class="nb">   
+</span></span></span><span class="line"><span class="cl"><span class="nb">&amp;</span><span class="o">=</span><span class="nb"> </span><span class="nv">\sqrt\alpha</span><span class="nb">_t</span><span class="nv">\sqrt\alpha</span><span class="nb">_tx_{t</span><span class="o">-</span><span class="m">2</span><span class="nb">} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{</span><span class="o">(</span><span class="m">1</span><span class="o">-</span><span class="nv">\alpha</span><span class="nb">_t</span><span class="nv">\alpha</span><span class="nb">_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="o">)</span><span class="nb">}</span><span class="nv">\ast\epsilon</span><span class="nb">_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">}^</span><span class="nv">\ast</span><span class="nb"> </span><span class="nv">\quad</span><span class="nb"> where </span><span class="nv">\thinspace</span><span class="nb"> </span><span class="nv">\epsilon</span><span class="nb">_{t</span><span class="o">-</span><span class="m">1</span><span class="nb">}^</span><span class="nv">\ast\in</span><span class="nb"> N</span><span class="o">(</span><span class="m">0</span><span class="nb">, I</span><span class="o">)</span><span class="nb"> </span><span class="nv">\cr</span><span class="nb">  
+</span></span></span><span class="line"><span class="cl"><span class="nb">&amp;</span><span class="o">=</span><span class="nb"> ... </span><span class="nv">\cr</span><span class="nb">  
+</span></span></span><span class="line"><span class="cl"><span class="nb">&amp;</span><span class="o">=</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{</span><span class="nv">\bar\alpha</span><span class="nb">_t}x_</span><span class="m">0</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{</span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="nv">\bar\alpha</span><span class="nb">_t </span><span class="o">)</span><span class="nb">}</span><span class="nv">\ast\epsilon</span><span class="nb">_</span><span class="m">0</span><span class="nb">^</span><span class="nv">\ast</span><span class="nb"> ; where </span><span class="nv">\space</span><span class="nb"> </span><span class="nv">\bar\alpha</span><span class="nb">_t</span><span class="o">=</span><span class="nv">\Pi</span><span class="nb">_{i</span><span class="o">=</span><span class="m">1</span><span class="nb">}^T{</span><span class="nv">\sqrt\alpha</span><span class="nb">_i}, </span><span class="nv">\space</span><span class="nb"> </span><span class="nv">\epsilon</span><span class="nb">_</span><span class="m">0</span><span class="nb">^</span><span class="nv">\ast</span><span class="nb"> </span><span class="nv">\in</span><span class="nb"> N</span><span class="o">(</span><span class="m">0</span><span class="nb">, I</span><span class="o">)</span><span class="nb"> </span><span class="nv">\cr</span><span class="nb">  
+</span></span></span><span class="line"><span class="cl"><span class="nb">&amp;</span><span class="o">=</span><span class="nb"> N</span><span class="o">(</span><span class="nv">\sqrt</span><span class="nb">{</span><span class="nv">\bar\alpha</span><span class="nb">_t}x_</span><span class="m">0</span><span class="nb">, </span><span class="o">(</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="nv">\bar\alpha</span><span class="nb">_t</span><span class="o">)</span><span class="nb">I</span><span class="o">)</span><span class="nv">\cr</span><span class="nb"> 
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span><span class="nv">\end</span><span class="nb">{align}  
+</span></span></span><span class="line"><span class="cl"><span class="nb"></span><span class="s">$$</span>  
+</span></span><span class="line"><span class="cl"><span class="k">\{\{</span>&lt; /katex &gt;<span class="k">\}\}</span> # remove <span class="k">\ </span>here
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+$$  
+\begin{align} 
+q(x_t|x_0) &= N(\sqrt\alpha_tx_{t-1}, (1 - \alpha_t )I) \cr   
+&= \sqrt\alpha_t x_{t-1} + \sqrt{(1-\alpha_t)}\ast\epsilon_t \cr   
+&= \sqrt\alpha_t(\sqrt\alpha_t x_{t-2} + \sqrt{(1-\alpha_{t-1})}\ast\epsilon_{t-1}) + \sqrt(1-\alpha_t)\ast\epsilon_t \cr  
+&= \sqrt\alpha_t\sqrt\alpha_t x_{t-2} + \sqrt\alpha_t\sqrt{(1-\alpha_{t-1})}\ast\epsilon_{t-1} + \sqrt(1-\alpha_t)\ast\epsilon_t \cr   
+&= \sqrt\alpha_t\sqrt\alpha_tx_{t-2} + \sqrt{(1-\alpha_t\alpha_{t-1})}\ast\epsilon_{t-1}^\ast \quad where \thinspace \epsilon_{t-1}^\ast\in N(0, I) \cr  
+&= ... \cr  
+&= \sqrt{\bar\alpha_t}x_0 + \sqrt{(1 - \bar\alpha_t )}\ast\epsilon_0^\ast ; where \space \bar\alpha_t=\Pi_{i=1}^T{\sqrt\alpha_i}, \space \epsilon_0^\ast \in N(0, I) \cr  
+&= N(\sqrt{\bar\alpha_t}x_0, (1 - \bar\alpha_t)I)\cr 
+\end{align}  
+$$  
+
+<h2 id="adding-collapsible-sections-in-hugo">Adding collapsible Sections in Hugo</h2>
+<p>Got this from <a href="https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab#file-markdown-details-collapsible-md" target="_blank" >here</a></p>
+<p>The following caveats:</p>
+<ol>
+<li>Have an <strong>empty line</strong> after the <code>&lt;/summary&gt;</code> tag or markdown/code blocks will not render.</li>
+<li>Have an <strong>empty line</strong> after each <code>&lt;/details&gt;</code> tag if you have multiple collapsible sections.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-2-1"><a class="lnlinks" href="#hl-2-1"> 1</a>
+</span><span class="lnt" id="hl-2-2"><a class="lnlinks" href="#hl-2-2"> 2</a>
+</span><span class="lnt" id="hl-2-3"><a class="lnlinks" href="#hl-2-3"> 3</a>
+</span><span class="lnt" id="hl-2-4"><a class="lnlinks" href="#hl-2-4"> 4</a>
+</span><span class="lnt" id="hl-2-5"><a class="lnlinks" href="#hl-2-5"> 5</a>
+</span><span class="lnt" id="hl-2-6"><a class="lnlinks" href="#hl-2-6"> 6</a>
+</span><span class="lnt" id="hl-2-7"><a class="lnlinks" href="#hl-2-7"> 7</a>
+</span><span class="lnt" id="hl-2-8"><a class="lnlinks" href="#hl-2-8"> 8</a>
+</span><span class="lnt" id="hl-2-9"><a class="lnlinks" href="#hl-2-9"> 9</a>
+</span><span class="lnt" id="hl-2-10"><a class="lnlinks" href="#hl-2-10">10</a>
+</span><span class="lnt" id="hl-2-11"><a class="lnlinks" href="#hl-2-11">11</a>
+</span><span class="lnt" id="hl-2-12"><a class="lnlinks" href="#hl-2-12">12</a>
+</span><span class="lnt" id="hl-2-13"><a class="lnlinks" href="#hl-2-13">13</a>
+</span><span class="lnt" id="hl-2-14"><a class="lnlinks" href="#hl-2-14">14</a>
+</span><span class="lnt" id="hl-2-15"><a class="lnlinks" href="#hl-2-15">15</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">details</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">summary</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">summary</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  ### Heading
+</span></span><span class="line"><span class="cl">  1. Foo
+</span></span><span class="line"><span class="cl">  2. Bar
+</span></span><span class="line"><span class="cl">     * Baz
+</span></span><span class="line"><span class="cl">     * Qux
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  ### Some Code
+</span></span><span class="line"><span class="cl">  ```js
+</span></span><span class="line"><span class="cl">  function logSomething(something) {
+</span></span><span class="line"><span class="cl">    console.log(&#39;Something&#39;, something);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">details</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></content:encoded>
     </item>
     
   </channel>

@@ -18,6 +18,25 @@
       
       <guid>https://varun-ml.github.io/posts/cohere/cohere-research-scholar/</guid>
       <description> Notebook Github Link Colab Co;here Research Scholar Assignment Github </description>
+      <content:encoded><![CDATA[<table>
+<thead>
+<tr>
+<th style="text-align:left">Notebook</th>
+<th style="text-align:left">Github Link</th>
+<th style="text-align:left">Colab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Co;here Research Scholar Assignment</td>
+<td style="text-align:left"><a href="https://github.com/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb" target="_blank" >Github</a></td>
+<td style="text-align:left"><a href="https://colab.research.google.com/github/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab">
+</a></td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
     </item>
     
   </channel>

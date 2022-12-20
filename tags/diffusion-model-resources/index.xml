@@ -19,6 +19,218 @@
       <guid>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</guid>
       <description>Here are some resources that I have found useful/interesting. Highlighting ones that I recommend going over.
 Papers Paper Title Paper Link Have I Read it? DDPM DDMP Yeah Improved DDPM IDDPM Yeah Stable Diffusion Stable Diffusion No Variational Diffusion Models VDM Yeah Cold Diffusion Cold Diffusion No Understanding Diffusion Models: A Unified Perspective Tutorial Yeah Glide Glide No Blogs Author Description Link Lilian Weng Comprehensive coverage of Diffusion models theory (Advanced) lil&amp;rsquo;log diffusion models Yang Song This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced) score based generative models AI Summer School Easy to follow but comprehensive coverage of Diffusion models ai summer school Hugging Face Annotated discussion of diffusion model with code annotated diffusion models Alex Alemi Blog on Variational Diffusion Loss variational diffusion models YouTube Educators Channel Description Link AI Coffee Break with Letitia Byte sized content on Diffusion models diffusion models explained Yannic DDPM paper explained DDMP explained Aleksa Gordić - The AI Epiphany ML coding series on Improved DDPM codebase coding series GitHub Repos Repo Description Repo Link Colab Diffusion Models Tutorial Wity&amp;rsquo;AI tutorial Wity&amp;rsquo;AI tutorial Stable Diffusion Stable Diffusion LucidRains Denoising Diffusion Models LucidRains Variational Diffusion models VDM DDPM DDPM YiYi XU (Flax+JAX) Flax Denoising Diffusion Glide Glide Notebooks Play with Diffusion Models Description Link Play with Stable Diffusion v2 SD II Stable Boost: Personalized Photos Stable Boost Image variations with Stable Diffusion SD variations Gradio App for Stable Diffusion GitHub Repo </description>
+      <content:encoded><![CDATA[<p>Here are some resources that I have found useful/interesting.
+Highlighting ones that I recommend going over.</p>
+<h2 id="papers">Papers</h2>
+<table>
+<thead>
+<tr>
+<th>Paper Title</th>
+<th>Paper Link</th>
+<th>Have I Read it?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DDPM</strong></td>
+<td><a href="http://arxiv.org/abs/2006.11239" target="_blank" >DDMP</a></td>
+<td>Yeah</td>
+</tr>
+<tr>
+<td><strong>Improved DDPM</strong></td>
+<td><a href="http://arxiv.org/abs/2102.09672" target="_blank" >IDDPM</a></td>
+<td>Yeah</td>
+</tr>
+<tr>
+<td>Stable Diffusion</td>
+<td><a href="https://arxiv.org/abs/2112.10752" target="_blank" >Stable Diffusion</a></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Variational Diffusion Models</td>
+<td><a href="http://arxiv.org/abs/2107.00630" target="_blank" >VDM</a></td>
+<td>Yeah</td>
+</tr>
+<tr>
+<td>Cold Diffusion</td>
+<td><a href="http://arxiv.org/abs/2208.09392" target="_blank" >Cold Diffusion</a></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Understanding Diffusion Models: A Unified Perspective</strong></td>
+<td><a href="http://arxiv.org/abs/2208.11970" target="_blank" >Tutorial</a></td>
+<td>Yeah</td>
+</tr>
+<tr>
+<td>Glide</td>
+<td><a href="https://arxiv.org/abs/2112.10741" target="_blank" >Glide</a></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="blogs">Blogs</h2>
+<table>
+<thead>
+<tr>
+<th>Author</th>
+<th>Description</th>
+<th>Link</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lilian Weng</td>
+<td><strong>Comprehensive coverage of Diffusion models theory (Advanced)</strong></td>
+<td><a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" target="_blank" >lil&rsquo;log diffusion models</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Yang Song</td>
+<td>This blog is about score based generative models, specifically about SDE&rsquo;s (Advanced)</td>
+<td><a href="https://yang-song.net/blog/2021/score/" target="_blank" >score based generative models</a></td>
+<td></td>
+</tr>
+<tr>
+<td>AI Summer School</td>
+<td><strong>Easy to follow but comprehensive coverage of Diffusion models</strong></td>
+<td><a href="https://theaisummer.com/diffusion-models/" target="_blank" >ai summer school</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Hugging Face</td>
+<td>Annotated discussion of diffusion model with code</td>
+<td><a href="https://huggingface.co/blog/annotated-diffusion" target="_blank" >annotated diffusion models</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Alex Alemi</td>
+<td>Blog on Variational Diffusion Loss</td>
+<td><a href="https://blog.alexalemi.com/diffusion.html" target="_blank" >variational diffusion models</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="youtube-educators">YouTube Educators</h2>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.youtube.com/@AICoffeeBreak" target="_blank" >AI Coffee Break with Letitia</a></td>
+<td>Byte sized content on Diffusion models</td>
+<td><a href="https://youtu.be/344w5h24-h8" target="_blank" >diffusion models explained</a></td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/@YannicKilcher" target="_blank" >Yannic</a></td>
+<td><strong>DDPM paper explained</strong></td>
+<td><a href="https://youtu.be/W-O7AZNzbzQ" target="_blank" >DDMP explained</a></td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/@TheAIEpiphany" target="_blank" >Aleksa Gordić - The AI Epiphany</a></td>
+<td>ML coding series on Improved DDPM codebase</td>
+<td><a href="https://youtu.be/y7J6sSO1k50" target="_blank" >coding series</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="github-repos">GitHub Repos</h2>
+<table>
+<thead>
+<tr>
+<th>Repo Description</th>
+<th>Repo Link</th>
+<th>Colab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diffusion Models Tutorial</td>
+<td><a href="/posts/diffusion-models/diffusion-models-notebooks/" >Wity&rsquo;AI tutorial</a></td>
+<td><a href="/posts/diffusion-models/diffusion-models-notebooks/" >Wity&rsquo;AI tutorial</a></td>
+</tr>
+<tr>
+<td>Stable Diffusion</td>
+<td><a href="https://github.com/CompVis/stable-diffusion" target="_blank" >Stable Diffusion</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LucidRains Denoising Diffusion Models</td>
+<td><a href="https://github.com/lucidrains/denoising-diffusion-pytorch" target="_blank" >LucidRains</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Variational Diffusion models</td>
+<td><a href="https://github.com/google-research/vdm" target="_blank" >VDM</a></td>
+<td><a href="https://colab.research.google.com/github/google-research/vdm/blob/main/colab/SimpleDiffusionColab.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a> <a href="https://colab.research.google.com/github/google-research/vdm/blob/main/colab/2D_VDM_Example.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a></td>
+</tr>
+<tr>
+<td>DDPM</td>
+<td><a href="https://github.com/hojonathanho/diffusion" target="_blank" >DDPM</a></td>
+<td></td>
+</tr>
+<tr>
+<td>YiYi XU (Flax+JAX)</td>
+<td><a href="https://github.com/yiyixuxu/denoising-diffusion-flax" target="_blank" >Flax Denoising Diffusion</a></td>
+<td><a href="https://colab.research.google.com/github/yiyixuxu/denoising-diffusion-flax/blob/main/ddpm_flax_oxford102_end_to_end.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a></td>
+</tr>
+<tr>
+<td>Glide</td>
+<td><a href="https://github.com/openai/glide-text2im" target="_blank" >Glide</a></td>
+<td><a href="https://github.com/openai/glide-text2im/tree/main/notebooks" target="_blank" >Notebooks</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="play-with-diffusion-models">Play with Diffusion Models</h2>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Link</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Play with Stable Diffusion v2</td>
+<td><a href="https://huggingface.co/spaces/stabilityai/stable-diffusion" target="_blank" >SD II</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Stable Boost: Personalized Photos</td>
+<td><a href="https://stableboost.ai/" target="_blank" >Stable Boost</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Image variations with Stable Diffusion</td>
+<td><a href="https://huggingface.co/spaces/lambdalabs/stable-diffusion-image-variations" target="_blank" >SD variations</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Gradio App for Stable Diffusion</td>
+<td><a href="https://github.com/qunash/stable-diffusion-2-gui/" target="_blank" >GitHub Repo</a> <a href="https://colab.research.google.com/github/qunash/stable-diffusion-2-gui/blob/main/stable_diffusion_2_0.ipynb#scrollTo=gId0-asCBVwL" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
     </item>
     
   </channel>
