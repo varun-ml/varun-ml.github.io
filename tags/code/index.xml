@@ -17,8 +17,75 @@
       <pubDate>Mon, 05 Dec 2022 12:49:17 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/</guid>
-      <description>The code accompanying the tutorials on denoising diffusion models.
-Notebook Description GitHub Link Colab Basic: Predicting Original Distribution Introduces Diffusion model concepts with PyTorch Vanilla Implementation Predicting Error and Score Function Diffusion models while predicting error with PyTorch Error / Score Prediction Classifier free Guidance and other improvements Diffusion models with Time Step Embeddings, Classifier Free Guidance, and time step striding to improve sampling from a diffusion model Advanced concepts EMINST Denoising and Conditional generation Working on EMNIST data Colab EMNIST If you have suggestions, please feel free to contribute to GitHub Repo.</description>
+      <description>&amp;lt;p&amp;gt;The code accompanying the tutorials on denoising diffusion models.&amp;lt;/p&amp;gt;
+&amp;lt;table&amp;gt;
+&amp;lt;thead&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;th style=&amp;#34;text-align:left&amp;#34;&amp;gt;Notebook&amp;lt;/th&amp;gt;
+&amp;lt;th style=&amp;#34;text-align:left&amp;#34;&amp;gt;Description&amp;lt;/th&amp;gt;
+&amp;lt;th style=&amp;#34;text-align:left&amp;#34;&amp;gt;GitHub Link&amp;lt;/th&amp;gt;
+&amp;lt;th&amp;gt;Colab&amp;lt;/th&amp;gt;
+&amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/thead&amp;gt;
+&amp;lt;tbody&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;Basic: Predicting Original Distribution&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;Introduces Diffusion model concepts with PyTorch&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/vanilla_diffusion_model.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;Vanilla Implementation&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;a href=&amp;#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_vanilla_diffusion_model.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;
+  &amp;lt;img src=&amp;#34;https://colab.research.google.com/assets/colab-badge.svg&amp;#34; alt=&amp;#34;Colab (Large)&amp;#34;&amp;gt;
+&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;Predicting Error and Score Function&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;Diffusion models while predicting error with PyTorch&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/errors.diffusion_model_interpretations.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;Error / Score Prediction&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;a href=&amp;#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_errors.diffusion_model_interpretations.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;
+  &amp;lt;img src=&amp;#34;https://colab.research.google.com/assets/colab-badge.svg&amp;#34; alt=&amp;#34;Colab (Large)&amp;#34;&amp;gt;
+&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;Classifier free Guidance and other improvements&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;Diffusion models with Time Step Embeddings, Classifier Free Guidance, and time step striding to improve sampling from a diffusion model&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/guidance_free_classifiers.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;Advanced concepts&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;a href=&amp;#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_guidance_free_classifiers.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;
+  &amp;lt;img src=&amp;#34;https://colab.research.google.com/assets/colab-badge.svg&amp;#34; alt=&amp;#34;Colab (Large)&amp;#34;&amp;gt;
+&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;EMINST Denoising and Conditional generation&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;Working on EMNIST data&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/emnist-colab-notebooks/colab_EMNIST_conditional.diffusion_model.large.with_batch_norm.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;Colab EMNIST&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;a href=&amp;#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/emnist-colab-notebooks/colab_EMNIST_conditional.diffusion_model.large.with_batch_norm.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;
+  &amp;lt;img src=&amp;#34;https://colab.research.google.com/assets/colab-badge.svg&amp;#34; alt=&amp;#34;Colab (Large)&amp;#34;&amp;gt;
+&amp;lt;/a&amp;gt;&amp;lt;a href=&amp;#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/emnist-colab-notebooks/colab_EMNIST_conditional.diffusion_model.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;
+  &amp;lt;img src=&amp;#34;https://colab.research.google.com/assets/colab-badge.svg&amp;#34; alt=&amp;#34;Colab (Small)&amp;#34;&amp;gt;
+&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;p&amp;gt;If you have suggestions, please feel free to contribute to &amp;lt;a href=&amp;#34;https://www.github.com/varun-ml/diffusion-models-tutorial&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;GitHub Repo&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;
+</description>
     </item>
     
     <item>
@@ -27,7 +94,25 @@ Notebook Description GitHub Link Colab Basic: Predicting Original Distribution I
       <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/cohere/cohere-research-scholar/</guid>
-      <description> Notebook Github Link Colab Co;here Research Scholar Assignment Github </description>
+      <description>&amp;lt;table&amp;gt;
+&amp;lt;thead&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;th style=&amp;#34;text-align:left&amp;#34;&amp;gt;Notebook&amp;lt;/th&amp;gt;
+&amp;lt;th style=&amp;#34;text-align:left&amp;#34;&amp;gt;Github Link&amp;lt;/th&amp;gt;
+&amp;lt;th style=&amp;#34;text-align:left&amp;#34;&amp;gt;Colab&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/thead&amp;gt;
+&amp;lt;tbody&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;Co;here Research Scholar Assignment&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;https://github.com/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;Github&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;td style=&amp;#34;text-align:left&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;https://colab.research.google.com/github/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb&amp;#34; target=&amp;#34;_blank&amp;#34; &amp;gt;
+  &amp;lt;img src=&amp;#34;https://colab.research.google.com/assets/colab-badge.svg&amp;#34; alt=&amp;#34;Colab&amp;#34;&amp;gt;
+&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+</description>
     </item>
     
   </channel>
