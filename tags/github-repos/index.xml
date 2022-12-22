@@ -33,12 +33,12 @@ Highlighting ones that I recommend going over.</p>
 <tbody>
 <tr>
 <td><strong>DDPM</strong></td>
-<td><a href="http://arxiv.org/abs/2006.11239" target="_blank" >DDMP</a></td>
+<td><a href="https://arxiv.org/abs/2006.11239" target="_blank" >DDMP</a></td>
 <td>Yeah</td>
 </tr>
 <tr>
 <td><strong>Improved DDPM</strong></td>
-<td><a href="http://arxiv.org/abs/2102.09672" target="_blank" >IDDPM</a></td>
+<td><a href="https://arxiv.org/abs/2102.09672" target="_blank" >IDDPM</a></td>
 <td>Yeah</td>
 </tr>
 <tr>
@@ -48,17 +48,17 @@ Highlighting ones that I recommend going over.</p>
 </tr>
 <tr>
 <td>Variational Diffusion Models</td>
-<td><a href="http://arxiv.org/abs/2107.00630" target="_blank" >VDM</a></td>
+<td><a href="https://arxiv.org/abs/2107.00630" target="_blank" >VDM</a></td>
 <td>Yeah</td>
 </tr>
 <tr>
 <td>Cold Diffusion</td>
-<td><a href="http://arxiv.org/abs/2208.09392" target="_blank" >Cold Diffusion</a></td>
+<td><a href="https://arxiv.org/abs/2208.09392" target="_blank" >Cold Diffusion</a></td>
 <td>No</td>
 </tr>
 <tr>
 <td><strong>Understanding Diffusion Models: A Unified Perspective</strong></td>
-<td><a href="http://arxiv.org/abs/2208.11970" target="_blank" >Tutorial</a></td>
+<td><a href="https://arxiv.org/abs/2208.11970" target="_blank" >Tutorial</a></td>
 <td>Yeah</td>
 </tr>
 <tr>
@@ -68,7 +68,7 @@ Highlighting ones that I recommend going over.</p>
 </tr>
 <tr>
 <td>Diffusion Models Survey</td>
-<td><a href="http://arxiv.org/abs/2209.02646" target="_blank" >A survey on Generative Diffusion Models</a></td>
+<td><a href="https://arxiv.org/abs/2209.02646" target="_blank" >A survey on Generative Diffusion Models</a></td>
 <td>No</td>
 </tr>
 </tbody>

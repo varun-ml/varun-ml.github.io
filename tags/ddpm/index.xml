@@ -46,14 +46,14 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 <figure>
     <img loading="lazy" src="/images/vae-max.png"
          alt="Figure 1: An architecture for a Variational Auto Encoder. (Image source: VAE tutorial, Kingma et.al; 2019)" width="100%"/> <figcaption>
-            <p>Figure 1: An architecture for a Variational Auto Encoder. (Image source: <a href="http://arxiv.org/abs/1906.02691" target="_blank" >VAE tutorial, Kingma et.al; 2019</a>)</p>
+            <p>Figure 1: An architecture for a Variational Auto Encoder. (Image source: <a href="https://arxiv.org/abs/1906.02691" target="_blank" >VAE tutorial, Kingma et.al; 2019</a>)</p>
         </figcaption>
 </figure>
 
 <figure class="align-center ">
     <img loading="lazy" src="/images/vae-graphical-representation.png#center"
          alt="Figure 2: Graphical representation of a Variational Auto Encoder. The $p$ function is the decoder and the $q$ function is the encoder. (Image source: Calvin Luo; 2022)" width="50%"/> <figcaption>
-            <p>Figure 2: Graphical representation of a Variational Auto Encoder. The $p$ function is the decoder and the $q$ function is the encoder. (Image source: <a href="http://arxiv.org/abs/2208.11970" target="_blank" >Calvin Luo; 2022</a>)</p>
+            <p>Figure 2: Graphical representation of a Variational Auto Encoder. The $p$ function is the decoder and the $q$ function is the encoder. (Image source: <a href="https://arxiv.org/abs/2208.11970" target="_blank" >Calvin Luo; 2022</a>)</p>
         </figcaption>
 </figure>
 
@@ -120,7 +120,7 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 <figure class="align-center ">
     <img loading="lazy" src="/images/diffusion-graphical-representation.png#center"
          alt="Figure 5: Graphical representation of a Denoising Diffusion Model. The decoder is the $p$ function, the encoder is the $q$ function. (Image source: Calvin Luo; 2022)" width="80%"/> <figcaption>
-            <p>Figure 5: Graphical representation of a Denoising Diffusion Model. The decoder is the $p$ function, the encoder is the $q$ function. (Image source: <a href="http://arxiv.org/abs/2208.11970" target="_blank" >Calvin Luo; 2022</a>)</p>
+            <p>Figure 5: Graphical representation of a Denoising Diffusion Model. The decoder is the $p$ function, the encoder is the $q$ function. (Image source: <a href="https://arxiv.org/abs/2208.11970" target="_blank" >Calvin Luo; 2022</a>)</p>
         </figcaption>
 </figure>
 
@@ -600,16 +600,16 @@ SNR stands for Signal to Noise. In the case of the diffusion, the schedule must 
 <p>Yang et al. 2022 <a href="https://arxiv.org/abs/2209.00796" target="_blank" >Diffusion Models: A Comprehensive Survey of Methods and Applications</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Calvin Luo; 2019 <a href="http://arxiv.org/abs/2208.11970" target="_blank" >&ldquo;Understanding Diffusion Models: A Unified Perspective&rdquo;</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Calvin Luo; 2019 <a href="https://arxiv.org/abs/2208.11970" target="_blank" >&ldquo;Understanding Diffusion Models: A Unified Perspective&rdquo;</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
 <p>Vaswani et al. 2017 <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf" target="_blank" >Attention is all you need</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>Kingma et al. 2022 <a href="http://arxiv.org/abs/2107.00630" target="_blank" >&ldquo;Variational Diffusion Models&rdquo;</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Kingma et al. 2022 <a href="https://arxiv.org/abs/2107.00630" target="_blank" >&ldquo;Variational Diffusion Models&rdquo;</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
-<p>Nichol et al. 2021 <a href="http://arxiv.org/abs/2102.09672" target="_blank" >Improved Denoising Diffusion Probabilistic Models</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Nichol et al. 2021 <a href="https://arxiv.org/abs/2102.09672" target="_blank" >Improved Denoising Diffusion Probabilistic Models</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
 <p>Hendrycks et al. 2016 <a href="https://arxiv.org/abs/1606.08415" target="_blank" >Gelu&rsquo;s</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
