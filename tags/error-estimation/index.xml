@@ -282,8 +282,7 @@ Classifier Guidance is a way to do this. We will be guiding the denoising proces
 <p>Text-guided diffusion models like <a href="https://www.youtube.com/watch?v=gwI6g1pBD84" target="_blank" >Glide</a> use the powerful Neural Network called <a href="https://openai.com/blog/clip/" target="_blank" >CLIP</a> and classifier guidance techniques to perform text-based image generation.</p>
 <p>So far, we have been trying to maximize the likelihood of the data distribution $p(x)$ with diffusion models. This allowed us to randomly sample data points from the data distribution.</p>
 <p><strong>A naïve idea</strong> to do class-conditioned generation could be to fuse the conditional label information with the input data.</p>
-<p>During training and data generation, we will add the conditioned label as an input along with the noisy data and the time step embedding. The output of the model will stay the same as earlier.</p>
-<p>The conditioned data can be fused with the input data, just like we fused the time step information.</p>
+<p><strong>Pseudocode for naïve idea:</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-4-1"><a class="lnlinks" href="#hl-4-1"> 1</a>
@@ -308,12 +307,64 @@ Classifier Guidance is a way to do this. We will be guiding the denoising proces
 </span><span class="lnt" id="hl-4-20"><a class="lnlinks" href="#hl-4-20">20</a>
 </span><span class="lnt" id="hl-4-21"><a class="lnlinks" href="#hl-4-21">21</a>
 </span><span class="lnt" id="hl-4-22"><a class="lnlinks" href="#hl-4-22">22</a>
-</span><span class="lnt" id="hl-4-23"><a class="lnlinks" href="#hl-4-23">23</a>
-</span><span class="lnt" id="hl-4-24"><a class="lnlinks" href="#hl-4-24">24</a>
-</span><span class="lnt" id="hl-4-25"><a class="lnlinks" href="#hl-4-25">25</a>
-</span><span class="lnt" id="hl-4-26"><a class="lnlinks" href="#hl-4-26">26</a>
-</span><span class="lnt" id="hl-4-27"><a class="lnlinks" href="#hl-4-27">27</a>
-</span><span class="lnt" id="hl-4-28"><a class="lnlinks" href="#hl-4-28">28</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">diffusion</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">code</span> <span class="n">to</span> <span class="n">add</span> <span class="n">noise</span> <span class="n">to</span> <span class="n">x_0</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">x_i</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">training</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">loop</span> <span class="n">until</span> <span class="n">convergence</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">pick</span> <span class="n">an</span> <span class="n">image</span> <span class="n">x_0</span> <span class="kn">from</span> <span class="nn">X</span> <span class="p">(</span><span class="n">batch</span> <span class="n">of</span> <span class="n">images</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">sample</span> <span class="n">t</span> <span class="kn">from</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">T</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x_t</span> <span class="o">=</span> <span class="n">diffusion_step</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x_hat_t</span> <span class="o">=</span> <span class="n">NN</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># y is the label</span>
+</span></span><span class="line"><span class="cl">		<span class="n">loss_</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">x_hat_t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">update</span><span class="p">(</span><span class="n">NN</span><span class="p">,</span> <span class="n">grad</span><span class="p">(</span><span class="n">loss_</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># generating new data points through denoising steps</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">generate_new_data</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="n">sample</span> <span class="n">x_T</span> <span class="kn">from</span> <span class="nn">N</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="c1"># denoising step</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x_hat_t</span> <span class="o">=</span> <span class="n">NN</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># y is the desired label </span>
+</span></span><span class="line"><span class="cl">		<span class="c1"># get x_{t-1}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x_</span><span class="p">{</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">}</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x_hat_t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="c1"># refer EQ - 12</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x_hat_0</span> <span class="o">=</span> <span class="n">x_0</span>  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>During training and data generation, we will add the conditioned label as an input along with the noisy data and the time step embedding. The output of the model will stay the same as earlier.</p>
+<p>The conditioned data can be fused with the input data, just like we fused the time step information.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-5-1"><a class="lnlinks" href="#hl-5-1"> 1</a>
+</span><span class="lnt" id="hl-5-2"><a class="lnlinks" href="#hl-5-2"> 2</a>
+</span><span class="lnt" id="hl-5-3"><a class="lnlinks" href="#hl-5-3"> 3</a>
+</span><span class="lnt" id="hl-5-4"><a class="lnlinks" href="#hl-5-4"> 4</a>
+</span><span class="lnt" id="hl-5-5"><a class="lnlinks" href="#hl-5-5"> 5</a>
+</span><span class="lnt" id="hl-5-6"><a class="lnlinks" href="#hl-5-6"> 6</a>
+</span><span class="lnt" id="hl-5-7"><a class="lnlinks" href="#hl-5-7"> 7</a>
+</span><span class="lnt" id="hl-5-8"><a class="lnlinks" href="#hl-5-8"> 8</a>
+</span><span class="lnt" id="hl-5-9"><a class="lnlinks" href="#hl-5-9"> 9</a>
+</span><span class="lnt" id="hl-5-10"><a class="lnlinks" href="#hl-5-10">10</a>
+</span><span class="lnt" id="hl-5-11"><a class="lnlinks" href="#hl-5-11">11</a>
+</span><span class="lnt" id="hl-5-12"><a class="lnlinks" href="#hl-5-12">12</a>
+</span><span class="lnt" id="hl-5-13"><a class="lnlinks" href="#hl-5-13">13</a>
+</span><span class="lnt" id="hl-5-14"><a class="lnlinks" href="#hl-5-14">14</a>
+</span><span class="lnt" id="hl-5-15"><a class="lnlinks" href="#hl-5-15">15</a>
+</span><span class="lnt" id="hl-5-16"><a class="lnlinks" href="#hl-5-16">16</a>
+</span><span class="lnt" id="hl-5-17"><a class="lnlinks" href="#hl-5-17">17</a>
+</span><span class="lnt" id="hl-5-18"><a class="lnlinks" href="#hl-5-18">18</a>
+</span><span class="lnt" id="hl-5-19"><a class="lnlinks" href="#hl-5-19">19</a>
+</span><span class="lnt" id="hl-5-20"><a class="lnlinks" href="#hl-5-20">20</a>
+</span><span class="lnt" id="hl-5-21"><a class="lnlinks" href="#hl-5-21">21</a>
+</span><span class="lnt" id="hl-5-22"><a class="lnlinks" href="#hl-5-22">22</a>
+</span><span class="lnt" id="hl-5-23"><a class="lnlinks" href="#hl-5-23">23</a>
+</span><span class="lnt" id="hl-5-24"><a class="lnlinks" href="#hl-5-24">24</a>
+</span><span class="lnt" id="hl-5-25"><a class="lnlinks" href="#hl-5-25">25</a>
+</span><span class="lnt" id="hl-5-26"><a class="lnlinks" href="#hl-5-26">26</a>
+</span><span class="lnt" id="hl-5-27"><a class="lnlinks" href="#hl-5-27">27</a>
+</span><span class="lnt" id="hl-5-28"><a class="lnlinks" href="#hl-5-28">28</a>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># haiku code</span>
