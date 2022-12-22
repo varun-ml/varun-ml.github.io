@@ -1779,6 +1779,14 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 <blockquote>
 <p>Humans paint, they are able to generate images in a stepwise manner by painting on a blank canvas. Diffusion models are similar, they generate images in a stepwise manner by <em>denoising</em> a noisy canvas.</p>
 </blockquote>
+<p>At this point, it may be helpful to look at the different models for generative modelling.</p>
+<figure>
+    <img loading="lazy" src="/images/generative_models.png"
+         alt="Comparing different generative models. (Image source: Diffusion Models tutorial, Cao et.al; 2022)" width="100%"/> <figcaption>
+            <p>Comparing different generative models. (Image source: <a href="https://arxiv.org/abs/2209.02646" target="_blank" >Diffusion Models tutorial, Cao et.al; 2022</a>)</p>
+        </figcaption>
+</figure>
+
 <h2 id="introduction-to-this-series">Introduction to this series</h2>
 <p>I have spent too much time understanding diffusion models, which started with some wild posts I saw on Twitter.</p>
 

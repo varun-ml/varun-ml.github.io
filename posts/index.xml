@@ -1779,6 +1779,14 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 <blockquote>
 <p>Humans paint, they are able to generate images in a stepwise manner by painting on a blank canvas. Diffusion models are similar, they generate images in a stepwise manner by <em>denoising</em> a noisy canvas.</p>
 </blockquote>
+<p>At this point, it may be helpful to look at the different models for generative modelling.</p>
+<figure>
+    <img loading="lazy" src="/images/generative_models.png"
+         alt="Comparing different generative models. (Image source: Diffusion Models tutorial, Cao et.al; 2022)" width="100%"/> <figcaption>
+            <p>Comparing different generative models. (Image source: <a href="https://arxiv.org/abs/2209.02646" target="_blank" >Diffusion Models tutorial, Cao et.al; 2022</a>)</p>
+        </figcaption>
+</figure>
+
 <h2 id="introduction-to-this-series">Introduction to this series</h2>
 <p>I have spent too much time understanding diffusion models, which started with some wild posts I saw on Twitter.</p>
 
@@ -2321,7 +2329,7 @@ SNR stands for Signal to Noise. In the case of the diffusion, the schedule must 
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</guid>
       <description>Here are some resources that I have found useful/interesting. Highlighting ones that I recommend going over.
-Papers Paper Title Paper Link Have I Read it? DDPM DDMP Yeah Improved DDPM IDDPM Yeah Stable Diffusion Stable Diffusion No Variational Diffusion Models VDM Yeah Cold Diffusion Cold Diffusion No Understanding Diffusion Models: A Unified Perspective Tutorial Yeah Glide Glide No Diffusion Models Survey A survey on Generative Diffusion Models No Blogs Author Description Link Lilian Weng Comprehensive coverage of Diffusion models theory (Advanced) lil&amp;rsquo;log diffusion models Yang Song This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced) score based generative models AI Summer School Easy to follow but comprehensive coverage of Diffusion models ai summer school Hugging Face Annotated discussion of diffusion model with code annotated diffusion models Alex Alemi Blog on Variational Diffusion Loss variational diffusion models YouTube Educators Channel Description Link AI Coffee Break with Letitia Byte sized content on Diffusion models diffusion models explained Yannic DDPM paper explained DDMP explained Aleksa Gordić - The AI Epiphany ML coding series on Improved DDPM codebase coding series GitHub Repos Repo Description Repo Link Colab Diffusion Models Tutorial Wity&amp;rsquo;AI tutorial Wity&amp;rsquo;AI tutorial Stable Diffusion Stable Diffusion LucidRains Denoising Diffusion Models LucidRains Variational Diffusion models VDM DDPM DDPM YiYi XU (Flax+JAX) Flax Denoising Diffusion Glide Glide Notebooks Play with Diffusion Models Description Link Play with Stable Diffusion v2 SD II Stable Boost: Personalized Photos Stable Boost Image variations with Stable Diffusion SD variations Gradio App for Stable Diffusion GitHub Repo </description>
+Papers Paper Title Paper Link Have I Read it? DDPM DDMP Yeah Improved DDPM IDDPM Yeah Stable Diffusion Stable Diffusion No Variational Diffusion Models VDM Yeah Cold Diffusion Cold Diffusion No Understanding Diffusion Models: A Unified Perspective Tutorial Yeah Glide Glide No Diffusion Models Survey A survey on Generative Diffusion Models No Score Prediction Diffusion Models Generative Modeling by Estimating Gradients of the Data Distribution No Blogs Author Description Link Lilian Weng Comprehensive coverage of Diffusion models theory (Advanced) lil&amp;rsquo;log diffusion models Yang Song This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced) score based generative models AI Summer School Easy to follow but comprehensive coverage of Diffusion models ai summer school Hugging Face Annotated discussion of diffusion model with code annotated diffusion models Alex Alemi Blog on Variational Diffusion Loss variational diffusion models Google AI Blog Cascaded Diffusion Models with Super Resolution High Fidelity Image Generation Using Diffusion Models YouTube Educators Channel Description Link AI Coffee Break with Letitia Byte sized content on Diffusion models diffusion models explained Yannic DDPM paper explained DDMP explained Aleksa Gordić - The AI Epiphany ML coding series on Improved DDPM codebase coding series GitHub Repos Repo Description Repo Link Colab Diffusion Models Tutorial Wity&amp;rsquo;AI tutorial Wity&amp;rsquo;AI tutorial Stable Diffusion Stable Diffusion LucidRains Denoising Diffusion Models LucidRains Variational Diffusion models VDM DDPM DDPM YiYi XU (Flax+JAX) Flax Denoising Diffusion Glide Glide Notebooks Play with Diffusion Models Description Link Play with Stable Diffusion v2 SD II Stable Boost: Personalized Photos Stable Boost Image variations with Stable Diffusion SD variations Gradio App for Stable Diffusion GitHub Repo </description>
       <content:encoded><![CDATA[<p>Here are some resources that I have found useful/interesting.
 Highlighting ones that I recommend going over.</p>
 <h2 id="papers">Papers</h2>
@@ -2374,6 +2382,11 @@ Highlighting ones that I recommend going over.</p>
 <td><a href="https://arxiv.org/abs/2209.02646" target="_blank" >A survey on Generative Diffusion Models</a></td>
 <td>No</td>
 </tr>
+<tr>
+<td>Score Prediction Diffusion Models</td>
+<td><a href="https://arxiv.org/abs/1907.05600" target="_blank" >Generative Modeling by Estimating Gradients of the Data Distribution</a></td>
+<td>No</td>
+</tr>
 </tbody>
 </table>
 <h2 id="blogs">Blogs</h2>
@@ -2384,6 +2397,7 @@ Highlighting ones that I recommend going over.</p>
 <th>Description</th>
 <th>Link</th>
 <th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -2392,11 +2406,13 @@ Highlighting ones that I recommend going over.</p>
 <td><strong>Comprehensive coverage of Diffusion models theory (Advanced)</strong></td>
 <td><a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" target="_blank" >lil&rsquo;log diffusion models</a></td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Yang Song</td>
 <td>This blog is about score based generative models, specifically about SDE&rsquo;s (Advanced)</td>
 <td><a href="https://yang-song.net/blog/2021/score/" target="_blank" >score based generative models</a></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -2404,17 +2420,27 @@ Highlighting ones that I recommend going over.</p>
 <td><strong>Easy to follow but comprehensive coverage of Diffusion models</strong></td>
 <td><a href="https://theaisummer.com/diffusion-models/" target="_blank" >ai summer school</a></td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Hugging Face</td>
 <td>Annotated discussion of diffusion model with code</td>
 <td><a href="https://huggingface.co/blog/annotated-diffusion" target="_blank" >annotated diffusion models</a></td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Alex Alemi</td>
 <td>Blog on Variational Diffusion Loss</td>
 <td><a href="https://blog.alexalemi.com/diffusion.html" target="_blank" >variational diffusion models</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Google AI Blog</td>
+<td>Cascaded Diffusion Models with Super Resolution</td>
+<td><a href="https://ai.googleblog.com/2021/07/high-fidelity-image-generation-using.html" target="_blank" >High Fidelity Image Generation Using Diffusion Models</a></td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
