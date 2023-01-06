@@ -1361,6 +1361,8 @@ We will be using the naïve version of classifier guidance described <a href="/p
 <h2 id="conclusion">Conclusion</h2>
 <p>Denoising Diffusion models are a powerful algorithmic tool for Generative AI. Although much of the work done so far focusses on images, we could generate any distribution using these techniques.</p>
 <p>I sincerely hope this introduction was useful to you. Please explore additional resources <a href="/posts/diffusion-models/bonus-denoising-diffusion-models-resources/" >here.</a></p>
+<hr>
+<p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
