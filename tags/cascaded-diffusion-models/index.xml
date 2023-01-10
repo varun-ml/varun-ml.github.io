@@ -17,10 +17,16 @@
       <pubDate>Tue, 10 Jan 2023 12:42:53 +0530</pubDate>
       
       <guid>https://varun-ml.github.io/posts/misc/generative-ai/</guid>
-      <description>Real World Applications Video/Image Restoration Image Editing and Synthesis using text commands: &amp;ldquo;Make my smile wider&amp;rdquo; - Text suggested edits &amp;ldquo;segment image of guy wearing blue shirt and brown pants from an image&amp;rdquo; Text to speech Synthesis Audio Generation Code synthesis Generating Fakes (Photo&amp;rsquo;s, Videos, Personas) ML Applications Text guided image generation In-Painting Style Transfer Upscaling Images: Super-resolution Few Shot Learning Neural Network Pre-Training Reinforcement Learning Exploration Methods &amp;amp; Approach Diffusion Models VAE&amp;rsquo;s GAN&amp;rsquo;s Normalizing flows and Autoregressive models VAE&amp;rsquo;s with flows and autoregressive models Techniques Clip for multi modal Prompt Engg Reinforcing behavior based on human feedback Stable Diffusion: Super-resolution: Guided Diffusion model trained on Large resolution with guidance on the small resolution image Cascaded Diffusion Models: A small resolution text conditioned/class conditioned diffusion model chained with multiple super resolution images Cascaded Diffusion Models Textual Inversion Tools Codex by OpenAI Perpexity AI BirdSQL CoPilot ChatGPT Blogs Open AI Blog, 2016 References Quidgest article on Generative AI: Industry impact and predictions about generative AI Applications in the industry Canary Mail Companies Companies in Generative AI Topaz: Image and Video Editing with AI Quidgest: Genio, coding with AI replit.</description>
-      <content:encoded><![CDATA[<h2 id="real-world-applications">Real World Applications</h2>
+      <description>This article primarily focusses on Computer Vision and Diffusion models.
+Real World Applications Video/Image Restoration Take an old video or photo that is low quality or blurred and improve it using DL. Image Editing and Synthesis using text commands: &amp;ldquo;Make my smile wider&amp;rdquo; - Text suggested edits &amp;ldquo;segment image of guy wearing blue shirt and brown pants from an image&amp;rdquo; Text to speech Synthesis Here is a good summary of TTS algorithms from aiSummer School Speech to text OpenAI&amp;rsquo;s whisper Audio Generation Riffusion Code synthesis Generating Fakes (Photo&amp;rsquo;s, Videos, Personas) This is bread and butter for Generative algorithms ML Applications Text guided image generation also referred as Classifier Guidance In-Painting: This refers to the process of filling in missing or corrupted parts of an image or video with plausible content.</description>
+      <content:encoded><![CDATA[<p>This article primarily focusses on Computer Vision and Diffusion models.</p>
+<h2 id="real-world-applications">Real World Applications</h2>
 <ul>
-<li>Video/Image Restoration</li>
+<li>Video/Image Restoration
+<ul>
+<li>Take an old video or photo that is low quality or blurred and improve it using DL.</li>
+</ul>
+</li>
 <li>Image Editing and Synthesis using text commands:
 <ul>
 <li>&ldquo;Make my smile wider&rdquo; - Text suggested edits</li>
@@ -30,42 +36,62 @@
 </li>
 </ul>
 </li>
-<li>Text to speech Synthesis</li>
-<li>Audio Generation</li>
+<li>Text to speech Synthesis
+<ul>
+<li>Here is a good summary of TTS algorithms from <a href="https://theaisummer.com/text-to-speech/" target="_blank" >aiSummer School</a></li>
+</ul>
+</li>
+<li>Speech to text
+<ul>
+<li>OpenAI&rsquo;s whisper</li>
+</ul>
+</li>
+<li>Audio Generation
+<ul>
+<li><a href="https://arstechnica.com/information-technology/2022/12/riffusions-ai-generates-music-from-text-using-visual-sonograms/" target="_blank" >Riffusion</a></li>
+</ul>
+</li>
 <li>Code synthesis</li>
-<li>Generating Fakes (Photo&rsquo;s, Videos, Personas)</li>
+<li>Generating Fakes (Photo&rsquo;s, Videos, Personas)
+<ul>
+<li>This is bread and butter for Generative algorithms</li>
+</ul>
+</li>
 </ul>
 <h2 id="ml-applications">ML Applications</h2>
 <ul>
-<li>Text guided image generation</li>
-<li>In-Painting</li>
-<li>Style Transfer</li>
+<li>Text guided image generation also referred as Classifier Guidance</li>
+<li>In-Painting: This refers to the process of filling in missing or corrupted parts of an image or video with plausible content. Generative models, such as Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs), can be trained to learn the underlying distribution of the data, and can then be used to generate new content that is consistent with the surrounding area.</li>
+</ul>
+<ul>
+<li>Style Transfer: This is the process of applying the style of one image to another image, while preserving the content of the original image. This is typically done by training a generative model to separate the style and content representations of an image, and then recombining the content of one image with the style of another image.</li>
 <li>Upscaling Images:
 <ul>
-<li>Super-resolution</li>
+<li>Super-resolution: This refers to the process of increasing the resolution of an image. Generative models, such as GANs, can be trained to learn the mapping from low-resolution images to high-resolution images.</li>
 </ul>
 </li>
-<li>Few Shot Learning
+<li>Few Shot Learning:
 <ul>
-<li>Neural Network Pre-Training</li>
+<li>Neural Network Pre-Training: This refers to the process of training a generative model on a large dataset, and then using the learned representations as a starting point for fine-tuning on a smaller dataset. This can be useful when the amount of labeled data is limited, as the pre-trained model can provide a good initialization that allows the model to quickly converge to a good solution when fine-tuning on the smaller dataset.</li>
 </ul>
 </li>
-<li>Reinforcement Learning Exploration</li>
+<li>Reinforcement Learning Exploration: Generative models can be used in Reinforcement Learning (RL) to help improve exploration. For example, a GAN can be trained to generate new samples that are similar to existing samples in the training data, but with slight variations. These generated samples can then be used to expand the state space of the RL agent, allowing it to explore and learn from a wider range of scenarios.</li>
 </ul>
 <h2 id="methods--approach">Methods &amp; Approach</h2>
 <ul>
-<li>Diffusion Models</li>
+<li><a href="https://varun-ml.github.io/tags/diffusion-model/" target="_blank" >Diffusion Models</a></li>
 <li>VAE&rsquo;s</li>
 <li>GAN&rsquo;s</li>
 <li>Normalizing flows and Autoregressive models</li>
 <li>VAE&rsquo;s with flows and autoregressive models</li>
+<li>Transformers based language generators</li>
 </ul>
 <h2 id="techniques">Techniques</h2>
 <ul>
-<li>Clip for multi modal</li>
-<li>Prompt Engg</li>
-<li>Reinforcing behavior based on human feedback</li>
-<li>Stable Diffusion:
+<li><a href="https://openai.com/blog/clip/" target="_blank" >Clip for multi-modal</a></li>
+<li>Prompt Engg, <a href="https://arxiv.org/abs/2201.11903" target="_blank" >Chain of thought prompting</a></li>
+<li>Reinforcing behavior based on human feedback <a href="https://huggingface.co/blog/rlhf" target="_blank" >RHLF</a></li>
+<li>Stable Diffusion: Combine superpowers of VAE&rsquo;s and Diffusion models to make things faster
 
   <img src="https://media.licdn.com/dms/image/C4D22AQHLqPYRGancyw/feedshare-shrink_2048_1536/0/1671553860366?e=1674691200&amp;v=beta&amp;t=-Jx0WOAYlEFLFGOdjSIgOBjqqhoa2TfzLWObYGPcZGU" alt="Stable Diffusion">
 </li>
@@ -86,11 +112,12 @@
 </li>
 <li>CoPilot</li>
 <li>ChatGPT</li>
+<li>&hellip;</li>
 </ul>
 <h2 id="blogs">Blogs</h2>
 <ul>
 <li><a href="https://openai.com/blog/generative-models/" target="_blank" >Open AI Blog, 2016</a></li>
-<li></li>
+<li><a href="https://www.weforum.org/agenda/2023/01/davos23-generative-ai-a-game-changer-industries-and-society-code-developers/" target="_blank" >WeC Article on Generative AI</a></li>
 </ul>
 <h2 id="references">References</h2>
 <ul>
@@ -112,6 +139,8 @@
 <li><a href="https://quidgest.com" target="_blank" >Quidgest</a>: Genio, coding with AI</li>
 <li><a href="https://t.co/fQbRFtYxFU" target="_blank" >replit.com</a></li>
 </ul>
+<hr>
+<p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
 ]]></content:encoded>
     </item>
     
