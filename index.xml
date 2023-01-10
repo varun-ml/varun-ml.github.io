@@ -10,7 +10,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Dec 2022 15:17:16 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Jan 2023 12:42:53 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Denoising Diffusion Models Part 3: Generating Characters and numbers with Diffusion Models</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</link>
@@ -2883,6 +2883,110 @@ $$
 </div>
 </div><hr>
 <p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Generative Ai</title>
+      <link>https://varun-ml.github.io/posts/misc/generative-ai/</link>
+      <pubDate>Tue, 10 Jan 2023 12:42:53 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/misc/generative-ai/</guid>
+      <description>Real World Applications Video/Image Restoration Image Editing and Synthesis using text commands: &amp;ldquo;Make my smile wider&amp;rdquo; - Text suggested edits &amp;ldquo;segment image of guy wearing blue shirt and brown pants from an image&amp;rdquo; Text to speech Synthesis Audio Generation Code synthesis Generating Fakes (Photo&amp;rsquo;s, Videos, Personas) ML Applications Text guided image generation In-Painting Style Transfer Upscaling Images: Super-resolution Few Shot Learning Neural Network Pre-Training Reinforcement Learning Exploration Methods &amp;amp; Approach Diffusion Models VAE&amp;rsquo;s GAN&amp;rsquo;s Normalizing flows and Autoregressive models VAE&amp;rsquo;s with flows and autoregressive models Techniques Clip for multi modal Prompt Engg Reinforcing behavior based on human feedback Stable Diffusion: Super-resolution: Guided Diffusion model trained on Large resolution with guidance on the small resolution image Cascaded Diffusion Models: A small resolution text conditioned/class conditioned diffusion model chained with multiple super resolution images Cascaded Diffusion Models Textual Inversion Tools Codex by OpenAI Perpexity AI BirdSQL CoPilot ChatGPT Blogs Open AI Blog, 2016 References Quidgest article on Generative AI: Industry impact and predictions about generative AI Applications in the industry Canary Mail Companies Companies in Generative AI Topaz: Image and Video Editing with AI Quidgest: Genio, coding with AI replit.</description>
+      <content:encoded><![CDATA[<h2 id="real-world-applications">Real World Applications</h2>
+<ul>
+<li>Video/Image Restoration</li>
+<li>Image Editing and Synthesis using text commands:
+<ul>
+<li>&ldquo;Make my smile wider&rdquo; - Text suggested edits</li>
+<li>&ldquo;segment image of guy wearing blue shirt and brown pants from an image&rdquo;
+
+  <img src="https://pbs.twimg.com/media/Fk108vGXkAU199T?format=jpg&amp;name=large" alt="Peakaboo Paper; Text to Image Diffusion Models are Zero-Shot Segmentors">
+</li>
+</ul>
+</li>
+<li>Text to speech Synthesis</li>
+<li>Audio Generation</li>
+<li>Code synthesis</li>
+<li>Generating Fakes (Photo&rsquo;s, Videos, Personas)</li>
+</ul>
+<h2 id="ml-applications">ML Applications</h2>
+<ul>
+<li>Text guided image generation</li>
+<li>In-Painting</li>
+<li>Style Transfer</li>
+<li>Upscaling Images:
+<ul>
+<li>Super-resolution</li>
+</ul>
+</li>
+<li>Few Shot Learning
+<ul>
+<li>Neural Network Pre-Training</li>
+</ul>
+</li>
+<li>Reinforcement Learning Exploration</li>
+</ul>
+<h2 id="methods--approach">Methods &amp; Approach</h2>
+<ul>
+<li>Diffusion Models</li>
+<li>VAE&rsquo;s</li>
+<li>GAN&rsquo;s</li>
+<li>Normalizing flows and Autoregressive models</li>
+<li>VAE&rsquo;s with flows and autoregressive models</li>
+</ul>
+<h2 id="techniques">Techniques</h2>
+<ul>
+<li>Clip for multi modal</li>
+<li>Prompt Engg</li>
+<li>Reinforcing behavior based on human feedback</li>
+<li>Stable Diffusion:
+
+  <img src="https://media.licdn.com/dms/image/C4D22AQHLqPYRGancyw/feedshare-shrink_2048_1536/0/1671553860366?e=1674691200&amp;v=beta&amp;t=-Jx0WOAYlEFLFGOdjSIgOBjqqhoa2TfzLWObYGPcZGU" alt="Stable Diffusion">
+</li>
+<li>Super-resolution: Guided Diffusion model trained on Large resolution with guidance on the small resolution image</li>
+<li>Cascaded Diffusion Models: A small resolution text conditioned/class conditioned diffusion model chained with multiple super resolution images
+
+  <img src="https://1.bp.blogspot.com/-fZUmX3WWlJ8/YPG5qDDvVmI/AAAAAAAAH6w/nK7NMZzGZno-t_rBeuhkPHBq4k8Z32kYQCLcBGAsYHQ/s800/image3.gif" alt="Cascaded Diffusion models">
+
+<strong>Cascaded Diffusion Models</strong></li>
+<li>Textual Inversion</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>Codex by OpenAI
+<ul>
+<li>Perpexity AI BirdSQL</li>
+</ul>
+</li>
+<li>CoPilot</li>
+<li>ChatGPT</li>
+</ul>
+<h2 id="blogs">Blogs</h2>
+<ul>
+<li><a href="https://openai.com/blog/generative-models/" target="_blank" >Open AI Blog, 2016</a></li>
+<li></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://quidgest.com/en/blog-en/generative-ai/" target="_blank" >Quidgest article on Generative AI</a>:
+<ul>
+<li>Industry impact and predictions about generative AI</li>
+<li>Applications in the industry</li>
+</ul>
+</li>
+<li><a href="https://canarymail.io/blog/generative-ai/" target="_blank" >Canary Mail</a></li>
+</ul>
+<h2 id="companies">Companies</h2>
+<ul>
+<li>Companies in Generative AI
+
+  <img src="https://canarymail.io/blog/wp-content/uploads/2022/11/the-future-of-AI.png" alt="Generative AI landscape">
+</li>
+<li><a href="https://www.topazlabs.com/" target="_blank" >Topaz</a>: Image and Video Editing with AI</li>
+<li><a href="https://quidgest.com" target="_blank" >Quidgest</a>: Genio, coding with AI</li>
+<li><a href="https://t.co/fQbRFtYxFU" target="_blank" >replit.com</a></li>
+</ul>
 ]]></content:encoded>
     </item>
     
