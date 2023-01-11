@@ -2439,7 +2439,7 @@ SNR stands for Signal to Noise. In the case of the diffusion, the schedule must 
       
       <guid>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</guid>
       <description>Here are some resources that I have found useful/interesting. Highlighting ones that I recommend going over.
-Papers Paper Title Paper Link Have I Read it? DDPM DDMP Yeah Improved DDPM IDDPM Yeah Stable Diffusion Stable Diffusion No Variational Diffusion Models VDM Yeah Cold Diffusion Cold Diffusion No Understanding Diffusion Models: A Unified Perspective Tutorial Yeah Glide Glide No Diffusion Models Survey A survey on Generative Diffusion Models No Score Prediction Diffusion Models Generative Modeling by Estimating Gradients of the Data Distribution No Blogs Author Description Link Lilian Weng Comprehensive coverage of Diffusion models theory (Advanced) lil&amp;rsquo;log diffusion models Yang Song This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced) score based generative models AI Summer School Easy to follow but comprehensive coverage of Diffusion models ai summer school Hugging Face Annotated discussion of diffusion model with code annotated diffusion models Alex Alemi Blog on Variational Diffusion Loss variational diffusion models Google AI Blog Cascaded Diffusion Models with Super Resolution High Fidelity Image Generation Using Diffusion Models YouTube Educators Channel Description Link AI Coffee Break with Letitia Byte sized content on Diffusion models diffusion models explained Yannic DDPM paper explained DDMP explained Aleksa Gordić - The AI Epiphany ML coding series on Improved DDPM codebase coding series GitHub Repos Repo Description Repo Link Colab Diffusion Models Tutorial Wity&amp;rsquo;AI tutorial Wity&amp;rsquo;AI tutorial Stable Diffusion Stable Diffusion LucidRains Denoising Diffusion Models LucidRains Variational Diffusion models VDM DDPM DDPM YiYi XU (Flax+JAX) Flax Denoising Diffusion Glide Glide Notebooks Play with Diffusion Models Description Link Play with Stable Diffusion v2 SD II Stable Boost: Personalized Photos Stable Boost Image variations with Stable Diffusion SD variations Gradio App for Stable Diffusion GitHub Repo Want to connect?</description>
+Papers Paper Title Paper Link Have I Read it? DDPM DDMP Yeah Improved DDPM IDDPM Yeah Stable Diffusion Stable Diffusion No Variational Diffusion Models VDM Yeah Cold Diffusion Cold Diffusion No Understanding Diffusion Models: A Unified Perspective Tutorial Yeah Glide Glide No Diffusion Models Survey A survey on Generative Diffusion Models No Score Prediction Diffusion Models Generative Modeling by Estimating Gradients of the Data Distribution No Blogs Author Description Link Lilian Weng Comprehensive coverage of Diffusion models theory (Advanced) lil&amp;rsquo;log diffusion models Yang Song This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced) score based generative models AI Summer School Easy to follow but comprehensive coverage of Diffusion models ai summer school Hugging Face Annotated discussion of diffusion model with code annotated diffusion models Alex Alemi Blog on Variational Diffusion Loss variational diffusion models Google AI Blog Cascaded Diffusion Models with Super Resolution High Fidelity Image Generation Using Diffusion Models YouTube Educators Channel Description Link AI Coffee Break with Letitia Byte sized content on Diffusion models diffusion models explained Yannic DDPM paper explained DDMP explained Aleksa Gordić - The AI Epiphany ML coding series on Improved DDPM codebase coding series GitHub Repos Repo Description Repo Link Colab Diffusion Models Tutorial Wity&amp;rsquo;AI tutorial Wity&amp;rsquo;AI tutorial Stable Diffusion Stable Diffusion LucidRains Denoising Diffusion Models LucidRains Variational Diffusion models VDM DDPM DDPM YiYi XU (Flax+JAX) Flax Denoising Diffusion Glide Glide Notebooks Play with Diffusion Models Description Link Play with Stable Diffusion v2 SD II Stable Boost: Personalized Photos Stable Boost Image variations with Stable Diffusion SD variations Gradio App for Stable Diffusion GitHub Repo Bing Create tool Bing Playground AI PlaygroundAI Want to connect?</description>
       <content:encoded><![CDATA[<p>Here are some resources that I have found useful/interesting.
 Highlighting ones that I recommend going over.</p>
 <h2 id="papers">Papers</h2>
@@ -2669,6 +2669,24 @@ Highlighting ones that I recommend going over.</p>
 <td><a href="https://github.com/qunash/stable-diffusion-2-gui/" target="_blank" >GitHub Repo</a> <a href="https://colab.research.google.com/github/qunash/stable-diffusion-2-gui/blob/main/stable_diffusion_2_0.ipynb#scrollTo=gId0-asCBVwL" target="_blank" >
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
 </a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bing Create tool</td>
+<td><a href="https://www.bing.com/create" target="_blank" >Bing</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Playground AI</td>
+<td><a href="https://playgroundai.com/" target="_blank" >PlaygroundAI</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
