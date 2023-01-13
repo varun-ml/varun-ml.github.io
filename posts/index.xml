@@ -10,7 +10,143 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Jan 2023 12:42:53 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Jan 2023 12:20:14 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generative Ai</title>
+      <link>https://varun-ml.github.io/posts/misc/generative-ai/</link>
+      <pubDate>Tue, 10 Jan 2023 12:42:53 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/misc/generative-ai/</guid>
+      <description>This article primarily focusses on Computer Vision and Diffusion models.
+Real World Applications Video/Image Restoration Take an old video or photo that is low quality or blurred and improve it using DL. Image Editing and Synthesis using text commands: &amp;ldquo;Make my smile wider&amp;rdquo; - Text suggested edits &amp;ldquo;segment image of guy wearing blue shirt and brown pants from an image&amp;rdquo; Text to speech Synthesis Here is a good summary of TTS algorithms from aiSummer School Speech to text OpenAI&amp;rsquo;s whisper Audio Generation Riffusion Code synthesis Generating Fakes (Photo&amp;rsquo;s, Videos, Personas) This is bread and butter for Generative algorithms ML Applications Text guided image generation also referred as Classifier Guidance In-Painting: This refers to the process of filling in missing or corrupted parts of an image or video with plausible content.</description>
+      <content:encoded><![CDATA[<p>This article primarily focusses on Computer Vision and Diffusion models.</p>
+<h2 id="real-world-applications">Real World Applications</h2>
+<ul>
+<li>Video/Image Restoration
+<ul>
+<li>Take an old video or photo that is low quality or blurred and improve it using DL.</li>
+</ul>
+</li>
+<li>Image Editing and Synthesis using text commands:
+<ul>
+<li>&ldquo;Make my smile wider&rdquo; - Text suggested edits</li>
+<li>&ldquo;segment image of guy wearing blue shirt and brown pants from an image&rdquo;
+
+  <img src="https://pbs.twimg.com/media/Fk108vGXkAU199T?format=jpg&amp;name=large" alt="Peakaboo Paper; Text to Image Diffusion Models are Zero-Shot Segmentors">
+</li>
+</ul>
+</li>
+<li>Text to speech Synthesis
+<ul>
+<li>Here is a good summary of TTS algorithms from <a href="https://theaisummer.com/text-to-speech/" target="_blank" >aiSummer School</a></li>
+</ul>
+</li>
+<li>Speech to text
+<ul>
+<li>OpenAI&rsquo;s whisper</li>
+</ul>
+</li>
+<li>Audio Generation
+<ul>
+<li><a href="https://arstechnica.com/information-technology/2022/12/riffusions-ai-generates-music-from-text-using-visual-sonograms/" target="_blank" >Riffusion</a></li>
+</ul>
+</li>
+<li>Code synthesis</li>
+<li>Generating Fakes (Photo&rsquo;s, Videos, Personas)
+<ul>
+<li>This is bread and butter for Generative algorithms</li>
+</ul>
+</li>
+</ul>
+<h2 id="ml-applications">ML Applications</h2>
+<ul>
+<li>Text guided image generation also referred as Classifier Guidance</li>
+<li>In-Painting: This refers to the process of filling in missing or corrupted parts of an image or video with plausible content. Generative models, such as Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs), can be trained to learn the underlying distribution of the data, and can then be used to generate new content that is consistent with the surrounding area.</li>
+</ul>
+<ul>
+<li>Style Transfer: This is the process of applying the style of one image to another image, while preserving the content of the original image. This is typically done by training a generative model to separate the style and content representations of an image, and then recombining the content of one image with the style of another image.</li>
+<li>Upscaling Images:
+<ul>
+<li>Super-resolution: This refers to the process of increasing the resolution of an image. Generative models, such as GANs, can be trained to learn the mapping from low-resolution images to high-resolution images.</li>
+</ul>
+</li>
+<li>Few Shot Learning:
+<ul>
+<li>Neural Network Pre-Training: This refers to the process of training a generative model on a large dataset, and then using the learned representations as a starting point for fine-tuning on a smaller dataset. This can be useful when the amount of labeled data is limited, as the pre-trained model can provide a good initialization that allows the model to quickly converge to a good solution when fine-tuning on the smaller dataset.</li>
+</ul>
+</li>
+<li>Reinforcement Learning Exploration: Generative models can be used in Reinforcement Learning (RL) to help improve exploration. For example, a GAN can be trained to generate new samples that are similar to existing samples in the training data, but with slight variations. These generated samples can then be used to expand the state space of the RL agent, allowing it to explore and learn from a wider range of scenarios.</li>
+</ul>
+<h2 id="methods--approach">Methods &amp; Approach</h2>
+<ul>
+<li><a href="https://varun-ml.github.io/tags/diffusion-model/" target="_blank" >Diffusion Models</a></li>
+<li>VAE&rsquo;s</li>
+<li>GAN&rsquo;s</li>
+<li>Normalizing flows and Autoregressive models</li>
+<li>VAE&rsquo;s with flows and autoregressive models</li>
+<li>Transformers based language generators</li>
+</ul>
+<h2 id="techniques">Techniques</h2>
+<ul>
+<li><a href="https://openai.com/blog/clip/" target="_blank" >Clip for multi-modal</a></li>
+<li>Prompt Engg, <a href="https://arxiv.org/abs/2201.11903" target="_blank" >Chain of thought prompting</a></li>
+<li>Reinforcing behavior based on human feedback <a href="https://huggingface.co/blog/rlhf" target="_blank" >RHLF</a></li>
+<li>Stable Diffusion: Combine superpowers of VAE&rsquo;s and Diffusion models to make things faster
+
+  <img src="https://media.licdn.com/dms/image/C4D22AQHLqPYRGancyw/feedshare-shrink_2048_1536/0/1671553860366?e=1674691200&amp;v=beta&amp;t=-Jx0WOAYlEFLFGOdjSIgOBjqqhoa2TfzLWObYGPcZGU" alt="Stable Diffusion">
+</li>
+<li>Super-resolution: Guided Diffusion model trained on Large resolution with guidance on the small resolution image</li>
+<li>Cascaded Diffusion Models: A small resolution text conditioned/class conditioned diffusion model chained with multiple super resolution images
+
+  <img src="https://1.bp.blogspot.com/-fZUmX3WWlJ8/YPG5qDDvVmI/AAAAAAAAH6w/nK7NMZzGZno-t_rBeuhkPHBq4k8Z32kYQCLcBGAsYHQ/s800/image3.gif" alt="Cascaded Diffusion models">
+
+<strong>Cascaded Diffusion Models</strong></li>
+<li>Textual Inversion</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>Codex by OpenAI
+<ul>
+<li>Perpexity AI BirdSQL</li>
+</ul>
+</li>
+<li>CoPilot</li>
+<li>ChatGPT</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="blogs">Blogs</h2>
+<ul>
+<li><a href="https://openai.com/blog/generative-models/" target="_blank" >Open AI Blog, 2016</a></li>
+<li><a href="https://www.weforum.org/agenda/2023/01/davos23-generative-ai-a-game-changer-industries-and-society-code-developers/" target="_blank" >WeC Article on Generative AI</a></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://quidgest.com/en/blog-en/generative-ai/" target="_blank" >Quidgest article on Generative AI</a>:
+<ul>
+<li>Industry impact and predictions about generative AI</li>
+<li>Applications in the industry</li>
+</ul>
+</li>
+<li><a href="https://canarymail.io/blog/generative-ai/" target="_blank" >Canary Mail</a></li>
+</ul>
+<h2 id="companies">Companies</h2>
+<ul>
+<li>Companies in Generative AI
+
+  <img src="https://canarymail.io/blog/wp-content/uploads/2022/11/the-future-of-AI.png" alt="Generative AI landscape">
+
+
+  <img src="https://media.licdn.com/dms/image/C5622AQGRiiciq1FiUA/feedshare-shrink_1280/0/1673358127507?e=1676505600&amp;v=beta&amp;t=_7INgCnIP0p8oBoGqAw_dwJywEbm1xGmv2FoyVW-Omw" alt="Generative AI Landscape II">
+</li>
+<li><a href="https://www.topazlabs.com/" target="_blank" >Topaz</a>: Image and Video Editing with AI</li>
+<li><a href="https://quidgest.com" target="_blank" >Quidgest</a>: Genio, coding with AI</li>
+<li><a href="https://t.co/fQbRFtYxFU" target="_blank" >replit.com</a></li>
+</ul>
+<hr>
+<p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Denoising Diffusion Models Part 3: Generating Characters and numbers with Diffusion Models</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-3/</link>
@@ -2905,132 +3041,55 @@ $$
     </item>
     
     <item>
-      <title>Generative Ai</title>
-      <link>https://varun-ml.github.io/posts/misc/generative-ai/</link>
-      <pubDate>Tue, 10 Jan 2023 12:42:53 +0530</pubDate>
+      <title>Modelling Correlation between multiple interelated time-series</title>
+      <link>https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/</link>
+      <pubDate>Fri, 13 Jan 2023 12:20:14 +0530</pubDate>
       
-      <guid>https://varun-ml.github.io/posts/misc/generative-ai/</guid>
-      <description>This article primarily focusses on Computer Vision and Diffusion models.
-Real World Applications Video/Image Restoration Take an old video or photo that is low quality or blurred and improve it using DL. Image Editing and Synthesis using text commands: &amp;ldquo;Make my smile wider&amp;rdquo; - Text suggested edits &amp;ldquo;segment image of guy wearing blue shirt and brown pants from an image&amp;rdquo; Text to speech Synthesis Here is a good summary of TTS algorithms from aiSummer School Speech to text OpenAI&amp;rsquo;s whisper Audio Generation Riffusion Code synthesis Generating Fakes (Photo&amp;rsquo;s, Videos, Personas) This is bread and butter for Generative algorithms ML Applications Text guided image generation also referred as Classifier Guidance In-Painting: This refers to the process of filling in missing or corrupted parts of an image or video with plausible content.</description>
-      <content:encoded><![CDATA[<p>This article primarily focusses on Computer Vision and Diffusion models.</p>
-<h2 id="real-world-applications">Real World Applications</h2>
+      <guid>https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/</guid>
+      <description>Modelling Correlation between multiple interelated time-series Problem Definition: Model the inter-relation between stocks and predict stock next price prediction given min-by-min data on stock prices.
+Stock values are correlated, events in one stock will give information about events in other stock, so on and so forth. These 2nd order and 3rd order relation can be seen in the historical stock prices. Ofcourse, the situation is further complecated because there are global events that affect stock prices as well and which may cause these 2nd and 3rd order effects from playing out.</description>
+      <content:encoded><![CDATA[<h1 id="modelling-correlation-between-multiple-interelated-time-series">Modelling Correlation between multiple interelated time-series</h1>
+<h3 id="problem-definition">Problem Definition:</h3>
+<p>Model the inter-relation between stocks and predict stock next price prediction given min-by-min data on stock prices.</p>
+<p>Stock values are correlated, events in one stock will give information about events in other stock, so on and so forth. These 2nd order and 3rd order relation can be seen in the historical stock prices. Ofcourse, the situation is further complecated because there are global events that affect stock prices as well and which may cause these 2nd and 3rd order effects from playing out.</p>
+<p>Example of 2nd order correlation &ndash; Sales of Cadbury being indicative of recession.</p>
+<p>Can you model the stock price to capture short term and long term dependancies with other stocks?</p>
+<h3 id="modelling">Modelling:</h3>
+<h4 id="handling-data">Handling data:</h4>
+<p>We have Min by Min data over several days.</p>
+<ol>
+<li>We should also capture volume trade, number of stocks, bought and sold information.</li>
+<li>For each stock, we can bunch together a segment of 30 mins together, to make sure we are not modelling noise. This will also help us handle interrelation between larger sequences.</li>
+<li>For each stock, we can create an encoding of the events in a segment. The encoding will be a dense vector representation that will describe the events that happened in that time segment for the stock.</li>
+<li>Day breaks should also be represented in the data sequence as a spcl token. Similarly, weekend breaks, spcl events can have their own tokens similarly.</li>
+<li>Within a day each segment will have a position assosciated with it, we will model this position using positional embeddings. Start of the day may have position 0, etc.</li>
+</ol>
+<h4 id="modelling-1">Modelling:</h4>
+<p>Will attempt to make a simple model here.</p>
 <ul>
-<li>Video/Image Restoration
-<ul>
-<li>Take an old video or photo that is low quality or blurred and improve it using DL.</li>
-</ul>
-</li>
-<li>Image Editing and Synthesis using text commands:
-<ul>
-<li>&ldquo;Make my smile wider&rdquo; - Text suggested edits</li>
-<li>&ldquo;segment image of guy wearing blue shirt and brown pants from an image&rdquo;
-
-  <img src="https://pbs.twimg.com/media/Fk108vGXkAU199T?format=jpg&amp;name=large" alt="Peakaboo Paper; Text to Image Diffusion Models are Zero-Shot Segmentors">
-</li>
-</ul>
-</li>
-<li>Text to speech Synthesis
-<ul>
-<li>Here is a good summary of TTS algorithms from <a href="https://theaisummer.com/text-to-speech/" target="_blank" >aiSummer School</a></li>
-</ul>
-</li>
-<li>Speech to text
-<ul>
-<li>OpenAI&rsquo;s whisper</li>
-</ul>
-</li>
-<li>Audio Generation
-<ul>
-<li><a href="https://arstechnica.com/information-technology/2022/12/riffusions-ai-generates-music-from-text-using-visual-sonograms/" target="_blank" >Riffusion</a></li>
-</ul>
-</li>
-<li>Code synthesis</li>
-<li>Generating Fakes (Photo&rsquo;s, Videos, Personas)
-<ul>
-<li>This is bread and butter for Generative algorithms</li>
-</ul>
-</li>
-</ul>
-<h2 id="ml-applications">ML Applications</h2>
-<ul>
-<li>Text guided image generation also referred as Classifier Guidance</li>
-<li>In-Painting: This refers to the process of filling in missing or corrupted parts of an image or video with plausible content. Generative models, such as Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs), can be trained to learn the underlying distribution of the data, and can then be used to generate new content that is consistent with the surrounding area.</li>
-</ul>
-<ul>
-<li>Style Transfer: This is the process of applying the style of one image to another image, while preserving the content of the original image. This is typically done by training a generative model to separate the style and content representations of an image, and then recombining the content of one image with the style of another image.</li>
-<li>Upscaling Images:
-<ul>
-<li>Super-resolution: This refers to the process of increasing the resolution of an image. Generative models, such as GANs, can be trained to learn the mapping from low-resolution images to high-resolution images.</li>
-</ul>
-</li>
-<li>Few Shot Learning:
-<ul>
-<li>Neural Network Pre-Training: This refers to the process of training a generative model on a large dataset, and then using the learned representations as a starting point for fine-tuning on a smaller dataset. This can be useful when the amount of labeled data is limited, as the pre-trained model can provide a good initialization that allows the model to quickly converge to a good solution when fine-tuning on the smaller dataset.</li>
-</ul>
-</li>
-<li>Reinforcement Learning Exploration: Generative models can be used in Reinforcement Learning (RL) to help improve exploration. For example, a GAN can be trained to generate new samples that are similar to existing samples in the training data, but with slight variations. These generated samples can then be used to expand the state space of the RL agent, allowing it to explore and learn from a wider range of scenarios.</li>
-</ul>
-<h2 id="methods--approach">Methods &amp; Approach</h2>
-<ul>
-<li><a href="https://varun-ml.github.io/tags/diffusion-model/" target="_blank" >Diffusion Models</a></li>
-<li>VAE&rsquo;s</li>
-<li>GAN&rsquo;s</li>
-<li>Normalizing flows and Autoregressive models</li>
-<li>VAE&rsquo;s with flows and autoregressive models</li>
-<li>Transformers based language generators</li>
-</ul>
-<h2 id="techniques">Techniques</h2>
-<ul>
-<li><a href="https://openai.com/blog/clip/" target="_blank" >Clip for multi-modal</a></li>
-<li>Prompt Engg, <a href="https://arxiv.org/abs/2201.11903" target="_blank" >Chain of thought prompting</a></li>
-<li>Reinforcing behavior based on human feedback <a href="https://huggingface.co/blog/rlhf" target="_blank" >RHLF</a></li>
-<li>Stable Diffusion: Combine superpowers of VAE&rsquo;s and Diffusion models to make things faster
-
-  <img src="https://media.licdn.com/dms/image/C4D22AQHLqPYRGancyw/feedshare-shrink_2048_1536/0/1671553860366?e=1674691200&amp;v=beta&amp;t=-Jx0WOAYlEFLFGOdjSIgOBjqqhoa2TfzLWObYGPcZGU" alt="Stable Diffusion">
-</li>
-<li>Super-resolution: Guided Diffusion model trained on Large resolution with guidance on the small resolution image</li>
-<li>Cascaded Diffusion Models: A small resolution text conditioned/class conditioned diffusion model chained with multiple super resolution images
-
-  <img src="https://1.bp.blogspot.com/-fZUmX3WWlJ8/YPG5qDDvVmI/AAAAAAAAH6w/nK7NMZzGZno-t_rBeuhkPHBq4k8Z32kYQCLcBGAsYHQ/s800/image3.gif" alt="Cascaded Diffusion models">
-
-<strong>Cascaded Diffusion Models</strong></li>
-<li>Textual Inversion</li>
-</ul>
-<h2 id="tools">Tools</h2>
-<ul>
-<li>Codex by OpenAI
-<ul>
-<li>Perpexity AI BirdSQL</li>
-</ul>
-</li>
-<li>CoPilot</li>
-<li>ChatGPT</li>
+<li>
+<p>Make an encoding of each stock. This can be a separate model, that tries to model the characterestics of the stocks and puts it into an embedding &ndash;</p>
+<ol>
+<li>We can capture the industry in which the company operates in.</li>
+<li>Market cap &ndash;  the kind of investors the company has</li>
+<li>Performance based analysis of the company.</li>
 <li>&hellip;</li>
-</ul>
-<h2 id="blogs">Blogs</h2>
-<ul>
-<li><a href="https://openai.com/blog/generative-models/" target="_blank" >Open AI Blog, 2016</a></li>
-<li><a href="https://www.weforum.org/agenda/2023/01/davos23-generative-ai-a-game-changer-industries-and-society-code-developers/" target="_blank" >WeC Article on Generative AI</a></li>
-</ul>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://quidgest.com/en/blog-en/generative-ai/" target="_blank" >Quidgest article on Generative AI</a>:
-<ul>
-<li>Industry impact and predictions about generative AI</li>
-<li>Applications in the industry</li>
-</ul>
+</ol>
 </li>
-<li><a href="https://canarymail.io/blog/generative-ai/" target="_blank" >Canary Mail</a></li>
-</ul>
-<h2 id="companies">Companies</h2>
-<ul>
-<li>Companies in Generative AI
-
-  <img src="https://canarymail.io/blog/wp-content/uploads/2022/11/the-future-of-AI.png" alt="Generative AI landscape">
+<li>
+<p>Each stock will be modelled with it&rsquo;s own sequence model, here i am using a traditional RNN model for ease of understanding. We could look at transformers as well &ndash;</p>
+<ol>
+<li>The sequence model will be responsible for generating a hidden state respresentation, a long term context for the stock and a short term context vector, the context vector should be able to summarize the time sequence for the company.</li>
+<li>The sequence model will get as input the company embedding, the position embedding for the time segment, it&rsquo;s own context vectors, and a attention vector generated from other context vectors.</li>
+<li>The hidden state can be used to make a prediction of the next price segment, a long term price predictor. It should be able to suggest the confidence of prediction as well.</li>
+</ol>
 </li>
-<li><a href="https://www.topazlabs.com/" target="_blank" >Topaz</a>: Image and Video Editing with AI</li>
-<li><a href="https://quidgest.com" target="_blank" >Quidgest</a>: Genio, coding with AI</li>
-<li><a href="https://t.co/fQbRFtYxFU" target="_blank" >replit.com</a></li>
+</ul>
+<h3 id="other-approaches">Other approaches:</h3>
+<p>For modelling correlation between multiple time series:</p>
+<ul>
+<li><a href="https://medium.com/@computersgeek/deep-learning-for-predicting-stock-prices-4cf95b08b23b" target="_blank" >Some suggestion for RNN model</a>
+*** TBD ***</li>
 </ul>
 <hr>
 <p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>

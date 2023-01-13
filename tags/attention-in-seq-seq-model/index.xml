@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>attention in seq seq model on wity&#39;ai</title>
+    <link>https://varun-ml.github.io/tags/attention-in-seq-seq-model/</link>
+    <description>Recent content in attention in seq seq model on wity&#39;ai</description>
+    <image>
+      <url>https://varun-ml.github.io/images/varun.png</url>
+      <link>https://varun-ml.github.io/images/varun.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Jan 2023 12:20:14 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/attention-in-seq-seq-model/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modelling Correlation between multiple interelated time-series</title>
+      <link>https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/</link>
+      <pubDate>Fri, 13 Jan 2023 12:20:14 +0530</pubDate>
+      
+      <guid>https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/</guid>
+      <description>Modelling Correlation between multiple interelated time-series Problem Definition: Model the inter-relation between stocks and predict stock next price prediction given min-by-min data on stock prices.
+Stock values are correlated, events in one stock will give information about events in other stock, so on and so forth. These 2nd order and 3rd order relation can be seen in the historical stock prices. Ofcourse, the situation is further complecated because there are global events that affect stock prices as well and which may cause these 2nd and 3rd order effects from playing out.</description>
+      <content:encoded><![CDATA[<h1 id="modelling-correlation-between-multiple-interelated-time-series">Modelling Correlation between multiple interelated time-series</h1>
+<h3 id="problem-definition">Problem Definition:</h3>
+<p>Model the inter-relation between stocks and predict stock next price prediction given min-by-min data on stock prices.</p>
+<p>Stock values are correlated, events in one stock will give information about events in other stock, so on and so forth. These 2nd order and 3rd order relation can be seen in the historical stock prices. Ofcourse, the situation is further complecated because there are global events that affect stock prices as well and which may cause these 2nd and 3rd order effects from playing out.</p>
+<p>Example of 2nd order correlation &ndash; Sales of Cadbury being indicative of recession.</p>
+<p>Can you model the stock price to capture short term and long term dependancies with other stocks?</p>
+<h3 id="modelling">Modelling:</h3>
+<h4 id="handling-data">Handling data:</h4>
+<p>We have Min by Min data over several days.</p>
+<ol>
+<li>We should also capture volume trade, number of stocks, bought and sold information.</li>
+<li>For each stock, we can bunch together a segment of 30 mins together, to make sure we are not modelling noise. This will also help us handle interrelation between larger sequences.</li>
+<li>For each stock, we can create an encoding of the events in a segment. The encoding will be a dense vector representation that will describe the events that happened in that time segment for the stock.</li>
+<li>Day breaks should also be represented in the data sequence as a spcl token. Similarly, weekend breaks, spcl events can have their own tokens similarly.</li>
+<li>Within a day each segment will have a position assosciated with it, we will model this position using positional embeddings. Start of the day may have position 0, etc.</li>
+</ol>
+<h4 id="modelling-1">Modelling:</h4>
+<p>Will attempt to make a simple model here.</p>
+<ul>
+<li>
+<p>Make an encoding of each stock. This can be a separate model, that tries to model the characterestics of the stocks and puts it into an embedding &ndash;</p>
+<ol>
+<li>We can capture the industry in which the company operates in.</li>
+<li>Market cap &ndash;  the kind of investors the company has</li>
+<li>Performance based analysis of the company.</li>
+<li>&hellip;</li>
+</ol>
+</li>
+<li>
+<p>Each stock will be modelled with it&rsquo;s own sequence model, here i am using a traditional RNN model for ease of understanding. We could look at transformers as well &ndash;</p>
+<ol>
+<li>The sequence model will be responsible for generating a hidden state respresentation, a long term context for the stock and a short term context vector, the context vector should be able to summarize the time sequence for the company.</li>
+<li>The sequence model will get as input the company embedding, the position embedding for the time segment, it&rsquo;s own context vectors, and a attention vector generated from other context vectors.</li>
+<li>The hidden state can be used to make a prediction of the next price segment, a long term price predictor. It should be able to suggest the confidence of prediction as well.</li>
+</ol>
+</li>
+</ul>
+<h3 id="other-approaches">Other approaches:</h3>
+<p>For modelling correlation between multiple time series:</p>
+<ul>
+<li><a href="https://medium.com/@computersgeek/deep-learning-for-predicting-stock-prices-4cf95b08b23b" target="_blank" >Some suggestion for RNN model</a>
+*** TBD ***</li>
+</ul>
+<hr>
+<p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
