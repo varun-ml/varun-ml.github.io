@@ -1,45 +1,64 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>co;here on wity&#39;ai</title>
+    <title>Co;here on wity&#39;ai</title>
     <link>https://varun-ml.github.io/tags/cohere/</link>
-    <description>Recent content in co;here on wity&#39;ai</description>
+    <description>Recent content in Co;here on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 07 Nov 2022 01:17:43 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/cohere/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Nov 2022 01:17:43 +0530</lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/tags/cohere/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cohere Research Scholar Notebook</title>
       <link>https://varun-ml.github.io/posts/cohere/cohere-research-scholar/</link>
       <pubDate>Mon, 07 Nov 2022 01:17:43 +0530</pubDate>
-      
       <guid>https://varun-ml.github.io/posts/cohere/cohere-research-scholar/</guid>
-      <description>Notebook Github Link Colab Co;here Research Scholar Assignment Github Want to connect? Reach out @varuntul22.</description>
+      <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Notebook&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Github Link&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Colab&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Co;here Research Scholar Assignment&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://github.com/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb&#34; target=&#34;_blank&#34; &gt;Github&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://colab.research.google.com/github/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Colab&#34;&gt;
+&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Want to connect? Reach out @&lt;a href=&#34;https://twitter.com/varuntul22&#34; target=&#34;_blank&#34; &gt;varuntul22&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</description>
       <content:encoded><![CDATA[<table>
-<thead>
-<tr>
-<th style="text-align:left">Notebook</th>
-<th style="text-align:left">Github Link</th>
-<th style="text-align:left">Colab</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Co;here Research Scholar Assignment</td>
-<td style="text-align:left"><a href="https://github.com/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb" target="_blank" >Github</a></td>
-<td style="text-align:left"><a href="https://colab.research.google.com/github/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb" target="_blank" >
+  <thead>
+      <tr>
+          <th style="text-align: left">Notebook</th>
+          <th style="text-align: left">Github Link</th>
+          <th style="text-align: left">Colab</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Co;here Research Scholar Assignment</td>
+          <td style="text-align: left"><a href="https://github.com/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb" target="_blank" >Github</a></td>
+          <td style="text-align: left"><a href="https://colab.research.google.com/github/varun-ml/cohere-scholars-application/blob/main/C4AIScholarsChallenge-2022.ipynb" target="_blank" >
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab">
 </a></td>
-</tr>
-</tbody>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
 ]]></content:encoded>
     </item>
-    
   </channel>
 </rss>

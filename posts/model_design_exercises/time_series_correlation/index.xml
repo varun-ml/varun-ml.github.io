@@ -5,11 +5,13 @@
     <link>https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/</link>
     <description>Recent content in Modelling Correlation between multiple interelated time-series on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 13 Jan 2023 12:20:14 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

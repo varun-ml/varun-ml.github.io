@@ -5,11 +5,13 @@
     <link>https://varun-ml.github.io/posts/misc/generative-ai/</link>
     <description>Recent content in Generative Ai on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 10 Jan 2023 12:42:53 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/posts/misc/generative-ai/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/posts/misc/generative-ai/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

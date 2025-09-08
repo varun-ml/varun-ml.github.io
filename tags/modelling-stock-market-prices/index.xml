@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>modelling stock market prices on wity&#39;ai</title>
+    <title>Modelling Stock Market Prices on wity&#39;ai</title>
     <link>https://varun-ml.github.io/tags/modelling-stock-market-prices/</link>
-    <description>Recent content in modelling stock market prices on wity&#39;ai</description>
+    <description>Recent content in Modelling Stock Market Prices on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 13 Jan 2023 12:20:14 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/modelling-stock-market-prices/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 13 Jan 2023 12:20:14 +0530</lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/tags/modelling-stock-market-prices/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Modelling Correlation between multiple interelated time-series</title>
       <link>https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/</link>
       <pubDate>Fri, 13 Jan 2023 12:20:14 +0530</pubDate>
-      
       <guid>https://varun-ml.github.io/posts/model_design_exercises/time_series_correlation/</guid>
-      <description>Modelling Correlation between multiple interelated time-series Problem Definition: Model the inter-relation between stocks and predict stock next price prediction given min-by-min data on stock prices.
-Stock values are correlated, events in one stock will give information about events in other stock, so on and so forth. These 2nd order and 3rd order relation can be seen in the historical stock prices. Ofcourse, the situation is further complecated because there are global events that affect stock prices as well and which may cause these 2nd and 3rd order effects from playing out.</description>
+      <description>&lt;h1 id=&#34;modelling-correlation-between-multiple-interelated-time-series&#34;&gt;Modelling Correlation between multiple interelated time-series&lt;/h1&gt;
+&lt;h3 id=&#34;problem-definition&#34;&gt;Problem Definition:&lt;/h3&gt;
+&lt;p&gt;Model the inter-relation between stocks and predict stock next price prediction given min-by-min data on stock prices.&lt;/p&gt;
+&lt;p&gt;Stock values are correlated, events in one stock will give information about events in other stock, so on and so forth. These 2nd order and 3rd order relation can be seen in the historical stock prices. Ofcourse, the situation is further complecated because there are global events that affect stock prices as well and which may cause these 2nd and 3rd order effects from playing out.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="modelling-correlation-between-multiple-interelated-time-series">Modelling Correlation between multiple interelated time-series</h1>
 <h3 id="problem-definition">Problem Definition:</h3>
 <p>Model the inter-relation between stocks and predict stock next price prediction given min-by-min data on stock prices.</p>
@@ -66,6 +69,5 @@ Stock values are correlated, events in one stock will give information about eve
 <p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
 ]]></content:encoded>
     </item>
-    
   </channel>
 </rss>

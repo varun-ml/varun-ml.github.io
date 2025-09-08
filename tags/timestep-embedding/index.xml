@@ -1,49 +1,76 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>timestep embedding on wity&#39;ai</title>
+    <title>Timestep Embedding on wity&#39;ai</title>
     <link>https://varun-ml.github.io/tags/timestep-embedding/</link>
-    <description>Recent content in timestep embedding on wity&#39;ai</description>
+    <description>Recent content in Timestep Embedding on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 09 Dec 2022 17:38:49 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/timestep-embedding/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 09 Dec 2022 17:38:49 +0530</lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/tags/timestep-embedding/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Denoising Diffusion Models Part 2: Improving Diffusion Models</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</link>
       <pubDate>Fri, 09 Dec 2022 17:38:49 +0530</pubDate>
-      
       <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</guid>
-      <description>Code for this blog post: Notebook Github Link Colab Predicting Error and Score Function Error / Score Prediction Classifier free Guidance and other improvements Advanced concepts Topics to cover We have done most of the heavy-lifting in Part 1 of this series on Diffusion Models. To be able to use them well in practice, we may need to make some more improvements. That&amp;rsquo;s what we will do.
-Time step embedding and concatenation/fusion to the input data.</description>
+      <description>&lt;h2 id=&#34;code-for-this-blog-post&#34;&gt;Code for this blog post:&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Notebook&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Github Link&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Colab&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Predicting Error and Score Function&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/errors.diffusion_model_interpretations.ipynb&#34; target=&#34;_blank&#34; &gt;Error / Score Prediction&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_errors.diffusion_model_interpretations.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Colab (Large)&#34;&gt;
+&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Classifier free Guidance and other improvements&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/guidance_free_classifiers.ipynb&#34; target=&#34;_blank&#34; &gt;Advanced concepts&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_guidance_free_classifiers.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Colab (Large)&#34;&gt;
+&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;topics-to-cover&#34;&gt;Topics to cover&lt;/h2&gt;
+&lt;p&gt;We have done most of the heavy-lifting in &lt;a href=&#34;https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/&#34; &gt;Part 1&lt;/a&gt; of this series on Diffusion Models. To be able to use them well in practice, we may need to make some more improvements. That&amp;rsquo;s what we will do.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="code-for-this-blog-post">Code for this blog post:</h2>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">Notebook</th>
-<th style="text-align:left">Github Link</th>
-<th style="text-align:left">Colab</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Predicting Error and Score Function</td>
-<td style="text-align:left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/errors.diffusion_model_interpretations.ipynb" target="_blank" >Error / Score Prediction</a></td>
-<td style="text-align:left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_errors.diffusion_model_interpretations.ipynb" target="_blank" >
+  <thead>
+      <tr>
+          <th style="text-align: left">Notebook</th>
+          <th style="text-align: left">Github Link</th>
+          <th style="text-align: left">Colab</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Predicting Error and Score Function</td>
+          <td style="text-align: left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/errors.diffusion_model_interpretations.ipynb" target="_blank" >Error / Score Prediction</a></td>
+          <td style="text-align: left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_errors.diffusion_model_interpretations.ipynb" target="_blank" >
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab (Large)">
 </a></td>
-</tr>
-<tr>
-<td style="text-align:left">Classifier free Guidance and other improvements</td>
-<td style="text-align:left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/guidance_free_classifiers.ipynb" target="_blank" >Advanced concepts</a></td>
-<td style="text-align:left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_guidance_free_classifiers.ipynb" target="_blank" >
+      </tr>
+      <tr>
+          <td style="text-align: left">Classifier free Guidance and other improvements</td>
+          <td style="text-align: left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/guidance_free_classifiers.ipynb" target="_blank" >Advanced concepts</a></td>
+          <td style="text-align: left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_guidance_free_classifiers.ipynb" target="_blank" >
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab (Large)">
 </a></td>
-</tr>
-</tbody>
+      </tr>
+  </tbody>
 </table>
 <h2 id="topics-to-cover">Topics to cover</h2>
 <p>We have done most of the heavy-lifting in <a href="/posts/diffusion-models/denoising-diffusion-models-1/" >Part 1</a> of this series on Diffusion Models. To be able to use them well in practice, we may need to make some more improvements. That&rsquo;s what we will do.</p>
@@ -136,7 +163,7 @@ pass the time step as an embedding to the Neural Network. In the <cite>Attention
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># concatenation</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># x = (batch_size, input data dimension); time_embeddings = (batch_size, input data dimension)</span>
-</span></span><span class="line"><span class="cl"><span class="n">concat_x</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">time_embeddings</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">concat_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">time_embeddings</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># fusing</span>
 </span></span><span class="line"><span class="cl"><span class="n">shift</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">time_embedding</span><span class="p">,</span> <span class="n">indices_or_sections</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
@@ -165,7 +192,7 @@ pass the time step as an embedding to the Neural Network. In the <cite>Attention
 </span></span><span class="line"><span class="cl"><span class="c1"># ensure channels == embedding_dimension</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># broadcast and add timestep to image data</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">einops</span>
-</span></span><span class="line"><span class="cl"><span class="n">timestep_embedding</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">einops</span><span class="o">.</span><span class="n">rearrange</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="err"> </span><span class="s1">&#39;b c -&gt; b 1 1 c&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">timestep_embedding</span> <span class="o">=</span> <span class="n">einops</span><span class="o">.</span><span class="n">rearrange</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;b c -&gt; b 1 1 c&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">fused_image_data</span> <span class="o">=</span> <span class="n">image_data</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">timestep_embedding</span><span class="p">)</span> 
 </span></span></code></pre></td></tr></table>
@@ -220,8 +247,9 @@ $$
 
 <p>Predicting error is empirically shown to work well, refer <cite>Denoising paper<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite>. This is probably due to the clipping of the predicted output at every time step so that the predicted data is in the normalized range. <a href="https://github.com/hojonathanho/diffusion/issues/5#issuecomment-1283946094" target="_blank" >Refer this discussion</a>.</p>
 <p>Here is an interesting discussion on why predicting error works for images, but may not work well for other domains such as voice generation.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Another important reason is that the standard formulation everyone has ended up using for images (predict the standardised noise given noisy input) implicitly downweights high frequency components, which is an excellent match for the human visual system.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557692621199400960?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-  <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Another important reason is that the standard formulation everyone has ended up using for images (predict the standardised noise given noisy input) implicitly downweights high frequency components, which is an excellent match for the human visual system.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557692621199400960?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
 
 <p><strong>Denoising Step during data generation:</strong></p>
 <div class="highlight"><div class="chroma">
@@ -408,8 +436,9 @@ $$
 
 The conditional and the unconditional distributions are modelled by the same neural network. To model the conditional distribution, we fuse the label information as shown in the naïve approach above. To model the unconditional distribution, we mask the label information and pass it to the diffusion model.
 The lambda parameter, controls the diversity of the sample we want to generate. $\lambda=1$ would be equivalent to the naïve approach.</p>
-<p>
-  <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Classifier-free guidance is a cheatcode that makes these models perform as if they had 10x the parameters. At least in terms of sample quality, and at the cost of diversity. All of the recent spectacular results rely heavily on this trick.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557691965076021252?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Classifier-free guidance is a cheatcode that makes these models perform as if they had 10x the parameters. At least in terms of sample quality, and at the cost of diversity. All of the recent spectacular results rely heavily on this trick.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557691965076021252?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 Adding this perspective about efficiency of diffusion models. Even though to be honest, I am not sure myself :).</p>
 <h2 id="lets-look-at-some-outputs">Let&rsquo;s look at some outputs</h2>
@@ -442,6 +471,5 @@ Adding this perspective about efficiency of diffusion models. Even though to be 
 </div>
 ]]></content:encoded>
     </item>
-    
   </channel>
 </rss>

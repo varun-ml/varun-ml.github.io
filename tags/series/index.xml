@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Series on wity&#39;ai</title>
+    <link>https://varun-ml.github.io/tags/series/</link>
+    <description>Recent content in Series on wity&#39;ai</description>
+    <image>
+      <title>wity&#39;ai</title>
+      <url>https://varun-ml.github.io/images/varun.png</url>
+      <link>https://varun-ml.github.io/images/varun.png</link>
+    </image>
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 08 Sep 2025 11:00:00 +0530</lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/tags/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>#BuildingInPublic: stockoMJ Journey</title>
+      <link>https://varun-ml.github.io/posts/building-in-public/</link>
+      <pubDate>Mon, 08 Sep 2025 11:00:00 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/building-in-public/</guid>
+      <description>&lt;h2 id=&#34;about-the-buildinginpublic-series&#34;&gt;About the #BuildingInPublic Series&lt;/h2&gt;
+&lt;p&gt;Welcome to my #BuildingInPublic series where I document the journey of building &lt;a href=&#34;https://stockomj.ai&#34; target=&#34;_blank&#34; &gt;stockoMJ.ai&lt;/a&gt; and &amp;ldquo;WITY&amp;rdquo; - an AI trading assistant designed to help traders make disciplined, data-driven decisions.&lt;/p&gt;
+&lt;p&gt;Each week, I&amp;rsquo;ll share progress updates, technical learnings, challenges, and reflections as I build this AI-powered fintech product. Follow along for insights on generative AI, market analysis, and building in the finance space.&lt;/p&gt;
+&lt;h2 id=&#34;the-series&#34;&gt;The Series&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Week&lt;/th&gt;
+          &lt;th&gt;Title&lt;/th&gt;
+          &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/building-in-public/week-01-learnings/&#34; &gt;Week 1&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Getting Started&lt;/td&gt;
+          &lt;td&gt;✏️ Draft&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Week 2&lt;/td&gt;
+          &lt;td&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/td&gt;
+          &lt;td&gt;📝 Planned&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Want to connect? Reach out on &lt;a href=&#34;https://www.linkedin.com/in/varuntulsian&#34; target=&#34;_blank&#34; &gt;LinkedIn&lt;/a&gt; or follow my &lt;a href=&#34;https://varun-ml.github.io&#34; target=&#34;_blank&#34; &gt;blog&lt;/a&gt; for weekly updates.&lt;/em&gt;&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="about-the-buildinginpublic-series">About the #BuildingInPublic Series</h2>
+<p>Welcome to my #BuildingInPublic series where I document the journey of building <a href="https://stockomj.ai" target="_blank" >stockoMJ.ai</a> and &ldquo;WITY&rdquo; - an AI trading assistant designed to help traders make disciplined, data-driven decisions.</p>
+<p>Each week, I&rsquo;ll share progress updates, technical learnings, challenges, and reflections as I build this AI-powered fintech product. Follow along for insights on generative AI, market analysis, and building in the finance space.</p>
+<h2 id="the-series">The Series</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Week</th>
+          <th>Title</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/posts/building-in-public/week-01-learnings/" >Week 1</a></td>
+          <td>Getting Started</td>
+          <td>✏️ Draft</td>
+      </tr>
+      <tr>
+          <td>Week 2</td>
+          <td><em>Coming Soon</em></td>
+          <td>📝 Planned</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><em>Want to connect? Reach out on <a href="https://www.linkedin.com/in/varuntulsian" target="_blank" >LinkedIn</a> or follow my <a href="https://varun-ml.github.io" target="_blank" >blog</a> for weekly updates.</em></p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

@@ -5,11 +5,13 @@
     <link>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</link>
     <description>Recent content in Denoising Diffusion Models Resources on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 09 Dec 2022 17:39:20 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

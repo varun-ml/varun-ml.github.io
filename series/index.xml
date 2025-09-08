@@ -5,10 +5,20 @@
     <link>https://varun-ml.github.io/series/</link>
     <description>Recent content in Series on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://varun-ml.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 08 Sep 2025 11:00:00 +0530</lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BuildingInPublic</title>
+      <link>https://varun-ml.github.io/series/buildinginpublic/</link>
+      <pubDate>Mon, 08 Sep 2025 11:00:00 +0530</pubDate>
+      <guid>https://varun-ml.github.io/series/buildinginpublic/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

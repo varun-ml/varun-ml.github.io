@@ -1,42 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>de-noising on wity&#39;ai</title>
+    <title>De-Noising on wity&#39;ai</title>
     <link>https://varun-ml.github.io/tags/de-noising/</link>
-    <description>Recent content in de-noising on wity&#39;ai</description>
+    <description>Recent content in De-Noising on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 09 Dec 2022 11:28:30 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/de-noising/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 09 Dec 2022 11:28:30 +0530</lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/tags/de-noising/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Denoising Diffusion Models Part 1: Estimating True Distribution</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</link>
       <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
-      
       <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</guid>
-      <description>Code for this blog post: Notebook Github Link Colab Basic: Predicting Original Distribution Vanilla Implementation The best way to learn is by writing the maths in your notebook alongside the tutorial, or by implementing the code alongside the notebooks.
-What are Denoising Diffusion Models? Denoising Diffusion Models, commonly referred to as &amp;ldquo;Diffusion models&amp;rdquo;, are a class of generative models based on the Variational Auto Encoder (VAE) architecture. These models are called likelihood-based models because they assign a high likelihood to the observed data samples $p(X)$.</description>
+      <description>&lt;h2 id=&#34;code-for-this-blog-post&#34;&gt;Code for this blog post:&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Notebook&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Github Link&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Colab&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Basic: Predicting Original Distribution&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/vanilla_diffusion_model.ipynb&#34; target=&#34;_blank&#34; &gt;Vanilla Implementation&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_vanilla_diffusion_model.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Colab (Large)&#34;&gt;
+&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;The best way to learn is by writing the maths in your notebook alongside the tutorial, or by implementing the code alongside the notebooks.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;what-are-denoising-diffusion-models&#34;&gt;What are Denoising Diffusion Models?&lt;/h2&gt;
+&lt;p&gt;Denoising Diffusion Models, commonly referred to as &amp;ldquo;&lt;strong&gt;Diffusion models&lt;/strong&gt;&amp;rdquo;, are a class of generative models based on the &lt;strong&gt;Variational Auto Encoder&lt;/strong&gt; (VAE) architecture. These models are called &lt;em&gt;likelihood-based models&lt;/em&gt; because they assign a high likelihood to the observed data samples $p(X)$. In contrast to other &lt;em&gt;generative models&lt;/em&gt;, such as GANs, which learn the sampling process of a complex distribution and are trained adversarially.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h2 id="code-for-this-blog-post">Code for this blog post:</h2>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">Notebook</th>
-<th style="text-align:left">Github Link</th>
-<th style="text-align:left">Colab</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Basic: Predicting Original Distribution</td>
-<td style="text-align:left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/vanilla_diffusion_model.ipynb" target="_blank" >Vanilla Implementation</a></td>
-<td style="text-align:left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_vanilla_diffusion_model.ipynb" target="_blank" >
+  <thead>
+      <tr>
+          <th style="text-align: left">Notebook</th>
+          <th style="text-align: left">Github Link</th>
+          <th style="text-align: left">Colab</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Basic: Predicting Original Distribution</td>
+          <td style="text-align: left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/vanilla_diffusion_model.ipynb" target="_blank" >Vanilla Implementation</a></td>
+          <td style="text-align: left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_vanilla_diffusion_model.ipynb" target="_blank" >
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab (Large)">
 </a></td>
-</tr>
-</tbody>
+      </tr>
+  </tbody>
 </table>
 <p><em>The best way to learn is by writing the maths in your notebook alongside the tutorial, or by implementing the code alongside the notebooks.</em></p>
 <h2 id="what-are-denoising-diffusion-models">What are Denoising Diffusion Models?</h2>
@@ -67,7 +88,7 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 </ul>
 <figure>
     <img loading="lazy" src="/images/diffusion-z.png"
-         alt="Figure 3: Illustration of the Diffusion Process. Image of &amp;lsquo;Z&amp;rsquo; char is corrupted step by step." width="100%"/> <figcaption>
+         alt="Figure 3: Illustration of the Diffusion Process. Image of &lsquo;Z&rsquo; char is corrupted step by step." width="100%"/> <figcaption>
             <p>Figure 3: Illustration of the Diffusion Process. Image of &lsquo;Z&rsquo; char is corrupted step by step.</p>
         </figcaption>
 </figure>
@@ -76,7 +97,7 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 <li><strong>Denoising</strong>: The denoising is done by a learned model that takes <em>completely noisy data</em> and tries to generate the input data by repeatedly (over $t$ steps: $1$ to $T$) removing noise from the noisy data.
 <figure>
     <img loading="lazy" src="/images/denoising-z.png"
-         alt="Figure 4: Illustration of the Denoising Process. Image of &amp;lsquo;Z&amp;rsquo; character is generated step by step." width="100%"/> <figcaption>
+         alt="Figure 4: Illustration of the Denoising Process. Image of &lsquo;Z&rsquo; character is generated step by step." width="100%"/> <figcaption>
             <p>Figure 4: Illustration of the Denoising Process. Image of &lsquo;Z&rsquo; character is generated step by step.</p>
         </figcaption>
 </figure>
@@ -84,8 +105,7 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 </ul>
 <p>These models are able to generate images from pure noise.</p>
 <blockquote>
-<p>Humans paint, they are able to generate images in a stepwise manner by painting on a blank canvas. Diffusion models are similar, they generate images in a stepwise manner by <em>denoising</em> a noisy canvas.</p>
-</blockquote>
+<p>Humans paint, they are able to generate images in a stepwise manner by painting on a blank canvas. Diffusion models are similar, they generate images in a stepwise manner by <em>denoising</em> a noisy canvas.</p></blockquote>
 <p>At this point, it may be helpful to look at the different models for generative modelling.</p>
 <figure>
     <img loading="lazy" src="/images/generative_models.png"
@@ -96,8 +116,9 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 
 <h2 id="introduction-to-this-series">Introduction to this series</h2>
 <p>I have spent too much time understanding diffusion models, which started with some wild posts I saw on Twitter.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Introducing Imagen, a new text-to-image synthesis model that can generate high-fidelity, photorealistic images from a deep level of language understanding. Learn more and and check out some examples of <a href="https://twitter.com/hashtag/imagen?src=hash&amp;ref_src=twsrc%5Etfw">#imagen</a> at <a href="https://t.co/RhD6siY6BY">https://t.co/RhD6siY6BY</a> <a href="https://t.co/C8javVu3iW">pic.twitter.com/C8javVu3iW</a></p>&mdash; Google AI (@GoogleAI) <a href="https://twitter.com/GoogleAI/status/1529165219997528064?ref_src=twsrc%5Etfw">May 24, 2022</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-  <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Introducing Imagen, a new text-to-image synthesis model that can generate high-fidelity, photorealistic images from a deep level of language understanding. Learn more and and check out some examples of <a href="https://twitter.com/hashtag/imagen?src=hash&amp;ref_src=twsrc%5Etfw">#imagen</a> at <a href="https://t.co/RhD6siY6BY">https://t.co/RhD6siY6BY</a> <a href="https://t.co/C8javVu3iW">pic.twitter.com/C8javVu3iW</a></p>&mdash; Google AI (@GoogleAI) <a href="https://twitter.com/GoogleAI/status/1529165219997528064?ref_src=twsrc%5Etfw">May 24, 2022</a></blockquote>
 
 <figure class="align-center ">
     <img loading="lazy" src="/images/diffusion-01.jpg#center"
@@ -106,8 +127,9 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
         </figcaption>
 </figure>
 
-<p>My curiosity led to experiments, which enriched my ML skill-set. In this series, I will try to demystify some magic behind diffusion models. 
-  <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Finally read a tutorial on Diffusion models. Now, I understand how they work just not why they work. To me it&#39;s crazy that they do. <a href="https://t.co/LXm5OrD993">pic.twitter.com/LXm5OrD993</a></p>&mdash; Varun Tulsian (@varuntul22) <a href="https://twitter.com/varuntul22/status/1577715572271611904?ref_src=twsrc%5Etfw">October 5, 2022</a></blockquote>
+<p>My curiosity led to experiments, which enriched my ML skill-set. In this series, I will try to demystify some magic behind diffusion models. <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Finally read a tutorial on Diffusion models. Now, I understand how they work just not why they work. To me it&#39;s crazy that they do. <a href="https://t.co/LXm5OrD993">pic.twitter.com/LXm5OrD993</a></p>&mdash; Varun Tulsian (@varuntul22) <a href="https://twitter.com/varuntul22/status/1577715572271611904?ref_src=twsrc%5Etfw">October 5, 2022</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 </p>
 <h3 id="diffusion-models-series">Diffusion Models Series</h3>
 <p>In this series, I will attempt to simplify diffusion model concepts and provide you with some code that you can easily run on Google Colab or your local Jupyter server. The code requires minimal setup. We will be working on a 2D dataset (generated using scikit-learn) and also the <a href="https://www.tensorflow.org/datasets/catalog/emnist" target="_blank" >EMNIST dataset (28x28x1 images)</a>.</p>
@@ -158,8 +180,7 @@ Figure 5 depicts the diffusion process ($q$), which begins with a random variabl
 <li>Apply the $NN$ model to the noisy image ($x_t$) to obtain $\hat x_t^0$. The result of $NN(\hat x_t, t)$ is $\hat x_t^0$. We will not go over each time step. <a href="/posts/diffusion-models/denoising-diffusion-models-1/#2-denoising-step" >Refer to the denoising step section</a>.</li>
 </ol>
 <blockquote>
-<p>Note about notation: $\hat x_t^0$ is the predicted reconstruction of the input $x_0$ at time step $t$.</p>
-</blockquote>
+<p>Note about notation: $\hat x_t^0$ is the predicted reconstruction of the input $x_0$ at time step $t$.</p></blockquote>
 <ol start="4">
 <li>Performing a weight update of the model $NN$ after computing a loss $L(x, \hat x_t^0, t)$.</li>
 <li>Repeat steps 1 through 4.</li>
@@ -378,8 +399,7 @@ p(\hat x_{t-1}| \hat x_t) \varpropto N(\hat x_{t-1};\frac{\sqrt\alpha_t(1-\bar\a
 $$
 </p>
 <blockquote>
-<p>As show in <cite>Improved Denoising Diffusion Probabilistic Models.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite> We could alternatively learn the posterior variance. In this case, we will make the neural network output the variance as well as the mean. If the data is d dimensional, the $NN$ will output 2d dimensions. First d dimensions for the mean, the 2nd d dimensions for the variance.</p>
-</blockquote>
+<p>As show in <cite>Improved Denoising Diffusion Probabilistic Models.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></cite> We could alternatively learn the posterior variance. In this case, we will make the neural network output the variance as well as the mean. If the data is d dimensional, the $NN$ will output 2d dimensions. First d dimensions for the mean, the 2nd d dimensions for the variance.</p></blockquote>
 <p><strong>Diffusion: With Fixed Variance:</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -630,6 +650,5 @@ SNR stands for Signal to Noise. In the case of the diffusion, the schedule must 
 </div>
 ]]></content:encoded>
     </item>
-    
   </channel>
 </rss>

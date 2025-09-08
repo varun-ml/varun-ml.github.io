@@ -1,24 +1,148 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>cascaded diffusion models on wity&#39;ai</title>
+    <title>Cascaded Diffusion Models on wity&#39;ai</title>
     <link>https://varun-ml.github.io/tags/cascaded-diffusion-models/</link>
-    <description>Recent content in cascaded diffusion models on wity&#39;ai</description>
+    <description>Recent content in Cascaded Diffusion Models on wity&#39;ai</description>
     <image>
+      <title>wity&#39;ai</title>
       <url>https://varun-ml.github.io/images/varun.png</url>
       <link>https://varun-ml.github.io/images/varun.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 10 Jan 2023 12:42:53 +0530</lastBuildDate><atom:link href="https://varun-ml.github.io/tags/cascaded-diffusion-models/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 10 Jan 2023 12:42:53 +0530</lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/tags/cascaded-diffusion-models/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Generative Ai</title>
       <link>https://varun-ml.github.io/posts/misc/generative-ai/</link>
       <pubDate>Tue, 10 Jan 2023 12:42:53 +0530</pubDate>
-      
       <guid>https://varun-ml.github.io/posts/misc/generative-ai/</guid>
-      <description>This article primarily focusses on Computer Vision and Diffusion models.
-Real World Applications Video/Image Restoration Take an old video or photo that is low quality or blurred and improve it using DL. Image Editing and Synthesis using text commands: &amp;ldquo;Make my smile wider&amp;rdquo; - Text suggested edits &amp;ldquo;segment image of guy wearing blue shirt and brown pants from an image&amp;rdquo; Text to speech Synthesis Here is a good summary of TTS algorithms from aiSummer School Speech to text OpenAI&amp;rsquo;s whisper Audio Generation Riffusion Code synthesis Generating Fakes (Photo&amp;rsquo;s, Videos, Personas) This is bread and butter for Generative algorithms ML Applications Text guided image generation also referred as Classifier Guidance In-Painting: This refers to the process of filling in missing or corrupted parts of an image or video with plausible content.</description>
+      <description>&lt;p&gt;This article primarily focusses on Computer Vision and Diffusion models.&lt;/p&gt;
+&lt;h2 id=&#34;real-world-applications&#34;&gt;Real World Applications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Video/Image Restoration
+&lt;ul&gt;
+&lt;li&gt;Take an old video or photo that is low quality or blurred and improve it using DL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Image Editing and Synthesis using text commands:
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Make my smile wider&amp;rdquo; - Text suggested edits&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;segment image of guy wearing blue shirt and brown pants from an image&amp;rdquo;
+
+  &lt;img src=&#34;https://pbs.twimg.com/media/Fk108vGXkAU199T?format=jpg&amp;amp;name=large&#34; alt=&#34;Peakaboo Paper; Text to Image Diffusion Models are Zero-Shot Segmentors&#34;&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Text to speech Synthesis
+&lt;ul&gt;
+&lt;li&gt;Here is a good summary of TTS algorithms from &lt;a href=&#34;https://theaisummer.com/text-to-speech/&#34; target=&#34;_blank&#34; &gt;aiSummer School&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Speech to text
+&lt;ul&gt;
+&lt;li&gt;OpenAI&amp;rsquo;s whisper&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Audio Generation
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://arstechnica.com/information-technology/2022/12/riffusions-ai-generates-music-from-text-using-visual-sonograms/&#34; target=&#34;_blank&#34; &gt;Riffusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Code synthesis&lt;/li&gt;
+&lt;li&gt;Generating Fakes (Photo&amp;rsquo;s, Videos, Personas)
+&lt;ul&gt;
+&lt;li&gt;This is bread and butter for Generative algorithms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ml-applications&#34;&gt;ML Applications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Text guided image generation also referred as Classifier Guidance&lt;/li&gt;
+&lt;li&gt;In-Painting: This refers to the process of filling in missing or corrupted parts of an image or video with plausible content. Generative models, such as Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs), can be trained to learn the underlying distribution of the data, and can then be used to generate new content that is consistent with the surrounding area.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;Style Transfer: This is the process of applying the style of one image to another image, while preserving the content of the original image. This is typically done by training a generative model to separate the style and content representations of an image, and then recombining the content of one image with the style of another image.&lt;/li&gt;
+&lt;li&gt;Upscaling Images:
+&lt;ul&gt;
+&lt;li&gt;Super-resolution: This refers to the process of increasing the resolution of an image. Generative models, such as GANs, can be trained to learn the mapping from low-resolution images to high-resolution images.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Few Shot Learning:
+&lt;ul&gt;
+&lt;li&gt;Neural Network Pre-Training: This refers to the process of training a generative model on a large dataset, and then using the learned representations as a starting point for fine-tuning on a smaller dataset. This can be useful when the amount of labeled data is limited, as the pre-trained model can provide a good initialization that allows the model to quickly converge to a good solution when fine-tuning on the smaller dataset.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Reinforcement Learning Exploration: Generative models can be used in Reinforcement Learning (RL) to help improve exploration. For example, a GAN can be trained to generate new samples that are similar to existing samples in the training data, but with slight variations. These generated samples can then be used to expand the state space of the RL agent, allowing it to explore and learn from a wider range of scenarios.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;methods--approach&#34;&gt;Methods &amp;amp; Approach&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://varun-ml.github.io/tags/diffusion-model/&#34; target=&#34;_blank&#34; &gt;Diffusion Models&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;VAE&amp;rsquo;s&lt;/li&gt;
+&lt;li&gt;GAN&amp;rsquo;s&lt;/li&gt;
+&lt;li&gt;Normalizing flows and Autoregressive models&lt;/li&gt;
+&lt;li&gt;VAE&amp;rsquo;s with flows and autoregressive models&lt;/li&gt;
+&lt;li&gt;Transformers based language generators&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;techniques&#34;&gt;Techniques&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://openai.com/blog/clip/&#34; target=&#34;_blank&#34; &gt;Clip for multi-modal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Prompt Engg, &lt;a href=&#34;https://arxiv.org/abs/2201.11903&#34; target=&#34;_blank&#34; &gt;Chain of thought prompting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Reinforcing behavior based on human feedback &lt;a href=&#34;https://huggingface.co/blog/rlhf&#34; target=&#34;_blank&#34; &gt;RHLF&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Stable Diffusion: Combine superpowers of VAE&amp;rsquo;s and Diffusion models to make things faster
+
+  &lt;img src=&#34;https://media.licdn.com/dms/image/C4D22AQHLqPYRGancyw/feedshare-shrink_2048_1536/0/1671553860366?e=1674691200&amp;amp;v=beta&amp;amp;t=-Jx0WOAYlEFLFGOdjSIgOBjqqhoa2TfzLWObYGPcZGU&#34; alt=&#34;Stable Diffusion&#34;&gt;
+&lt;/li&gt;
+&lt;li&gt;Super-resolution: Guided Diffusion model trained on Large resolution with guidance on the small resolution image&lt;/li&gt;
+&lt;li&gt;Cascaded Diffusion Models: A small resolution text conditioned/class conditioned diffusion model chained with multiple super resolution images
+
+  &lt;img src=&#34;https://1.bp.blogspot.com/-fZUmX3WWlJ8/YPG5qDDvVmI/AAAAAAAAH6w/nK7NMZzGZno-t_rBeuhkPHBq4k8Z32kYQCLcBGAsYHQ/s800/image3.gif&#34; alt=&#34;Cascaded Diffusion models&#34;&gt;
+
+&lt;strong&gt;Cascaded Diffusion Models&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Textual Inversion&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tools&#34;&gt;Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Codex by OpenAI
+&lt;ul&gt;
+&lt;li&gt;Perpexity AI BirdSQL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CoPilot&lt;/li&gt;
+&lt;li&gt;ChatGPT&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;blogs&#34;&gt;Blogs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://openai.com/blog/generative-models/&#34; target=&#34;_blank&#34; &gt;Open AI Blog, 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.weforum.org/agenda/2023/01/davos23-generative-ai-a-game-changer-industries-and-society-code-developers/&#34; target=&#34;_blank&#34; &gt;WeC Article on Generative AI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://quidgest.com/en/blog-en/generative-ai/&#34; target=&#34;_blank&#34; &gt;Quidgest article on Generative AI&lt;/a&gt;:
+&lt;ul&gt;
+&lt;li&gt;Industry impact and predictions about generative AI&lt;/li&gt;
+&lt;li&gt;Applications in the industry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://canarymail.io/blog/generative-ai/&#34; target=&#34;_blank&#34; &gt;Canary Mail&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;companies&#34;&gt;Companies&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Companies in Generative AI
+
+  &lt;img src=&#34;https://canarymail.io/blog/wp-content/uploads/2022/11/the-future-of-AI.png&#34; alt=&#34;Generative AI landscape&#34;&gt;
+
+
+  &lt;img src=&#34;https://media.licdn.com/dms/image/C5622AQGRiiciq1FiUA/feedshare-shrink_1280/0/1673358127507?e=1676505600&amp;amp;v=beta&amp;amp;t=_7INgCnIP0p8oBoGqAw_dwJywEbm1xGmv2FoyVW-Omw&#34; alt=&#34;Generative AI Landscape II&#34;&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.topazlabs.com/&#34; target=&#34;_blank&#34; &gt;Topaz&lt;/a&gt;: Image and Video Editing with AI&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://quidgest.com&#34; target=&#34;_blank&#34; &gt;Quidgest&lt;/a&gt;: Genio, coding with AI&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.co/fQbRFtYxFU&#34; target=&#34;_blank&#34; &gt;replit.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Want to connect? Reach out @&lt;a href=&#34;https://twitter.com/varuntul22&#34; target=&#34;_blank&#34; &gt;varuntul22&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>This article primarily focusses on Computer Vision and Diffusion models.</p>
 <h2 id="real-world-applications">Real World Applications</h2>
 <ul>
@@ -146,6 +270,5 @@ Real World Applications Video/Image Restoration Take an old video or photo that 
 <p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
 ]]></content:encoded>
     </item>
-    
   </channel>
 </rss>
