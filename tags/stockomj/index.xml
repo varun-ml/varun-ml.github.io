@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.149.1</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Sep 2025 11:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 15 Sep 2025 09:00:00 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/tags/stockomj/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>#BuildingInPublic Week 1: Getting Started with stockoMJ</title>
@@ -45,6 +45,35 @@
 ]]></content:encoded>
     </item>
     <item>
+      <title>#BuildingInPublic Week 2: Refining the Approach</title>
+      <link>https://varun-ml.github.io/posts/building-in-public/week-02-learnings/</link>
+      <pubDate>Mon, 15 Sep 2025 09:00:00 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/building-in-public/week-02-learnings/</guid>
+      <description>&lt;h2 id=&#34;week-2-learnings&#34;&gt;Week 2 Learnings&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Using a hammer to swat a fly&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This week was a mixed bag. Spent a tremendous amount of time on work, really impressed with my own stamina and focus.
+Touched a lot of things, from the website minor revamps (closing the blogs), youtube launch, even started with modelling the stock swings in python, and started some ads campaigns.
+The issue is perhaps similar to last week, I am using a sledgehammer to swat a fly. Lot of busy work. AI is a great tool, but I am using it too much. I need to be more deliberate in my use of it. For instance, I got the full modelling done by CODEX, but I didn&amp;rsquo;t understand the code fully, now I am deliberately going through it line by line to understand it. And even though slow I am much more happy that I am learning and making progress.
+There is a fine balance between using AI to accelerate work, and using it as a crutch. I need to be careful of that.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="week-2-learnings">Week 2 Learnings</h2>
+<p><em>Using a hammer to swat a fly</em></p>
+<p>This week was a mixed bag. Spent a tremendous amount of time on work, really impressed with my own stamina and focus.
+Touched a lot of things, from the website minor revamps (closing the blogs), youtube launch, even started with modelling the stock swings in python, and started some ads campaigns.
+The issue is perhaps similar to last week, I am using a sledgehammer to swat a fly. Lot of busy work. AI is a great tool, but I am using it too much. I need to be more deliberate in my use of it. For instance, I got the full modelling done by CODEX, but I didn&rsquo;t understand the code fully, now I am deliberately going through it line by line to understand it. And even though slow I am much more happy that I am learning and making progress.
+There is a fine balance between using AI to accelerate work, and using it as a crutch. I need to be careful of that.</p>
+<p>But, I am happy that I am making progress, it&rsquo;s not like a perfect straight line, but so is any machine learning curve, you go up and down, but the overall trend is up. Also, thankful to have a great community around me, friends and family who are super supportive and strangers who are willing to help. Struck up so many conversations this week, learning a lot about the tools, about trading. Also, usually feel lot more relaxed and calm, not stressed about things and even when stressed I am able to manage it better.</p>
+<p>This week I will:</p>
+<ol>
+<li>Be more deliberate in my use of AI, use it as a tool, not a crutch.</li>
+<li>Focus on 2-3 tasks a day, and do them well.</li>
+<li>Keep focus on reading, and modelling the stock swings, start on the core MVP features.</li>
+<li>Keep up the physical fitness, hit the gym at least 3 times a week.</li>
+</ol>
+<blockquote>
+<p>&ldquo;If you want to improve, be content to be thought foolish and stupid with regard to external things. If you are ever brought back to your old ways, do not despair, but begin again, and be glad if in most matters you have improved.&rdquo; - Epictetus</p></blockquote>
+]]></content:encoded>
+    </item>
+    <item>
       <title>#BuildingInPublic: stockoMJ Journey</title>
       <link>https://varun-ml.github.io/posts/building-in-public/</link>
       <pubDate>Mon, 08 Sep 2025 11:00:00 +0530</pubDate>
@@ -65,12 +94,12 @@
       &lt;tr&gt;
           &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/building-in-public/week-01-learnings/&#34; &gt;Week 1&lt;/a&gt;&lt;/td&gt;
           &lt;td&gt;Getting Started&lt;/td&gt;
-          &lt;td&gt;✏️ Draft&lt;/td&gt;
+          &lt;td&gt;✅ Published&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;Week 2&lt;/td&gt;
-          &lt;td&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/td&gt;
-          &lt;td&gt;📝 Planned&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/building-in-public/week-02-learnings/&#34; &gt;Week 2&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Refining the Approach&lt;/td&gt;
+          &lt;td&gt;✅ Published&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -92,12 +121,12 @@
       <tr>
           <td><a href="/posts/building-in-public/week-01-learnings/" >Week 1</a></td>
           <td>Getting Started</td>
-          <td>✏️ Draft</td>
+          <td>✅ Published</td>
       </tr>
       <tr>
-          <td>Week 2</td>
-          <td><em>Coming Soon</em></td>
-          <td>📝 Planned</td>
+          <td><a href="/posts/building-in-public/week-02-learnings/" >Week 2</a></td>
+          <td>Refining the Approach</td>
+          <td>✅ Published</td>
       </tr>
   </tbody>
 </table>
