@@ -11,8 +11,69 @@
     </image>
     <generator>Hugo -- 0.149.1</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Sep 2025 09:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 03 Oct 2025 09:00:00 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/tags/ai-trading-assistant/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>#BuildingInPublic: stockoMJ Journey</title>
+      <link>https://varun-ml.github.io/posts/building-in-public/</link>
+      <pubDate>Mon, 08 Sep 2025 11:00:00 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/building-in-public/</guid>
+      <description>&lt;h2 id=&#34;about-the-buildinginpublic-series&#34;&gt;About the #BuildingInPublic Series&lt;/h2&gt;
+&lt;p&gt;Welcome to my #BuildingInPublic series where I document the journey of building &lt;a href=&#34;https://stockomj.ai&#34; target=&#34;_blank&#34; &gt;stockoMJ.ai&lt;/a&gt; and &amp;ldquo;WITY&amp;rdquo; - an AI trading assistant designed to help traders make disciplined, data-driven decisions.&lt;/p&gt;
+&lt;p&gt;Each week, I&amp;rsquo;ll share progress updates, technical learnings, challenges, and reflections as I build this AI-powered fintech product. Follow along for insights on generative AI, market analysis, and building in the finance space.&lt;/p&gt;
+&lt;h2 id=&#34;the-series&#34;&gt;The Series&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Week&lt;/th&gt;
+          &lt;th&gt;Title&lt;/th&gt;
+          &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/building-in-public/week-01-learnings/&#34; &gt;Week 1&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Getting Started&lt;/td&gt;
+          &lt;td&gt;✅ Published&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/building-in-public/week-02-learnings/&#34; &gt;Week 2&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Refining the Approach&lt;/td&gt;
+          &lt;td&gt;✅ Published&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Want to connect? Reach out on &lt;a href=&#34;https://www.linkedin.com/in/varuntulsian&#34; target=&#34;_blank&#34; &gt;LinkedIn&lt;/a&gt; or follow my &lt;a href=&#34;https://varun-ml.github.io&#34; target=&#34;_blank&#34; &gt;blog&lt;/a&gt; for weekly updates.&lt;/em&gt;&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="about-the-buildinginpublic-series">About the #BuildingInPublic Series</h2>
+<p>Welcome to my #BuildingInPublic series where I document the journey of building <a href="https://stockomj.ai" target="_blank" >stockoMJ.ai</a> and &ldquo;WITY&rdquo; - an AI trading assistant designed to help traders make disciplined, data-driven decisions.</p>
+<p>Each week, I&rsquo;ll share progress updates, technical learnings, challenges, and reflections as I build this AI-powered fintech product. Follow along for insights on generative AI, market analysis, and building in the finance space.</p>
+<h2 id="the-series">The Series</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Week</th>
+          <th>Title</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/posts/building-in-public/week-01-learnings/" >Week 1</a></td>
+          <td>Getting Started</td>
+          <td>✅ Published</td>
+      </tr>
+      <tr>
+          <td><a href="/posts/building-in-public/week-02-learnings/" >Week 2</a></td>
+          <td>Refining the Approach</td>
+          <td>✅ Published</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><em>Want to connect? Reach out on <a href="https://www.linkedin.com/in/varuntulsian" target="_blank" >LinkedIn</a> or follow my <a href="https://varun-ml.github.io" target="_blank" >blog</a> for weekly updates.</em></p>
+]]></content:encoded>
+    </item>
     <item>
       <title>#BuildingInPublic Week 1: Getting Started with stockoMJ</title>
       <link>https://varun-ml.github.io/posts/building-in-public/week-01-learnings/</link>
@@ -74,64 +135,27 @@ There is a fine balance between using AI to accelerate work, and using it as a c
 ]]></content:encoded>
     </item>
     <item>
-      <title>#BuildingInPublic: stockoMJ Journey</title>
-      <link>https://varun-ml.github.io/posts/building-in-public/</link>
-      <pubDate>Mon, 08 Sep 2025 11:00:00 +0530</pubDate>
-      <guid>https://varun-ml.github.io/posts/building-in-public/</guid>
-      <description>&lt;h2 id=&#34;about-the-buildinginpublic-series&#34;&gt;About the #BuildingInPublic Series&lt;/h2&gt;
-&lt;p&gt;Welcome to my #BuildingInPublic series where I document the journey of building &lt;a href=&#34;https://stockomj.ai&#34; target=&#34;_blank&#34; &gt;stockoMJ.ai&lt;/a&gt; and &amp;ldquo;WITY&amp;rdquo; - an AI trading assistant designed to help traders make disciplined, data-driven decisions.&lt;/p&gt;
-&lt;p&gt;Each week, I&amp;rsquo;ll share progress updates, technical learnings, challenges, and reflections as I build this AI-powered fintech product. Follow along for insights on generative AI, market analysis, and building in the finance space.&lt;/p&gt;
-&lt;h2 id=&#34;the-series&#34;&gt;The Series&lt;/h2&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Week&lt;/th&gt;
-          &lt;th&gt;Title&lt;/th&gt;
-          &lt;th&gt;Status&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/building-in-public/week-01-learnings/&#34; &gt;Week 1&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Getting Started&lt;/td&gt;
-          &lt;td&gt;✅ Published&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/building-in-public/week-02-learnings/&#34; &gt;Week 2&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Refining the Approach&lt;/td&gt;
-          &lt;td&gt;✅ Published&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Want to connect? Reach out on &lt;a href=&#34;https://www.linkedin.com/in/varuntulsian&#34; target=&#34;_blank&#34; &gt;LinkedIn&lt;/a&gt; or follow my &lt;a href=&#34;https://varun-ml.github.io&#34; target=&#34;_blank&#34; &gt;blog&lt;/a&gt; for weekly updates.&lt;/em&gt;&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<h2 id="about-the-buildinginpublic-series">About the #BuildingInPublic Series</h2>
-<p>Welcome to my #BuildingInPublic series where I document the journey of building <a href="https://stockomj.ai" target="_blank" >stockoMJ.ai</a> and &ldquo;WITY&rdquo; - an AI trading assistant designed to help traders make disciplined, data-driven decisions.</p>
-<p>Each week, I&rsquo;ll share progress updates, technical learnings, challenges, and reflections as I build this AI-powered fintech product. Follow along for insights on generative AI, market analysis, and building in the finance space.</p>
-<h2 id="the-series">The Series</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Week</th>
-          <th>Title</th>
-          <th>Status</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><a href="/posts/building-in-public/week-01-learnings/" >Week 1</a></td>
-          <td>Getting Started</td>
-          <td>✅ Published</td>
-      </tr>
-      <tr>
-          <td><a href="/posts/building-in-public/week-02-learnings/" >Week 2</a></td>
-          <td>Refining the Approach</td>
-          <td>✅ Published</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<p><em>Want to connect? Reach out on <a href="https://www.linkedin.com/in/varuntulsian" target="_blank" >LinkedIn</a> or follow my <a href="https://varun-ml.github.io" target="_blank" >blog</a> for weekly updates.</em></p>
+      <title>#BuildingInPublic Week 3-4: The Need for Deliberate Progress</title>
+      <link>https://varun-ml.github.io/posts/building-in-public/week-03-04-learnings/</link>
+      <pubDate>Fri, 03 Oct 2025 09:00:00 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/building-in-public/week-03-04-learnings/</guid>
+      <description>&lt;h2 id=&#34;week-3-4-learnings&#34;&gt;Week 3-4 Learnings&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;The need for deliberate progress and planning&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The last 2 weeks have been a whirlwind. Started off really weak, honestly questioning everything, and full of self doubt. Gained some clarity by the end of week 3 and now seem to finally be on a more stable footing. I think I have narrowed down to a set of core features that I want to build for the MVP and turned my mood around. Been extremely productive since the last 10 days, in the context of stockoMJ, the game changer has been to finally focus on chart reading and understanding. Also, pivoting my approach/goals away from busy work and fringe components like website, youtube, ads etc to core problem solving.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="week-3-4-learnings">Week 3-4 Learnings</h2>
+<p><em>The need for deliberate progress and planning</em></p>
+<p>The last 2 weeks have been a whirlwind. Started off really weak, honestly questioning everything, and full of self doubt. Gained some clarity by the end of week 3 and now seem to finally be on a more stable footing. I think I have narrowed down to a set of core features that I want to build for the MVP and turned my mood around. Been extremely productive since the last 10 days, in the context of stockoMJ, the game changer has been to finally focus on chart reading and understanding. Also, pivoting my approach/goals away from busy work and fringe components like website, youtube, ads etc to core problem solving.</p>
+<p>Something, btw that I had reflected on in my week 2 learnings.</p>
+<p>Reflecting on the last few weeks, I feel the importance in having a more deliberate approach to my work and having a clear plan. Week by week clearly calling out what I want to achieve, and then breaking it down into daily tasks. Something, that honestly I figured out during the pre-phase but then probably thought that I didn&rsquo;t have clarity to put a plan.</p>
+<p>Come October, that&rsquo;s the first thing I will do, it helps as I also am juggling a few other things. Working on as an advisor for <a href="https://indileap.com/" target="_blank" >IndiLeap.com</a>, love the mission and the team, and also doing some work for a friend on his startup. In active discussions with another startup to come on board as a Lead. Needless to say, it&rsquo;s a lot, but I think I can manage it, if I am deliberate and focused.</p>
+<p>This week I will:</p>
+<ol>
+<li>Have a clear plan for the week, and break it down into daily tasks.</li>
+<li>Work on the core tech components.</li>
+<li>Focus on rest and recovery, hit the gym at least 2-3 times this week.</li>
+</ol>
+<blockquote>
+<p>&ldquo;Focus on the journey, not the destination. Joy is found not in finishing an activity but in doing it.&rdquo; - Greg Anderson</p></blockquote>
 ]]></content:encoded>
     </item>
   </channel>

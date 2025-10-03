@@ -14,464 +14,6 @@
     <lastBuildDate>Fri, 09 Dec 2022 17:39:20 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/tags/diffusion-model-tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Denoising Diffusion Models Part 2: Improving Diffusion Models</title>
-      <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</link>
-      <pubDate>Fri, 09 Dec 2022 17:38:49 +0530</pubDate>
-      <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</guid>
-      <description>&lt;h2 id=&#34;code-for-this-blog-post&#34;&gt;Code for this blog post:&lt;/h2&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;Notebook&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;Github Link&lt;/th&gt;
-          &lt;th style=&#34;text-align: left&#34;&gt;Colab&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;Predicting Error and Score Function&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/errors.diffusion_model_interpretations.ipynb&#34; target=&#34;_blank&#34; &gt;Error / Score Prediction&lt;/a&gt;&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_errors.diffusion_model_interpretations.ipynb&#34; target=&#34;_blank&#34; &gt;
-  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Colab (Large)&#34;&gt;
-&lt;/a&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;Classifier free Guidance and other improvements&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/guidance_free_classifiers.ipynb&#34; target=&#34;_blank&#34; &gt;Advanced concepts&lt;/a&gt;&lt;/td&gt;
-          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_guidance_free_classifiers.ipynb&#34; target=&#34;_blank&#34; &gt;
-  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Colab (Large)&#34;&gt;
-&lt;/a&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;topics-to-cover&#34;&gt;Topics to cover&lt;/h2&gt;
-&lt;p&gt;We have done most of the heavy-lifting in &lt;a href=&#34;https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/&#34; &gt;Part 1&lt;/a&gt; of this series on Diffusion Models. To be able to use them well in practice, we may need to make some more improvements. That&amp;rsquo;s what we will do.&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<h2 id="code-for-this-blog-post">Code for this blog post:</h2>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Notebook</th>
-          <th style="text-align: left">Github Link</th>
-          <th style="text-align: left">Colab</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">Predicting Error and Score Function</td>
-          <td style="text-align: left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/errors.diffusion_model_interpretations.ipynb" target="_blank" >Error / Score Prediction</a></td>
-          <td style="text-align: left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_errors.diffusion_model_interpretations.ipynb" target="_blank" >
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab (Large)">
-</a></td>
-      </tr>
-      <tr>
-          <td style="text-align: left">Classifier free Guidance and other improvements</td>
-          <td style="text-align: left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/guidance_free_classifiers.ipynb" target="_blank" >Advanced concepts</a></td>
-          <td style="text-align: left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_guidance_free_classifiers.ipynb" target="_blank" >
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab (Large)">
-</a></td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="topics-to-cover">Topics to cover</h2>
-<p>We have done most of the heavy-lifting in <a href="/posts/diffusion-models/denoising-diffusion-models-1/" >Part 1</a> of this series on Diffusion Models. To be able to use them well in practice, we may need to make some more improvements. That&rsquo;s what we will do.</p>
-<ol>
-<li><strong>Time step embedding</strong> and concatenation/fusion to the input data.</li>
-<li><strong>Error Prediction $\hat \epsilon_0^\ast$ and Score Function Prediction $s$</strong> instead of predicting the actual input $x_0$.</li>
-<li><strong>Class conditioned generation or Classifier free guidance</strong>, where we guide the diffusion model to generate data based on class labels.</li>
-</ol>
-<p>The ideas are an extension to the concepts introduced earlier, but are vital parts of any practical diffusion model implementation.</p>
-<h2 id="time-step-embedding">Time Step Embedding</h2>
-<p>During the denoising process, the Neural Network needs to know the time step at which denoising is being done. Passing the time step $t$ as a scalar value is not ideal. Rather, it would be preferable to
-pass the time step as an embedding to the Neural Network. In the <cite>Attention is all you need<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite> paper, the authors proposed sinusoidal embeddings to encode position of the tokens (time steps in our case).</p>
-<p><strong>Pseudocode:</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-0-1"><a class="lnlinks" href="#hl-0-1"> 1</a>
-</span><span class="lnt" id="hl-0-2"><a class="lnlinks" href="#hl-0-2"> 2</a>
-</span><span class="lnt" id="hl-0-3"><a class="lnlinks" href="#hl-0-3"> 3</a>
-</span><span class="lnt" id="hl-0-4"><a class="lnlinks" href="#hl-0-4"> 4</a>
-</span><span class="lnt" id="hl-0-5"><a class="lnlinks" href="#hl-0-5"> 5</a>
-</span><span class="lnt" id="hl-0-6"><a class="lnlinks" href="#hl-0-6"> 6</a>
-</span><span class="lnt" id="hl-0-7"><a class="lnlinks" href="#hl-0-7"> 7</a>
-</span><span class="lnt" id="hl-0-8"><a class="lnlinks" href="#hl-0-8"> 8</a>
-</span><span class="lnt" id="hl-0-9"><a class="lnlinks" href="#hl-0-9"> 9</a>
-</span><span class="lnt" id="hl-0-10"><a class="lnlinks" href="#hl-0-10">10</a>
-</span><span class="lnt" id="hl-0-11"><a class="lnlinks" href="#hl-0-11">11</a>
-</span><span class="lnt" id="hl-0-12"><a class="lnlinks" href="#hl-0-12">12</a>
-</span><span class="lnt" id="hl-0-13"><a class="lnlinks" href="#hl-0-13">13</a>
-</span><span class="lnt" id="hl-0-14"><a class="lnlinks" href="#hl-0-14">14</a>
-</span><span class="lnt" id="hl-0-15"><a class="lnlinks" href="#hl-0-15">15</a>
-</span><span class="lnt" id="hl-0-16"><a class="lnlinks" href="#hl-0-16">16</a>
-</span><span class="lnt" id="hl-0-17"><a class="lnlinks" href="#hl-0-17">17</a>
-</span><span class="lnt" id="hl-0-18"><a class="lnlinks" href="#hl-0-18">18</a>
-</span><span class="lnt" id="hl-0-19"><a class="lnlinks" href="#hl-0-19">19</a>
-</span><span class="lnt" id="hl-0-20"><a class="lnlinks" href="#hl-0-20">20</a>
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># adapted from HuggingFace -- https://huggingface.co/blog/annotated-diffusion</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SinusoidalPositionEmbeddings</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">half_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">//</span> <span class="mi">2</span>
-</span></span><span class="line"><span class="cl">        <span class="c1"># embedding values need to be small</span>
-</span></span><span class="line"><span class="cl">        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">half_dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">half_dim</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="n">embeddings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">embeddings</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
-</span></span><span class="line"><span class="cl">        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">embeddings</span><span class="o">.</span><span class="n">sin</span><span class="p">(),</span> <span class="n">embeddings</span><span class="o">.</span><span class="n">cos</span><span class="p">()),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">embeddings</span>
-</span></span><span class="line"><span class="cl">      
-</span></span><span class="line"><span class="cl"><span class="c1"># generate 8 dimensional time step embeddings</span>
-</span></span><span class="line"><span class="cl"><span class="n">sinusoidalPositionEmbeddings</span> <span class="o">=</span> <span class="n">SinusoidalPositionEmbeddings</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Sinusoidal embeddings are small in absolute value and can be fused(added) or concatenated to the input data to provide the Neural Network some information about the time step at which the denoising process is happening.</p>
-<p><strong>Passing Time Step Embedding (Fusing and Concatenation):</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-1-1"><a class="lnlinks" href="#hl-1-1"> 1</a>
-</span><span class="lnt" id="hl-1-2"><a class="lnlinks" href="#hl-1-2"> 2</a>
-</span><span class="lnt" id="hl-1-3"><a class="lnlinks" href="#hl-1-3"> 3</a>
-</span><span class="lnt" id="hl-1-4"><a class="lnlinks" href="#hl-1-4"> 4</a>
-</span><span class="lnt" id="hl-1-5"><a class="lnlinks" href="#hl-1-5"> 5</a>
-</span><span class="lnt" id="hl-1-6"><a class="lnlinks" href="#hl-1-6"> 6</a>
-</span><span class="lnt" id="hl-1-7"><a class="lnlinks" href="#hl-1-7"> 7</a>
-</span><span class="lnt" id="hl-1-8"><a class="lnlinks" href="#hl-1-8"> 8</a>
-</span><span class="lnt" id="hl-1-9"><a class="lnlinks" href="#hl-1-9"> 9</a>
-</span><span class="lnt" id="hl-1-10"><a class="lnlinks" href="#hl-1-10">10</a>
-</span><span class="lnt" id="hl-1-11"><a class="lnlinks" href="#hl-1-11">11</a>
-</span><span class="lnt" id="hl-1-12"><a class="lnlinks" href="#hl-1-12">12</a>
-</span><span class="lnt" id="hl-1-13"><a class="lnlinks" href="#hl-1-13">13</a>
-</span><span class="lnt" id="hl-1-14"><a class="lnlinks" href="#hl-1-14">14</a>
-</span><span class="lnt" id="hl-1-15"><a class="lnlinks" href="#hl-1-15">15</a>
-</span><span class="lnt" id="hl-1-16"><a class="lnlinks" href="#hl-1-16">16</a>
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># MLP to project time step embedding before we pass it to the input</span>
-</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">position_mlp</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">          <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span> 
-</span></span><span class="line"><span class="cl">          <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># 2 is the input data dimension</span>
-</span></span><span class="line"><span class="cl">        <span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">timestep_embeddings</span> <span class="o">=</span> <span class="n">position_embeddings</span><span class="p">[</span><span class="n">timestep</span><span class="o">.</span><span class="n">long</span><span class="p">()]</span>
-</span></span><span class="line"><span class="cl"><span class="n">time_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_mlp</span><span class="p">(</span><span class="n">timestep_embeddings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># concatenation</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># x = (batch_size, input data dimension); time_embeddings = (batch_size, input data dimension)</span>
-</span></span><span class="line"><span class="cl"><span class="n">concat_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">time_embeddings</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># fusing</span>
-</span></span><span class="line"><span class="cl"><span class="n">shift</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">time_embedding</span><span class="p">,</span> <span class="n">indices_or_sections</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">shift</span> <span class="o">+</span> <span class="p">(</span><span class="n">scale</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">x</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Fusing the data with the data is computationally efficient as it requires significantly fewer number of weight parameters. The key idea here is that Neural Networks are powerful enough to separate any added information to the original data without the information being explicitly passed. Have a look at this video if you want to get better intuition. <a href="https://www.youtube.com/watch?v=1biZfFLPRSY" target="_blank" >Positional embeddings in transformers EXPLAINED</a>.</p>
-<p>If we want to add time step information to an image, it is typically done by broadcasting the time step embedding along the channel dimension.</p>
-<p><strong>Adding Time Step to Image (Fusing):</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-2-1"><a class="lnlinks" href="#hl-2-1">1</a>
-</span><span class="lnt" id="hl-2-2"><a class="lnlinks" href="#hl-2-2">2</a>
-</span><span class="lnt" id="hl-2-3"><a class="lnlinks" href="#hl-2-3">3</a>
-</span><span class="lnt" id="hl-2-4"><a class="lnlinks" href="#hl-2-4">4</a>
-</span><span class="lnt" id="hl-2-5"><a class="lnlinks" href="#hl-2-5">5</a>
-</span><span class="lnt" id="hl-2-6"><a class="lnlinks" href="#hl-2-6">6</a>
-</span><span class="lnt" id="hl-2-7"><a class="lnlinks" href="#hl-2-7">7</a>
-</span><span class="lnt" id="hl-2-8"><a class="lnlinks" href="#hl-2-8">8</a>
-</span><span class="lnt" id="hl-2-9"><a class="lnlinks" href="#hl-2-9">9</a>
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># image batch data -- (batch_size, height, width, channels)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># timestep embedding -- (batch_size, embedding_dimension)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># ensure channels == embedding_dimension</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># broadcast and add timestep to image data</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">einops</span>
-</span></span><span class="line"><span class="cl"><span class="n">timestep_embedding</span> <span class="o">=</span> <span class="n">einops</span><span class="o">.</span><span class="n">rearrange</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;b c -&gt; b 1 1 c&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">fused_image_data</span> <span class="o">=</span> <span class="n">image_data</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">timestep_embedding</span><span class="p">)</span> 
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Fusing data to an input is a technique useful to add any kind of conditional information to the data. We will use this idea in <a href="/posts/diffusion-models/denoising-diffusion-models-3/" >EMNIST: Blog 3</a> where we use this concept to fuse label and time step information with the images during class conditional generation. This technique was used in the work, <a href="https://github.com/openai/improved-diffusion" target="_blank" >Improved Denoising Diffusion Probabilistic Models</a>.</p>
-<h2 id="error-prediction-and-score-function-prediction">Error Prediction and Score Function Prediction</h2>
-<h3 id="predicting-the-error-hat-epsilon_0ast">Predicting the Error $\hat \epsilon_0^\ast$</h3>
-<p><strong>During the denoising step</strong>, the model ingests $\hat x_t$ and spits out $\hat x_t^0$, a prediction for $x_0$. Instead of outputting predictions of the input data, we want the model to output a prediction of the error $\hat\epsilon^\ast_0$.</p>
-<p>Let&rsquo;s investigate the relationship between error $\epsilon_0^\ast$ and input data $x_0$.
-
-$$
-\begin{align}
-x_t &= \sqrt{\bar\alpha_t}x_0 + \sqrt{(1 - \bar\alpha_t )}\ast\epsilon_0^\ast \cr
-x_0 &= \frac{x_t-\sqrt{(1 - \bar\alpha_t )}\ast\epsilon_0^\ast}{\sqrt{\bar\alpha_t}} 
-\end{align}
-$$
-
-Equation 2 shows that if we have $x_t$ and $\epsilon^\ast_0$ than it determines $x_0$.</p>
-<p>The denoising step now looks like this:</p>
-<ol>
-<li>Make a prediction of source error $\hat\epsilon^\ast_0$ using the $NN(\hat x_t, t)$.</li>
-<li>Using Equation 2, evaluate $x_0^t$, which is the prediction of the input data at time step $t$.</li>
-<li>Next step:
-<ul>
-<li>During training: We want an equivalent version of the loss function $Error\_Loss(\epsilon^\ast_0, \hat \epsilon_0^\ast, t)$.
-
-	$$
-	\begin{align}
-	Loss(x_0, \hat x_t, t) = 1/2\ast(\frac{\bar\alpha_{t-1}}{1-\bar\alpha_{t-1}} - \frac{\bar\alpha_t}{1-\bar\alpha_t})\ast\mid\mid x_0-\hat x_0^t\mid\mid_2^2 \cr
-	\text{Making modifications to loss using Equation 2} \nonumber \cr
-	Error\_Loss(\epsilon^\ast_0, \hat \epsilon_0^\ast, t) = \frac{1}{2\sigma^2_q(t)} \frac{(1-\alpha_t)^2}{(1-\bar\alpha_t)\alpha_t}\mid\mid \epsilon^\ast_0-\hat \epsilon^\ast_0\mid\mid_2^2
-	\end{align}
-	$$
-	</li>
-<li>During data generation:
-<ol>
-<li>Using Equation 2, reconstruct $\hat x_0^t$. Remember, $x_0$ is a function of the Gaussian error and the latent variable.</li>
-<li><strong>Clip the $\hat x_0^t$ to make sure it lies in the range of -1 to +1 (normalized range for input data)</strong>. <code>torch.clip(x_reconstructed, -1, 1)</code></li>
-<li>Using Equation 5 (below) get a prediction for the latent at $t-1$ time step.</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-
-$$
-\begin{align}
-p(\hat x_{t-1}| \hat x_t) \varpropto N(\hat x_{t-1};\frac{\sqrt\alpha_t(1-\bar\alpha_{t-1})\hat x_t + \sqrt{\bar\alpha_{t-1}}(1-\alpha_t)\hat x_t^0}{1-\bar\alpha_t}, \frac{(1-\alpha_t)(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}I)	
-\end{align}
-$$
-
-
-<p>Predicting error is empirically shown to work well, refer <cite>Denoising paper<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite>. This is probably due to the clipping of the predicted output at every time step so that the predicted data is in the normalized range. <a href="https://github.com/hojonathanho/diffusion/issues/5#issuecomment-1283946094" target="_blank" >Refer this discussion</a>.</p>
-<p>Here is an interesting discussion on why predicting error works for images, but may not work well for other domains such as voice generation.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Another important reason is that the standard formulation everyone has ended up using for images (predict the standardised noise given noisy input) implicitly downweights high frequency components, which is an excellent match for the human visual system.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557692621199400960?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<p><strong>Denoising Step during data generation:</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-3-1"><a class="lnlinks" href="#hl-3-1"> 1</a>
-</span><span class="lnt" id="hl-3-2"><a class="lnlinks" href="#hl-3-2"> 2</a>
-</span><span class="lnt" id="hl-3-3"><a class="lnlinks" href="#hl-3-3"> 3</a>
-</span><span class="lnt" id="hl-3-4"><a class="lnlinks" href="#hl-3-4"> 4</a>
-</span><span class="lnt" id="hl-3-5"><a class="lnlinks" href="#hl-3-5"> 5</a>
-</span><span class="lnt" id="hl-3-6"><a class="lnlinks" href="#hl-3-6"> 6</a>
-</span><span class="lnt" id="hl-3-7"><a class="lnlinks" href="#hl-3-7"> 7</a>
-</span><span class="lnt" id="hl-3-8"><a class="lnlinks" href="#hl-3-8"> 8</a>
-</span><span class="lnt" id="hl-3-9"><a class="lnlinks" href="#hl-3-9"> 9</a>
-</span><span class="lnt" id="hl-3-10"><a class="lnlinks" href="#hl-3-10">10</a>
-</span><span class="lnt" id="hl-3-11"><a class="lnlinks" href="#hl-3-11">11</a>
-</span><span class="lnt" id="hl-3-12"><a class="lnlinks" href="#hl-3-12">12</a>
-</span><span class="lnt" id="hl-3-13"><a class="lnlinks" href="#hl-3-13">13</a>
-</span><span class="lnt" id="hl-3-14"><a class="lnlinks" href="#hl-3-14">14</a>
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="n">x_reconstructed</span> <span class="o">=</span> 
-</span></span><span class="line"><span class="cl"><span class="c1"># data_in_batch is latent variable x at timestep</span>
-</span></span><span class="line"><span class="cl"><span class="n">data_in_batch</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pred_data</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">sd</span><span class="p">[</span><span class="n">timestep</span><span class="p">]))</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">alphas_</span><span class="p">[</span><span class="n">timestep</span><span class="p">]))</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">timestep</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">	<span class="n">x_reconstructed</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x_reconstructed</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">mean_data_1</span> <span class="o">=</span> <span class="n">data_in_batch</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">mean_coeff_1</span><span class="p">[</span><span class="n">timestep</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="n">mean_data_2</span> <span class="o">=</span> <span class="n">x_reconstructed</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">mean_coeff_2</span><span class="p">[</span><span class="n">timestep</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="n">mean_data</span> <span class="o">=</span> <span class="n">mean_data_1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mean_data_2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl"><span class="n">posterior_data</span> <span class="o">=</span> <span class="n">posterior_variance_corrected</span><span class="p">[</span><span class="n">timestep</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># data_in_batch is latent variable x at previous timestep</span>
-</span></span><span class="line"><span class="cl"><span class="n">data_in_batch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean_data</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">posterior_data</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="score-function-prediction">Score Function Prediction</h3>
-<p>This is yet another variation on diffusion models. Similar to predicting the error as discussed earlier, we could also predict the score function. The score function $s$ is defined as $\nabla p(x_t)$.</p>
-<p>All we need is to define $x_t$ as $f(s)$. We could then define a $Score\_Loss(s, \hat s, t)$ by substituting $x_t$ for the function $f(s)$ in the training step. In the denoising step we will use the function $f(s)$ defined to compute $x_t$, perform clipping so that the output lies in the normalized range and proceed as we did in the earlier section.</p>
-<p>The relation between $s$ and $x$ is defined as below:
-
-$$
-x_0 = \frac{x_t + (1 - \bar\alpha_t )\ast\nabla p(x_t)}{\sqrt{\bar\alpha_t}}
-$$
-</p>
-<p>For more details and intuition on why this is an important interpretation, please refer to the section on <cite>Three equivalent interpretations.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite>
-Yang Song has an excellent blog post on <a href="https://yang-song.net/blog/2021/score/" target="_blank" >Score based generative models.</a></p>
-<h2 id="guidance--classifier-free-guidance">Guidance &amp; Classifier-free Guidance</h2>
-<p>We want to control the data we generate. For example, in the image below, we have 2 labels. During generation, we want to direct the model to generate samples either from Yellow or Purple classes.
-Classifier Guidance is a way to do this. We will be guiding the denoising process to generate samples that are more likely to belong to the conditioned class.</p>
-<figure class="align-center ">
-    <img loading="lazy" src="/images/data-labels.png#center"
-         alt="Figure 1: Data with 2 labels, Circles in Purple and Moons in Yellow" width="80%"/> <figcaption>
-            <p>Figure 1: Data with 2 labels, Circles in Purple and Moons in Yellow</p>
-        </figcaption>
-</figure>
-
-<p>Text-guided diffusion models like <a href="https://www.youtube.com/watch?v=gwI6g1pBD84" target="_blank" >Glide</a> use the powerful Neural Network called <a href="https://openai.com/blog/clip/" target="_blank" >CLIP</a> and classifier guidance techniques to perform text-based image generation.</p>
-<p>So far, we have been trying to maximize the likelihood of the data distribution $p(x)$ with diffusion models. This allowed us to randomly sample data points from the data distribution.</p>
-<p><strong>A naïve idea</strong> to do class-conditioned generation could be to fuse the conditional label information with the input data.</p>
-<p><strong>Pseudocode for naïve idea:</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-4-1"><a class="lnlinks" href="#hl-4-1"> 1</a>
-</span><span class="lnt" id="hl-4-2"><a class="lnlinks" href="#hl-4-2"> 2</a>
-</span><span class="lnt" id="hl-4-3"><a class="lnlinks" href="#hl-4-3"> 3</a>
-</span><span class="lnt" id="hl-4-4"><a class="lnlinks" href="#hl-4-4"> 4</a>
-</span><span class="lnt" id="hl-4-5"><a class="lnlinks" href="#hl-4-5"> 5</a>
-</span><span class="lnt" id="hl-4-6"><a class="lnlinks" href="#hl-4-6"> 6</a>
-</span><span class="lnt" id="hl-4-7"><a class="lnlinks" href="#hl-4-7"> 7</a>
-</span><span class="lnt" id="hl-4-8"><a class="lnlinks" href="#hl-4-8"> 8</a>
-</span><span class="lnt" id="hl-4-9"><a class="lnlinks" href="#hl-4-9"> 9</a>
-</span><span class="lnt" id="hl-4-10"><a class="lnlinks" href="#hl-4-10">10</a>
-</span><span class="lnt" id="hl-4-11"><a class="lnlinks" href="#hl-4-11">11</a>
-</span><span class="lnt" id="hl-4-12"><a class="lnlinks" href="#hl-4-12">12</a>
-</span><span class="lnt" id="hl-4-13"><a class="lnlinks" href="#hl-4-13">13</a>
-</span><span class="lnt" id="hl-4-14"><a class="lnlinks" href="#hl-4-14">14</a>
-</span><span class="lnt" id="hl-4-15"><a class="lnlinks" href="#hl-4-15">15</a>
-</span><span class="lnt" id="hl-4-16"><a class="lnlinks" href="#hl-4-16">16</a>
-</span><span class="lnt" id="hl-4-17"><a class="lnlinks" href="#hl-4-17">17</a>
-</span><span class="lnt" id="hl-4-18"><a class="lnlinks" href="#hl-4-18">18</a>
-</span><span class="lnt" id="hl-4-19"><a class="lnlinks" href="#hl-4-19">19</a>
-</span><span class="lnt" id="hl-4-20"><a class="lnlinks" href="#hl-4-20">20</a>
-</span><span class="lnt" id="hl-4-21"><a class="lnlinks" href="#hl-4-21">21</a>
-</span><span class="lnt" id="hl-4-22"><a class="lnlinks" href="#hl-4-22">22</a>
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">diffusion</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="n">code</span> <span class="n">to</span> <span class="n">add</span> <span class="n">noise</span> <span class="n">to</span> <span class="n">x_0</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">x_i</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">training</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">loop</span> <span class="n">until</span> <span class="n">convergence</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">		<span class="n">pick</span> <span class="n">an</span> <span class="n">image</span> <span class="n">x_0</span> <span class="kn">from</span> <span class="nn">X</span> <span class="p">(</span><span class="n">batch</span> <span class="n">of</span> <span class="n">images</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="n">sample</span> <span class="n">t</span> <span class="kn">from</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">T</span>
-</span></span><span class="line"><span class="cl">		<span class="n">x_t</span> <span class="o">=</span> <span class="n">diffusion_step</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="n">x_hat_t</span> <span class="o">=</span> <span class="n">NN</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># y is the label</span>
-</span></span><span class="line"><span class="cl">		<span class="n">loss_</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">x_hat_t</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="n">update</span><span class="p">(</span><span class="n">NN</span><span class="p">,</span> <span class="n">grad</span><span class="p">(</span><span class="n">loss_</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># generating new data points through denoising steps</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">generate_new_data</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">	<span class="n">sample</span> <span class="n">x_T</span> <span class="kn">from</span> <span class="nn">N</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">		<span class="c1"># denoising step</span>
-</span></span><span class="line"><span class="cl">		<span class="n">x_hat_t</span> <span class="o">=</span> <span class="n">NN</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># y is the desired label </span>
-</span></span><span class="line"><span class="cl">		<span class="c1"># get x_{t-1}</span>
-</span></span><span class="line"><span class="cl">		<span class="n">x_</span><span class="p">{</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">}</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x_hat_t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="c1"># refer EQ - 12</span>
-</span></span><span class="line"><span class="cl">	<span class="n">x_hat_0</span> <span class="o">=</span> <span class="n">x_0</span>  
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>During training and data generation, we will add the conditioned label as an input along with the noisy data and the time step embedding. The output of the model will stay the same as earlier.</p>
-<p>The conditioned data can be fused with the input data, just like we fused the time step information.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-5-1"><a class="lnlinks" href="#hl-5-1"> 1</a>
-</span><span class="lnt" id="hl-5-2"><a class="lnlinks" href="#hl-5-2"> 2</a>
-</span><span class="lnt" id="hl-5-3"><a class="lnlinks" href="#hl-5-3"> 3</a>
-</span><span class="lnt" id="hl-5-4"><a class="lnlinks" href="#hl-5-4"> 4</a>
-</span><span class="lnt" id="hl-5-5"><a class="lnlinks" href="#hl-5-5"> 5</a>
-</span><span class="lnt" id="hl-5-6"><a class="lnlinks" href="#hl-5-6"> 6</a>
-</span><span class="lnt" id="hl-5-7"><a class="lnlinks" href="#hl-5-7"> 7</a>
-</span><span class="lnt" id="hl-5-8"><a class="lnlinks" href="#hl-5-8"> 8</a>
-</span><span class="lnt" id="hl-5-9"><a class="lnlinks" href="#hl-5-9"> 9</a>
-</span><span class="lnt" id="hl-5-10"><a class="lnlinks" href="#hl-5-10">10</a>
-</span><span class="lnt" id="hl-5-11"><a class="lnlinks" href="#hl-5-11">11</a>
-</span><span class="lnt" id="hl-5-12"><a class="lnlinks" href="#hl-5-12">12</a>
-</span><span class="lnt" id="hl-5-13"><a class="lnlinks" href="#hl-5-13">13</a>
-</span><span class="lnt" id="hl-5-14"><a class="lnlinks" href="#hl-5-14">14</a>
-</span><span class="lnt" id="hl-5-15"><a class="lnlinks" href="#hl-5-15">15</a>
-</span><span class="lnt" id="hl-5-16"><a class="lnlinks" href="#hl-5-16">16</a>
-</span><span class="lnt" id="hl-5-17"><a class="lnlinks" href="#hl-5-17">17</a>
-</span><span class="lnt" id="hl-5-18"><a class="lnlinks" href="#hl-5-18">18</a>
-</span><span class="lnt" id="hl-5-19"><a class="lnlinks" href="#hl-5-19">19</a>
-</span><span class="lnt" id="hl-5-20"><a class="lnlinks" href="#hl-5-20">20</a>
-</span><span class="lnt" id="hl-5-21"><a class="lnlinks" href="#hl-5-21">21</a>
-</span><span class="lnt" id="hl-5-22"><a class="lnlinks" href="#hl-5-22">22</a>
-</span><span class="lnt" id="hl-5-23"><a class="lnlinks" href="#hl-5-23">23</a>
-</span><span class="lnt" id="hl-5-24"><a class="lnlinks" href="#hl-5-24">24</a>
-</span><span class="lnt" id="hl-5-25"><a class="lnlinks" href="#hl-5-25">25</a>
-</span><span class="lnt" id="hl-5-26"><a class="lnlinks" href="#hl-5-26">26</a>
-</span><span class="lnt" id="hl-5-27"><a class="lnlinks" href="#hl-5-27">27</a>
-</span><span class="lnt" id="hl-5-28"><a class="lnlinks" href="#hl-5-28">28</a>
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># haiku code</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-</span></span><span class="line"><span class="cl">  <span class="n">hk</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">  <span class="n">jax</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">gelu</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="n">hk</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl"><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># conditional vectors encoding</span>
-</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">embedding_vectors</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">Embed</span><span class="p">(</span><span class="mi">10</span><span class="o">+</span><span class="mi">26</span><span class="o">+</span><span class="mi">26</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">timestep_embeddings</span> <span class="o">=</span> <span class="n">TimeEmbeddings</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># the diffusion model is given x, time step and label as input</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">,</span> <span class="n">cond</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">cond_embedding</span> <span class="o">=</span> <span class="kc">None</span>
-</span></span><span class="line"><span class="cl">    <span class="n">conditioning</span> <span class="o">=</span> <span class="kc">None</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">timesteps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">      <span class="n">timestep_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestep_embeddings</span><span class="p">(</span><span class="n">timesteps</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="n">conditioning</span> <span class="o">=</span> <span class="n">timestep_embeddings</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">cond</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">      <span class="n">label_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_vectors</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="n">conditioning</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">label_embeddings</span><span class="p">,</span> <span class="n">conditioning</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">cond_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">conditioning</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="o">...</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1"># fusing time step and label information with input x</span>
-</span></span><span class="line"><span class="cl">	<span class="n">shift</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">cond_embedding</span><span class="p">,</span> <span class="n">indices_or_sections</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">=</span> <span class="n">shift</span> <span class="o">+</span> <span class="p">(</span><span class="n">scale</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">x</span>
-</span></span><span class="line"><span class="cl">	<span class="o">...</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="guidance">Guidance</h3>
-<p>The above approach may lead to models that have low sample diversity. Researchers have proposed two other forms of guidance: <em>classifier guidance</em> and <cite>classifier-free guidance<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite>.</p>
-<p><strong>Classifier Guidance</strong> guides the generation of new samples with the help of a classifier. The classifier takes a noisy image ($x_t$) as input and predicts the label $y$. The gradient of the distribution $p(y|x)$ is used to make updates to the weights of the Neural Network to guide it to produce samples that are likely to be $y$. This is an adversarial loss, and this approach has similarities to GANs.</p>
-<p><strong>Classifier-Free Guidance</strong> would be ideal if we did not want to build a classifier. The classifier-free guidance approach models the conditional likelihood of samples as follows:
-
-$$
-\nabla p(x|y) = \lambda \ast \underbrace{\nabla p(x|y)}_{\text{conditional}} + (1-\lambda) \ast \underbrace{\nabla p(x)}_{\text{unconditional}}
-$$
-
-The conditional and the unconditional distributions are modelled by the same neural network. To model the conditional distribution, we fuse the label information as shown in the naïve approach above. To model the unconditional distribution, we mask the label information and pass it to the diffusion model.
-The lambda parameter, controls the diversity of the sample we want to generate. $\lambda=1$ would be equivalent to the naïve approach.</p>
-<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Classifier-free guidance is a cheatcode that makes these models perform as if they had 10x the parameters. At least in terms of sample quality, and at the cost of diversity. All of the recent spectacular results rely heavily on this trick.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557691965076021252?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-Adding this perspective about efficiency of diffusion models. Even though to be honest, I am not sure myself :).</p>
-<h2 id="lets-look-at-some-outputs">Let&rsquo;s look at some outputs</h2>
-<figure class="align-center ">
-    <img loading="lazy" src="/images/class-conditioned-generation.gif#center"
-         alt="Figure 2: A GIF show-casing the denoising process; Generating class conditioned samples over T time steps" width="80%"/> <figcaption>
-            <p>Figure 2: A GIF show-casing the denoising process; Generating class conditioned samples over T time steps</p>
-        </figcaption>
-</figure>
-
-<p>See you in the <a href="/posts/diffusion-models/denoising-diffusion-models-3" >next part</a>.</p>
-<hr>
-<p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>Vaswani et al. 2017 <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf" target="_blank" >&ldquo;Attention is all you need&rdquo;</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>Ho et al. 2020 <a href="https://arxiv.org/abs/2006.11239" target="_blank" >&ldquo;Denoising diffusion probabilistic models&rdquo;</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p>Calvin Luo; 2019 <a href="https://arxiv.org/abs/2208.11970" target="_blank" >&ldquo;Understanding Diffusion Models: A Unified Perspective&rdquo;</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:4">
-<p>Ho et al. 2021 <a href="https://arxiv.org/abs/2207.12598" target="_blank" >&ldquo;Classifier-free diffusion guidance&rdquo;</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
       <title>Denoising Diffusion Models Part 1: Estimating True Distribution</title>
       <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/</link>
       <pubDate>Fri, 09 Dec 2022 11:28:30 +0530</pubDate>
@@ -1109,518 +651,461 @@ SNR stands for Signal to Noise. In the case of the diffusion, the schedule must 
 ]]></content:encoded>
     </item>
     <item>
-      <title>Denoising Diffusion Models Resources</title>
-      <link>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</link>
-      <pubDate>Fri, 09 Dec 2022 17:39:20 +0530</pubDate>
-      <guid>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</guid>
-      <description>&lt;p&gt;Here are some resources that I have found useful/interesting.
-Highlighting ones that I recommend going over.&lt;/p&gt;
-&lt;h2 id=&#34;papers&#34;&gt;Papers&lt;/h2&gt;
+      <title>Denoising Diffusion Models Part 2: Improving Diffusion Models</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</link>
+      <pubDate>Fri, 09 Dec 2022 17:38:49 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-2/</guid>
+      <description>&lt;h2 id=&#34;code-for-this-blog-post&#34;&gt;Code for this blog post:&lt;/h2&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
-          &lt;th&gt;Paper Title&lt;/th&gt;
-          &lt;th&gt;Paper Link&lt;/th&gt;
-          &lt;th&gt;Have I Read it?&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Notebook&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Github Link&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Colab&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;DDPM&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2006.11239&#34; target=&#34;_blank&#34; &gt;DDMP&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Yeah&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;Improved DDPM&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2102.09672&#34; target=&#34;_blank&#34; &gt;IDDPM&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Yeah&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Stable Diffusion&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2112.10752&#34; target=&#34;_blank&#34; &gt;Stable Diffusion&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;No&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Variational Diffusion Models&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2107.00630&#34; target=&#34;_blank&#34; &gt;VDM&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Yeah&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Cold Diffusion&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2208.09392&#34; target=&#34;_blank&#34; &gt;Cold Diffusion&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;No&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;Understanding Diffusion Models: A Unified Perspective&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2208.11970&#34; target=&#34;_blank&#34; &gt;Tutorial&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Yeah&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Glide&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2112.10741&#34; target=&#34;_blank&#34; &gt;Glide&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;No&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Diffusion Models Survey&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2209.02646&#34; target=&#34;_blank&#34; &gt;A survey on Generative Diffusion Models&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;No&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Score Prediction Diffusion Models&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/1907.05600&#34; target=&#34;_blank&#34; &gt;Generative Modeling by Estimating Gradients of the Data Distribution&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;No&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;blogs&#34;&gt;Blogs&lt;/h2&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Author&lt;/th&gt;
-          &lt;th&gt;Description&lt;/th&gt;
-          &lt;th&gt;Link&lt;/th&gt;
-          &lt;th&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Lilian Weng&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;Comprehensive coverage of Diffusion models theory (Advanced)&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://lilianweng.github.io/posts/2021-07-11-diffusion-models/&#34; target=&#34;_blank&#34; &gt;lil&amp;rsquo;log diffusion models&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Yang Song&lt;/td&gt;
-          &lt;td&gt;This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced)&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://yang-song.net/blog/2021/score/&#34; target=&#34;_blank&#34; &gt;score based generative models&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;AI Summer School&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;Easy to follow but comprehensive coverage of Diffusion models&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://theaisummer.com/diffusion-models/&#34; target=&#34;_blank&#34; &gt;ai summer school&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Hugging Face&lt;/td&gt;
-          &lt;td&gt;Annotated discussion of diffusion model with code&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://huggingface.co/blog/annotated-diffusion&#34; target=&#34;_blank&#34; &gt;annotated diffusion models&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Alex Alemi&lt;/td&gt;
-          &lt;td&gt;Blog on Variational Diffusion Loss&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://blog.alexalemi.com/diffusion.html&#34; target=&#34;_blank&#34; &gt;variational diffusion models&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Google AI Blog&lt;/td&gt;
-          &lt;td&gt;Cascaded Diffusion Models with Super Resolution&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://ai.googleblog.com/2021/07/high-fidelity-image-generation-using.html&#34; target=&#34;_blank&#34; &gt;High Fidelity Image Generation Using Diffusion Models&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;youtube-educators&#34;&gt;YouTube Educators&lt;/h2&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Channel&lt;/th&gt;
-          &lt;th&gt;Description&lt;/th&gt;
-          &lt;th&gt;Link&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&#34;https://www.youtube.com/@AICoffeeBreak&#34; target=&#34;_blank&#34; &gt;AI Coffee Break with Letitia&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Byte sized content on Diffusion models&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://youtu.be/344w5h24-h8&#34; target=&#34;_blank&#34; &gt;diffusion models explained&lt;/a&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&#34;https://www.youtube.com/@YannicKilcher&#34; target=&#34;_blank&#34; &gt;Yannic&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;DDPM paper explained&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://youtu.be/W-O7AZNzbzQ&#34; target=&#34;_blank&#34; &gt;DDMP explained&lt;/a&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&#34;https://www.youtube.com/@TheAIEpiphany&#34; target=&#34;_blank&#34; &gt;Aleksa Gordić - The AI Epiphany&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;ML coding series on Improved DDPM codebase&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://youtu.be/y7J6sSO1k50&#34; target=&#34;_blank&#34; &gt;coding series&lt;/a&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;github-repos&#34;&gt;GitHub Repos&lt;/h2&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Repo Description&lt;/th&gt;
-          &lt;th&gt;Repo Link&lt;/th&gt;
-          &lt;th&gt;Colab&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Diffusion Models Tutorial&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/&#34; &gt;Wity&amp;rsquo;AI tutorial&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/&#34; &gt;Wity&amp;rsquo;AI tutorial&lt;/a&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Stable Diffusion&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://github.com/CompVis/stable-diffusion&#34; target=&#34;_blank&#34; &gt;Stable Diffusion&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LucidRains Denoising Diffusion Models&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://github.com/lucidrains/denoising-diffusion-pytorch&#34; target=&#34;_blank&#34; &gt;LucidRains&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Variational Diffusion models&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://github.com/google-research/vdm&#34; target=&#34;_blank&#34; &gt;VDM&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://colab.research.google.com/github/google-research/vdm/blob/main/colab/SimpleDiffusionColab.ipynb&#34; target=&#34;_blank&#34; &gt;
-  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34;&gt;
-&lt;/a&gt; &lt;a href=&#34;https://colab.research.google.com/github/google-research/vdm/blob/main/colab/2D_VDM_Example.ipynb&#34; target=&#34;_blank&#34; &gt;
-  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34;&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Predicting Error and Score Function&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/errors.diffusion_model_interpretations.ipynb&#34; target=&#34;_blank&#34; &gt;Error / Score Prediction&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_errors.diffusion_model_interpretations.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Colab (Large)&#34;&gt;
 &lt;/a&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;DDPM&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://github.com/hojonathanho/diffusion&#34; target=&#34;_blank&#34; &gt;DDPM&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;YiYi XU (Flax+JAX)&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://github.com/yiyixuxu/denoising-diffusion-flax&#34; target=&#34;_blank&#34; &gt;Flax Denoising Diffusion&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://colab.research.google.com/github/yiyixuxu/denoising-diffusion-flax/blob/main/ddpm_flax_oxford102_end_to_end.ipynb&#34; target=&#34;_blank&#34; &gt;
-  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34;&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Classifier free Guidance and other improvements&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/guidance_free_classifiers.ipynb&#34; target=&#34;_blank&#34; &gt;Advanced concepts&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_guidance_free_classifiers.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Colab (Large)&#34;&gt;
 &lt;/a&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Glide&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://github.com/openai/glide-text2im&#34; target=&#34;_blank&#34; &gt;Glide&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://github.com/openai/glide-text2im/tree/main/notebooks&#34; target=&#34;_blank&#34; &gt;Notebooks&lt;/a&gt;&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;play-with-diffusion-models&#34;&gt;Play with Diffusion Models&lt;/h2&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Description&lt;/th&gt;
-          &lt;th&gt;Link&lt;/th&gt;
-          &lt;th&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Play with Stable Diffusion v2&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://huggingface.co/spaces/stabilityai/stable-diffusion&#34; target=&#34;_blank&#34; &gt;SD II&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Stable Boost: Personalized Photos&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://stableboost.ai/&#34; target=&#34;_blank&#34; &gt;Stable Boost&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Image variations with Stable Diffusion&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://huggingface.co/spaces/lambdalabs/stable-diffusion-image-variations&#34; target=&#34;_blank&#34; &gt;SD variations&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Gradio App for Stable Diffusion&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://github.com/qunash/stable-diffusion-2-gui/&#34; target=&#34;_blank&#34; &gt;GitHub Repo&lt;/a&gt; &lt;a href=&#34;https://colab.research.google.com/github/qunash/stable-diffusion-2-gui/blob/main/stable_diffusion_2_0.ipynb#scrollTo=gId0-asCBVwL&#34; target=&#34;_blank&#34; &gt;
-  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34;&gt;
-&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Bing Create tool&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://www.bing.com/create&#34; target=&#34;_blank&#34; &gt;Bing&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Playground AI&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://playgroundai.com/&#34; target=&#34;_blank&#34; &gt;PlaygroundAI&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Want to connect? Reach out @&lt;a href=&#34;https://twitter.com/varuntul22&#34; target=&#34;_blank&#34; &gt;varuntul22&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>Here are some resources that I have found useful/interesting.
-Highlighting ones that I recommend going over.</p>
-<h2 id="papers">Papers</h2>
+&lt;h2 id=&#34;topics-to-cover&#34;&gt;Topics to cover&lt;/h2&gt;
+&lt;p&gt;We have done most of the heavy-lifting in &lt;a href=&#34;https://varun-ml.github.io/posts/diffusion-models/denoising-diffusion-models-1/&#34; &gt;Part 1&lt;/a&gt; of this series on Diffusion Models. To be able to use them well in practice, we may need to make some more improvements. That&amp;rsquo;s what we will do.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="code-for-this-blog-post">Code for this blog post:</h2>
 <table>
   <thead>
       <tr>
-          <th>Paper Title</th>
-          <th>Paper Link</th>
-          <th>Have I Read it?</th>
+          <th style="text-align: left">Notebook</th>
+          <th style="text-align: left">Github Link</th>
+          <th style="text-align: left">Colab</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td><strong>DDPM</strong></td>
-          <td><a href="https://arxiv.org/abs/2006.11239" target="_blank" >DDMP</a></td>
-          <td>Yeah</td>
-      </tr>
-      <tr>
-          <td><strong>Improved DDPM</strong></td>
-          <td><a href="https://arxiv.org/abs/2102.09672" target="_blank" >IDDPM</a></td>
-          <td>Yeah</td>
-      </tr>
-      <tr>
-          <td>Stable Diffusion</td>
-          <td><a href="https://arxiv.org/abs/2112.10752" target="_blank" >Stable Diffusion</a></td>
-          <td>No</td>
-      </tr>
-      <tr>
-          <td>Variational Diffusion Models</td>
-          <td><a href="https://arxiv.org/abs/2107.00630" target="_blank" >VDM</a></td>
-          <td>Yeah</td>
-      </tr>
-      <tr>
-          <td>Cold Diffusion</td>
-          <td><a href="https://arxiv.org/abs/2208.09392" target="_blank" >Cold Diffusion</a></td>
-          <td>No</td>
-      </tr>
-      <tr>
-          <td><strong>Understanding Diffusion Models: A Unified Perspective</strong></td>
-          <td><a href="https://arxiv.org/abs/2208.11970" target="_blank" >Tutorial</a></td>
-          <td>Yeah</td>
-      </tr>
-      <tr>
-          <td>Glide</td>
-          <td><a href="https://arxiv.org/abs/2112.10741" target="_blank" >Glide</a></td>
-          <td>No</td>
-      </tr>
-      <tr>
-          <td>Diffusion Models Survey</td>
-          <td><a href="https://arxiv.org/abs/2209.02646" target="_blank" >A survey on Generative Diffusion Models</a></td>
-          <td>No</td>
-      </tr>
-      <tr>
-          <td>Score Prediction Diffusion Models</td>
-          <td><a href="https://arxiv.org/abs/1907.05600" target="_blank" >Generative Modeling by Estimating Gradients of the Data Distribution</a></td>
-          <td>No</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="blogs">Blogs</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Author</th>
-          <th>Description</th>
-          <th>Link</th>
-          <th></th>
-          <th></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Lilian Weng</td>
-          <td><strong>Comprehensive coverage of Diffusion models theory (Advanced)</strong></td>
-          <td><a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" target="_blank" >lil&rsquo;log diffusion models</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Yang Song</td>
-          <td>This blog is about score based generative models, specifically about SDE&rsquo;s (Advanced)</td>
-          <td><a href="https://yang-song.net/blog/2021/score/" target="_blank" >score based generative models</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>AI Summer School</td>
-          <td><strong>Easy to follow but comprehensive coverage of Diffusion models</strong></td>
-          <td><a href="https://theaisummer.com/diffusion-models/" target="_blank" >ai summer school</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Hugging Face</td>
-          <td>Annotated discussion of diffusion model with code</td>
-          <td><a href="https://huggingface.co/blog/annotated-diffusion" target="_blank" >annotated diffusion models</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Alex Alemi</td>
-          <td>Blog on Variational Diffusion Loss</td>
-          <td><a href="https://blog.alexalemi.com/diffusion.html" target="_blank" >variational diffusion models</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Google AI Blog</td>
-          <td>Cascaded Diffusion Models with Super Resolution</td>
-          <td><a href="https://ai.googleblog.com/2021/07/high-fidelity-image-generation-using.html" target="_blank" >High Fidelity Image Generation Using Diffusion Models</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="youtube-educators">YouTube Educators</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Channel</th>
-          <th>Description</th>
-          <th>Link</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><a href="https://www.youtube.com/@AICoffeeBreak" target="_blank" >AI Coffee Break with Letitia</a></td>
-          <td>Byte sized content on Diffusion models</td>
-          <td><a href="https://youtu.be/344w5h24-h8" target="_blank" >diffusion models explained</a></td>
-      </tr>
-      <tr>
-          <td><a href="https://www.youtube.com/@YannicKilcher" target="_blank" >Yannic</a></td>
-          <td><strong>DDPM paper explained</strong></td>
-          <td><a href="https://youtu.be/W-O7AZNzbzQ" target="_blank" >DDMP explained</a></td>
-      </tr>
-      <tr>
-          <td><a href="https://www.youtube.com/@TheAIEpiphany" target="_blank" >Aleksa Gordić - The AI Epiphany</a></td>
-          <td>ML coding series on Improved DDPM codebase</td>
-          <td><a href="https://youtu.be/y7J6sSO1k50" target="_blank" >coding series</a></td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="github-repos">GitHub Repos</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Repo Description</th>
-          <th>Repo Link</th>
-          <th>Colab</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Diffusion Models Tutorial</td>
-          <td><a href="/posts/diffusion-models/diffusion-models-notebooks/" >Wity&rsquo;AI tutorial</a></td>
-          <td><a href="/posts/diffusion-models/diffusion-models-notebooks/" >Wity&rsquo;AI tutorial</a></td>
-      </tr>
-      <tr>
-          <td>Stable Diffusion</td>
-          <td><a href="https://github.com/CompVis/stable-diffusion" target="_blank" >Stable Diffusion</a></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>LucidRains Denoising Diffusion Models</td>
-          <td><a href="https://github.com/lucidrains/denoising-diffusion-pytorch" target="_blank" >LucidRains</a></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Variational Diffusion models</td>
-          <td><a href="https://github.com/google-research/vdm" target="_blank" >VDM</a></td>
-          <td><a href="https://colab.research.google.com/github/google-research/vdm/blob/main/colab/SimpleDiffusionColab.ipynb" target="_blank" >
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
-</a> <a href="https://colab.research.google.com/github/google-research/vdm/blob/main/colab/2D_VDM_Example.ipynb" target="_blank" >
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+          <td style="text-align: left">Predicting Error and Score Function</td>
+          <td style="text-align: left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/errors.diffusion_model_interpretations.ipynb" target="_blank" >Error / Score Prediction</a></td>
+          <td style="text-align: left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_errors.diffusion_model_interpretations.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab (Large)">
 </a></td>
       </tr>
       <tr>
-          <td>DDPM</td>
-          <td><a href="https://github.com/hojonathanho/diffusion" target="_blank" >DDPM</a></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>YiYi XU (Flax+JAX)</td>
-          <td><a href="https://github.com/yiyixuxu/denoising-diffusion-flax" target="_blank" >Flax Denoising Diffusion</a></td>
-          <td><a href="https://colab.research.google.com/github/yiyixuxu/denoising-diffusion-flax/blob/main/ddpm_flax_oxford102_end_to_end.ipynb" target="_blank" >
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+          <td style="text-align: left">Classifier free Guidance and other improvements</td>
+          <td style="text-align: left"><a href="https://github.com/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/guidance_free_classifiers.ipynb" target="_blank" >Advanced concepts</a></td>
+          <td style="text-align: left"><a href="https://colab.research.google.com/github/varun-ml/diffusion-models-tutorial/blob/master/toy-density-estimation/colab_guidance_free_classifiers.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab (Large)">
 </a></td>
-      </tr>
-      <tr>
-          <td>Glide</td>
-          <td><a href="https://github.com/openai/glide-text2im" target="_blank" >Glide</a></td>
-          <td><a href="https://github.com/openai/glide-text2im/tree/main/notebooks" target="_blank" >Notebooks</a></td>
       </tr>
   </tbody>
 </table>
-<h2 id="play-with-diffusion-models">Play with Diffusion Models</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Description</th>
-          <th>Link</th>
-          <th></th>
-          <th></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Play with Stable Diffusion v2</td>
-          <td><a href="https://huggingface.co/spaces/stabilityai/stable-diffusion" target="_blank" >SD II</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Stable Boost: Personalized Photos</td>
-          <td><a href="https://stableboost.ai/" target="_blank" >Stable Boost</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Image variations with Stable Diffusion</td>
-          <td><a href="https://huggingface.co/spaces/lambdalabs/stable-diffusion-image-variations" target="_blank" >SD variations</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Gradio App for Stable Diffusion</td>
-          <td><a href="https://github.com/qunash/stable-diffusion-2-gui/" target="_blank" >GitHub Repo</a> <a href="https://colab.research.google.com/github/qunash/stable-diffusion-2-gui/blob/main/stable_diffusion_2_0.ipynb#scrollTo=gId0-asCBVwL" target="_blank" >
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
-</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Bing Create tool</td>
-          <td><a href="https://www.bing.com/create" target="_blank" >Bing</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Playground AI</td>
-          <td><a href="https://playgroundai.com/" target="_blank" >PlaygroundAI</a></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-  </tbody>
-</table>
+<h2 id="topics-to-cover">Topics to cover</h2>
+<p>We have done most of the heavy-lifting in <a href="/posts/diffusion-models/denoising-diffusion-models-1/" >Part 1</a> of this series on Diffusion Models. To be able to use them well in practice, we may need to make some more improvements. That&rsquo;s what we will do.</p>
+<ol>
+<li><strong>Time step embedding</strong> and concatenation/fusion to the input data.</li>
+<li><strong>Error Prediction $\hat \epsilon_0^\ast$ and Score Function Prediction $s$</strong> instead of predicting the actual input $x_0$.</li>
+<li><strong>Class conditioned generation or Classifier free guidance</strong>, where we guide the diffusion model to generate data based on class labels.</li>
+</ol>
+<p>The ideas are an extension to the concepts introduced earlier, but are vital parts of any practical diffusion model implementation.</p>
+<h2 id="time-step-embedding">Time Step Embedding</h2>
+<p>During the denoising process, the Neural Network needs to know the time step at which denoising is being done. Passing the time step $t$ as a scalar value is not ideal. Rather, it would be preferable to
+pass the time step as an embedding to the Neural Network. In the <cite>Attention is all you need<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite> paper, the authors proposed sinusoidal embeddings to encode position of the tokens (time steps in our case).</p>
+<p><strong>Pseudocode:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-0-1"><a class="lnlinks" href="#hl-0-1"> 1</a>
+</span><span class="lnt" id="hl-0-2"><a class="lnlinks" href="#hl-0-2"> 2</a>
+</span><span class="lnt" id="hl-0-3"><a class="lnlinks" href="#hl-0-3"> 3</a>
+</span><span class="lnt" id="hl-0-4"><a class="lnlinks" href="#hl-0-4"> 4</a>
+</span><span class="lnt" id="hl-0-5"><a class="lnlinks" href="#hl-0-5"> 5</a>
+</span><span class="lnt" id="hl-0-6"><a class="lnlinks" href="#hl-0-6"> 6</a>
+</span><span class="lnt" id="hl-0-7"><a class="lnlinks" href="#hl-0-7"> 7</a>
+</span><span class="lnt" id="hl-0-8"><a class="lnlinks" href="#hl-0-8"> 8</a>
+</span><span class="lnt" id="hl-0-9"><a class="lnlinks" href="#hl-0-9"> 9</a>
+</span><span class="lnt" id="hl-0-10"><a class="lnlinks" href="#hl-0-10">10</a>
+</span><span class="lnt" id="hl-0-11"><a class="lnlinks" href="#hl-0-11">11</a>
+</span><span class="lnt" id="hl-0-12"><a class="lnlinks" href="#hl-0-12">12</a>
+</span><span class="lnt" id="hl-0-13"><a class="lnlinks" href="#hl-0-13">13</a>
+</span><span class="lnt" id="hl-0-14"><a class="lnlinks" href="#hl-0-14">14</a>
+</span><span class="lnt" id="hl-0-15"><a class="lnlinks" href="#hl-0-15">15</a>
+</span><span class="lnt" id="hl-0-16"><a class="lnlinks" href="#hl-0-16">16</a>
+</span><span class="lnt" id="hl-0-17"><a class="lnlinks" href="#hl-0-17">17</a>
+</span><span class="lnt" id="hl-0-18"><a class="lnlinks" href="#hl-0-18">18</a>
+</span><span class="lnt" id="hl-0-19"><a class="lnlinks" href="#hl-0-19">19</a>
+</span><span class="lnt" id="hl-0-20"><a class="lnlinks" href="#hl-0-20">20</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># adapted from HuggingFace -- https://huggingface.co/blog/annotated-diffusion</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SinusoidalPositionEmbeddings</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">half_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">//</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># embedding values need to be small</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">half_dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">half_dim</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="n">embeddings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">embeddings</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">embeddings</span><span class="o">.</span><span class="n">sin</span><span class="p">(),</span> <span class="n">embeddings</span><span class="o">.</span><span class="n">cos</span><span class="p">()),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">embeddings</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl"><span class="c1"># generate 8 dimensional time step embeddings</span>
+</span></span><span class="line"><span class="cl"><span class="n">sinusoidalPositionEmbeddings</span> <span class="o">=</span> <span class="n">SinusoidalPositionEmbeddings</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Sinusoidal embeddings are small in absolute value and can be fused(added) or concatenated to the input data to provide the Neural Network some information about the time step at which the denoising process is happening.</p>
+<p><strong>Passing Time Step Embedding (Fusing and Concatenation):</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-1-1"><a class="lnlinks" href="#hl-1-1"> 1</a>
+</span><span class="lnt" id="hl-1-2"><a class="lnlinks" href="#hl-1-2"> 2</a>
+</span><span class="lnt" id="hl-1-3"><a class="lnlinks" href="#hl-1-3"> 3</a>
+</span><span class="lnt" id="hl-1-4"><a class="lnlinks" href="#hl-1-4"> 4</a>
+</span><span class="lnt" id="hl-1-5"><a class="lnlinks" href="#hl-1-5"> 5</a>
+</span><span class="lnt" id="hl-1-6"><a class="lnlinks" href="#hl-1-6"> 6</a>
+</span><span class="lnt" id="hl-1-7"><a class="lnlinks" href="#hl-1-7"> 7</a>
+</span><span class="lnt" id="hl-1-8"><a class="lnlinks" href="#hl-1-8"> 8</a>
+</span><span class="lnt" id="hl-1-9"><a class="lnlinks" href="#hl-1-9"> 9</a>
+</span><span class="lnt" id="hl-1-10"><a class="lnlinks" href="#hl-1-10">10</a>
+</span><span class="lnt" id="hl-1-11"><a class="lnlinks" href="#hl-1-11">11</a>
+</span><span class="lnt" id="hl-1-12"><a class="lnlinks" href="#hl-1-12">12</a>
+</span><span class="lnt" id="hl-1-13"><a class="lnlinks" href="#hl-1-13">13</a>
+</span><span class="lnt" id="hl-1-14"><a class="lnlinks" href="#hl-1-14">14</a>
+</span><span class="lnt" id="hl-1-15"><a class="lnlinks" href="#hl-1-15">15</a>
+</span><span class="lnt" id="hl-1-16"><a class="lnlinks" href="#hl-1-16">16</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># MLP to project time step embedding before we pass it to the input</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">position_mlp</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span> 
+</span></span><span class="line"><span class="cl">          <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># 2 is the input data dimension</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">timestep_embeddings</span> <span class="o">=</span> <span class="n">position_embeddings</span><span class="p">[</span><span class="n">timestep</span><span class="o">.</span><span class="n">long</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl"><span class="n">time_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_mlp</span><span class="p">(</span><span class="n">timestep_embeddings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># concatenation</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># x = (batch_size, input data dimension); time_embeddings = (batch_size, input data dimension)</span>
+</span></span><span class="line"><span class="cl"><span class="n">concat_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">time_embeddings</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># fusing</span>
+</span></span><span class="line"><span class="cl"><span class="n">shift</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">time_embedding</span><span class="p">,</span> <span class="n">indices_or_sections</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">shift</span> <span class="o">+</span> <span class="p">(</span><span class="n">scale</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">x</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Fusing the data with the data is computationally efficient as it requires significantly fewer number of weight parameters. The key idea here is that Neural Networks are powerful enough to separate any added information to the original data without the information being explicitly passed. Have a look at this video if you want to get better intuition. <a href="https://www.youtube.com/watch?v=1biZfFLPRSY" target="_blank" >Positional embeddings in transformers EXPLAINED</a>.</p>
+<p>If we want to add time step information to an image, it is typically done by broadcasting the time step embedding along the channel dimension.</p>
+<p><strong>Adding Time Step to Image (Fusing):</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-2-1"><a class="lnlinks" href="#hl-2-1">1</a>
+</span><span class="lnt" id="hl-2-2"><a class="lnlinks" href="#hl-2-2">2</a>
+</span><span class="lnt" id="hl-2-3"><a class="lnlinks" href="#hl-2-3">3</a>
+</span><span class="lnt" id="hl-2-4"><a class="lnlinks" href="#hl-2-4">4</a>
+</span><span class="lnt" id="hl-2-5"><a class="lnlinks" href="#hl-2-5">5</a>
+</span><span class="lnt" id="hl-2-6"><a class="lnlinks" href="#hl-2-6">6</a>
+</span><span class="lnt" id="hl-2-7"><a class="lnlinks" href="#hl-2-7">7</a>
+</span><span class="lnt" id="hl-2-8"><a class="lnlinks" href="#hl-2-8">8</a>
+</span><span class="lnt" id="hl-2-9"><a class="lnlinks" href="#hl-2-9">9</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># image batch data -- (batch_size, height, width, channels)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># timestep embedding -- (batch_size, embedding_dimension)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ensure channels == embedding_dimension</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># broadcast and add timestep to image data</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">einops</span>
+</span></span><span class="line"><span class="cl"><span class="n">timestep_embedding</span> <span class="o">=</span> <span class="n">einops</span><span class="o">.</span><span class="n">rearrange</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;b c -&gt; b 1 1 c&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fused_image_data</span> <span class="o">=</span> <span class="n">image_data</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">timestep_embedding</span><span class="p">)</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Fusing data to an input is a technique useful to add any kind of conditional information to the data. We will use this idea in <a href="/posts/diffusion-models/denoising-diffusion-models-3/" >EMNIST: Blog 3</a> where we use this concept to fuse label and time step information with the images during class conditional generation. This technique was used in the work, <a href="https://github.com/openai/improved-diffusion" target="_blank" >Improved Denoising Diffusion Probabilistic Models</a>.</p>
+<h2 id="error-prediction-and-score-function-prediction">Error Prediction and Score Function Prediction</h2>
+<h3 id="predicting-the-error-hat-epsilon_0ast">Predicting the Error $\hat \epsilon_0^\ast$</h3>
+<p><strong>During the denoising step</strong>, the model ingests $\hat x_t$ and spits out $\hat x_t^0$, a prediction for $x_0$. Instead of outputting predictions of the input data, we want the model to output a prediction of the error $\hat\epsilon^\ast_0$.</p>
+<p>Let&rsquo;s investigate the relationship between error $\epsilon_0^\ast$ and input data $x_0$.
+
+$$
+\begin{align}
+x_t &= \sqrt{\bar\alpha_t}x_0 + \sqrt{(1 - \bar\alpha_t )}\ast\epsilon_0^\ast \cr
+x_0 &= \frac{x_t-\sqrt{(1 - \bar\alpha_t )}\ast\epsilon_0^\ast}{\sqrt{\bar\alpha_t}} 
+\end{align}
+$$
+
+Equation 2 shows that if we have $x_t$ and $\epsilon^\ast_0$ than it determines $x_0$.</p>
+<p>The denoising step now looks like this:</p>
+<ol>
+<li>Make a prediction of source error $\hat\epsilon^\ast_0$ using the $NN(\hat x_t, t)$.</li>
+<li>Using Equation 2, evaluate $x_0^t$, which is the prediction of the input data at time step $t$.</li>
+<li>Next step:
+<ul>
+<li>During training: We want an equivalent version of the loss function $Error\_Loss(\epsilon^\ast_0, \hat \epsilon_0^\ast, t)$.
+
+	$$
+	\begin{align}
+	Loss(x_0, \hat x_t, t) = 1/2\ast(\frac{\bar\alpha_{t-1}}{1-\bar\alpha_{t-1}} - \frac{\bar\alpha_t}{1-\bar\alpha_t})\ast\mid\mid x_0-\hat x_0^t\mid\mid_2^2 \cr
+	\text{Making modifications to loss using Equation 2} \nonumber \cr
+	Error\_Loss(\epsilon^\ast_0, \hat \epsilon_0^\ast, t) = \frac{1}{2\sigma^2_q(t)} \frac{(1-\alpha_t)^2}{(1-\bar\alpha_t)\alpha_t}\mid\mid \epsilon^\ast_0-\hat \epsilon^\ast_0\mid\mid_2^2
+	\end{align}
+	$$
+	</li>
+<li>During data generation:
+<ol>
+<li>Using Equation 2, reconstruct $\hat x_0^t$. Remember, $x_0$ is a function of the Gaussian error and the latent variable.</li>
+<li><strong>Clip the $\hat x_0^t$ to make sure it lies in the range of -1 to +1 (normalized range for input data)</strong>. <code>torch.clip(x_reconstructed, -1, 1)</code></li>
+<li>Using Equation 5 (below) get a prediction for the latent at $t-1$ time step.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+
+$$
+\begin{align}
+p(\hat x_{t-1}| \hat x_t) \varpropto N(\hat x_{t-1};\frac{\sqrt\alpha_t(1-\bar\alpha_{t-1})\hat x_t + \sqrt{\bar\alpha_{t-1}}(1-\alpha_t)\hat x_t^0}{1-\bar\alpha_t}, \frac{(1-\alpha_t)(1-\bar\alpha_{t-1})}{1-\bar\alpha_t}I)	
+\end{align}
+$$
+
+
+<p>Predicting error is empirically shown to work well, refer <cite>Denoising paper<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite>. This is probably due to the clipping of the predicted output at every time step so that the predicted data is in the normalized range. <a href="https://github.com/hojonathanho/diffusion/issues/5#issuecomment-1283946094" target="_blank" >Refer this discussion</a>.</p>
+<p>Here is an interesting discussion on why predicting error works for images, but may not work well for other domains such as voice generation.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Another important reason is that the standard formulation everyone has ended up using for images (predict the standardised noise given noisy input) implicitly downweights high frequency components, which is an excellent match for the human visual system.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557692621199400960?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p><strong>Denoising Step during data generation:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-3-1"><a class="lnlinks" href="#hl-3-1"> 1</a>
+</span><span class="lnt" id="hl-3-2"><a class="lnlinks" href="#hl-3-2"> 2</a>
+</span><span class="lnt" id="hl-3-3"><a class="lnlinks" href="#hl-3-3"> 3</a>
+</span><span class="lnt" id="hl-3-4"><a class="lnlinks" href="#hl-3-4"> 4</a>
+</span><span class="lnt" id="hl-3-5"><a class="lnlinks" href="#hl-3-5"> 5</a>
+</span><span class="lnt" id="hl-3-6"><a class="lnlinks" href="#hl-3-6"> 6</a>
+</span><span class="lnt" id="hl-3-7"><a class="lnlinks" href="#hl-3-7"> 7</a>
+</span><span class="lnt" id="hl-3-8"><a class="lnlinks" href="#hl-3-8"> 8</a>
+</span><span class="lnt" id="hl-3-9"><a class="lnlinks" href="#hl-3-9"> 9</a>
+</span><span class="lnt" id="hl-3-10"><a class="lnlinks" href="#hl-3-10">10</a>
+</span><span class="lnt" id="hl-3-11"><a class="lnlinks" href="#hl-3-11">11</a>
+</span><span class="lnt" id="hl-3-12"><a class="lnlinks" href="#hl-3-12">12</a>
+</span><span class="lnt" id="hl-3-13"><a class="lnlinks" href="#hl-3-13">13</a>
+</span><span class="lnt" id="hl-3-14"><a class="lnlinks" href="#hl-3-14">14</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="n">x_reconstructed</span> <span class="o">=</span> 
+</span></span><span class="line"><span class="cl"><span class="c1"># data_in_batch is latent variable x at timestep</span>
+</span></span><span class="line"><span class="cl"><span class="n">data_in_batch</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pred_data</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">sd</span><span class="p">[</span><span class="n">timestep</span><span class="p">]))</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">alphas_</span><span class="p">[</span><span class="n">timestep</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">timestep</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x_reconstructed</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x_reconstructed</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mean_data_1</span> <span class="o">=</span> <span class="n">data_in_batch</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">mean_coeff_1</span><span class="p">[</span><span class="n">timestep</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">mean_data_2</span> <span class="o">=</span> <span class="n">x_reconstructed</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">mean_coeff_2</span><span class="p">[</span><span class="n">timestep</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">mean_data</span> <span class="o">=</span> <span class="n">mean_data_1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mean_data_2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="n">posterior_data</span> <span class="o">=</span> <span class="n">posterior_variance_corrected</span><span class="p">[</span><span class="n">timestep</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># data_in_batch is latent variable x at previous timestep</span>
+</span></span><span class="line"><span class="cl"><span class="n">data_in_batch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean_data</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">posterior_data</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="score-function-prediction">Score Function Prediction</h3>
+<p>This is yet another variation on diffusion models. Similar to predicting the error as discussed earlier, we could also predict the score function. The score function $s$ is defined as $\nabla p(x_t)$.</p>
+<p>All we need is to define $x_t$ as $f(s)$. We could then define a $Score\_Loss(s, \hat s, t)$ by substituting $x_t$ for the function $f(s)$ in the training step. In the denoising step we will use the function $f(s)$ defined to compute $x_t$, perform clipping so that the output lies in the normalized range and proceed as we did in the earlier section.</p>
+<p>The relation between $s$ and $x$ is defined as below:
+
+$$
+x_0 = \frac{x_t + (1 - \bar\alpha_t )\ast\nabla p(x_t)}{\sqrt{\bar\alpha_t}}
+$$
+</p>
+<p>For more details and intuition on why this is an important interpretation, please refer to the section on <cite>Three equivalent interpretations.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></cite>
+Yang Song has an excellent blog post on <a href="https://yang-song.net/blog/2021/score/" target="_blank" >Score based generative models.</a></p>
+<h2 id="guidance--classifier-free-guidance">Guidance &amp; Classifier-free Guidance</h2>
+<p>We want to control the data we generate. For example, in the image below, we have 2 labels. During generation, we want to direct the model to generate samples either from Yellow or Purple classes.
+Classifier Guidance is a way to do this. We will be guiding the denoising process to generate samples that are more likely to belong to the conditioned class.</p>
+<figure class="align-center ">
+    <img loading="lazy" src="/images/data-labels.png#center"
+         alt="Figure 1: Data with 2 labels, Circles in Purple and Moons in Yellow" width="80%"/> <figcaption>
+            <p>Figure 1: Data with 2 labels, Circles in Purple and Moons in Yellow</p>
+        </figcaption>
+</figure>
+
+<p>Text-guided diffusion models like <a href="https://www.youtube.com/watch?v=gwI6g1pBD84" target="_blank" >Glide</a> use the powerful Neural Network called <a href="https://openai.com/blog/clip/" target="_blank" >CLIP</a> and classifier guidance techniques to perform text-based image generation.</p>
+<p>So far, we have been trying to maximize the likelihood of the data distribution $p(x)$ with diffusion models. This allowed us to randomly sample data points from the data distribution.</p>
+<p><strong>A naïve idea</strong> to do class-conditioned generation could be to fuse the conditional label information with the input data.</p>
+<p><strong>Pseudocode for naïve idea:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-4-1"><a class="lnlinks" href="#hl-4-1"> 1</a>
+</span><span class="lnt" id="hl-4-2"><a class="lnlinks" href="#hl-4-2"> 2</a>
+</span><span class="lnt" id="hl-4-3"><a class="lnlinks" href="#hl-4-3"> 3</a>
+</span><span class="lnt" id="hl-4-4"><a class="lnlinks" href="#hl-4-4"> 4</a>
+</span><span class="lnt" id="hl-4-5"><a class="lnlinks" href="#hl-4-5"> 5</a>
+</span><span class="lnt" id="hl-4-6"><a class="lnlinks" href="#hl-4-6"> 6</a>
+</span><span class="lnt" id="hl-4-7"><a class="lnlinks" href="#hl-4-7"> 7</a>
+</span><span class="lnt" id="hl-4-8"><a class="lnlinks" href="#hl-4-8"> 8</a>
+</span><span class="lnt" id="hl-4-9"><a class="lnlinks" href="#hl-4-9"> 9</a>
+</span><span class="lnt" id="hl-4-10"><a class="lnlinks" href="#hl-4-10">10</a>
+</span><span class="lnt" id="hl-4-11"><a class="lnlinks" href="#hl-4-11">11</a>
+</span><span class="lnt" id="hl-4-12"><a class="lnlinks" href="#hl-4-12">12</a>
+</span><span class="lnt" id="hl-4-13"><a class="lnlinks" href="#hl-4-13">13</a>
+</span><span class="lnt" id="hl-4-14"><a class="lnlinks" href="#hl-4-14">14</a>
+</span><span class="lnt" id="hl-4-15"><a class="lnlinks" href="#hl-4-15">15</a>
+</span><span class="lnt" id="hl-4-16"><a class="lnlinks" href="#hl-4-16">16</a>
+</span><span class="lnt" id="hl-4-17"><a class="lnlinks" href="#hl-4-17">17</a>
+</span><span class="lnt" id="hl-4-18"><a class="lnlinks" href="#hl-4-18">18</a>
+</span><span class="lnt" id="hl-4-19"><a class="lnlinks" href="#hl-4-19">19</a>
+</span><span class="lnt" id="hl-4-20"><a class="lnlinks" href="#hl-4-20">20</a>
+</span><span class="lnt" id="hl-4-21"><a class="lnlinks" href="#hl-4-21">21</a>
+</span><span class="lnt" id="hl-4-22"><a class="lnlinks" href="#hl-4-22">22</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">diffusion</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">code</span> <span class="n">to</span> <span class="n">add</span> <span class="n">noise</span> <span class="n">to</span> <span class="n">x_0</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">x_i</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">training</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">loop</span> <span class="n">until</span> <span class="n">convergence</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">pick</span> <span class="n">an</span> <span class="n">image</span> <span class="n">x_0</span> <span class="kn">from</span> <span class="nn">X</span> <span class="p">(</span><span class="n">batch</span> <span class="n">of</span> <span class="n">images</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">sample</span> <span class="n">t</span> <span class="kn">from</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">T</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x_t</span> <span class="o">=</span> <span class="n">diffusion_step</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x_hat_t</span> <span class="o">=</span> <span class="n">NN</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># y is the label</span>
+</span></span><span class="line"><span class="cl">		<span class="n">loss_</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">x_hat_t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">update</span><span class="p">(</span><span class="n">NN</span><span class="p">,</span> <span class="n">grad</span><span class="p">(</span><span class="n">loss_</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># generating new data points through denoising steps</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">generate_new_data</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="n">sample</span> <span class="n">x_T</span> <span class="kn">from</span> <span class="nn">N</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="c1"># denoising step</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x_hat_t</span> <span class="o">=</span> <span class="n">NN</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># y is the desired label </span>
+</span></span><span class="line"><span class="cl">		<span class="c1"># get x_{t-1}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x_</span><span class="p">{</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">}</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x_hat_t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="c1"># refer EQ - 12</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x_hat_0</span> <span class="o">=</span> <span class="n">x_0</span>  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>During training and data generation, we will add the conditioned label as an input along with the noisy data and the time step embedding. The output of the model will stay the same as earlier.</p>
+<p>The conditioned data can be fused with the input data, just like we fused the time step information.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-5-1"><a class="lnlinks" href="#hl-5-1"> 1</a>
+</span><span class="lnt" id="hl-5-2"><a class="lnlinks" href="#hl-5-2"> 2</a>
+</span><span class="lnt" id="hl-5-3"><a class="lnlinks" href="#hl-5-3"> 3</a>
+</span><span class="lnt" id="hl-5-4"><a class="lnlinks" href="#hl-5-4"> 4</a>
+</span><span class="lnt" id="hl-5-5"><a class="lnlinks" href="#hl-5-5"> 5</a>
+</span><span class="lnt" id="hl-5-6"><a class="lnlinks" href="#hl-5-6"> 6</a>
+</span><span class="lnt" id="hl-5-7"><a class="lnlinks" href="#hl-5-7"> 7</a>
+</span><span class="lnt" id="hl-5-8"><a class="lnlinks" href="#hl-5-8"> 8</a>
+</span><span class="lnt" id="hl-5-9"><a class="lnlinks" href="#hl-5-9"> 9</a>
+</span><span class="lnt" id="hl-5-10"><a class="lnlinks" href="#hl-5-10">10</a>
+</span><span class="lnt" id="hl-5-11"><a class="lnlinks" href="#hl-5-11">11</a>
+</span><span class="lnt" id="hl-5-12"><a class="lnlinks" href="#hl-5-12">12</a>
+</span><span class="lnt" id="hl-5-13"><a class="lnlinks" href="#hl-5-13">13</a>
+</span><span class="lnt" id="hl-5-14"><a class="lnlinks" href="#hl-5-14">14</a>
+</span><span class="lnt" id="hl-5-15"><a class="lnlinks" href="#hl-5-15">15</a>
+</span><span class="lnt" id="hl-5-16"><a class="lnlinks" href="#hl-5-16">16</a>
+</span><span class="lnt" id="hl-5-17"><a class="lnlinks" href="#hl-5-17">17</a>
+</span><span class="lnt" id="hl-5-18"><a class="lnlinks" href="#hl-5-18">18</a>
+</span><span class="lnt" id="hl-5-19"><a class="lnlinks" href="#hl-5-19">19</a>
+</span><span class="lnt" id="hl-5-20"><a class="lnlinks" href="#hl-5-20">20</a>
+</span><span class="lnt" id="hl-5-21"><a class="lnlinks" href="#hl-5-21">21</a>
+</span><span class="lnt" id="hl-5-22"><a class="lnlinks" href="#hl-5-22">22</a>
+</span><span class="lnt" id="hl-5-23"><a class="lnlinks" href="#hl-5-23">23</a>
+</span><span class="lnt" id="hl-5-24"><a class="lnlinks" href="#hl-5-24">24</a>
+</span><span class="lnt" id="hl-5-25"><a class="lnlinks" href="#hl-5-25">25</a>
+</span><span class="lnt" id="hl-5-26"><a class="lnlinks" href="#hl-5-26">26</a>
+</span><span class="lnt" id="hl-5-27"><a class="lnlinks" href="#hl-5-27">27</a>
+</span><span class="lnt" id="hl-5-28"><a class="lnlinks" href="#hl-5-28">28</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># haiku code</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">  <span class="n">hk</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jax</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">gelu</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">hk</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># conditional vectors encoding</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">embedding_vectors</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">Embed</span><span class="p">(</span><span class="mi">10</span><span class="o">+</span><span class="mi">26</span><span class="o">+</span><span class="mi">26</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">timestep_embeddings</span> <span class="o">=</span> <span class="n">TimeEmbeddings</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># the diffusion model is given x, time step and label as input</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">,</span> <span class="n">cond</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cond_embedding</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="n">conditioning</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">timesteps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="n">timestep_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestep_embeddings</span><span class="p">(</span><span class="n">timesteps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">conditioning</span> <span class="o">=</span> <span class="n">timestep_embeddings</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">cond</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="n">label_embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_vectors</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">conditioning</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">label_embeddings</span><span class="p">,</span> <span class="n">conditioning</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cond_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">conditioning</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1"># fusing time step and label information with input x</span>
+</span></span><span class="line"><span class="cl">	<span class="n">shift</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">cond_embedding</span><span class="p">,</span> <span class="n">indices_or_sections</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span> <span class="o">=</span> <span class="n">shift</span> <span class="o">+</span> <span class="p">(</span><span class="n">scale</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">x</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="guidance">Guidance</h3>
+<p>The above approach may lead to models that have low sample diversity. Researchers have proposed two other forms of guidance: <em>classifier guidance</em> and <cite>classifier-free guidance<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></cite>.</p>
+<p><strong>Classifier Guidance</strong> guides the generation of new samples with the help of a classifier. The classifier takes a noisy image ($x_t$) as input and predicts the label $y$. The gradient of the distribution $p(y|x)$ is used to make updates to the weights of the Neural Network to guide it to produce samples that are likely to be $y$. This is an adversarial loss, and this approach has similarities to GANs.</p>
+<p><strong>Classifier-Free Guidance</strong> would be ideal if we did not want to build a classifier. The classifier-free guidance approach models the conditional likelihood of samples as follows:
+
+$$
+\nabla p(x|y) = \lambda \ast \underbrace{\nabla p(x|y)}_{\text{conditional}} + (1-\lambda) \ast \underbrace{\nabla p(x)}_{\text{unconditional}}
+$$
+
+The conditional and the unconditional distributions are modelled by the same neural network. To model the conditional distribution, we fuse the label information as shown in the naïve approach above. To model the unconditional distribution, we mask the label information and pass it to the diffusion model.
+The lambda parameter, controls the diversity of the sample we want to generate. $\lambda=1$ would be equivalent to the naïve approach.</p>
+<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Classifier-free guidance is a cheatcode that makes these models perform as if they had 10x the parameters. At least in terms of sample quality, and at the cost of diversity. All of the recent spectacular results rely heavily on this trick.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557691965076021252?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+Adding this perspective about efficiency of diffusion models. Even though to be honest, I am not sure myself :).</p>
+<h2 id="lets-look-at-some-outputs">Let&rsquo;s look at some outputs</h2>
+<figure class="align-center ">
+    <img loading="lazy" src="/images/class-conditioned-generation.gif#center"
+         alt="Figure 2: A GIF show-casing the denoising process; Generating class conditioned samples over T time steps" width="80%"/> <figcaption>
+            <p>Figure 2: A GIF show-casing the denoising process; Generating class conditioned samples over T time steps</p>
+        </figcaption>
+</figure>
+
+<p>See you in the <a href="/posts/diffusion-models/denoising-diffusion-models-3" >next part</a>.</p>
 <hr>
 <p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Vaswani et al. 2017 <a href="https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf" target="_blank" >&ldquo;Attention is all you need&rdquo;</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Ho et al. 2020 <a href="https://arxiv.org/abs/2006.11239" target="_blank" >&ldquo;Denoising diffusion probabilistic models&rdquo;</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Calvin Luo; 2019 <a href="https://arxiv.org/abs/2208.11970" target="_blank" >&ldquo;Understanding Diffusion Models: A Unified Perspective&rdquo;</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Ho et al. 2021 <a href="https://arxiv.org/abs/2207.12598" target="_blank" >&ldquo;Classifier-free diffusion guidance&rdquo;</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 ]]></content:encoded>
     </item>
     <item>
@@ -3010,6 +2495,521 @@ We will be using the naïve version of classifier guidance described <a href="/p
 </li>
 </ol>
 </div>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Denoising Diffusion Models Resources</title>
+      <link>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</link>
+      <pubDate>Fri, 09 Dec 2022 17:39:20 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/diffusion-models/bonus-denoising-diffusion-models-resources/</guid>
+      <description>&lt;p&gt;Here are some resources that I have found useful/interesting.
+Highlighting ones that I recommend going over.&lt;/p&gt;
+&lt;h2 id=&#34;papers&#34;&gt;Papers&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Paper Title&lt;/th&gt;
+          &lt;th&gt;Paper Link&lt;/th&gt;
+          &lt;th&gt;Have I Read it?&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;DDPM&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2006.11239&#34; target=&#34;_blank&#34; &gt;DDMP&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Yeah&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Improved DDPM&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2102.09672&#34; target=&#34;_blank&#34; &gt;IDDPM&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Yeah&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Stable Diffusion&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2112.10752&#34; target=&#34;_blank&#34; &gt;Stable Diffusion&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Variational Diffusion Models&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2107.00630&#34; target=&#34;_blank&#34; &gt;VDM&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Yeah&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Cold Diffusion&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2208.09392&#34; target=&#34;_blank&#34; &gt;Cold Diffusion&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Understanding Diffusion Models: A Unified Perspective&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2208.11970&#34; target=&#34;_blank&#34; &gt;Tutorial&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Yeah&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Glide&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2112.10741&#34; target=&#34;_blank&#34; &gt;Glide&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Diffusion Models Survey&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/2209.02646&#34; target=&#34;_blank&#34; &gt;A survey on Generative Diffusion Models&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Score Prediction Diffusion Models&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://arxiv.org/abs/1907.05600&#34; target=&#34;_blank&#34; &gt;Generative Modeling by Estimating Gradients of the Data Distribution&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;blogs&#34;&gt;Blogs&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Author&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Link&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Lilian Weng&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Comprehensive coverage of Diffusion models theory (Advanced)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://lilianweng.github.io/posts/2021-07-11-diffusion-models/&#34; target=&#34;_blank&#34; &gt;lil&amp;rsquo;log diffusion models&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Yang Song&lt;/td&gt;
+          &lt;td&gt;This blog is about score based generative models, specifically about SDE&amp;rsquo;s (Advanced)&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://yang-song.net/blog/2021/score/&#34; target=&#34;_blank&#34; &gt;score based generative models&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;AI Summer School&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Easy to follow but comprehensive coverage of Diffusion models&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://theaisummer.com/diffusion-models/&#34; target=&#34;_blank&#34; &gt;ai summer school&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Hugging Face&lt;/td&gt;
+          &lt;td&gt;Annotated discussion of diffusion model with code&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://huggingface.co/blog/annotated-diffusion&#34; target=&#34;_blank&#34; &gt;annotated diffusion models&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Alex Alemi&lt;/td&gt;
+          &lt;td&gt;Blog on Variational Diffusion Loss&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://blog.alexalemi.com/diffusion.html&#34; target=&#34;_blank&#34; &gt;variational diffusion models&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Google AI Blog&lt;/td&gt;
+          &lt;td&gt;Cascaded Diffusion Models with Super Resolution&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://ai.googleblog.com/2021/07/high-fidelity-image-generation-using.html&#34; target=&#34;_blank&#34; &gt;High Fidelity Image Generation Using Diffusion Models&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;youtube-educators&#34;&gt;YouTube Educators&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Channel&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Link&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://www.youtube.com/@AICoffeeBreak&#34; target=&#34;_blank&#34; &gt;AI Coffee Break with Letitia&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Byte sized content on Diffusion models&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://youtu.be/344w5h24-h8&#34; target=&#34;_blank&#34; &gt;diffusion models explained&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://www.youtube.com/@YannicKilcher&#34; target=&#34;_blank&#34; &gt;Yannic&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;DDPM paper explained&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://youtu.be/W-O7AZNzbzQ&#34; target=&#34;_blank&#34; &gt;DDMP explained&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://www.youtube.com/@TheAIEpiphany&#34; target=&#34;_blank&#34; &gt;Aleksa Gordić - The AI Epiphany&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;ML coding series on Improved DDPM codebase&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://youtu.be/y7J6sSO1k50&#34; target=&#34;_blank&#34; &gt;coding series&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;github-repos&#34;&gt;GitHub Repos&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Repo Description&lt;/th&gt;
+          &lt;th&gt;Repo Link&lt;/th&gt;
+          &lt;th&gt;Colab&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Diffusion Models Tutorial&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/&#34; &gt;Wity&amp;rsquo;AI tutorial&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://varun-ml.github.io/posts/diffusion-models/diffusion-models-notebooks/&#34; &gt;Wity&amp;rsquo;AI tutorial&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Stable Diffusion&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/CompVis/stable-diffusion&#34; target=&#34;_blank&#34; &gt;Stable Diffusion&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;LucidRains Denoising Diffusion Models&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/lucidrains/denoising-diffusion-pytorch&#34; target=&#34;_blank&#34; &gt;LucidRains&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Variational Diffusion models&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/google-research/vdm&#34; target=&#34;_blank&#34; &gt;VDM&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://colab.research.google.com/github/google-research/vdm/blob/main/colab/SimpleDiffusionColab.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34;&gt;
+&lt;/a&gt; &lt;a href=&#34;https://colab.research.google.com/github/google-research/vdm/blob/main/colab/2D_VDM_Example.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34;&gt;
+&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;DDPM&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/hojonathanho/diffusion&#34; target=&#34;_blank&#34; &gt;DDPM&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;YiYi XU (Flax+JAX)&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/yiyixuxu/denoising-diffusion-flax&#34; target=&#34;_blank&#34; &gt;Flax Denoising Diffusion&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://colab.research.google.com/github/yiyixuxu/denoising-diffusion-flax/blob/main/ddpm_flax_oxford102_end_to_end.ipynb&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34;&gt;
+&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Glide&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/openai/glide-text2im&#34; target=&#34;_blank&#34; &gt;Glide&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/openai/glide-text2im/tree/main/notebooks&#34; target=&#34;_blank&#34; &gt;Notebooks&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;play-with-diffusion-models&#34;&gt;Play with Diffusion Models&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Link&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Play with Stable Diffusion v2&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://huggingface.co/spaces/stabilityai/stable-diffusion&#34; target=&#34;_blank&#34; &gt;SD II&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Stable Boost: Personalized Photos&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://stableboost.ai/&#34; target=&#34;_blank&#34; &gt;Stable Boost&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Image variations with Stable Diffusion&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://huggingface.co/spaces/lambdalabs/stable-diffusion-image-variations&#34; target=&#34;_blank&#34; &gt;SD variations&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Gradio App for Stable Diffusion&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/qunash/stable-diffusion-2-gui/&#34; target=&#34;_blank&#34; &gt;GitHub Repo&lt;/a&gt; &lt;a href=&#34;https://colab.research.google.com/github/qunash/stable-diffusion-2-gui/blob/main/stable_diffusion_2_0.ipynb#scrollTo=gId0-asCBVwL&#34; target=&#34;_blank&#34; &gt;
+  &lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34;&gt;
+&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Bing Create tool&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://www.bing.com/create&#34; target=&#34;_blank&#34; &gt;Bing&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Playground AI&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://playgroundai.com/&#34; target=&#34;_blank&#34; &gt;PlaygroundAI&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Want to connect? Reach out @&lt;a href=&#34;https://twitter.com/varuntul22&#34; target=&#34;_blank&#34; &gt;varuntul22&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Here are some resources that I have found useful/interesting.
+Highlighting ones that I recommend going over.</p>
+<h2 id="papers">Papers</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Paper Title</th>
+          <th>Paper Link</th>
+          <th>Have I Read it?</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>DDPM</strong></td>
+          <td><a href="https://arxiv.org/abs/2006.11239" target="_blank" >DDMP</a></td>
+          <td>Yeah</td>
+      </tr>
+      <tr>
+          <td><strong>Improved DDPM</strong></td>
+          <td><a href="https://arxiv.org/abs/2102.09672" target="_blank" >IDDPM</a></td>
+          <td>Yeah</td>
+      </tr>
+      <tr>
+          <td>Stable Diffusion</td>
+          <td><a href="https://arxiv.org/abs/2112.10752" target="_blank" >Stable Diffusion</a></td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>Variational Diffusion Models</td>
+          <td><a href="https://arxiv.org/abs/2107.00630" target="_blank" >VDM</a></td>
+          <td>Yeah</td>
+      </tr>
+      <tr>
+          <td>Cold Diffusion</td>
+          <td><a href="https://arxiv.org/abs/2208.09392" target="_blank" >Cold Diffusion</a></td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>Understanding Diffusion Models: A Unified Perspective</strong></td>
+          <td><a href="https://arxiv.org/abs/2208.11970" target="_blank" >Tutorial</a></td>
+          <td>Yeah</td>
+      </tr>
+      <tr>
+          <td>Glide</td>
+          <td><a href="https://arxiv.org/abs/2112.10741" target="_blank" >Glide</a></td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>Diffusion Models Survey</td>
+          <td><a href="https://arxiv.org/abs/2209.02646" target="_blank" >A survey on Generative Diffusion Models</a></td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>Score Prediction Diffusion Models</td>
+          <td><a href="https://arxiv.org/abs/1907.05600" target="_blank" >Generative Modeling by Estimating Gradients of the Data Distribution</a></td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="blogs">Blogs</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Author</th>
+          <th>Description</th>
+          <th>Link</th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Lilian Weng</td>
+          <td><strong>Comprehensive coverage of Diffusion models theory (Advanced)</strong></td>
+          <td><a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" target="_blank" >lil&rsquo;log diffusion models</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Yang Song</td>
+          <td>This blog is about score based generative models, specifically about SDE&rsquo;s (Advanced)</td>
+          <td><a href="https://yang-song.net/blog/2021/score/" target="_blank" >score based generative models</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>AI Summer School</td>
+          <td><strong>Easy to follow but comprehensive coverage of Diffusion models</strong></td>
+          <td><a href="https://theaisummer.com/diffusion-models/" target="_blank" >ai summer school</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Hugging Face</td>
+          <td>Annotated discussion of diffusion model with code</td>
+          <td><a href="https://huggingface.co/blog/annotated-diffusion" target="_blank" >annotated diffusion models</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Alex Alemi</td>
+          <td>Blog on Variational Diffusion Loss</td>
+          <td><a href="https://blog.alexalemi.com/diffusion.html" target="_blank" >variational diffusion models</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Google AI Blog</td>
+          <td>Cascaded Diffusion Models with Super Resolution</td>
+          <td><a href="https://ai.googleblog.com/2021/07/high-fidelity-image-generation-using.html" target="_blank" >High Fidelity Image Generation Using Diffusion Models</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="youtube-educators">YouTube Educators</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Channel</th>
+          <th>Description</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="https://www.youtube.com/@AICoffeeBreak" target="_blank" >AI Coffee Break with Letitia</a></td>
+          <td>Byte sized content on Diffusion models</td>
+          <td><a href="https://youtu.be/344w5h24-h8" target="_blank" >diffusion models explained</a></td>
+      </tr>
+      <tr>
+          <td><a href="https://www.youtube.com/@YannicKilcher" target="_blank" >Yannic</a></td>
+          <td><strong>DDPM paper explained</strong></td>
+          <td><a href="https://youtu.be/W-O7AZNzbzQ" target="_blank" >DDMP explained</a></td>
+      </tr>
+      <tr>
+          <td><a href="https://www.youtube.com/@TheAIEpiphany" target="_blank" >Aleksa Gordić - The AI Epiphany</a></td>
+          <td>ML coding series on Improved DDPM codebase</td>
+          <td><a href="https://youtu.be/y7J6sSO1k50" target="_blank" >coding series</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="github-repos">GitHub Repos</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Repo Description</th>
+          <th>Repo Link</th>
+          <th>Colab</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Diffusion Models Tutorial</td>
+          <td><a href="/posts/diffusion-models/diffusion-models-notebooks/" >Wity&rsquo;AI tutorial</a></td>
+          <td><a href="/posts/diffusion-models/diffusion-models-notebooks/" >Wity&rsquo;AI tutorial</a></td>
+      </tr>
+      <tr>
+          <td>Stable Diffusion</td>
+          <td><a href="https://github.com/CompVis/stable-diffusion" target="_blank" >Stable Diffusion</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>LucidRains Denoising Diffusion Models</td>
+          <td><a href="https://github.com/lucidrains/denoising-diffusion-pytorch" target="_blank" >LucidRains</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Variational Diffusion models</td>
+          <td><a href="https://github.com/google-research/vdm" target="_blank" >VDM</a></td>
+          <td><a href="https://colab.research.google.com/github/google-research/vdm/blob/main/colab/SimpleDiffusionColab.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a> <a href="https://colab.research.google.com/github/google-research/vdm/blob/main/colab/2D_VDM_Example.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a></td>
+      </tr>
+      <tr>
+          <td>DDPM</td>
+          <td><a href="https://github.com/hojonathanho/diffusion" target="_blank" >DDPM</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>YiYi XU (Flax+JAX)</td>
+          <td><a href="https://github.com/yiyixuxu/denoising-diffusion-flax" target="_blank" >Flax Denoising Diffusion</a></td>
+          <td><a href="https://colab.research.google.com/github/yiyixuxu/denoising-diffusion-flax/blob/main/ddpm_flax_oxford102_end_to_end.ipynb" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a></td>
+      </tr>
+      <tr>
+          <td>Glide</td>
+          <td><a href="https://github.com/openai/glide-text2im" target="_blank" >Glide</a></td>
+          <td><a href="https://github.com/openai/glide-text2im/tree/main/notebooks" target="_blank" >Notebooks</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="play-with-diffusion-models">Play with Diffusion Models</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Description</th>
+          <th>Link</th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Play with Stable Diffusion v2</td>
+          <td><a href="https://huggingface.co/spaces/stabilityai/stable-diffusion" target="_blank" >SD II</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Stable Boost: Personalized Photos</td>
+          <td><a href="https://stableboost.ai/" target="_blank" >Stable Boost</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Image variations with Stable Diffusion</td>
+          <td><a href="https://huggingface.co/spaces/lambdalabs/stable-diffusion-image-variations" target="_blank" >SD variations</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Gradio App for Stable Diffusion</td>
+          <td><a href="https://github.com/qunash/stable-diffusion-2-gui/" target="_blank" >GitHub Repo</a> <a href="https://colab.research.google.com/github/qunash/stable-diffusion-2-gui/blob/main/stable_diffusion_2_0.ipynb#scrollTo=gId0-asCBVwL" target="_blank" >
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Bing Create tool</td>
+          <td><a href="https://www.bing.com/create" target="_blank" >Bing</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Playground AI</td>
+          <td><a href="https://playgroundai.com/" target="_blank" >PlaygroundAI</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
 ]]></content:encoded>
     </item>
   </channel>
