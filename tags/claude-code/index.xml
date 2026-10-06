@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Claude Code on wity&#39;ai</title>
+    <link>https://varun-ml.github.io/tags/claude-code/</link>
+    <description>Recent content in Claude Code on wity&#39;ai</description>
+    <image>
+      <title>wity&#39;ai</title>
+      <url>https://varun-ml.github.io/images/varun.png</url>
+      <link>https://varun-ml.github.io/images/varun.png</link>
+    </image>
+    <generator>Hugo -- 0.149.1</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 07 Oct 2026 01:58:27 +0530</lastBuildDate>
+    <atom:link href="https://varun-ml.github.io/tags/claude-code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Your work is driven through Claude now. Stay in touch with it.</title>
+      <link>https://varun-ml.github.io/posts/buddy/</link>
+      <pubDate>Wed, 07 Oct 2026 01:58:27 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/buddy/</guid>
+      <description>&lt;p&gt;&lt;em&gt;How I use Buddy, a pet on my screen that watches my sessions&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;My work is being driven through Claude more often than not, and I think that is true for most people. The hooks and the mods are a great way to stay in touch with it.&lt;/p&gt;
+&lt;p&gt;On a Friday night I started a project to explore mods. Then I conceptualised it, and it became a thing: claude-mods, small tools around Claude Code and Codex, one folder per mod. Buddy is one of them.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p><em>How I use Buddy, a pet on my screen that watches my sessions</em></p>
+<p>My work is being driven through Claude more often than not, and I think that is true for most people. The hooks and the mods are a great way to stay in touch with it.</p>
+<p>On a Friday night I started a project to explore mods. Then I conceptualised it, and it became a thing: claude-mods, small tools around Claude Code and Codex, one folder per mod. Buddy is one of them.</p>
+<p>Claude Code and Codex can run a script on events like &ldquo;you sent a prompt&rdquo;, &ldquo;a tool is about to run&rdquo;, &ldquo;it needs your OK&rdquo; and &ldquo;the turn stopped&rdquo;. Buddy&rsquo;s script writes each session&rsquo;s state to a file, and Buddy reads it.</p>
+<p>Before Buddy, I moved to Claude desktop and ChatGPT desktop to manage my sessions. I switch between sessions, and they get lost in the worktrees. It was manual. I went to them one by one, and I would not know when something was done. I kept an eye on the wheel and the notification symbols, and sometimes the ChatGPT pet.</p>
+<p>So I wanted an overlay which gives me a view. Buddy is a pet that moves around my screen. When a session is done, or waiting on me, it tells me.</p>
+<p>
+  <img src="buddy.gif" alt="Buddy on my screen with a bubble from an agent">
+</p>
+<h3 id="how-i-use-it">How I use it</h3>
+<p>I prioritise based on my focus session. If I am debugging, or anything with a short running loop, those sessions come first, because I want to drive more work out of them. The long running sessions I basically do not watch. I jump between the short ones one by one. With Buddy, this has become pretty straightforward.</p>
+<h3 id="the-most-useful-part">The most useful part</h3>
+<p>The most useful thing is tracking my day: how much work was done. It adds some fun to the loop.</p>
+<h3 id="why-people-liked-it">Why people liked it</h3>
+<p>I shared it with a lot of people at work, and they really liked it. They gave me suggestions on the animals and other things. So now the bear eats honey, and the pug dances on good news: a session done, a PR green, a PR merged. It makes the process enjoyable. It also asks you to take a break, and to stop for the day.</p>
+<h3 id="how-it-works">How it works</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-0-1"><a class="lnlinks" href="#hl-0-1">1</a>
+</span><span class="lnt" id="hl-0-2"><a class="lnlinks" href="#hl-0-2">2</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Claude Code / Codex hook ──&gt; session file ──&gt; Buddy ──&gt; bubble
+</span></span><span class="line"><span class="cl">agent runs: buddy say &#34;PR is green, merge when ready&#34;  ──&gt; inbox file ──&gt; Buddy ──&gt; bubble
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Hooks and agents reach Buddy through files on my Mac. A long running agent can use it as its notification tool and send me updates, and add <code>--urgent</code> when I must act.</p>
+<h3 id="whats-next">What&rsquo;s next</h3>
+<p>Different people are interested in different things, so I am making the profiles customisable. Buddy is private source for now, open source is coming soon. Drop your GitHub username and I will send you an invite.</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

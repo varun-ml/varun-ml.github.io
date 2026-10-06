@@ -247,8 +247,8 @@ $$
 
 <p>Predicting error is empirically shown to work well, refer <cite>Denoising paper<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite>. This is probably due to the clipping of the predicted output at every time step so that the predicted data is in the normalized range. <a href="https://github.com/hojonathanho/diffusion/issues/5#issuecomment-1283946094" target="_blank" >Refer this discussion</a>.</p>
 <p>Here is an interesting discussion on why predicting error works for images, but may not work well for other domains such as voice generation.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Another important reason is that the standard formulation everyone has ended up using for images (predict the standardised noise given noisy input) implicitly downweights high frequency components, which is an excellent match for the human visual system.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557692621199400960?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Another important reason is that the standard formulation everyone has ended up using for images (predict the standardised noise given noisy input) implicitly downweights high frequency components, which is an excellent match for the human visual system.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://x.com/sedielem/status/1557692621199400960?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 
 <p><strong>Denoising Step during data generation:</strong></p>
@@ -436,8 +436,8 @@ $$
 
 The conditional and the unconditional distributions are modelled by the same neural network. To model the conditional distribution, we fuse the label information as shown in the naïve approach above. To model the unconditional distribution, we mask the label information and pass it to the diffusion model.
 The lambda parameter, controls the diversity of the sample we want to generate. $\lambda=1$ would be equivalent to the naïve approach.</p>
-<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Classifier-free guidance is a cheatcode that makes these models perform as if they had 10x the parameters. At least in terms of sample quality, and at the cost of diversity. All of the recent spectacular results rely heavily on this trick.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557691965076021252?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Classifier-free guidance is a cheatcode that makes these models perform as if they had 10x the parameters. At least in terms of sample quality, and at the cost of diversity. All of the recent spectacular results rely heavily on this trick.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://x.com/sedielem/status/1557691965076021252?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 
 Adding this perspective about efficiency of diffusion models. Even though to be honest, I am not sure myself :).</p>

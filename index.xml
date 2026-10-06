@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.149.1</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 03 Oct 2025 09:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 01:58:27 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>#BuildingInPublic: stockoMJ Journey</title>
@@ -261,8 +261,8 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 
 <h2 id="introduction-to-this-series">Introduction to this series</h2>
 <p>I have spent too much time understanding diffusion models, which started with some wild posts I saw on Twitter.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Introducing Imagen, a new text-to-image synthesis model that can generate high-fidelity, photorealistic images from a deep level of language understanding. Learn more and and check out some examples of <a href="https://twitter.com/hashtag/imagen?src=hash&amp;ref_src=twsrc%5Etfw">#imagen</a> at <a href="https://t.co/RhD6siY6BY">https://t.co/RhD6siY6BY</a> <a href="https://t.co/C8javVu3iW">pic.twitter.com/C8javVu3iW</a></p>&mdash; Google AI (@GoogleAI) <a href="https://twitter.com/GoogleAI/status/1529165219997528064?ref_src=twsrc%5Etfw">May 24, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Introducing Imagen, a new text-to-image synthesis model that can generate high-fidelity, photorealistic images from a deep level of language understanding. Learn more and and check out some examples of <a href="https://x.com/hashtag/imagen?src=hash&amp;ref_src=twsrc%5Etfw">#imagen</a> at <a href="https://t.co/RhD6siY6BY">https://t.co/RhD6siY6BY</a> <a href="https://t.co/C8javVu3iW">pic.twitter.com/C8javVu3iW</a></p>&mdash; Google AI (@GoogleAI) <a href="https://x.com/GoogleAI/status/1529165219997528064?ref_src=twsrc%5Etfw">May 24, 2022</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 
 <figure class="align-center ">
@@ -272,8 +272,8 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
         </figcaption>
 </figure>
 
-<p>My curiosity led to experiments, which enriched my ML skill-set. In this series, I will try to demystify some magic behind diffusion models. <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Finally read a tutorial on Diffusion models. Now, I understand how they work just not why they work. To me it&#39;s crazy that they do. <a href="https://t.co/LXm5OrD993">pic.twitter.com/LXm5OrD993</a></p>&mdash; Varun Tulsian (@varuntul22) <a href="https://twitter.com/varuntul22/status/1577715572271611904?ref_src=twsrc%5Etfw">October 5, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>My curiosity led to experiments, which enriched my ML skill-set. In this series, I will try to demystify some magic behind diffusion models. <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Finally read a tutorial on Diffusion models. Now, I understand how they work just not why they work. To me it&#39;s crazy that they do. <a href="https://t.co/LXm5OrD993">pic.twitter.com/LXm5OrD993</a></p>&mdash; Varun Tulsian (@varuntul22) <a href="https://x.com/varuntul22/status/1577715572271611904?ref_src=twsrc%5Etfw">October 5, 2022</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 </p>
 <h3 id="diffusion-models-series">Diffusion Models Series</h3>
@@ -1286,8 +1286,8 @@ $$
 
 <p>Predicting error is empirically shown to work well, refer <cite>Denoising paper<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite>. This is probably due to the clipping of the predicted output at every time step so that the predicted data is in the normalized range. <a href="https://github.com/hojonathanho/diffusion/issues/5#issuecomment-1283946094" target="_blank" >Refer this discussion</a>.</p>
 <p>Here is an interesting discussion on why predicting error works for images, but may not work well for other domains such as voice generation.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Another important reason is that the standard formulation everyone has ended up using for images (predict the standardised noise given noisy input) implicitly downweights high frequency components, which is an excellent match for the human visual system.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557692621199400960?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Another important reason is that the standard formulation everyone has ended up using for images (predict the standardised noise given noisy input) implicitly downweights high frequency components, which is an excellent match for the human visual system.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://x.com/sedielem/status/1557692621199400960?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 
 <p><strong>Denoising Step during data generation:</strong></p>
@@ -1475,8 +1475,8 @@ $$
 
 The conditional and the unconditional distributions are modelled by the same neural network. To model the conditional distribution, we fuse the label information as shown in the naïve approach above. To model the unconditional distribution, we mask the label information and pass it to the diffusion model.
 The lambda parameter, controls the diversity of the sample we want to generate. $\lambda=1$ would be equivalent to the naïve approach.</p>
-<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Classifier-free guidance is a cheatcode that makes these models perform as if they had 10x the parameters. At least in terms of sample quality, and at the cost of diversity. All of the recent spectacular results rely heavily on this trick.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://twitter.com/sedielem/status/1557691965076021252?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Classifier-free guidance is a cheatcode that makes these models perform as if they had 10x the parameters. At least in terms of sample quality, and at the cost of diversity. All of the recent spectacular results rely heavily on this trick.</p>&mdash; Sander Dieleman (@sedielem) <a href="https://x.com/sedielem/status/1557691965076021252?ref_src=twsrc%5Etfw">August 11, 2022</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 
 Adding this perspective about efficiency of diffusion models. Even though to be honest, I am not sure myself :).</p>
@@ -3805,6 +3805,45 @@ Highlighting ones that I recommend going over.</p>
 </table>
 <hr>
 <p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Your work is driven through Claude now. Stay in touch with it.</title>
+      <link>https://varun-ml.github.io/posts/buddy/</link>
+      <pubDate>Wed, 07 Oct 2026 01:58:27 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/buddy/</guid>
+      <description>&lt;p&gt;&lt;em&gt;How I use Buddy, a pet on my screen that watches my sessions&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;My work is being driven through Claude more often than not, and I think that is true for most people. The hooks and the mods are a great way to stay in touch with it.&lt;/p&gt;
+&lt;p&gt;On a Friday night I started a project to explore mods. Then I conceptualised it, and it became a thing: claude-mods, small tools around Claude Code and Codex, one folder per mod. Buddy is one of them.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p><em>How I use Buddy, a pet on my screen that watches my sessions</em></p>
+<p>My work is being driven through Claude more often than not, and I think that is true for most people. The hooks and the mods are a great way to stay in touch with it.</p>
+<p>On a Friday night I started a project to explore mods. Then I conceptualised it, and it became a thing: claude-mods, small tools around Claude Code and Codex, one folder per mod. Buddy is one of them.</p>
+<p>Claude Code and Codex can run a script on events like &ldquo;you sent a prompt&rdquo;, &ldquo;a tool is about to run&rdquo;, &ldquo;it needs your OK&rdquo; and &ldquo;the turn stopped&rdquo;. Buddy&rsquo;s script writes each session&rsquo;s state to a file, and Buddy reads it.</p>
+<p>Before Buddy, I moved to Claude desktop and ChatGPT desktop to manage my sessions. I switch between sessions, and they get lost in the worktrees. It was manual. I went to them one by one, and I would not know when something was done. I kept an eye on the wheel and the notification symbols, and sometimes the ChatGPT pet.</p>
+<p>So I wanted an overlay which gives me a view. Buddy is a pet that moves around my screen. When a session is done, or waiting on me, it tells me.</p>
+<p>
+  <img src="buddy.gif" alt="Buddy on my screen with a bubble from an agent">
+</p>
+<h3 id="how-i-use-it">How I use it</h3>
+<p>I prioritise based on my focus session. If I am debugging, or anything with a short running loop, those sessions come first, because I want to drive more work out of them. The long running sessions I basically do not watch. I jump between the short ones one by one. With Buddy, this has become pretty straightforward.</p>
+<h3 id="the-most-useful-part">The most useful part</h3>
+<p>The most useful thing is tracking my day: how much work was done. It adds some fun to the loop.</p>
+<h3 id="why-people-liked-it">Why people liked it</h3>
+<p>I shared it with a lot of people at work, and they really liked it. They gave me suggestions on the animals and other things. So now the bear eats honey, and the pug dances on good news: a session done, a PR green, a PR merged. It makes the process enjoyable. It also asks you to take a break, and to stop for the day.</p>
+<h3 id="how-it-works">How it works</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-0-1"><a class="lnlinks" href="#hl-0-1">1</a>
+</span><span class="lnt" id="hl-0-2"><a class="lnlinks" href="#hl-0-2">2</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Claude Code / Codex hook ──&gt; session file ──&gt; Buddy ──&gt; bubble
+</span></span><span class="line"><span class="cl">agent runs: buddy say &#34;PR is green, merge when ready&#34;  ──&gt; inbox file ──&gt; Buddy ──&gt; bubble
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Hooks and agents reach Buddy through files on my Mac. A long running agent can use it as its notification tool and send me updates, and add <code>--urgent</code> when I must act.</p>
+<h3 id="whats-next">What&rsquo;s next</h3>
+<p>Different people are interested in different things, so I am making the profiles customisable. Buddy is private source for now, open source is coming soon. Drop your GitHub username and I will send you an invite.</p>
 ]]></content:encoded>
     </item>
     <item>

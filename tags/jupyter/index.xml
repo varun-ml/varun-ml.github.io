@@ -116,8 +116,8 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
 
 <h2 id="introduction-to-this-series">Introduction to this series</h2>
 <p>I have spent too much time understanding diffusion models, which started with some wild posts I saw on Twitter.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Introducing Imagen, a new text-to-image synthesis model that can generate high-fidelity, photorealistic images from a deep level of language understanding. Learn more and and check out some examples of <a href="https://twitter.com/hashtag/imagen?src=hash&amp;ref_src=twsrc%5Etfw">#imagen</a> at <a href="https://t.co/RhD6siY6BY">https://t.co/RhD6siY6BY</a> <a href="https://t.co/C8javVu3iW">pic.twitter.com/C8javVu3iW</a></p>&mdash; Google AI (@GoogleAI) <a href="https://twitter.com/GoogleAI/status/1529165219997528064?ref_src=twsrc%5Etfw">May 24, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Introducing Imagen, a new text-to-image synthesis model that can generate high-fidelity, photorealistic images from a deep level of language understanding. Learn more and and check out some examples of <a href="https://x.com/hashtag/imagen?src=hash&amp;ref_src=twsrc%5Etfw">#imagen</a> at <a href="https://t.co/RhD6siY6BY">https://t.co/RhD6siY6BY</a> <a href="https://t.co/C8javVu3iW">pic.twitter.com/C8javVu3iW</a></p>&mdash; Google AI (@GoogleAI) <a href="https://x.com/GoogleAI/status/1529165219997528064?ref_src=twsrc%5Etfw">May 24, 2022</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 
 <figure class="align-center ">
@@ -127,8 +127,8 @@ VAEs are composed of two processes: an <strong>encoder</strong> ($q$) (also refe
         </figcaption>
 </figure>
 
-<p>My curiosity led to experiments, which enriched my ML skill-set. In this series, I will try to demystify some magic behind diffusion models. <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Finally read a tutorial on Diffusion models. Now, I understand how they work just not why they work. To me it&#39;s crazy that they do. <a href="https://t.co/LXm5OrD993">pic.twitter.com/LXm5OrD993</a></p>&mdash; Varun Tulsian (@varuntul22) <a href="https://twitter.com/varuntul22/status/1577715572271611904?ref_src=twsrc%5Etfw">October 5, 2022</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>My curiosity led to experiments, which enriched my ML skill-set. In this series, I will try to demystify some magic behind diffusion models. <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Finally read a tutorial on Diffusion models. Now, I understand how they work just not why they work. To me it&#39;s crazy that they do. <a href="https://t.co/LXm5OrD993">pic.twitter.com/LXm5OrD993</a></p>&mdash; Varun Tulsian (@varuntul22) <a href="https://x.com/varuntul22/status/1577715572271611904?ref_src=twsrc%5Etfw">October 5, 2022</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 
 </p>
 <h3 id="diffusion-models-series">Diffusion Models Series</h3>
