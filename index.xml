@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.149.1</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 01:58:27 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 00:04:44 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>#BuildingInPublic: stockoMJ Journey</title>
@@ -3805,6 +3805,63 @@ Highlighting ones that I recommend going over.</p>
 </table>
 <hr>
 <p><em>Want to connect? Reach out @<a href="https://twitter.com/varuntul22" target="_blank" >varuntul22</a>.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Eyes on the prize: pick one metric and make people look at it</title>
+      <link>https://varun-ml.github.io/posts/eyes-on-it/</link>
+      <pubDate>Thu, 08 Oct 2026 00:04:44 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/eyes-on-it/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Pick one number, then send an alert, not just a dashboard&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I have one instinct about any process with a metric: once you put eyes on it, it improves. Over the last two weeks I got to test it with the team, on a production system. It worked, but only after we got three things right: one metric, a report that puts it in front of everyone every few hours, and alerts that make people look at what moves it.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p><em>Pick one number, then send an alert, not just a dashboard</em></p>
+<p>I have one instinct about any process with a metric: once you put eyes on it, it improves. Over the last two weeks I got to test it with the team, on a production system. It worked, but only after we got three things right: one metric, a report that puts it in front of everyone every few hours, and alerts that make people look at what moves it.</p>
+<h2 id="one-number">One number</h2>
+<p>A dashboard shows many numbers, and the one that matters gets lost among them. So we picked one that people were already talking about: finished output a day. Everything else came second. We did not chase retries or other side numbers. We picked work by whether it moved that number.</p>
+<h2 id="the-naive-way">The naive way</h2>
+<p>The naive way to put eyes on a metric is a dashboard, plus alerts in a side channel. That is what we had at first. The dashboard was broken. The alerts came into a separate channel, and they were noise. They watched a queue that the work no longer went through, so they called busy workers idle and missed real stops. Most of the alerts had a separate cause: a worker that did not answer for a moment and then came back. Nobody replied to them.</p>
+<h2 id="the-number-every-three-hours">The number, every three hours</h2>
+<p>The most important piece is not an alert. It is a report that posts the number itself to the main team channel every three hours: output in the last three hours against a target, how busy the workers were, and the idle time split by cause. Nobody has to open anything to see it. If output falls behind, the next lines say why.</p>
+<p>
+  <img src="three-hour-report.svg" alt="A sketch of the three-hour report: output against a target, workers busy, idle time by cause, what is close to a limit, open alerts">
+
+<em>A sketch of the three-hour report, with no real numbers: the one metric against its target first, then why it is where it is.</em></p>
+<p>The first design on the table had close to fifty items. I cut it down to four checks and this one report.</p>
+<p>The report keeps eyes on the number. The alerts are for what happens in between: the queue running low, a limit being hit, a dependency that stops working, a worker that should be taking work and is not.</p>
+<p>My take is that an alert has to go out to people. A dashboard alone does not do that.</p>
+<p>
+  <img src="dashboard-vs-alert.svg" alt="A metric on a dashboard tile next to an alert on a cause that moves it, with a state, an owner and a reason">
+
+<em>Left: the metric as one dashboard tile among many, with no person attached. Right: a sketch of an alert on a cause that moves that metric, with a state, an owner and a reason.</em></p>
+<h2 id="how-one-alert-works">How one alert works</h2>
+<p>Here is the loop we built in its place.</p>
+<ol>
+<li><strong>Crons collect what happened.</strong> Every few minutes, a job reads each worker: what it is running, what it finished, and how much work is left in the queue. Every 3 hours it also writes the report.</li>
+<li><strong>Rules decide what is wrong.</strong> Each problem is checked against the rules in a fixed order and lands in one of them, so one event posts one alert.</li>
+<li><strong>A template writes the message.</strong> No LLM writes the alerts. They are plain templates, and Claude helped us build them. Every alert names who acts. Where the rules can tell, it also gives the likely cause and the fix.</li>
+<li><strong>The alert has a state.</strong> It is ACT NOW when it opens, STILL while it stays open, and RESOLVED when it clears. My first version of the new alerts was noise too: dozens of posts in two days. The fix had three parts. I turned off the STILL reminders. An alert that came back within a few hours kept its number and stayed quiet. And the check for idle workers stopped counting slots that could not take work, which had been making busy workers look free. Open alerts are listed in the 3-hour report instead.</li>
+<li><strong>The alert lands where people look.</strong> Every alert goes to an alerts channel. The urgent types are also posted in the main team channel.</li>
+</ol>
+<p>
+  <img src="the-loop.svg" alt="Arrow chain: crons that read the workers, then rules, then a template with the owner and, where it can, the cause and fix, then a state, then the alerts channel and, for urgent types, the main channel, then the owner, the fix and the one metric">
+
+<em>Crons read the workers, rules pick one alert per event, a template adds the owner and, where it can, the cause and fix, and the alert type decides whether it also goes to the main channel.</em></p>
+<h2 id="what-changed-in-the-message">What changed in the message</h2>
+<p>The difference shows best side by side. The old alert gave a worker name and a raw error, and nothing about why. Every new alert names who acts and, where the rules can tell, why. One type goes further and gives a reason for each worker: at a capacity limit, not picked for this job, busy, or a free slot that did not take work. Then it tags the owner.</p>
+<p>Some alerts look ahead. One fires when the queue is close to empty while workers still have free slots, so the person who fills the queue knows before everything goes idle. When a capacity limit is hit, the alert gives the time it resets. The 3-hour report lists what is close to its limit.</p>
+<p>
+  <img src="plain-vs-designed-alert.svg" alt="Two alert mocks: a plain &ldquo;worker unreachable&rdquo; line above a designed alert with a reason per worker, a state and an owner">
+
+<em>Top: the old alert, a worker name and an error. Bottom: the new alert, with a reason per worker, a state and an owner.</em></p>
+<h2 id="where-it-lands">Where it lands</h2>
+<p>I put the urgent alerts in the main team channel because I wanted people to see them. In the alerts channel, nobody had replied to the old alerts in weeks.</p>
+<p>One case shows the loop working. One night a new alert fired for a dependency that kept failing. It named who owned it, and the owner found the cause that night. When a failure slipped through without an alert, we added an alert for it.</p>
+<h2 id="what-it-added-up-to">What it added up to</h2>
+<p>In under two weeks, output went up about 7.5x. The factors multiply: about 3.5x more capacity, each unit of it about 1.5x faster from engineering, and about 1.4x from longer outputs and a second kind of work. I do not claim the alerts created any of it. They showed where output was being lost, so the capacity and the engineering went to the right places.</p>
+<p>The alerts also have a weak spot. A capacity-limit alert can stay open until the limit resets. It tells people, but most of the time nobody can act on it.</p>
+<h2 id="the-rule">The rule</h2>
+<p>If you run a process, for example usage or engagement, pick one clear metric and put the team&rsquo;s effort where it moves that number. Then put eyes on it: send an alert, not just a dashboard. Demand that people look at the alerts, write the metric down, understand why it moved, and know why each alert exists.</p>
+<p>This system is one case. Next I am trying the same process on the other things I own.</p>
 ]]></content:encoded>
     </item>
     <item>

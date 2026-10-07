@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 430" width="700" height="430" font-family="-apple-system, Helvetica, Arial, sans-serif">
+  <title>A sketch of the three-hour report</title>
+  <desc>A sketch, not a real report: the one metric against its target, how busy the workers were, idle time split by cause, and what is close to a limit. No real numbers.</desc>
+  <rect width="700" height="430" fill="#fafaf7"/>
+  <rect x="40" y="30" width="620" height="370" rx="10" fill="#ffffff" stroke="#8a8f98"/>
+  <text x="64" y="66" font-size="17" font-weight="bold" fill="#222222">Every 3 hours, in the main team channel</text>
+  <text x="64" y="108" font-size="15" font-weight="bold" fill="#d9480f">Output, last 3 hours</text>
+  <rect x="64" y="122" width="400" height="18" rx="4" fill="#eeeeea"/>
+  <rect x="64" y="122" width="300" height="18" rx="4" fill="#d9480f"/>
+  <line x1="424" y1="116" x2="424" y2="146" stroke="#222222" stroke-width="2"/>
+  <text x="430" y="160" font-size="13" fill="#8a8f98">target</text>
+  <text x="64" y="192" font-size="15" font-weight="bold" fill="#222222">Workers busy</text>
+  <rect x="64" y="204" width="400" height="14" rx="4" fill="#eeeeea"/>
+  <rect x="64" y="204" width="330" height="14" rx="4" fill="#8a8f98"/>
+  <text x="64" y="252" font-size="15" font-weight="bold" fill="#222222">Idle time, by cause</text>
+  <g font-size="14" fill="#222222">
+    <rect x="64" y="266" width="140" height="14" fill="#8a8f98"/><text x="216" y="278">queue ran low</text>
+    <rect x="64" y="290" width="90" height="14" fill="#8a8f98"/><text x="216" y="302">at a capacity limit</text>
+    <rect x="64" y="314" width="40" height="14" fill="#8a8f98"/><text x="216" y="326">short waits between jobs</text>
+  </g>
+  <text x="64" y="364" font-size="14" fill="#222222">Close to a limit: what, and when it resets</text>
+  <text x="64" y="386" font-size="14" fill="#222222">Open alerts: listed here, not repeated</text>
+</svg>

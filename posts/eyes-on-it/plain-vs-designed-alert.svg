@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 470" width="700" height="470" font-family="Helvetica, Arial, sans-serif">
+  <title>A plain alert compared with a designed alert</title>
+  <desc>Top: the old alert, a worker name and an error, with no context. Bottom: the new alert, with a state, a reason for each worker that is not working, and the owner tagged.</desc>
+  <rect width="700" height="470" fill="#fafaf7"/>
+  <text x="30" y="34" font-size="16" font-weight="bold" fill="#8a8f98">Before: the old alert</text>
+  <rect x="30" y="48" width="640" height="56" rx="8" fill="none" stroke="#8a8f98" stroke-width="2"/>
+  <text x="50" y="82" font-size="15" fill="#222222">Worker A unreachable</text>
+  <text x="650" y="82" text-anchor="end" font-size="14" fill="#8a8f98">no cause · no owner · no fix</text>
+  <text x="30" y="150" font-size="16" font-weight="bold" fill="#222222">After: the new alert</text>
+  <rect x="30" y="164" width="640" height="276" rx="8" fill="none" stroke="#d9480f" stroke-width="2.5"/>
+  <rect x="30" y="164" width="8" height="276" fill="#d9480f"/>
+  <text x="56" y="196" font-size="15" font-weight="bold" fill="#d9480f">ACT NOW</text>
+  <text x="140" y="196" font-size="15" font-weight="bold" fill="#222222">Workers not taking work</text>
+  <text x="56" y="230" font-size="14" fill="#8a8f98">Why, per worker:</text>
+  <g font-size="15" fill="#222222">
+    <text x="72" y="260">Worker A</text><text x="200" y="260">at a capacity limit</text>
+    <text x="72" y="290">Worker B</text><text x="200" y="290">not picked for this job</text>
+    <text x="72" y="320">Worker C</text><text x="200" y="320">busy</text>
+    <text x="72" y="350">Worker D</text><text x="200" y="350">had a free slot and did not take work</text>
+  </g>
+  <line x1="56" y1="372" x2="650" y2="372" stroke="#8a8f98" stroke-width="1"/>
+  <text x="56" y="402" font-size="15" font-weight="bold" fill="#222222">Who acts: @owner</text>
+  <text x="56" y="426" font-size="14" fill="#8a8f98">Marked RESOLVED when it clears</text>
+</svg>

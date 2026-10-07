@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" width="700" height="560" font-family="Helvetica, Arial, sans-serif">
+  <title>How one alert works</title>
+  <desc>Crons read each worker and the queue. Rules in a fixed order turn one event into one alert. A template adds the owner and, where the rules can tell, the cause and fix. The alert has a state: ACT NOW, STILL, RESOLVED. Every alert goes to the alerts channel, and urgent types also go to the main team channel. The owner applies the fix, and the fix moves the one metric.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222222"/>
+    </marker>
+  </defs>
+  <rect width="700" height="560" fill="#fafaf7"/>
+  <g font-size="15" fill="#222222">
+    <rect x="40" y="20" width="620" height="56" rx="8" fill="none" stroke="#222222" stroke-width="2"/>
+    <text x="60" y="44" font-weight="bold">1. Crons collect what happened</text>
+    <text x="60" y="64" font-size="14" fill="#8a8f98">Every few minutes: each worker, what it finished, work left in the queue</text>
+    <line x1="350" y1="76" x2="350" y2="98" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="40" y="100" width="620" height="56" rx="8" fill="none" stroke="#222222" stroke-width="2"/>
+    <text x="60" y="124" font-weight="bold">2. Rules decide what is wrong</text>
+    <text x="60" y="144" font-size="14" fill="#8a8f98">Checked in a fixed order, so one event posts one alert</text>
+    <line x1="350" y1="156" x2="350" y2="178" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="40" y="180" width="620" height="56" rx="8" fill="none" stroke="#222222" stroke-width="2"/>
+    <text x="60" y="204" font-weight="bold">3. A template writes the message (no LLM at run time)</text>
+    <text x="60" y="224" font-size="14" fill="#8a8f98">Always the owner. Where the rules can tell: the likely cause and the fix</text>
+    <line x1="350" y1="236" x2="350" y2="258" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="40" y="260" width="620" height="56" rx="8" fill="none" stroke="#222222" stroke-width="2"/>
+    <text x="60" y="284" font-weight="bold">4. The alert has a state</text>
+    <text x="300" y="284" font-weight="bold" fill="#d9480f">ACT NOW</text>
+    <text x="378" y="284" fill="#8a8f98">→</text>
+    <text x="400" y="284" font-weight="bold" fill="#8a8f98">STILL</text>
+    <text x="452" y="284" fill="#8a8f98">→</text>
+    <text x="474" y="284" font-weight="bold">RESOLVED</text>
+    <text x="60" y="304" font-size="14" fill="#8a8f98">STILL reminders later turned off; open alerts go in the 3-hour summary</text>
+    <line x1="350" y1="316" x2="350" y2="338" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="350" y="356" text-anchor="middle" font-weight="bold">5. The alert lands where people look</text>
+    <line x1="230" y1="364" x2="190" y2="386" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="470" y1="364" x2="510" y2="386" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="40" y="388" width="290" height="52" rx="8" fill="none" stroke="#222222" stroke-width="2"/>
+    <text x="185" y="412" text-anchor="middle" font-weight="bold">Alerts channel</text>
+    <text x="185" y="430" text-anchor="middle" font-size="14" fill="#8a8f98">every alert</text>
+    <rect x="370" y="388" width="290" height="52" rx="8" fill="none" stroke="#d9480f" stroke-width="2.5"/>
+    <text x="515" y="412" text-anchor="middle" font-weight="bold">Main team channel</text>
+    <text x="515" y="430" text-anchor="middle" font-size="14" fill="#8a8f98">urgent alert types, also</text>
+    <line x1="185" y1="440" x2="300" y2="472" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="515" y1="440" x2="400" y2="472" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="130" y="474" width="440" height="56" rx="8" fill="none" stroke="#222222" stroke-width="2"/>
+    <text x="350" y="498" text-anchor="middle" font-weight="bold">Owner → fix → the one metric</text>
+    <text x="350" y="518" text-anchor="middle" font-size="14" fill="#8a8f98">finished output a day</text>
+  </g>
+</svg>

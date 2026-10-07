@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 360" width="700" height="360" font-family="Helvetica, Arial, sans-serif">
+  <title>A metric on a dashboard compared with an alert on a cause that moves it</title>
+  <desc>Left: a dashboard tile with a chart line and no person attached. Right: an alert on a cause that moves that metric, with a state, a reason, an owner and a fix.</desc>
+  <rect width="700" height="360" fill="#fafaf7"/>
+  <text x="175" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#222222">Dashboard</text>
+  <text x="510" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#222222">Alert</text>
+  <rect x="30" y="56" width="290" height="200" rx="10" fill="none" stroke="#8a8f98" stroke-width="2"/>
+  <text x="50" y="88" font-size="15" fill="#222222">Finished output a day</text>
+  <line x1="50" y1="226" x2="300" y2="226" stroke="#8a8f98" stroke-width="1.5"/>
+  <polyline points="50,140 90,150 130,145 170,170 210,200 250,210 300,215" fill="none" stroke="#222222" stroke-width="2.5"/>
+  <text x="175" y="290" text-anchor="middle" font-size="15" fill="#8a8f98">One tile among many.</text>
+  <text x="175" y="312" text-anchor="middle" font-size="15" fill="#8a8f98">No owner, no reason, no fix.</text>
+  <rect x="360" y="56" width="310" height="200" rx="10" fill="none" stroke="#d9480f" stroke-width="2.5"/>
+  <rect x="360" y="56" width="8" height="200" fill="#d9480f"/>
+  <text x="384" y="88" font-size="15" font-weight="bold" fill="#d9480f">ACT NOW</text>
+  <text x="384" y="112" font-size="15" font-weight="bold" fill="#222222">The queue is almost empty</text>
+  <text x="384" y="146" font-size="14" fill="#222222">Why: when it runs out, workers</text>
+  <text x="384" y="166" font-size="14" fill="#222222">go idle and output drops</text>
+  <text x="384" y="198" font-size="14" fill="#222222">Who acts: @queue owner</text>
+  <text x="384" y="228" font-size="14" fill="#222222">Fix: fill the queue</text>
+  <text x="515" y="290" text-anchor="middle" font-size="15" fill="#8a8f98">Sent to people,</text>
+  <text x="515" y="312" text-anchor="middle" font-size="15" fill="#8a8f98">naming the person who acts.</text>
+</svg>

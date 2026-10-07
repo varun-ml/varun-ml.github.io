@@ -11,8 +11,36 @@
     </image>
     <generator>Hugo -- 0.149.1</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 01:58:27 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 00:04:44 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai-Engineering</title>
+      <link>https://varun-ml.github.io/tags/ai-engineering/</link>
+      <pubDate>Thu, 08 Oct 2026 00:04:44 +0530</pubDate>
+      <guid>https://varun-ml.github.io/tags/ai-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Alerts</title>
+      <link>https://varun-ml.github.io/tags/alerts/</link>
+      <pubDate>Thu, 08 Oct 2026 00:04:44 +0530</pubDate>
+      <guid>https://varun-ml.github.io/tags/alerts/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Metrics</title>
+      <link>https://varun-ml.github.io/tags/metrics/</link>
+      <pubDate>Thu, 08 Oct 2026 00:04:44 +0530</pubDate>
+      <guid>https://varun-ml.github.io/tags/metrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Observability</title>
+      <link>https://varun-ml.github.io/tags/observability/</link>
+      <pubDate>Thu, 08 Oct 2026 00:04:44 +0530</pubDate>
+      <guid>https://varun-ml.github.io/tags/observability/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Agents</title>
       <link>https://varun-ml.github.io/tags/agents/</link>
