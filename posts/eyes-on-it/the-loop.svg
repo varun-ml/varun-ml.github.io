@@ -17,7 +17,7 @@
     <text x="60" y="144" font-size="14" fill="#8a8f98">Checked in a fixed order, so one event posts one alert</text>
     <line x1="350" y1="156" x2="350" y2="178" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
     <rect x="40" y="180" width="620" height="56" rx="8" fill="none" stroke="#222222" stroke-width="2"/>
-    <text x="60" y="204" font-weight="bold">3. A template writes the message</text>
+    <text x="60" y="204" font-weight="bold">3. Rules first, then a decision layer, then the message</text>
     <text x="60" y="224" font-size="14" fill="#8a8f98">Always the owner. Where the rules can tell: the likely cause and the fix</text>
     <line x1="350" y1="236" x2="350" y2="258" stroke="#222222" stroke-width="2" marker-end="url(#arrow)"/>
     <rect x="40" y="260" width="620" height="56" rx="8" fill="none" stroke="#222222" stroke-width="2"/>
