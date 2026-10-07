@@ -3855,6 +3855,7 @@ Highlighting ones that I recommend going over.</p>
 <em>Top: the old alert, a worker name and an error. Bottom: the new alert, with a reason per worker, a state and an owner.</em></p>
 <h2 id="where-it-lands">Where it lands</h2>
 <p>I put the urgent alerts in the main team channel because I wanted people to see them. In the alerts channel, nobody had replied to the old alerts in weeks.</p>
+<p>Seeing is not enough when many people share one system. Each kind of problem needs its own owner. A queue running low goes to the person who fills the queue. A worker that stops taking work goes to the engineer who runs the workers. An alert that tags everyone moves no one. An alert with one name on it gets an answer.</p>
 <p>One case shows the loop working. One night a new alert fired for a dependency that kept failing. It named who owned it, and the owner found the cause that night. When a failure slipped through without an alert, we added an alert for it.</p>
 <h2 id="what-it-added-up-to">What it added up to</h2>
 <p>In under two weeks, output went up about 7.5x. The factors multiply: about 3.5x more capacity, each unit of it about 1.5x faster from engineering, and about 1.4x from longer outputs and a second kind of work. I do not claim the alerts created any of it. They showed where output was being lost, so the capacity and the engineering went to the right places.</p>
