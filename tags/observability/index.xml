@@ -32,6 +32,10 @@
   <img src="three-hour-report.svg" alt="A sketch of the three-hour report: output against a target, workers busy, idle time by cause, what is close to a limit, open alerts">
 
 <em>A sketch of the three-hour report, with no real numbers: the one metric against its target first, then why it is where it is.</em></p>
+<p>
+  <img src="report-replica.png" alt="The three-hour report as it appears in the team channel, names and numbers removed">
+
+<em>The real report, recreated with names and numbers removed: the metric first, then why it moved.</em></p>
 <p>The first design on the table had close to fifty items. I cut it down to four checks and this one report.</p>
 <p>The report keeps eyes on the number. The alerts are for what happens in between: the queue running low, a limit being hit, a dependency that stops working, a worker that should be taking work and is not.</p>
 <p>My take is that an alert has to go out to people. A dashboard alone does not do that.</p>
@@ -56,14 +60,39 @@
 <p>The difference shows best side by side. The old alert gave a worker name and a raw error, and nothing about why. Every new alert names who acts and, where the rules can tell, why. One type goes further and gives a reason for each worker: at a capacity limit, not picked for this job, busy, or a free slot that did not take work. Then it tags the owner.</p>
 <p>Some alerts look ahead. One fires when the queue is close to empty while workers still have free slots, so the person who fills the queue knows before everything goes idle. When a capacity limit is hit, the alert gives the time it resets. The 3-hour report lists what is close to its limit.</p>
 <p>
-  <img src="plain-vs-designed-alert.svg" alt="Two alert mocks: a plain &ldquo;worker unreachable&rdquo; line above a designed alert with a reason per worker, a state and an owner">
+  <img src="alerts-before.png" alt="Before: three &ldquo;box unreachable&rdquo; alerts with no owner and no cause">
 
-<em>Top: the old alert, a worker name and an error. Bottom: the new alert, with a reason per worker, a state and an owner.</em></p>
+<em>Before: the old alerts. Recreated from real ones, names and numbers removed.</em></p>
+<p>
+  <img src="alerts-after.png" alt="After: an ACT NOW alert naming who acts, then RESOLVED after 45 minutes">
+
+<em>After: one owner, one cause, closed. Recreated from a real alert, names and numbers removed.</em></p>
 <h2 id="where-it-lands">Where it lands</h2>
 <p>I put the urgent alerts in the main team channel because I wanted people to see them. In the alerts channel, nobody had replied to the old alerts in weeks.</p>
 <p>Seeing is not enough when many people share one system. Each kind of problem needs its own owner. A queue running low goes to the person who fills the queue. A worker that stops taking work goes to the engineer who runs the workers. An alert that tags everyone moves no one. An alert with one name on it gets an answer.</p>
 <p>One case shows the loop working. One night a new alert fired for a dependency that kept failing. It named who owned it, and the owner found the cause that night. When a failure slipped through without an alert, we added an alert for it.</p>
 <h2 id="what-it-added-up-to">What it added up to</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Before</th>
+          <th>After</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Output a day</td>
+          <td>1x</td>
+          <td>about 7.5x</td>
+      </tr>
+      <tr>
+          <td>Alert posts a day</td>
+          <td>up to about 50, none answered</td>
+          <td>a handful, each one closed</td>
+      </tr>
+  </tbody>
+</table>
 <p>In under two weeks, output went up about 7.5x. The factors multiply: about 3.5x more capacity, each unit of it about 1.5x faster from engineering, and about 1.4x from longer outputs and a second kind of work. I do not claim the alerts created any of it. They showed where output was being lost, so the capacity and the engineering went to the right places.</p>
 <p>The alerts also have a weak spot. A capacity-limit alert can stay open until the limit resets. It tells people, but most of the time nobody can act on it.</p>
 <h2 id="the-rule">The rule</h2>
