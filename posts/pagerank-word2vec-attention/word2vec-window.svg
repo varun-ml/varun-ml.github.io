@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 560" width="760" height="560" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">word2vec reads one window at a time</title>
+<desc id="d">The sentence "we sat on the river bank and watched the water" as a row of word tokens. A bracket marks a window of five words around the centre word "bank". Below, a 2-D sketch of word vectors: arrows pull the vector for "bank" toward its neighbours the, river, and, watched; a few random words outside the window (piano, tax, orbit) are pushed away (negative sampling). Each window gives one small SGD step.</desc>
+<defs><marker id="ha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker><marker id="hm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/></marker></defs>
+<rect width="760" height="560" fill="#fafaf7"/>
+<rect x="20" y="62" width="66" height="36" rx="5" fill="#fafaf7" stroke="#c9ccd1" stroke-width="1.5"/>
+<text x="53" y="86" text-anchor="middle" font-size="17" fill="#8a8f98" font-weight="normal">we</text>
+<rect x="92" y="62" width="66" height="36" rx="5" fill="#fafaf7" stroke="#c9ccd1" stroke-width="1.5"/>
+<text x="125" y="86" text-anchor="middle" font-size="17" fill="#8a8f98" font-weight="normal">sat</text>
+<rect x="164" y="62" width="66" height="36" rx="5" fill="#fafaf7" stroke="#c9ccd1" stroke-width="1.5"/>
+<text x="197" y="86" text-anchor="middle" font-size="17" fill="#8a8f98" font-weight="normal">on</text>
+<rect x="236" y="62" width="66" height="36" rx="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="269" y="86" text-anchor="middle" font-size="17" fill="#222" font-weight="normal">the</text>
+<rect x="308" y="62" width="66" height="36" rx="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="341" y="86" text-anchor="middle" font-size="17" fill="#222" font-weight="normal">river</text>
+<rect x="380" y="62" width="66" height="36" rx="5" fill="#d9480f" stroke="#d9480f" stroke-width="1.5"/>
+<text x="413" y="86" text-anchor="middle" font-size="17" fill="#fff" font-weight="bold">bank</text>
+<rect x="452" y="62" width="66" height="36" rx="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="485" y="86" text-anchor="middle" font-size="17" fill="#222" font-weight="normal">and</text>
+<rect x="524" y="62" width="66" height="36" rx="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="557" y="86" text-anchor="middle" font-size="15" fill="#222" font-weight="normal">watched</text>
+<rect x="596" y="62" width="66" height="36" rx="5" fill="#fafaf7" stroke="#c9ccd1" stroke-width="1.5"/>
+<text x="629" y="86" text-anchor="middle" font-size="17" fill="#8a8f98" font-weight="normal">the</text>
+<rect x="668" y="62" width="66" height="36" rx="5" fill="#fafaf7" stroke="#c9ccd1" stroke-width="1.5"/>
+<text x="701" y="86" text-anchor="middle" font-size="17" fill="#8a8f98" font-weight="normal">water</text>
+<text x="413" y="42" text-anchor="middle" font-size="16" fill="#d9480f" font-weight="bold">centre word</text>
+<line x1="413" y1="47" x2="413" y2="59" stroke="#d9480f" stroke-width="1.5"/>
+<path d="M236,108 L236,118 L590,118 L590,108" fill="none" stroke="#222" stroke-width="1.8"/>
+<text x="413" y="142" text-anchor="middle" font-size="16" fill="#222">window</text>
+<rect x="20" y="162" width="720" height="384" rx="8" fill="#fff" stroke="#e3e4e6"/>
+<text x="725" y="190" text-anchor="end" font-size="14" fill="#8a8f98">word vectors, 2-D sketch</text>
+<line x1="40" y1="190" x2="80" y2="190" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/><text x="92" y="195" font-size="16" fill="#222">neighbours: pull closer</text>
+<line x1="40" y1="218" x2="80" y2="218" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#hm)"/><text x="92" y="223" font-size="16" fill="#222">random words: push away (negative sampling)</text>
+<circle cx="46" cy="246" r="6" fill="#d9480f"/><line x1="54" y1="246" x2="68" y2="246" stroke="#d9480f" stroke-width="1.5" marker-end="url(#ha)"/><circle cx="78" cy="246" r="6" fill="none" stroke="#d9480f" stroke-width="1.5" stroke-dasharray="3 2"/><text x="92" y="251" font-size="16" fill="#222">one SGD step per window</text>
+<line x1="411" y1="406" x2="633" y2="323" stroke="#8a8f98" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="650" y1="316" x2="685" y2="303" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#hm)"/>
+<circle cx="640" cy="320" r="6" fill="#8a8f98"/><text x="640" y="306" text-anchor="middle" font-size="16" fill="#8a8f98">piano</text>
+<line x1="412" y1="411" x2="672" y2="439" stroke="#8a8f98" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="691" y1="441" x2="728" y2="445" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#hm)"/>
+<circle cx="680" cy="440" r="6" fill="#8a8f98"/><text x="680" y="466" text-anchor="middle" font-size="16" fill="#8a8f98">tax</text>
+<line x1="470" y1="443" x2="583" y2="497" stroke="#8a8f98" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="600" y1="505" x2="633" y2="521" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#hm)"/>
+<circle cx="590" cy="500" r="6" fill="#8a8f98"/><text x="572" y="527" text-anchor="middle" font-size="16" fill="#8a8f98">orbit</text>
+<line x1="391" y1="404" x2="290" y2="337" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<circle cx="280" cy="330" r="6" fill="#222"/><text x="280" y="316" text-anchor="middle" font-size="16" fill="#222">river</text>
+<line x1="407" y1="401" x2="463" y2="325" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<circle cx="470" cy="315" r="6" fill="#222"/><text x="470" y="301" text-anchor="middle" font-size="16" fill="#222">watched</text>
+<line x1="389" y1="412" x2="262" y2="438" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<circle cx="250" cy="440" r="6" fill="#222"/><text x="238" y="445" text-anchor="end" font-size="16" fill="#222">the</text>
+<line x1="393" y1="419" x2="337" y2="491" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<circle cx="330" cy="500" r="6" fill="#222"/><text x="330" y="524" text-anchor="middle" font-size="16" fill="#222">and</text>
+<circle cx="362" cy="390" r="7" fill="none" stroke="#d9480f" stroke-width="1.5" stroke-dasharray="3 2"/>
+<circle cx="400" cy="410" r="8" fill="#d9480f"/><text x="412" y="440" font-size="17" font-weight="bold" fill="#d9480f">bank</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="t d">
+  <title id="t">From PageRank to word2vec to Attention</title>
+  <desc id="d">Black and white banner. A speech bubble on the left says "you are defined by the company you keep". Three arrows go from it to three boxes in a row: PageRank, a small web of nodes and arrows; word2vec, a word with a small vector arrow; Attention, a word joined to its neighbours by lines of different thickness.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+    <marker id="ahs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="#fafaf7"/>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#222">
+    <text x="60" y="100" font-size="54" font-weight="700">From PageRank to word2vec to Attention</text>
+  </g>
+
+  <!-- speech bubble -->
+  <g fill="none" stroke="#222" stroke-width="4" stroke-linejoin="round">
+    <path d="M80,250 h260 a24,24 0 0 1 24,24 v130 a24,24 0 0 1 -24,24 h-190 l-40,44 l6,-44 h-36 a24,24 0 0 1 -24,-24 v-130 a24,24 0 0 1 24,-24 z" fill="#fafaf7"/>
+  </g>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" fill="#222" text-anchor="middle">
+    <text x="212" y="310">you are defined</text>
+    <text x="212" y="352">by the company</text>
+    <text x="212" y="394">you keep</text>
+  </g>
+
+  <!-- arrows from bubble to boxes -->
+  <g fill="none" stroke="#222" stroke-width="4" stroke-linecap="round">
+    <path d="M374,345 L462,345" marker-end="url(#ah)"/>
+    <path d="M374,290 Q560,150 812,224" marker-end="url(#ah)"/>
+    <path d="M370,262 Q700,90 1058,224" marker-end="url(#ah)"/>
+  </g>
+
+  <!-- boxes -->
+  <g fill="none" stroke="#222" stroke-width="4">
+    <rect x="470" y="235" width="210" height="210" rx="14"/>
+    <rect x="715" y="235" width="210" height="210" rx="14"/>
+    <rect x="960" y="235" width="210" height="210" rx="14"/>
+  </g>
+
+  <!-- PageRank: node-and-arrow web -->
+  <g fill="none" stroke="#222" stroke-width="3" stroke-linecap="round">
+    <path d="M534,288 L612,288" marker-end="url(#ahs)"/>
+    <path d="M626,300 L589,349" marker-end="url(#ahs)"/>
+    <path d="M520,300 L567,351" marker-end="url(#ahs)"/>
+    <path d="M524,397 L567,370" marker-end="url(#ahs)"/>
+    <path d="M630,394 L593,370" marker-end="url(#ahs)"/>
+    <path d="M512,390 L512,304" marker-end="url(#ahs)"/>
+  </g>
+  <g fill="#fafaf7" stroke="#222" stroke-width="3.5">
+    <circle cx="520" cy="288" r="12"/>
+    <circle cx="630" cy="288" r="12"/>
+    <circle cx="578" cy="362" r="15"/>
+    <circle cx="514" cy="404" r="11"/>
+    <circle cx="640" cy="402" r="11"/>
+  </g>
+
+  <!-- word2vec: a word with a small vector arrow -->
+  <g fill="none" stroke="#222" stroke-width="4" stroke-linecap="round">
+    <rect x="745" y="368" width="96" height="44" rx="22"/>
+    <path d="M770,390 h20 M800,390 h16" stroke-width="5"/>
+    <path d="M800,362 L878,282" marker-end="url(#ah)"/>
+  </g>
+  <circle cx="800" cy="362" r="5" fill="#222"/>
+
+  <!-- Attention: word with weighted lines to neighbours -->
+  <g stroke="#222" stroke-linecap="round" fill="none">
+    <path d="M1065,340 L1005,275" stroke-width="9"/>
+    <path d="M1065,340 L1128,275" stroke-width="2"/>
+    <path d="M1065,340 L1005,408" stroke-width="5"/>
+    <path d="M1065,340 L1128,408" stroke-width="3"/>
+  </g>
+  <g fill="#fafaf7" stroke="#222" stroke-width="3.5">
+    <rect x="1033" y="324" width="64" height="32" rx="16" stroke-width="4"/>
+    <rect x="980" y="260" width="48" height="26" rx="13"/>
+    <rect x="1104" y="260" width="48" height="26" rx="13"/>
+    <rect x="980" y="396" width="48" height="26" rx="13"/>
+    <rect x="1104" y="396" width="48" height="26" rx="13"/>
+  </g>
+  <path d="M1050,340 h12 M1070,340 h10" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- box labels -->
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#222" text-anchor="middle">
+    <text x="575" y="497">PageRank</text>
+    <text x="820" y="497">word2vec</text>
+    <text x="1065" y="497">Attention</text>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 430" width="700" height="430" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The four-page web after PageRank</title>
+<desc id="d">A directed graph of four pages. Arrows: page 0 to page 1, page 0 to page 2, page 1 to page 2, page 2 to page 0, page 3 to page 2. Circle area is proportional to the final PageRank score: page 2 is 0.394, page 0 is 0.373, page 1 is 0.196, page 3 is 0.038. Damping d = 0.85, N = 4.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
+<rect width="700" height="430" fill="#fafaf7"/>
+<path d="M240.4,127.9 Q330.0,95.0 412.4,125.2" fill="none" stroke="#222" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M418.0,172.7 Q330.0,205.0 246.0,174.2" fill="none" stroke="#222" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M224.0,196.9 L293.3,270.8" fill="none" stroke="#222" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M362.6,275.2 L430.8,202.5" fill="none" stroke="#222" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M586.8,305.8 L520.7,209.4" fill="none" stroke="#222" stroke-width="2.5" marker-end="url(#arrow)"/>
+<circle cx="180" cy="150" r="60.3" fill="#e4e2da" stroke="#222" stroke-width="2"/>
+<circle cx="330" cy="310" r="43.7" fill="#e4e2da" stroke="#222" stroke-width="2"/>
+<circle cx="480" cy="150" r="62.0" fill="#d9480f" stroke="#222" stroke-width="2"/>
+<circle cx="600" cy="325" r="19.3" fill="#e4e2da" stroke="#222" stroke-width="2"/>
+<text x="180" y="71.7" text-anchor="middle" font-size="21" fill="#222">page 0 - 0.373</text>
+<text x="480" y="70.0" text-anchor="middle" font-size="21" fill="#222">page 2 - 0.394</text>
+<text x="330" y="385.7" text-anchor="middle" font-size="21" fill="#222">page 1 - 0.196</text>
+<text x="600" y="376.3" text-anchor="middle" font-size="21" fill="#222">page 3 - 0.038</text>
+<text x="680" y="415" text-anchor="end" font-size="17" fill="#8a8f98">d = 0.85, N = 4</text>
+</svg>
