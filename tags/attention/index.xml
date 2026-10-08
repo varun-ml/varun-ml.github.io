@@ -35,9 +35,9 @@
 <p>I was explaining PageRank to Tanmay: in-links, out-links and the power iteration. Somewhere in that conversation he made a point. In college we learn basic things, like the minimax algorithm. He felt they are not really relevant anymore.</p>
 <p>I disagreed. You need to understand the foundations to build your intuition. When you have that intuition, you can apply it.</p>
 <p>So what is the simple harmonic motion of search and recommendations? I think it is one old saying, and it shows up in three famous algorithms. Each one keeps the last one and changes as little as it can.</p>
-<p>The way I tell it is borrowed from a paper I really like, Burges&rsquo;s <em>From RankNet to LambdaRank to LambdaMART</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. He never starts over. Every section keeps the previous model, changes one block, and shows you only what changed. I will do the same.</p>
+<p>The way I tell it is borrowed from a paper I really like, Burges&rsquo;s <em>From RankNet to LambdaRank to LambdaMART</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. He never starts over. Every section keeps the previous model, changes one block, and shows you only what changed. I will do the same. Each step comes from one what-if on the step before, and the last what-if is still open.</p>
 <h2 id="the-saying">The saying</h2>
-<p>People say: you are defined by the company you keep. It is a philosophy, not an algorithm. It says what something is, in terms of its neighbours. The interesting part is what happens when you turn it into math. Two famous algorithms did exactly that, each with its own version of the saying. A third one fixed what they missed.</p>
+<p>People say: you are defined by the company you keep. It is a philosophy, not an algorithm. It says what something is, in terms of its neighbours. The interesting part is what happens when you turn it into math. So the first what-if: what if we write the saying as a matrix? Two famous algorithms did exactly that, each with its own version of the saying. A third one fixed what they missed.</p>
 <h2 id="pagerank-the-saying-for-web-pages">PageRank: the saying, for web pages</h2>
 <p>PageRank&rsquo;s<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> version came from how academics judge papers: a paper matters if important papers cite it. For the web:</p>
 <blockquote>
@@ -94,8 +94,9 @@
 <p><em>The four-page web after power iteration. Page 0 has only one in-link, but it comes from page 2, so it comes second.</em></p>
 <p>Page 2 has three pages linking to it, so it wins. Page 3 has none, so it only gets the surfer&rsquo;s random jumps. The interesting one is page 0. Only one page links to it, but that page is page 2, the most important one. So page 0 comes second. That is the circular definition at work.</p>
 <p>Now look at the choices we made on the way. What counts as a link. How a page splits its score. What the surfer does when bored. How we solve it. Each of these is a knob. Keep that in mind.</p>
+<p>A page gets one number. What if every thing got a vector instead, learned from its company?</p>
 <h2 id="word2vec-the-same-saying-for-words">word2vec: the same saying, for words</h2>
-<p>word2vec&rsquo;s version of the saying is older than the computers that could use it:</p>
+<p>Ask that of words and you get word2vec, though it came from linguists, not from PageRank. Its version of the saying is older than the computers that could use it:</p>
 <blockquote>
 <p>You shall know a word by the company it keeps. (J. R. Firth, 1957<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>)</p></blockquote>
 <p>Harris wrote about the distributional structure of language<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> a few years before. The idea later got the name distributional hypothesis: words that appear in the same places mean similar things.</p>
@@ -141,10 +142,11 @@
   </tbody>
 </table>
 <p>Later the two ideas met. DeepWalk<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> and node2vec<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> take a graph and walk randomly on it, like the PageRank surfer. They write down the walks as if they were sentences, and run word2vec on them. The result is a vector for every node.</p>
+<p>Now the next what-if. In word2vec, every word in the window counts the same.</p>
 <h2 id="attention-what-the-matrix-throws-away">Attention: what the matrix throws away</h2>
 <p>In both algorithms, the company is flattened into one matrix. In word2vec, for a pair of words, there is one number: how often they appear together. Every word in the window is treated the same way, apart from a fixed discount for distance. And every word gets one vector, whatever sentence it is in. &ldquo;Bank&rdquo; in &ldquo;river bank&rdquo; and &ldquo;bank&rdquo; in &ldquo;bank loan&rdquo; get the same vector, because the matrix added both kinds of company into one row.</p>
 <p>So ask the question the saying asks: which company? The neighbours do not all matter equally, and which ones matter depends on the sentence.</p>
-<p>Let&rsquo;s change that. Instead of treating every neighbour the same, take a weighted average of them. Let the weights be a learned function of the word and its neighbours. Now &ldquo;bank&rdquo; looks at &ldquo;river&rdquo; and gets one meaning, and looks at &ldquo;loan&rdquo; and gets another.</p>
+<p>So weight them. Instead of treating every neighbour the same, take a weighted average of them. Let the weights be a learned function of the word and its neighbours. Now &ldquo;bank&rdquo; looks at &ldquo;river&rdquo; and gets one meaning, and looks at &ldquo;loan&rdquo; and gets another.</p>
 <p>
   <img src="bank-attention.svg" alt="The word bank in two sentences, with lines of different thickness to the other words: heavy to river in one, heavy to loan in the other">
 </p>
@@ -152,7 +154,22 @@
 <p>That is the core of attention. Bahdanau and co-authors first used it to let a translation model look back at the right source words<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>. The Transformer built the whole model out of attention over the sentence itself: self-attention<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. For each word, it scores every word in the sentence, itself included. A softmax turns the scores into weights. The word&rsquo;s new vector is the weighted sum of what its neighbours carry.</p>
 <p>The meaning of a word is still defined by its company. The company is now chosen per sentence, by a function that is learned. To be honest, this step changes more than one block. The training objective and the depth of the model change too. But the block that changes the meaning of &ldquo;company&rdquo; is the weighting.</p>
 <p>When I first thought this through, I got as far as: maybe word2vec, instead of a global average, could have a weighted average, or a function embedded in there. That is attention, and I missed it at the time. But that is the point: at each step you get down to a deeper nuance, and the building blocks lead you to new algorithms.</p>
+<p>Now ask the same kind of question of attention.</p>
+<h2 id="the-fourth-column">The fourth column</h2>
+<p>Attention is not the end of this chain. It is the latest block.</p>
+<p>Look at one object, the matrix, across the three steps.</p>
+<p>
+  <img src="the-matrix.svg" alt="Four boxes: PageRank, M is given; word2vec, M is learned; Attention, M is computed from the input; and a dashed fourth box with a question mark">
+</p>
+<p><em>One matrix, three levels of abstraction, and a fourth to fill.</em></p>
+<p>In PageRank the matrix is given: $r = M r$, with $M$ fixed by the links. In word2vec it is learned: $M \approx W C^{\top}$, one vector per word on each side. In attention it is computed from the input, per sample: $M_{ij} = \mathrm{softmax}_j(q_i \cdot k_j)$, and the output is $M V$. Given, learned, computed. So the fourth column is whatever you do to $M$ next. Two what-ifs are live right now. Both are math, not applications.</p>
+<p><strong>What if $M$ had structure?</strong> Attention&rsquo;s $M$ is dense, so applying it costs $n^2$ for a sequence of $n$ tokens. Keep $M$ dependent on the input, but force it to be a recurrence:</p>
+<p>$$h_t = A_t h_{t-1} + B_t x_t, \qquad y_t = C_t h_t$$</p>
+<p>with $A_t$, $B_t$ and $C_t$ computed from $x_t$. That is a selective state-space model, Mamba<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>. A year later the same authors showed that linear attention and state-space models are one family of structured matrices<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. Linear time, same saying.</p>
+<p><strong>What if the average became a fit?</strong> Written out, attention is kernel regression, a method from 1964<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>: my value is the average of my company&rsquo;s values, weighted by similarity. So instead of averaging the company, fit a model to it. One gradient step of linear regression on the company gives linear attention, also called fast weights<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. A small network trained by gradient descent on the sequence, at inference time, gives test-time training<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> and Titans<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>. The hidden state becomes a model, and the company trains it. This is also the math under in-context learning: a linear attention layer can implement one gradient step on the examples in the prompt<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>.</p>
+<p>Neither road has replaced attention at scale yet. Whichever wins, it will be one more thing done to the matrix.</p>
 <h2 id="why-the-building-blocks-matter">Why the building blocks matter</h2>
+<p>It feels like LEGO. You build a block, then you complicate it.</p>
 <p>Let&rsquo;s step back and look at what we did. We took a philosophy, turned it into math, and solved it in the simplest setup. Then we changed the blocks, step by step:</p>
 <ol>
 <li>What counts as company: links, then words in a window, then words chosen by attention.</li>
@@ -162,28 +179,15 @@
 <p>
   <img src="block-grid.svg" alt="A grid with columns PageRank, word2vec and Attention and rows company, output and solver, with the changed cells highlighted">
 </p>
-<p><em>Three algorithms, one saying. The fourth column is open.</em></p>
-<p>At each step there was a choice. You can only see the choices if you understand the basic setup and why it works. If you do not, you take what somebody built and apply it, or extend it a little.</p>
-<p>This is the kind of intuition Hinton is known for. Take dropout. The paper by Srivastava, Hinton and co-authors<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> starts from an idea in evolution. Sexual reproduction mixes genes, so a gene cannot rely on one exact set of partners. It has to be useful on its own. Randomly dropping units while training does the same to a network. A philosophy, then a mechanism.</p>
+<p><em>Three algorithms, one saying, and a fourth column to fill.</em></p>
+<p>At each step there was a choice. You can only see the choices if you understand the basic setup and why it works. If you do not, you take what somebody built and apply it, or extend it a little. So pick a cell in the grid, change the function in it, and see what it becomes.</p>
+<p>This is the kind of intuition Hinton is known for. Take dropout. The paper by Srivastava, Hinton and co-authors<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> starts from an idea in evolution. Sexual reproduction mixes genes, so a gene cannot rely on one exact set of partners. It has to be useful on its own. Randomly dropping units while training does the same to a network. A philosophy, then a mechanism.</p>
 <h2 id="where-i-have-used-this">Where I have used this</h2>
-<p>Two times I have used this way of thinking in my own work.</p>
-<p><strong>Walmart, 2014: sharing clicks between neighbouring queries.</strong> The usual way to use click engagement is one query at a time: a query, the items it returns, and the clicks on those items. I built a graph over queries instead. Each query was connected to its neighbours by a weighted, probabilistic similarity. I think it was a function of things like text overlap and queries that came up in the same sessions. Click engagement was then shared with the neighbours, along those weights. If you search for &ldquo;Samsung TVs&rdquo;, some of what we know about which TVs people click for &ldquo;TVs&rdquo; carries over.</p>
-<p>A cousin in the literature is random walks on the click graph<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>, which walk between queries and the documents clicked for them. Mine linked queries to queries directly. It is the same shape as PageRank: a node&rsquo;s score depends on its neighbours, spread along weighted edges.</p>
-<p><strong>Needl, 2024: picking context for an LLM.</strong> The usual way to fit a long document into an LLM is chunking, and chunking loses important sentences. I used a TextRank-style approach<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> instead: sentences as nodes, edges from how similar they are, and the most central sentences kept as context. That is PageRank with sentences as the pages.</p>
+<p>Two of my own what-ifs.</p>
+<p><strong>Walmart, 2014: what if queries shared clicks with their neighbours?</strong> The usual way to use click engagement is one query at a time: a query, the items it returns, and the clicks on those items. I built a graph over queries instead. Each query was connected to its neighbours by a weighted, probabilistic similarity. I think it was a function of things like text overlap and queries that came up in the same sessions. Click engagement was then shared with the neighbours, along those weights. If you search for &ldquo;Samsung TVs&rdquo;, some of what we know about which TVs people click for &ldquo;TVs&rdquo; carries over.</p>
+<p>A cousin in the literature is random walks on the click graph<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>, which walk between queries and the documents clicked for them. Mine linked queries to queries directly. It is the same shape as PageRank: a node&rsquo;s score depends on its neighbours, spread along weighted edges.</p>
+<p><strong>Needl, 2024: what if sentences were the pages?</strong> The usual way to fit a long document into an LLM is chunking, and chunking loses important sentences. I used a TextRank-style approach<sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup> instead: sentences as nodes, edges from how similar they are, and the most central sentences kept as context. That is PageRank with sentences as the pages.</p>
 <p>Both came the same way: understand the basic setup really well, then extend it.</p>
-<h2 id="beyond-attention-the-fourth-column">Beyond attention: the fourth column</h2>
-<p>The feeling I want to leave you with is the one you get from LEGO blocks. You build something, and then you can complicate it. Attention is not the end of this chain. It is the latest block.</p>
-<p>Let&rsquo;s look at what happened to one object, the matrix, across the three steps.</p>
-<p>
-  <img src="the-matrix.svg" alt="Four boxes: PageRank, M is given; word2vec, M is learned; Attention, M is computed from the input; and a dashed fourth box with a question mark">
-</p>
-<p><em>One matrix, three levels of abstraction, and a fourth to fill.</em></p>
-<p>In PageRank the matrix is given: $r = M r$, with $M$ fixed by the links. In word2vec it is learned: $M \approx W C^{\top}$, one vector per word on each side. In attention it is computed from the input, per sample: $M_{ij} = \mathrm{softmax}_j(q_i \cdot k_j)$, and the output is $M V$. Given, learned, computed. So the fourth column is whatever you do to $M$ next. Two what-ifs are live right now. Both are math, not applications.</p>
-<p><strong>What if $M$ had structure?</strong> Attention&rsquo;s $M$ is dense, so applying it costs $n^2$ for a sequence of $n$ tokens. Keep $M$ dependent on the input, but force it to be a recurrence:</p>
-<p>$$h_t = A_t h_{t-1} + B_t x_t, \qquad y_t = C_t h_t$$</p>
-<p>with $A_t$, $B_t$ and $C_t$ computed from $x_t$. That is a selective state-space model, Mamba<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. A year later the same authors showed that linear attention and state-space models are one family of structured matrices<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>. Linear time, same saying.</p>
-<p><strong>What if the average became a fit?</strong> Written out, attention is kernel regression, a method from 1964<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>: my value is the average of my company&rsquo;s values, weighted by similarity. So instead of averaging the company, fit a model to it. One gradient step of linear regression on the company gives linear attention, also called fast weights<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>. A small network trained by gradient descent on the sequence, at inference time, gives test-time training<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> and Titans<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>. The hidden state becomes a model, and the company trains it. This is also the math under in-context learning: a linear attention layer can implement one gradient step on the examples in the prompt<sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup>.</p>
-<p>Neither road has replaced attention at scale yet. Whichever wins, it will be one more thing done to the matrix. Pick a cell in the grid, change the function in it, and see what it becomes.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -221,34 +225,34 @@
 <p>A. Vaswani et al., <em>Attention Is All You Need</em>, NeurIPS 2017.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:12">
-<p>N. Srivastava, G. Hinton et al., <em>Dropout: A Simple Way to Prevent Neural Networks from Overfitting</em>, JMLR 2014.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>A. Gu and T. Dao, <em>Mamba: Linear-Time Sequence Modeling with Selective State Spaces</em>, 2023.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:13">
-<p>N. Craswell and M. Szummer, <em>Random Walks on the Click Graph</em>, SIGIR 2007.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>T. Dao and A. Gu, <em>Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality</em>, ICML 2024.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:14">
-<p>R. Mihalcea and P. Tarau, <em>TextRank: Bringing Order into Texts</em>, EMNLP 2004.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>E. A. Nadaraya, <em>On Estimating Regression</em>, 1964, and G. S. Watson, <em>Smooth Regression Analysis</em>, 1964. For attention read as kernel regression: Y.-H. H. Tsai et al., <em>Transformer Dissection: A Unified Understanding of Transformer&rsquo;s Attention via the Lens of Kernel</em>, EMNLP 2019.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:15">
-<p>A. Gu and T. Dao, <em>Mamba: Linear-Time Sequence Modeling with Selective State Spaces</em>, 2023.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>I. Schlag, K. Irie and J. Schmidhuber, <em>Linear Transformers Are Secretly Fast Weight Programmers</em>, ICML 2021.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:16">
-<p>T. Dao and A. Gu, <em>Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality</em>, ICML 2024.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Y. Sun et al., <em>Learning to (Learn at Test Time): RNNs with Expressive Hidden States</em>, 2024.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:17">
-<p>E. A. Nadaraya, <em>On Estimating Regression</em>, 1964, and G. S. Watson, <em>Smooth Regression Analysis</em>, 1964. For attention read as kernel regression: Y.-H. H. Tsai et al., <em>Transformer Dissection: A Unified Understanding of Transformer&rsquo;s Attention via the Lens of Kernel</em>, EMNLP 2019.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>A. Behrouz, P. Zhong and V. Mirrokni, <em>Titans: Learning to Memorize at Test Time</em>, 2025.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:18">
-<p>I. Schlag, K. Irie and J. Schmidhuber, <em>Linear Transformers Are Secretly Fast Weight Programmers</em>, ICML 2021.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>J. von Oswald et al., <em>Transformers Learn In-Context by Gradient Descent</em>, ICML 2023.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:19">
-<p>Y. Sun et al., <em>Learning to (Learn at Test Time): RNNs with Expressive Hidden States</em>, 2024.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>N. Srivastava, G. Hinton et al., <em>Dropout: A Simple Way to Prevent Neural Networks from Overfitting</em>, JMLR 2014.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:20">
-<p>A. Behrouz, P. Zhong and V. Mirrokni, <em>Titans: Learning to Memorize at Test Time</em>, 2025.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>N. Craswell and M. Szummer, <em>Random Walks on the Click Graph</em>, SIGIR 2007.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:21">
-<p>J. von Oswald et al., <em>Transformers Learn In-Context by Gradient Descent</em>, ICML 2023.&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>R. Mihalcea and P. Tarau, <em>TextRank: Bringing Order into Texts</em>, EMNLP 2004.&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
