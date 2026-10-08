@@ -162,7 +162,7 @@
 <p>
   <img src="block-grid.svg" alt="A grid with columns PageRank, word2vec and Attention and rows company, output and solver, with the changed cells highlighted">
 </p>
-<p><em>Three algorithms, one saying.</em></p>
+<p><em>Three algorithms, one saying. The fourth column is open.</em></p>
 <p>At each step there was a choice. You can only see the choices if you understand the basic setup and why it works. If you do not, you take what somebody built and apply it, or extend it a little.</p>
 <p>This is the kind of intuition Hinton is known for. Take dropout. The paper by Srivastava, Hinton and co-authors<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> starts from an idea in evolution. Sexual reproduction mixes genes, so a gene cannot rely on one exact set of partners. It has to be useful on its own. Randomly dropping units while training does the same to a network. A philosophy, then a mechanism.</p>
 <h2 id="where-i-have-used-this">Where I have used this</h2>
@@ -171,6 +171,19 @@
 <p>A cousin in the literature is random walks on the click graph<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>, which walk between queries and the documents clicked for them. Mine linked queries to queries directly. It is the same shape as PageRank: a node&rsquo;s score depends on its neighbours, spread along weighted edges.</p>
 <p><strong>Needl, 2024: picking context for an LLM.</strong> The usual way to fit a long document into an LLM is chunking, and chunking loses important sentences. I used a TextRank-style approach<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> instead: sentences as nodes, edges from how similar they are, and the most central sentences kept as context. That is PageRank with sentences as the pages.</p>
 <p>Both came the same way: understand the basic setup really well, then extend it.</p>
+<h2 id="beyond-attention-the-fourth-column">Beyond attention: the fourth column</h2>
+<p>The feeling I want to leave you with is the one you get from LEGO blocks. You build something, and then you can complicate it. Attention is not the end of this chain. It is the latest block.</p>
+<p>Let&rsquo;s look at what happened to one object, the matrix, across the three steps.</p>
+<p>
+  <img src="the-matrix.svg" alt="Four boxes: PageRank, M is given; word2vec, M is learned; Attention, M is computed from the input; and a dashed fourth box with a question mark">
+</p>
+<p><em>One matrix, three levels of abstraction, and a fourth to fill.</em></p>
+<p>In PageRank the matrix is given: $r = M r$, with $M$ fixed by the links. In word2vec it is learned: $M \approx W C^{\top}$, one vector per word on each side. In attention it is computed from the input, per sample: $M_{ij} = \mathrm{softmax}_j(q_i \cdot k_j)$, and the output is $M V$. Given, learned, computed. So the fourth column is whatever you do to $M$ next. Two what-ifs are live right now. Both are math, not applications.</p>
+<p><strong>What if $M$ had structure?</strong> Attention&rsquo;s $M$ is dense, so applying it costs $n^2$ for a sequence of $n$ tokens. Keep $M$ dependent on the input, but force it to be a recurrence:</p>
+<p>$$h_t = A_t h_{t-1} + B_t x_t, \qquad y_t = C_t h_t$$</p>
+<p>with $A_t$, $B_t$ and $C_t$ computed from $x_t$. That is a selective state-space model, Mamba<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. A year later the same authors showed that linear attention and state-space models are one family of structured matrices<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>. Linear time, same saying.</p>
+<p><strong>What if the average became a fit?</strong> Written out, attention is kernel regression, a method from 1964<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>: my value is the average of my company&rsquo;s values, weighted by similarity. So instead of averaging the company, fit a model to it. One gradient step of linear regression on the company gives linear attention, also called fast weights<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>. A small network trained by gradient descent on the sequence, at inference time, gives test-time training<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> and Titans<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>. The hidden state becomes a model, and the company trains it. This is also the math under in-context learning: a linear attention layer can implement one gradient step on the examples in the prompt<sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup>.</p>
+<p>Neither road has replaced attention at scale yet. Whichever wins, it will be one more thing done to the matrix. Pick a cell in the grid, change the function in it, and see what it becomes.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -215,6 +228,27 @@
 </li>
 <li id="fn:14">
 <p>R. Mihalcea and P. Tarau, <em>TextRank: Bringing Order into Texts</em>, EMNLP 2004.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>A. Gu and T. Dao, <em>Mamba: Linear-Time Sequence Modeling with Selective State Spaces</em>, 2023.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p>T. Dao and A. Gu, <em>Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality</em>, ICML 2024.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>E. A. Nadaraya, <em>On Estimating Regression</em>, 1964, and G. S. Watson, <em>Smooth Regression Analysis</em>, 1964. For attention read as kernel regression: Y.-H. H. Tsai et al., <em>Transformer Dissection: A Unified Understanding of Transformer&rsquo;s Attention via the Lens of Kernel</em>, EMNLP 2019.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p>I. Schlag, K. Irie and J. Schmidhuber, <em>Linear Transformers Are Secretly Fast Weight Programmers</em>, ICML 2021.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p>Y. Sun et al., <em>Learning to (Learn at Test Time): RNNs with Expressive Hidden States</em>, 2024.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:20">
+<p>A. Behrouz, P. Zhong and V. Mirrokni, <em>Titans: Learning to Memorize at Test Time</em>, 2025.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:21">
+<p>J. von Oswald et al., <em>Transformers Learn In-Context by Gradient Descent</em>, ICML 2023.&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
