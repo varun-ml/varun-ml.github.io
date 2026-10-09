@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 428" width="700" height="428" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The super-app meta-workflow</title>
+<desc id="d">Six steps in a loop: trigger (pull or push), enrichment (my profile, my history), exploration (all the possibilities), optimization (where you are, what you like), execute (digitally and physically), learn (how was the ride?), and learn loops back to trigger. Example: it's time to go home, and it books the right cab. Use an agent when you don't know the workflow.</desc>
+<defs>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/></marker>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker>
+</defs>
+<rect width="700" height="428" fill="#fafaf7"/>
+<rect x="24" y="24" width="190" height="114" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="2.5"/>
+<text x="119.0" y="60" text-anchor="middle" font-size="24" font-weight="700" fill="#222">trigger</text>
+<text x="119.0" y="92" text-anchor="middle" font-size="22" fill="#5f646d">pull or push</text>
+<rect x="255" y="24" width="190" height="114" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="2.5"/>
+<text x="350.0" y="60" text-anchor="middle" font-size="24" font-weight="700" fill="#222">enrichment</text>
+<text x="350.0" y="92" text-anchor="middle" font-size="22" fill="#5f646d">my profile,</text>
+<text x="350.0" y="120" text-anchor="middle" font-size="22" fill="#5f646d">my history</text>
+<rect x="486" y="24" width="190" height="114" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="2.5"/>
+<text x="581.0" y="60" text-anchor="middle" font-size="24" font-weight="700" fill="#222">exploration</text>
+<text x="581.0" y="92" text-anchor="middle" font-size="22" fill="#5f646d">all the</text>
+<text x="581.0" y="120" text-anchor="middle" font-size="22" fill="#5f646d">possibilities</text>
+<rect x="486" y="190" width="190" height="114" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="2.5"/>
+<text x="581.0" y="226" text-anchor="middle" font-size="24" font-weight="700" fill="#222">optimization</text>
+<text x="581.0" y="258" text-anchor="middle" font-size="22" fill="#5f646d">where you are,</text>
+<text x="581.0" y="286" text-anchor="middle" font-size="22" fill="#5f646d">what you like</text>
+<rect x="255" y="190" width="190" height="114" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="2.5"/>
+<text x="350.0" y="226" text-anchor="middle" font-size="24" font-weight="700" fill="#222">execute</text>
+<text x="350.0" y="258" text-anchor="middle" font-size="22" fill="#5f646d">digitally and</text>
+<text x="350.0" y="286" text-anchor="middle" font-size="22" fill="#5f646d">physically</text>
+<rect x="24" y="190" width="190" height="114" rx="10" fill="#ffffff" stroke="#d9480f" stroke-width="2.5"/>
+<text x="119.0" y="226" text-anchor="middle" font-size="24" font-weight="700" fill="#b93c08">learn</text>
+<text x="119.0" y="258" text-anchor="middle" font-size="22" fill="#5f646d">how was</text>
+<text x="119.0" y="286" text-anchor="middle" font-size="22" fill="#5f646d">the ride?</text>
+<line x1="218" y1="81.0" x2="251" y2="81.0" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="449" y1="81.0" x2="482" y2="81.0" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="581.0" y1="142" x2="581.0" y2="186" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="482" y1="247.0" x2="449" y2="247.0" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="251" y1="247.0" x2="218" y2="247.0" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="119.0" y1="186" x2="119.0" y2="142" stroke="#d9480f" stroke-width="2.5" marker-end="url(#a)"/>
+<text x="350" y="352" text-anchor="middle" font-size="22" fill="#222">It’s time to go home <tspan fill="#b93c08">→</tspan> books the right cab</text>
+<text x="350" y="398" text-anchor="middle" font-size="22" fill="#5f646d">Use an agent when you don’t know the workflow.</text>
+</svg>

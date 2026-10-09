@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 640" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title id="t">The last four digital platforms</title>
+  <desc id="d">A numbered list of four platforms. 1, Domain OS: retail, telecom, banking, healthcare, written once and customized. 2, Life super-app: food, travel, in one place. 3, Work super-app: one per role, such as lawyer or teacher, like Salesforce or the Uber driver app. 4, AI marketplace: producers of AI connected to consumers of AI, because AI is a horizontal and everybody needs it. Footer: Build all four and these are the last digital platforms.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#d9480f"/>
+    </marker>
+  </defs>
+  <rect width="700" height="640" fill="#fafaf7"/>
+
+  <!-- Row 1 -->
+  <rect x="24" y="24" width="652" height="124" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="1.5"/>
+  <circle cx="62" cy="56" r="20" fill="#d9480f"/>
+  <text x="62" y="64" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">1</text>
+  <text x="100" y="64" font-size="26" font-weight="700" fill="#222">Domain OS</text>
+  <text x="100" y="98" font-size="22" fill="#5f646d">retail, telecom, banking, healthcare</text>
+  <text x="100" y="128" font-size="22" fill="#5f646d">written once, customized</text>
+
+  <!-- Row 2 -->
+  <rect x="24" y="164" width="652" height="92" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="1.5"/>
+  <circle cx="62" cy="196" r="20" fill="#d9480f"/>
+  <text x="62" y="204" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">2</text>
+  <text x="100" y="204" font-size="26" font-weight="700" fill="#222">Life super-app</text>
+  <text x="100" y="238" font-size="22" fill="#5f646d">food, travel, in one place</text>
+
+  <!-- Row 3 -->
+  <rect x="24" y="272" width="652" height="124" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="1.5"/>
+  <circle cx="62" cy="304" r="20" fill="#d9480f"/>
+  <text x="62" y="312" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">3</text>
+  <text x="100" y="312" font-size="26" font-weight="700" fill="#222">Work super-app</text>
+  <text x="100" y="346" font-size="22" fill="#5f646d">one per role: lawyer, teacher</text>
+  <text x="100" y="376" font-size="22" fill="#5f646d">like Salesforce, the Uber driver app</text>
+
+  <!-- Row 4 -->
+  <rect x="24" y="412" width="652" height="164" rx="10" fill="#ffffff" stroke="#8a8f98" stroke-width="1.5"/>
+  <circle cx="62" cy="444" r="20" fill="#d9480f"/>
+  <text x="62" y="452" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">4</text>
+  <text x="100" y="452" font-size="26" font-weight="700" fill="#222">AI marketplace</text>
+  <rect x="100" y="472" width="200" height="44" rx="10" fill="#fafaf7" stroke="#8a8f98" stroke-width="1.5"/>
+  <text x="200" y="502" text-anchor="middle" font-size="22" fill="#222">producers of AI</text>
+  <line x1="306" y1="494" x2="384" y2="494" stroke="#d9480f" stroke-width="2.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <rect x="390" y="472" width="210" height="44" rx="10" fill="#fafaf7" stroke="#8a8f98" stroke-width="1.5"/>
+  <text x="495" y="502" text-anchor="middle" font-size="22" fill="#222">consumers of AI</text>
+  <text x="100" y="554" font-size="22" font-weight="600" fill="#b93c08">AI is a horizontal, everybody needs it</text>
+
+  <!-- Footer -->
+  <text x="350" y="612" text-anchor="middle" font-size="22" fill="#5f646d">Build all four and these are the last digital platforms.</text>
+</svg>

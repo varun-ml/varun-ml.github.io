@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 376" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title id="t">Three waves: automation, intelligence, integration; SaaS gives way to OSaaS</title>
+  <desc id="d">Arrow chain of three waves: first wave automation, second wave intelligence (what we are in today), third wave integration, highlighted. Below, SaaS, struck through, is going to die, with an arrow to OSaaS, operating system as a service, which is going to come.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/>
+    </marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/>
+    </marker>
+  </defs>
+  <rect width="700" height="376" fill="#fafaf7"/>
+
+  <!-- wave 1 -->
+  <rect x="24" y="24" width="190" height="164" rx="10" fill="#fff" stroke="#8a8f98" stroke-width="2.5"/>
+  <text x="119" y="94" text-anchor="middle" font-size="22" fill="#5f646d">First wave:</text>
+  <text x="119" y="128" text-anchor="middle" font-size="26" font-weight="700" fill="#222">automation</text>
+  <line x1="216" y1="106" x2="252" y2="106" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- wave 2 -->
+  <rect x="255" y="24" width="190" height="164" rx="10" fill="#fff" stroke="#8a8f98" stroke-width="2.5"/>
+  <text x="350" y="68" text-anchor="middle" font-size="22" fill="#5f646d">Second wave:</text>
+  <text x="350" y="102" text-anchor="middle" font-size="26" font-weight="700" fill="#222">intelligence</text>
+  <text x="350" y="138" text-anchor="middle" font-size="22" fill="#5f646d">what we are</text>
+  <text x="350" y="166" text-anchor="middle" font-size="22" fill="#5f646d">in today</text>
+  <line x1="447" y1="106" x2="483" y2="106" stroke="#d9480f" stroke-width="2.5" marker-end="url(#aha)"/>
+
+  <!-- wave 3 -->
+  <rect x="486" y="24" width="190" height="164" rx="10" fill="#fdebe2" stroke="#d9480f" stroke-width="2.5"/>
+  <text x="581" y="94" text-anchor="middle" font-size="22" fill="#b93c08">Third wave:</text>
+  <text x="581" y="128" text-anchor="middle" font-size="26" font-weight="700" fill="#b93c08">integration</text>
+
+  <!-- SaaS -->
+  <rect x="24" y="216" width="200" height="136" rx="10" fill="#fff" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="124" y="274" text-anchor="middle" font-size="28" font-weight="700" fill="#5f646d">SaaS</text>
+  <line x1="86" y1="264" x2="162" y2="264" stroke="#8a8f98" stroke-width="3"/>
+  <text x="124" y="314" text-anchor="middle" font-size="22" fill="#5f646d">is going to die</text>
+
+  <line x1="228" y1="284" x2="302" y2="284" stroke="#d9480f" stroke-width="2.5" marker-end="url(#aha)"/>
+
+  <!-- OSaaS -->
+  <rect x="306" y="216" width="370" height="136" rx="10" fill="#fdebe2" stroke="#d9480f" stroke-width="2.5"/>
+  <text x="491" y="258" text-anchor="middle" font-size="28" font-weight="700" fill="#b93c08">OSaaS</text>
+  <text x="491" y="294" text-anchor="middle" font-size="22" fill="#222">Operating system as a service</text>
+  <text x="491" y="328" text-anchor="middle" font-size="22" fill="#5f646d">is going to come</text>
+</svg>
