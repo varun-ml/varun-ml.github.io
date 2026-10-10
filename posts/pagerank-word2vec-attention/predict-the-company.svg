@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 686" width="700" height="686" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Predict the company, round by round</title>
+<desc id="d">Four panels of the same 2-number plane at rounds 0, 1, 5 and 50. Grey squares are the company words, fixed in place: drank (0, 1), cup (1, 0), engine (-1, -1). Tea (filled orange circle) starts at (1, -1), coffee (orange ring) at (-1, 1) and the carburettor (dark circle) at (1, 1). Round 1: tea (1.47, -0.28), coffee (-0.29, 1.51), carburettor (0.24, 0.56). Round 5: tea (2.13, 0.96), coffee (0.95, 2.18), carburettor (-1.29, -0.29). Round 50: tea (3.54, 3.25) and coffee (3.25, 3.56) side by side, the carburettor at (-3.54, -1.07), out past engine.</desc>
+<rect width="700" height="686" fill="#fafaf7"/>
+<text x="184.6" y="28.0" font-size="24" fill="#222" text-anchor="middle" font-weight="600">round 0</text>
+<rect x="29.2" y="40.0" width="310.8" height="222.0" rx="10" fill="#fff" stroke="#8a8f98" stroke-width="1.5"/>
+<line x1="37.2" y1="195.4" x2="332.0" y2="195.4" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<line x1="184.6" y1="48.0" x2="184.6" y2="254.0" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<rect x="177.6" y="151.4" width="14" height="14" fill="#8a8f98"/>
+<text x="184.6" y="142.4" font-size="22" fill="#5f646d" text-anchor="middle" font-weight="normal">drank</text>
+<rect x="214.6" y="188.4" width="14" height="14" fill="#8a8f98"/>
+<text x="235.6" y="203.4" font-size="22" fill="#5f646d" text-anchor="start" font-weight="normal">cup</text>
+<rect x="140.6" y="225.4" width="14" height="14" fill="#8a8f98"/>
+<text x="133.6" y="240.4" font-size="22" fill="#5f646d" text-anchor="end" font-weight="normal">engine</text>
+<circle cx="221.6" cy="158.4" r="9" fill="#222"/>
+<circle cx="221.6" cy="232.4" r="10" fill="#d9480f"/>
+<circle cx="147.6" cy="158.4" r="10" fill="none" stroke="#d9480f" stroke-width="3"/>
+<text x="513.8" y="28.0" font-size="24" fill="#222" text-anchor="middle" font-weight="600">round 1</text>
+<rect x="358.4" y="40.0" width="310.8" height="222.0" rx="10" fill="#fff" stroke="#8a8f98" stroke-width="1.5"/>
+<line x1="366.4" y1="195.4" x2="661.2" y2="195.4" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<line x1="513.8" y1="48.0" x2="513.8" y2="254.0" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<rect x="506.8" y="151.4" width="14" height="14" fill="#8a8f98"/>
+<rect x="543.8" y="188.4" width="14" height="14" fill="#8a8f98"/>
+<rect x="469.8" y="225.4" width="14" height="14" fill="#8a8f98"/>
+<circle cx="522.7" cy="174.7" r="9" fill="#222"/>
+<circle cx="568.2" cy="205.8" r="10" fill="#d9480f"/>
+<circle cx="503.1" cy="139.5" r="10" fill="none" stroke="#d9480f" stroke-width="3"/>
+<text x="184.6" y="306.0" font-size="24" fill="#222" text-anchor="middle" font-weight="600">round 5</text>
+<rect x="29.2" y="318.0" width="310.8" height="222.0" rx="10" fill="#fff" stroke="#8a8f98" stroke-width="1.5"/>
+<line x1="37.2" y1="473.4" x2="332.0" y2="473.4" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<line x1="184.6" y1="326.0" x2="184.6" y2="532.0" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<rect x="177.6" y="429.4" width="14" height="14" fill="#8a8f98"/>
+<rect x="214.6" y="466.4" width="14" height="14" fill="#8a8f98"/>
+<rect x="140.6" y="503.4" width="14" height="14" fill="#8a8f98"/>
+<circle cx="136.9" cy="484.1" r="9" fill="#222"/>
+<circle cx="263.4" cy="437.9" r="10" fill="#d9480f"/>
+<circle cx="219.8" cy="392.7" r="10" fill="none" stroke="#d9480f" stroke-width="3"/>
+<text x="513.8" y="306.0" font-size="24" fill="#b93c08" text-anchor="middle" font-weight="600">round 50</text>
+<rect x="358.4" y="318.0" width="310.8" height="222.0" rx="10" fill="#fff" stroke="#8a8f98" stroke-width="1.5"/>
+<line x1="366.4" y1="473.4" x2="661.2" y2="473.4" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<line x1="513.8" y1="326.0" x2="513.8" y2="532.0" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<rect x="506.8" y="429.4" width="14" height="14" fill="#8a8f98"/>
+<rect x="543.8" y="466.4" width="14" height="14" fill="#8a8f98"/>
+<rect x="469.8" y="503.4" width="14" height="14" fill="#8a8f98"/>
+<circle cx="382.8" cy="513.0" r="9" fill="#222"/>
+<circle cx="644.8" cy="353.1" r="10" fill="#d9480f"/>
+<circle cx="634.0" cy="341.7" r="10" fill="none" stroke="#d9480f" stroke-width="3"/>
+<circle cx="80" cy="593.0" r="10" fill="#d9480f"/>
+<text x="98.0" y="600.0" font-size="22" fill="#222" text-anchor="start" font-weight="normal">tea</text>
+<circle cx="220" cy="593.0" r="10" fill="none" stroke="#d9480f" stroke-width="3"/>
+<text x="238.0" y="600.0" font-size="22" fill="#222" text-anchor="start" font-weight="normal">coffee</text>
+<circle cx="380" cy="593.0" r="9" fill="#222"/>
+<text x="398.0" y="600.0" font-size="22" fill="#222" text-anchor="start" font-weight="normal">carburettor</text>
+<rect x="73" y="620.0" width="14" height="14" fill="#8a8f98"/>
+<text x="98.0" y="634.0" font-size="22" fill="#5f646d" text-anchor="start" font-weight="normal">company words: drank, cup, engine (they stay put)</text>
+</svg>

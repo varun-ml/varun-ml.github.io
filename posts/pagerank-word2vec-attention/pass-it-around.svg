@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 600" width="700" height="600" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Scores swing, then settle</title>
+<desc id="d">Four bar charts of the four-page web, one per round, with scores passed along links only (no random jump), as in the worked round in the post. Round 0: every page 0.25. Round 1: page 0 0.25, page 1 0.125, page 2 0.625, page 3 0. Round 2: page 0 0.625, page 1 0.125, page 2 0.25, page 3 0. Round 20: settled at 0.4, 0.2, 0.4 and 0. A dashed line in rounds 0 to 2 marks where each page settles.</desc>
+<defs><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker><marker id="a-mut" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/></marker></defs>
+<rect width="700" height="600" fill="#fafaf7"/>
+<text x="175" y="32" font-size="24" fill="#222" text-anchor="middle" font-weight="600">round 0</text>
+<line x1="22" y1="225" x2="328" y2="225" stroke="#222" stroke-width="2"/>
+<rect x="32" y="165.0" width="56" height="60.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="26" y1="129.0" x2="94" y2="129.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="60" y="253" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.25</text>
+<rect x="108" y="165.0" width="56" height="60.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="102" y1="177.0" x2="170" y2="177.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="136" y="253" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.25</text>
+<rect x="184" y="165.0" width="56" height="60.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="178" y1="129.0" x2="246" y2="129.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="212" y="253" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.25</text>
+<rect x="260" y="165.0" width="56" height="60.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<text x="288" y="253" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.25</text>
+<text x="525" y="32" font-size="24" fill="#222" text-anchor="middle" font-weight="600">round 1</text>
+<line x1="372" y1="225" x2="678" y2="225" stroke="#222" stroke-width="2"/>
+<rect x="382" y="165.0" width="56" height="60.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="376" y1="129.0" x2="444" y2="129.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="410" y="253" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.25</text>
+<rect x="458" y="195.0" width="56" height="30.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="452" y1="177.0" x2="520" y2="177.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="486" y="253" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.125</text>
+<rect x="534" y="75.0" width="56" height="150.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="528" y1="129.0" x2="596" y2="129.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="562" y="253" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.625</text>
+<text x="638" y="253" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0</text>
+<text x="175" y="312" font-size="24" fill="#222" text-anchor="middle" font-weight="600">round 2</text>
+<line x1="22" y1="505" x2="328" y2="505" stroke="#222" stroke-width="2"/>
+<rect x="32" y="355.0" width="56" height="150.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="26" y1="409.0" x2="94" y2="409.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="60" y="533" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.625</text>
+<rect x="108" y="475.0" width="56" height="30.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="102" y1="457.0" x2="170" y2="457.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="136" y="533" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.125</text>
+<rect x="184" y="445.0" width="56" height="60.0" fill="#e4e2da" stroke="#222" stroke-width="1.5"/>
+<line x1="178" y1="409.0" x2="246" y2="409.0" stroke="#d9480f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="212" y="533" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.25</text>
+<text x="288" y="533" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0</text>
+<text x="525" y="312" font-size="24" fill="#b93c08" text-anchor="middle" font-weight="600">round 20</text>
+<line x1="372" y1="505" x2="678" y2="505" stroke="#222" stroke-width="2"/>
+<rect x="382" y="409.0" width="56" height="96.0" fill="#d9480f" stroke="#222" stroke-width="1.5"/>
+<text x="410" y="533" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.4</text>
+<rect x="458" y="457.0" width="56" height="48.0" fill="#d9480f" stroke="#222" stroke-width="1.5"/>
+<text x="486" y="533" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.2</text>
+<rect x="534" y="409.0" width="56" height="96.0" fill="#d9480f" stroke="#222" stroke-width="1.5"/>
+<text x="562" y="533" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0.4</text>
+<text x="638" y="533" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">0</text>
+<text x="350" y="580" font-size="22" fill="#5f646d" text-anchor="middle" font-weight="normal">bars: pages 0, 1, 2, 3 · dashed: where each settles</text>
+</svg>

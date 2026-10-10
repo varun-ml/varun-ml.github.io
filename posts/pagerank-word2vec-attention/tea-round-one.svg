@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 600" width="700" height="600" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Tea's first round: pulled toward drank and cup, pushed from engine</title>
+<desc id="d">A 2-number plane. Grey arrows from the centre are the fixed company vectors: drank points up, cup points right, engine points down and left. Tea starts at the bottom right. In round 1 it moves up, along drank, a long way because drank was a poor match; right, along cup, only a little because cup already matched well; and up and right, away from engine. It ends at the end of the orange path, closer to the corner between drank and cup.</desc>
+<defs>
+<marker id="ha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker>
+<marker id="hg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/></marker>
+</defs>
+<rect width="700" height="600" fill="#fafaf7"/>
+<line x1="30" y1="300" x2="670" y2="300" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<line x1="290" y1="20" x2="290" y2="580" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<line x1="290" y1="300" x2="290.0" y2="69.0" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#hg)"/>
+<text x="290.0" y="44.0" font-size="22" fill="#5f646d" text-anchor="middle" font-weight="400">drank</text>
+<line x1="290" y1="300" x2="521.0" y2="300.0" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#hg)"/>
+<text x="530.0" y="284.0" font-size="22" fill="#5f646d" text-anchor="middle" font-weight="400">cup</text>
+<line x1="290" y1="300" x2="56.4" y2="533.6" stroke="#8a8f98" stroke-width="2.5" marker-end="url(#hg)"/>
+<text x="66.0" y="548.0" font-size="22" fill="#5f646d" text-anchor="start" font-weight="400">engine</text>
+<line x1="530.0" y1="540.0" x2="530.0" y2="453.2" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<line x1="530.0" y1="451.2" x2="556.8" y2="451.2" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<line x1="558.8" y1="451.2" x2="641.4" y2="368.6" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<circle cx="530" cy="540" r="10" fill="#fafaf7" stroke="#d9480f" stroke-width="3"/>
+<circle cx="642.8" cy="367.2" r="10" fill="#d9480f"/>
+<text x="510.0" y="548.0" font-size="22" fill="#b93c08" text-anchor="end" font-weight="600">tea at the start</text>
+<text x="627.8" y="345.2" font-size="22" fill="#b93c08" text-anchor="end" font-weight="600">tea after round 1</text>
+<text x="516.0" y="502.0" font-size="22" fill="#222" text-anchor="end" font-weight="400">toward drank</text>
+<text x="548.0" y="482.0" font-size="22" fill="#222" text-anchor="start" font-weight="400">toward cup</text>
+<text x="584.8" y="390.2" font-size="22" fill="#222" text-anchor="end" font-weight="400">away from engine (twice)</text>
+</svg>

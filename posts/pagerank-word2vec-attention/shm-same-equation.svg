@@ -1,66 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-labelledby="t d">
-  <title id="t">The same equation in four places</title>
-  <desc id="d">Four panels side by side: a pendulum, a mass on a spring, a sound wave, and an atom vibrating between neighbours in a crystal. Each has a short double-headed arrow for the small move around equilibrium, and the same label under it: simple harmonic motion, F = -kx.</desc>
-  <defs>
-    <marker id="aE" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker>
-    <marker id="aS" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#d9480f"/></marker>
-  </defs>
-  <rect width="960" height="400" fill="#fafaf7"/>
-  <g font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
-    <!-- dividers -->
-    <g stroke="#8a8f98" stroke-width="1" opacity="0.5">
-      <line x1="240" y1="30" x2="240" y2="370"/><line x1="480" y1="30" x2="480" y2="370"/><line x1="720" y1="30" x2="720" y2="370"/>
-    </g>
-    <!-- titles -->
-    <g font-size="24" fill="#222">
-      <text x="120" y="56">pendulum</text><text x="360" y="56">spring</text><text x="600" y="56">sound wave</text><text x="840" y="56">atom in a crystal</text>
-    </g>
-    <!-- pendulum -->
-    <g>
-      <line x1="80" y1="90" x2="160" y2="90" stroke="#222" stroke-width="3"/>
-      <line x1="120" y1="90" x2="96" y2="225" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <line x1="120" y1="90" x2="144" y2="225" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <circle cx="96" cy="225" r="13" fill="none" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <circle cx="144" cy="225" r="13" fill="none" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <line x1="120" y1="90" x2="120" y2="228" stroke="#222" stroke-width="2"/>
-      <circle cx="120" cy="228" r="15" fill="#222"/>
-      <line x1="94" y1="262" x2="146" y2="262" stroke="#d9480f" stroke-width="3" marker-start="url(#aS)" marker-end="url(#aE)"/>
-    </g>
-    <!-- spring -->
-    <g>
-      <line x1="270" y1="150" x2="270" y2="225" stroke="#222" stroke-width="3"/>
-      <line x1="270" y1="225" x2="450" y2="225" stroke="#222" stroke-width="2"/>
-      <polyline points="270,195 290,195 297,180 311,210 325,180 339,210 353,180 360,195 375,195" fill="none" stroke="#222" stroke-width="2"/>
-      <rect x="375" y="170" width="50" height="50" fill="#222"/>
-      <line x1="372" y1="142" x2="428" y2="142" stroke="#d9480f" stroke-width="3" marker-start="url(#aS)" marker-end="url(#aE)"/>
-    </g>
-    <!-- sound wave -->
-    <g>
-      <line x1="505" y1="190" x2="695" y2="190" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <path d="M505,190 C525,140 545,140 565,190 S605,240 625,190 S665,140 685,190" fill="none" stroke="#222" stroke-width="2.5" transform="translate(5,0)"/>
-      <line x1="540" y1="188" x2="540" y2="150" stroke="#d9480f" stroke-width="3" marker-start="url(#aS)" marker-end="url(#aE)"/>
-    </g>
-    <!-- atom in a crystal -->
-    <g>
-      <g stroke="#8a8f98" stroke-width="1.5">
-        <line x1="780" y1="130" x2="900" y2="130"/><line x1="780" y1="190" x2="900" y2="190"/><line x1="780" y1="250" x2="900" y2="250"/>
-        <line x1="780" y1="130" x2="780" y2="250"/><line x1="840" y1="130" x2="840" y2="250"/><line x1="900" y1="130" x2="900" y2="250"/>
-      </g>
-      <g fill="#8a8f98">
-        <circle cx="780" cy="130" r="9"/><circle cx="840" cy="130" r="9"/><circle cx="900" cy="130" r="9"/>
-        <circle cx="780" cy="190" r="9"/><circle cx="900" cy="190" r="9"/>
-        <circle cx="780" cy="250" r="9"/><circle cx="840" cy="250" r="9"/><circle cx="900" cy="250" r="9"/>
-      </g>
-      <circle cx="840" cy="190" r="13" fill="#222"/>
-      <line x1="812" y1="214" x2="868" y2="214" stroke="#d9480f" stroke-width="3" marker-start="url(#aS)" marker-end="url(#aE)"/>
-    </g>
-    <!-- shared label -->
-    <g font-size="20" fill="#222">
-      <text x="120" y="318">simple harmonic motion</text><text x="360" y="318">simple harmonic motion</text>
-      <text x="600" y="318">simple harmonic motion</text><text x="840" y="318">simple harmonic motion</text>
-    </g>
-    <g font-size="26" fill="#d9480f" font-style="italic">
-      <text x="120" y="356">F = −kx</text><text x="360" y="356">F = −kx</text><text x="600" y="356">F = −kx</text><text x="840" y="356">F = −kx</text>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 670" width="700" height="670" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The same equation in four places</title>
+<desc id="d">Four panels: a pendulum, a mass on a spring, a sound wave, and an atom vibrating between neighbours in a crystal. Each has a short double-headed arrow for the small move around equilibrium, and the same label under it: simple harmonic motion, F = -kx.</desc>
+<defs><marker id="aE" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker><marker id="aS" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#d9480f"/></marker></defs>
+<rect width="700" height="670" fill="#fafaf7"/>
+<line x1="350" y1="20" x2="350" y2="650" stroke="#8a8f98" stroke-width="1" opacity="0.5"/><line x1="20" y1="335" x2="680" y2="335" stroke="#8a8f98" stroke-width="1" opacity="0.5"/>
+<text x="175.0" y="40.0" font-size="24" fill="#222" text-anchor="middle" font-weight="normal">pendulum</text>
+<g transform="translate(55,10)"><line x1="80" y1="70" x2="160" y2="70" stroke="#222" stroke-width="3"/>
+<line x1="120" y1="70" x2="96" y2="195" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/><line x1="120" y1="70" x2="144" y2="195" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/>
+<circle cx="96" cy="195" r="13" fill="none" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/><circle cx="144" cy="195" r="13" fill="none" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="120" y1="70" x2="120" y2="198" stroke="#222" stroke-width="2"/><circle cx="120" cy="198" r="15" fill="#222"/>
+<line x1="94" y1="232" x2="146" y2="232" stroke="#d9480f" stroke-width="3" marker-start="url(#aS)" marker-end="url(#aE)"/></g>
+<text x="175.0" y="284.0" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">simple harmonic motion</text>
+<text x="175.0" y="316.0" font-size="24" fill="#b93c08" text-anchor="middle" font-weight="normal" font-style="italic">F = −kx</text>
+<text x="525.0" y="40.0" font-size="24" fill="#222" text-anchor="middle" font-weight="normal">spring</text>
+<g transform="translate(405,10)"><line x1="30" y1="120" x2="30" y2="195" stroke="#222" stroke-width="3"/><line x1="30" y1="195" x2="210" y2="195" stroke="#222" stroke-width="2"/>
+<polyline points="30,165 50,165 57,150 71,180 85,150 99,180 113,150 120,165 135,165" fill="none" stroke="#222" stroke-width="2"/>
+<rect x="135" y="140" width="50" height="50" fill="#222"/><line x1="132" y1="112" x2="188" y2="112" stroke="#d9480f" stroke-width="3" marker-start="url(#aS)" marker-end="url(#aE)"/></g>
+<text x="525.0" y="284.0" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">simple harmonic motion</text>
+<text x="525.0" y="316.0" font-size="24" fill="#b93c08" text-anchor="middle" font-weight="normal" font-style="italic">F = −kx</text>
+<text x="175.0" y="380.0" font-size="24" fill="#222" text-anchor="middle" font-weight="normal">sound wave</text>
+<g transform="translate(55,350)"><line x1="25" y1="150" x2="215" y2="150" stroke="#8a8f98" stroke-width="1.5" stroke-dasharray="4 4"/>
+<path d="M30,150 C50,100 70,100 90,150 S130,200 150,150 S190,100 210,150" fill="none" stroke="#222" stroke-width="2.5"/><line x1="60" y1="148" x2="60" y2="110" stroke="#d9480f" stroke-width="3" marker-start="url(#aS)" marker-end="url(#aE)"/></g>
+<text x="175.0" y="624.0" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">simple harmonic motion</text>
+<text x="175.0" y="656.0" font-size="24" fill="#b93c08" text-anchor="middle" font-weight="normal" font-style="italic">F = −kx</text>
+<text x="525.0" y="380.0" font-size="24" fill="#222" text-anchor="middle" font-weight="normal">atom in a crystal</text>
+<g transform="translate(405,350)"><g stroke="#8a8f98" stroke-width="1.5"><line x1="60" y1="90" x2="180" y2="90"/><line x1="60" y1="150" x2="180" y2="150"/><line x1="60" y1="210" x2="180" y2="210"/><line x1="60" y1="90" x2="60" y2="210"/><line x1="120" y1="90" x2="120" y2="210"/><line x1="180" y1="90" x2="180" y2="210"/></g><g fill="#8a8f98"><circle cx="60" cy="90" r="9"/><circle cx="120" cy="90" r="9"/><circle cx="180" cy="90" r="9"/><circle cx="60" cy="150" r="9"/><circle cx="180" cy="150" r="9"/><circle cx="60" cy="210" r="9"/><circle cx="120" cy="210" r="9"/><circle cx="180" cy="210" r="9"/></g><circle cx="120" cy="150" r="13" fill="#222"/><line x1="92" y1="174" x2="148" y2="174" stroke="#d9480f" stroke-width="3" marker-start="url(#aS)" marker-end="url(#aE)"/></g>
+<text x="525.0" y="624.0" font-size="22" fill="#222" text-anchor="middle" font-weight="normal">simple harmonic motion</text>
+<text x="525.0" y="656.0" font-size="24" fill="#b93c08" text-anchor="middle" font-weight="normal" font-style="italic">F = −kx</text>
 </svg>

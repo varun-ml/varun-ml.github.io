@@ -18,56 +18,107 @@
       <link>https://varun-ml.github.io/posts/pagerank-word2vec-attention/</link>
       <pubDate>Thu, 08 Oct 2026 17:28:00 +0530</pubDate>
       <guid>https://varun-ml.github.io/posts/pagerank-word2vec-attention/</guid>
-      <description>&lt;p&gt;&lt;em&gt;One old saying, three algorithms&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;physics-is-easy-life-is-hard&#34;&gt;Physics is easy, life is hard&lt;/h2&gt;
-&lt;p&gt;At Fermi, my colleague Madhu taught a physics lesson on why physics is easy and life is hard. He talked about stable equilibrium. He said simple harmonic motion is the foundation of physics.&lt;/p&gt;
-&lt;p&gt;It sounds like an exaggeration until you see why. Pull almost anything a little away from a stable equilibrium. For small moves, the force pulling it back grows in proportion to how far it moved. That is simple harmonic motion. A pendulum, a spring, a sound wave and an atom vibrating in a crystal follow the same equation, with different knobs. The physicist Sidney Coleman is often quoted joking that the career of a young theoretical physicist is treating the harmonic oscillator in ever-increasing levels of abstraction.&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p><em>One old saying, three algorithms</em></p>
-<h2 id="physics-is-easy-life-is-hard">Physics is easy, life is hard</h2>
-<p>At Fermi, my colleague Madhu taught a physics lesson on why physics is easy and life is hard. He talked about stable equilibrium. He said simple harmonic motion is the foundation of physics.</p>
-<p>It sounds like an exaggeration until you see why. Pull almost anything a little away from a stable equilibrium. For small moves, the force pulling it back grows in proportion to how far it moved. That is simple harmonic motion. A pendulum, a spring, a sound wave and an atom vibrating in a crystal follow the same equation, with different knobs. The physicist Sidney Coleman is often quoted joking that the career of a young theoretical physicist is treating the harmonic oscillator in ever-increasing levels of abstraction.</p>
+      <description>&lt;p&gt;&lt;em&gt;You are defined by the company you keep: one saying, three algorithms.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;is-minimax-even-relevant&#34;&gt;Is minimax even relevant?&lt;/h2&gt;
+&lt;p&gt;I was explaining to Tanmay how PageRank works: in-links, out-links, and a loop that runs until the scores stop changing. Somewhere in that conversation he made a point. In college we learn basic things, like the minimax algorithm. He felt they are not really relevant anymore.&lt;/p&gt;
+&lt;p&gt;I disagreed. You need to understand the foundations to build your intuition. When you have that intuition, you can apply it.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p><em>You are defined by the company you keep: one saying, three algorithms.</em></p>
+<h2 id="is-minimax-even-relevant">Is minimax even relevant?</h2>
+<p>I was explaining to Tanmay how PageRank works: in-links, out-links, and a loop that runs until the scores stop changing. Somewhere in that conversation he made a point. In college we learn basic things, like the minimax algorithm. He felt they are not really relevant anymore.</p>
+<p>I disagreed. You need to understand the foundations to build your intuition. When you have that intuition, you can apply it.</p>
+<p>At Fermi, my colleague Madhu said in one of his physics lessons that simple harmonic motion is the foundation of physics. To me, that is the same intuition.</p>
 <p>
   <img src="shm-same-equation.svg" alt="Four panels: a pendulum, a spring, a sound wave and an atom in a crystal, each labelled simple harmonic motion, F = -kx">
 </p>
-<p><em>A pendulum, a spring, a sound wave and an atom in a crystal: the same equation, with different knobs.</em></p>
-<p>One building block, used again and again: that is the intuition I have about my own field.</p>
-<h2 id="is-minimax-even-relevant">Is minimax even relevant?</h2>
-<p>I was explaining PageRank to Tanmay: in-links, out-links and the power iteration. Somewhere in that conversation he made a point. In college we learn basic things, like the minimax algorithm. He felt they are not really relevant anymore.</p>
-<p>I disagreed. You need to understand the foundations to build your intuition. When you have that intuition, you can apply it.</p>
-<p>So what is the simple harmonic motion of search and recommendations? I think it is one old saying, and it shows up in three famous algorithms. Each one keeps the last one and changes as little as it can.</p>
-<p>The way I tell it is borrowed from a paper I really like, Burges&rsquo;s <em>From RankNet to LambdaRank to LambdaMART</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. He never starts over. Every section keeps the previous model, changes one block, and shows you only what changed. I will do the same. Each step comes from one what-if on the step before, and the last what-if is still open.</p>
+<p><em>Four systems, one equation.</em></p>
+<div class="philo"><div class="philo-label">The philosophy</div><p>Every powerful algorithm started as an old intuition about the world, made precise. The way it happens has three steps. First, someone makes an argument about the world, almost a philosophical one. Then they write the argument down as maths. Then they solve the maths, and an algorithm falls out.</p>
+<p>If you only learn the algorithm, you can use it, or change it a little. If you learn the argument behind it, the algorithm becomes a building block. You can take it apart, swap a piece, and build something new. It feels like LEGO: you build a block, then you complicate it.</p>
+</div>
+
+<p>This post follows one argument through three famous algorithms: PageRank, word2vec and attention. The goal is that by the end you see one idea where you used to see three, and you can apply it to a problem of your own.</p>
 <h2 id="the-saying">The saying</h2>
-<p>People say: you are defined by the company you keep. It is a philosophy, not an algorithm. It says what something is, in terms of its neighbours. The interesting part is what happens when you turn it into math. So the first what-if: what if we write the saying as a matrix? Two famous algorithms did exactly that, each with its own version of the saying. A third one fixed what they missed.</p>
-<h2 id="pagerank-the-saying-for-web-pages">PageRank: the saying, for web pages</h2>
-<p>PageRank&rsquo;s<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> version came from how academics judge papers: a paper matters if important papers cite it. For the web:</p>
+<div class="philo"><div class="philo-label">The philosophy</div><p>People say: you are defined by the company you keep.</p>
+<p>Take it literally for a moment. It does not say what you are made of. It says you are what you are next to. To learn about you, look at your friends.</p>
+<p>That is a claim about similarity. Two people who keep the same company should be similar, even if they have never met. A thing with no company tells us nothing.</p>
+</div>
+
+<p>We can draw the saying as a table. Take tea, coffee and a carburettor, and put them in the rows. Put the words they often appear next to in the columns: cup, drank, morning, engine. Tea and coffee get high counts under cup, drank and morning. The carburettor gets its count under engine. So the rows are things, the columns are their company, and each cell says how strongly a thing keeps that company. Everything in this post starts from a table like this. The only questions are what the rows and columns are, and what we do with the table once we have it.</p>
+<p>
+  <img src="company-table.svg" alt="A small table with tea, coffee and carburettor as rows and cup, drank, morning, engine as columns, filled with a few counts">
+</p>
+<p><em>The saying, drawn as a table: things in the rows, their company in the columns.</em></p>
+<p>So here is the question for the rest of this post. What happens when you take this one sentence literally, for web pages, for words and for people?</p>
+<h2 id="pages-pass-it-around-until-it-settles">Pages: pass it around until it settles</h2>
+<h3 id="the-problem-in-1998">The problem in 1998</h3>
+<p>Start with the web in the late 1990s. Search engines ranked a page mostly by its own text: how well the words on the page matched the words in the query. That had a flaw. The author of a page controls its text, so the author can make it match anything. Anything that counted words on the page was easy to manipulate<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, and very short pages that held little more than the query often ranked first<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>The web was also growing fast, while people still read only the first few dozen results<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. So the problem was not finding pages that match. It was putting the right ten pages on top.</p>
+<p>Brin and Page needed a signal the page author does not control. A page&rsquo;s own words are written by its author. The links pointing to it are written by other people. That is the page&rsquo;s company.</p>
+<h3 id="the-argument">The argument</h3>
+<div class="philo"><div class="philo-label">The philosophy</div><p>Their argument came from how academics judge papers. A paper matters if it is cited a lot. But not every citation is equal. A citation from an important paper should count for more. Page and Brin carried this over to links[^techreport]. A link from the Yahoo home page <span class="quote">&ldquo;may be just one link but it is a very important one&rdquo;</span>[^techreport].</p>
+<p>So the saying, for pages, becomes:</p>
 <blockquote>
 <p>A page is important if important pages link to it.</p></blockquote>
-<p>Read it again. The definition uses itself. To know how important a page is, you need to know how important the pages pointing to it are. That sounds circular, and it is. Math can still solve it, in three steps.</p>
-<p><strong>Step 1: put it in a matrix.</strong> Let&rsquo;s say there are $N$ pages. Page $j$ splits its importance equally among the pages it links to. Write that as a matrix $M$, where $M_{ij} = 1/\text{outlinks}(j)$ if $j$ links to $i$, and $0$ otherwise. If $r$ is the vector of importance scores, the saying becomes one line:</p>
-<p>$$r = M r$$</p>
-<p>The scores are the ones that do not change when every page passes its score along its links. That is a fixed point. In linear algebra terms, $r$ is an eigenvector of $M$ with eigenvalue 1.</p>
-<p><strong>Step 2: fix what breaks.</strong> A group of pages that only link to each other traps all the score. The fix is the random surfer: someone who clicks links, but now and then gets bored and jumps to a random page. With probability $d$ (0.85 in the original paper) they follow a link. Otherwise they jump:</p>
-<p>$$r = \frac{1-d}{N} + d\,M r$$</p>
-<p>A page with no out-links is a dead end, and its score leaks away. The usual fix is to treat it as linking to every page. Our small example has no dead ends, so we can skip that here.</p>
-<p><strong>Step 3: solve it the simplest way.</strong> We do not need an eigen-solver. Start with equal scores, apply the formula, and repeat until the scores stop moving. This is power iteration. Here it is on a four-page web:</p>
+</div>
+
+<p>Read it again. The definition uses itself:</p>
+<pre class="diagram"><code>how important is page A?
+  needs: how important are the pages that link to A?   (say B and C)
+    needs: how important are the pages that link to B and C?
+      needs: how important are the pages that link to those?
+        needs: ...  and somewhere down this chain, page A again</code></pre>
+<p>It looks circular. The authors knew, and they accepted it on purpose<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<div class="pause"><strong>Before you read on:</strong> to score page A you need the scores of the pages that link to it, and their scores need A's. How would you get a number at all?</div>
+<p>It turns out circular is fine, because we can solve it by repeating a simple step.</p>
+<h3 id="watch-it-settle">Watch it settle</h3>
+<p>Here is a web of four pages. Page 0 links to pages 1 and 2. Page 1 links to page 2. Page 2 links to page 0. Page 3 links to page 2, and nothing links to page 3.</p>
+<p>We do not know anyone&rsquo;s importance yet, so everyone starts equal. Then one rule: every page hands its score out along its links, split equally. Here is round one:</p>
+<pre class="diagram"><code>start:  page 0 = 0.25   page 1 = 0.25   page 2 = 0.25   page 3 = 0.25
+
+each page hands out its score along its links:
+
+  page 0 (2 links) ---0.125---&gt; page 1
+                   ---0.125---&gt; page 2
+  page 1 (1 link)  ---0.25----&gt; page 2
+  page 2 (1 link)  ---0.25----&gt; page 0
+  page 3 (1 link)  ---0.25----&gt; page 2
+                                  nobody ---&gt; page 3
+
+after round 1:
+  page 0 = 0.25                    (from page 2)
+  page 1 = 0.125                   (from page 0)
+  page 2 = 0.125 &#43; 0.25 &#43; 0.25     (from pages 0, 1 and 3)  = 0.625
+  page 3 = 0                       (nobody links to it)</code></pre>
+<p>After one round, page 2 has the most. Three pages link to it, so it collected three shares.</p>
+<p>Now repeat the round with the new scores. This is where the circular part pays off. Page 2 now has a big score, and it passes all of it to page 0. So page 0 jumps up in round two, from 0.25 to 0.625. It has only one in-link, but that in-link comes from the page that matters most.</p>
+<p>Keep going, round after round. The scores swing at first, and then the swings get smaller. After about 20 rounds they stop changing.</p>
+<p>
+  <img src="pass-it-around.svg" alt="Four bar charts of the four-page web at rounds 0, 1, 2 and 20, the bars swinging and then settling">
+</p>
+<p><em>Pass the scores along the links, again and again. The swings shrink and the scores settle.</em></p>
+<p>One more rule makes this work on a real web: the random jump. Two pages that link only to each other would soak up score and never let it go. Page and Brin fixed this with a bored surfer<sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. The surfer clicks links at random, but 15% of the time gets bored and types in a new address. In score terms, every round each page passes 85% of its score along its links, and the other 15% is spread evenly over all pages. That is why page 3, which nobody links to, ends with a small score and not zero.</p>
+<p>When the scores stop changing, passing them around once more gives back the same scores. That is exactly what the argument asked for. Every page&rsquo;s score now equals what the pages linking to it hand over, plus its share of the random jumps. &ldquo;Important pages are linked to by important pages&rdquo; is true of these numbers. The circular definition had an answer all along. Repeating the step found it.</p>
+<h3 id="now-the-names">Now the names</h3>
+<p>Everything so far fits in one line. If $r$ is the list of scores, $N$ the number of pages, $d = 0.85$, and $M$ the table that says how each page splits its score over its links, one round is:</p>
+<p>$$r \leftarrow \frac{1-d}{N} + d\,M r$$</p>
+<p>Repeat until $r$ stops changing. That is PageRank<sup id="fnref3:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. Here is the four-page web in code:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-0-1"><a class="lnlinks" href="#hl-0-1"> 1</a>
-</span><span class="lnt" id="hl-0-2"><a class="lnlinks" href="#hl-0-2"> 2</a>
-</span><span class="lnt" id="hl-0-3"><a class="lnlinks" href="#hl-0-3"> 3</a>
-</span><span class="lnt" id="hl-0-4"><a class="lnlinks" href="#hl-0-4"> 4</a>
-</span><span class="lnt" id="hl-0-5"><a class="lnlinks" href="#hl-0-5"> 5</a>
-</span><span class="lnt" id="hl-0-6"><a class="lnlinks" href="#hl-0-6"> 6</a>
-</span><span class="lnt" id="hl-0-7"><a class="lnlinks" href="#hl-0-7"> 7</a>
-</span><span class="lnt" id="hl-0-8"><a class="lnlinks" href="#hl-0-8"> 8</a>
-</span><span class="lnt" id="hl-0-9"><a class="lnlinks" href="#hl-0-9"> 9</a>
-</span><span class="lnt" id="hl-0-10"><a class="lnlinks" href="#hl-0-10">10</a>
-</span><span class="lnt" id="hl-0-11"><a class="lnlinks" href="#hl-0-11">11</a>
-</span><span class="lnt" id="hl-0-12"><a class="lnlinks" href="#hl-0-12">12</a>
-</span><span class="lnt" id="hl-0-13"><a class="lnlinks" href="#hl-0-13">13</a>
-</span><span class="lnt" id="hl-0-14"><a class="lnlinks" href="#hl-0-14">14</a>
-</span><span class="lnt" id="hl-0-15"><a class="lnlinks" href="#hl-0-15">15</a>
-</span><span class="lnt" id="hl-0-16"><a class="lnlinks" href="#hl-0-16">16</a>
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-2-1"><a class="lnlinks" href="#hl-2-1"> 1</a>
+</span><span class="lnt" id="hl-2-2"><a class="lnlinks" href="#hl-2-2"> 2</a>
+</span><span class="lnt" id="hl-2-3"><a class="lnlinks" href="#hl-2-3"> 3</a>
+</span><span class="lnt" id="hl-2-4"><a class="lnlinks" href="#hl-2-4"> 4</a>
+</span><span class="lnt" id="hl-2-5"><a class="lnlinks" href="#hl-2-5"> 5</a>
+</span><span class="lnt" id="hl-2-6"><a class="lnlinks" href="#hl-2-6"> 6</a>
+</span><span class="lnt" id="hl-2-7"><a class="lnlinks" href="#hl-2-7"> 7</a>
+</span><span class="lnt" id="hl-2-8"><a class="lnlinks" href="#hl-2-8"> 8</a>
+</span><span class="lnt" id="hl-2-9"><a class="lnlinks" href="#hl-2-9"> 9</a>
+</span><span class="lnt" id="hl-2-10"><a class="lnlinks" href="#hl-2-10">10</a>
+</span><span class="lnt" id="hl-2-11"><a class="lnlinks" href="#hl-2-11">11</a>
+</span><span class="lnt" id="hl-2-12"><a class="lnlinks" href="#hl-2-12">12</a>
+</span><span class="lnt" id="hl-2-13"><a class="lnlinks" href="#hl-2-13">13</a>
+</span><span class="lnt" id="hl-2-14"><a class="lnlinks" href="#hl-2-14">14</a>
+</span><span class="lnt" id="hl-2-15"><a class="lnlinks" href="#hl-2-15">15</a>
+</span><span class="lnt" id="hl-2-16"><a class="lnlinks" href="#hl-2-16">16</a>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -89,170 +140,368 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>
-  <img src="four-page-web.svg" alt="The four-page web as a directed graph, each page drawn with area proportional to its PageRank score: page 2 at 0.394, page 0 at 0.373, page 1 at 0.196, page 3 at 0.038">
+  <img src="four-page-web.svg" alt="The four-page web as a directed graph, each page drawn with area proportional to its PageRank score">
 </p>
-<p><em>The four-page web after power iteration. Page 0 has only one in-link, but it comes from page 2, so it comes second.</em></p>
-<p>Page 2 has three pages linking to it, so it wins. Page 3 has none, so it only gets the surfer&rsquo;s random jumps. The interesting one is page 0. Only one page links to it, but that page is page 2, the most important one. So page 0 comes second. That is the circular definition at work.</p>
-<p>Now look at the choices we made on the way. What counts as a link. How a page splits its score. What the surfer does when bored. How we solve it. Each of these is a knob. Keep that in mind.</p>
-<p>A page gets one number. What if every thing got a vector instead, learned from its company?</p>
-<h2 id="word2vec-the-same-saying-for-words">word2vec: the same saying, for words</h2>
-<p>Ask that of words and you get word2vec, though it came from linguists, not from PageRank. Its version of the saying is older than the computers that could use it:</p>
+<p><em>The settled scores. Page 0 has one in-link, but it comes from page 2, so it comes second.</em></p>
+<p>Two names come with this. Repeating the same step until nothing changes is called power iteration. The settled scores, the ones that come back unchanged after one more round, are called the principal eigenvector of the table, with the random jump folded in. You do not need either name to understand the idea. You already watched both happen.</p>
+<div class="philo"><div class="philo-label">The philosophy</div><p>So PageRank is the saying, made precise for pages. A page is defined by the company that links to it. We turned that into a table of links, solved it by passing scores around until they settle, and an algorithm fell out.</p>
+</div>
+
+<p>But look at what PageRank hands back: one number per page. That number says how much a page matters. It says nothing about what the page is like.</p>
 <blockquote>
-<p>You shall know a word by the company it keeps. (J. R. Firth, 1957<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>)</p></blockquote>
-<p>Harris wrote about the distributional structure of language<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> a few years before. The idea later got the name distributional hypothesis: words that appear in the same places mean similar things.</p>
-<p>The property is different from PageRank&rsquo;s. Firth is about similarity. PageRank is about importance. But the shape is the same: a thing is defined by its neighbours. So what changes when we go from pages to words?</p>
-<p><strong>The matrix changes.</strong> Instead of &ldquo;page $j$ links to page $i$&rdquo;, we count &ldquo;word $c$ appears near word $w$&rdquo;, inside a small window of text. That gives a co-occurrence matrix, with one row and one column for every word in the vocabulary.</p>
-<p><strong>What we want changes.</strong> PageRank wants one number per page: how important it is. Here we want a vector per word: what it means. Two words should get similar vectors if they keep similar company.</p>
-<p><strong>The solver changes.</strong> For a vocabulary of a million words, that matrix has a trillion cells. So word2vec<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> never builds it. It reads text one window at a time. For each word, it pulls the word&rsquo;s vector closer to the vectors of the words around it. It also pushes it away from a few random words (negative sampling<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>). It is stochastic gradient descent, one small step per window, over a few passes through the text.</p>
+<p>What if each thing got a description of its company, and not just one score?</p></blockquote>
+<hr>
+<h2 id="words-predict-the-company">Words: predict the company</h2>
+<h3 id="the-problem-in-2013">The problem in 2013</h3>
+<p>For words we want a different answer: which words are alike?</p>
+<pre class="diagram"><code>PageRank&#39;s answer: one number each      what we want for words: a place each
+
+  page 2  ████████████  0.39               ▲
+  page 0  ███████████   0.37               │   tea •   • coffee
+  page 1  ██████        0.20               │
+  page 3  █             0.04               │
+                                           │               • carburettor
+                                           └───────────────────────▶</code></pre>
+<p>A single score cannot put tea next to coffee and far from carburettor. A word needs a description of its company: a short list of numbers, a vector, so that words with similar company land in nearby places. (Passing scores around is still the right tool when you do want importance, for example the sentences of a long document. We come back to that in &ldquo;Swap the tools&rdquo;, along with the same game played on web pages.)</p>
+<p>People had learned word vectors before, but slowly. In 2003, Bengio and co-authors learned them inside a model that predicts the next word, and five passes over 14 million words took more than three weeks on 40 CPUs<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. So there were two problems. The models were slow: most of the time went into a hidden layer of extra computation<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. And the table is huge: a million words give a trillion cells, and almost all of them are zero. The fix below solves both. It drops the hidden layer, and it never builds the table.</p>
+<div class="pause"><strong>Before you read on:</strong> you want a short vector for each word, and the table is a trillion cells, almost all of them zero. How would you get the vectors without building the table?</div>
+<p>Mikolov and co-authors at Google wanted good word vectors from far more text than anyone had used<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. Their intuition was simple. If you only want the vectors, you do not need a model that is good at writing text. A much simpler model <span class="quote">&ldquo;might not be able to represent the data as precisely&rdquo;</span><sup id="fnref2:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. But if it only has to get each word&rsquo;s company roughly right, it should give vectors that are just as good, and read far more text in the same time<sup id="fnref3:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. So they dropped the hidden layer, and they never built the table. Instead, each word gets a vector with one job: predict its company.</p>
+<h3 id="the-argument-1">The argument</h3>
+<div class="philo"><div class="philo-label">The philosophy</div><p>Linguists had the saying for words long before computers could use it. In 1954 Harris wrote that words with similar meanings occur in similar contexts[^harris]. In 1957 Firth put it as a near copy of our saying: <span class="quote">&ldquo;you shall know a word by the company it keeps&rdquo;</span>[^firth].</p>
+</div>
+
+<p>Look at the gaps a word can fill:</p>
+<pre class="diagram"><code>I drank a cup of ___ this morning      tea fits     coffee fits
+she poured hot ___ into the cup        tea fits     coffee fits
+the mechanic replaced the ___          carburettor fits</code></pre>
+<p>Tea and coffee fit the same gaps. You learn that they are alike not from a definition, but because they keep the same company. So the saying, for words, becomes:</p>
+<div class="philo"><div class="philo-label">The philosophy</div><blockquote>
+<p>Two words are alike if they keep the same company.</p></blockquote>
+</div>
+
+<p>To turn this into numbers, give every word a vector, and give the vector one job: predict the word&rsquo;s company. Tea&rsquo;s vector has to predict &ldquo;drank&rdquo; and &ldquo;cup&rdquo;. So does coffee&rsquo;s. If two vectors have to do the same job, they should end up in the same place. Let&rsquo;s watch that happen.</p>
+<h3 id="watch-tea-and-coffee-meet">Watch tea and coffee meet</h3>
+<p>Here is a corpus of three sentences. To keep it tiny, we keep only the words that matter:</p>
+<pre class="diagram"><code>I drank tea from a cup               tea&#39;s company:          drank, cup
+I drank coffee from a cup            coffee&#39;s company:       drank, cup
+the engine needs a new carburettor   carburettor&#39;s company:  engine</code></pre>
+<p>Every vector has two numbers, so we can draw it. The company words get fixed vectors: drank = (0, 1), cup = (1, 0), engine = (-1, -1). Tea, coffee and the carburettor start in arbitrary places, far apart: tea = (1, -1), coffee = (-1, 1), carburettor = (1, 1).</p>
+<p>Each round, pull tea toward each word in its company, and push it away from one random word it never sits with. (Why the random word is there comes after the example.)</p>
+<p>At the start, tea and drank match badly, so tea moves a long way along drank. Tea already matches cup well, so it moves only a little along cup. A match is how much two arrows point the same way. The worse tea matches a company word, the further it is pulled, and the better it matches the random word, the further it is pushed. And it is pushed away from engine, the random word.</p>
 <p>
-  <img src="word2vec-window.svg" alt="A window around the word bank in a sentence; below, the vector for bank is pulled toward its neighbours and pushed away from random words">
+  <img src="tea-round-one.svg" alt="The 2-number plane with drank, cup and engine as fixed arrows from the centre; tea starts at the bottom right, moves a long way up along drank, a short way right along cup, and up and right away from engine">
 </p>
-<p><em>word2vec reads one window at a time. It pulls a word toward its neighbours and pushes it away from a few random words.</em></p>
-<p>That looks like a completely different algorithm. It is not. Under the hood, word2vec is still working on a matrix of which words appear with which<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
-<p>So the comparison with PageRank holds, block by block:</p>
+<p><em>Tea&rsquo;s first round: a long pull along drank, a short pull along cup, a push away from engine.</em></p>
+<p>Now repeat the round with the new vectors, again and again.</p>
+<p>
+  <img src="predict-the-company.svg" alt="Four panels of the 2-number plane at rounds 0, 1, 5 and 50: drank, cup and engine fixed; tea and coffee start far apart and end side by side, the carburettor ends near engine">
+</p>
+<p><em>Pull each word toward its company, again and again. Tea and coffee meet; the carburettor leaves.</em></p>
+<p>Tea and coffee never appeared in the same sentence. Neither one was ever pulled toward the other. They met because they had to predict the same company. That is the saying, and we watched it happen.</p>
+<p>One more rule: the random words. Real word2vec needs them; we kept one, engine, so the toy matches. In our toy the company words stay put. In real word2vec the company vectors move too, and then the game has a trivial solution: put every vector in the same place, pointing the same way and very long. Every pair matches, the model is always sure, and the vectors say nothing<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. The random words rule this out. A vector must match its company and also fail to match the words it never sits with.</p>
+<h3 id="now-the-names-1">Now the names</h3>
+<p>To match two vectors, multiply them number by number and add: a large match is a good match. The match is then squashed to between 0 and 1, which says how sure the game is that the two words belong together.</p>
+<p>Everything so far fits in one line. For a word $w$, a real company word $c$ and $k$ random words $n_1, \dots, n_k$, the game moves the vectors to make this number larger, where $\sigma$ is the squash:</p>
+<p>$$\log \sigma(v_c \cdot v_w) \;+\; \sum_{i=1}^{k} \log \sigma(-\,v_{n_i} \cdot v_w)$$</p>
+<p>The first part grows when the real pair matches, and the second when the random pairs do not. Tea&rsquo;s moves above are exactly the steps that make this number larger. One step touches only $k + 2$ vectors. The authors report that an optimized implementation can train on more than 100 billion words in a day on one machine<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. Here is the toy in code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-6-1"><a class="lnlinks" href="#hl-6-1"> 1</a>
+</span><span class="lnt" id="hl-6-2"><a class="lnlinks" href="#hl-6-2"> 2</a>
+</span><span class="lnt" id="hl-6-3"><a class="lnlinks" href="#hl-6-3"> 3</a>
+</span><span class="lnt" id="hl-6-4"><a class="lnlinks" href="#hl-6-4"> 4</a>
+</span><span class="lnt" id="hl-6-5"><a class="lnlinks" href="#hl-6-5"> 5</a>
+</span><span class="lnt" id="hl-6-6"><a class="lnlinks" href="#hl-6-6"> 6</a>
+</span><span class="lnt" id="hl-6-7"><a class="lnlinks" href="#hl-6-7"> 7</a>
+</span><span class="lnt" id="hl-6-8"><a class="lnlinks" href="#hl-6-8"> 8</a>
+</span><span class="lnt" id="hl-6-9"><a class="lnlinks" href="#hl-6-9"> 9</a>
+</span><span class="lnt" id="hl-6-10"><a class="lnlinks" href="#hl-6-10">10</a>
+</span><span class="lnt" id="hl-6-11"><a class="lnlinks" href="#hl-6-11">11</a>
+</span><span class="lnt" id="hl-6-12"><a class="lnlinks" href="#hl-6-12">12</a>
+</span><span class="lnt" id="hl-6-13"><a class="lnlinks" href="#hl-6-13">13</a>
+</span><span class="lnt" id="hl-6-14"><a class="lnlinks" href="#hl-6-14">14</a>
+</span><span class="lnt" id="hl-6-15"><a class="lnlinks" href="#hl-6-15">15</a>
+</span><span class="lnt" id="hl-6-16"><a class="lnlinks" href="#hl-6-16">16</a>
+</span><span class="lnt" id="hl-6-17"><a class="lnlinks" href="#hl-6-17">17</a>
+</span><span class="lnt" id="hl-6-18"><a class="lnlinks" href="#hl-6-18">18</a>
+</span><span class="lnt" id="hl-6-19"><a class="lnlinks" href="#hl-6-19">19</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="n">sigma</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="p">))</span>   <span class="c1"># the squash</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">company</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;drank&#34;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]),</span> <span class="s2">&#34;cup&#34;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">           <span class="s2">&#34;engine&#34;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">])}</span>
+</span></span><span class="line"><span class="cl"><span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;tea&#34;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]),</span> <span class="s2">&#34;coffee&#34;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;carburettor&#34;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># each word, its company in its sentence, and one random word</span>
+</span></span><span class="line"><span class="cl"><span class="n">games</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&#34;tea&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;drank&#34;</span><span class="p">,</span> <span class="s2">&#34;cup&#34;</span><span class="p">],</span> <span class="s2">&#34;engine&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s2">&#34;coffee&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;drank&#34;</span><span class="p">,</span> <span class="s2">&#34;cup&#34;</span><span class="p">],</span> <span class="s2">&#34;engine&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s2">&#34;carburettor&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;engine&#34;</span><span class="p">],</span> <span class="s2">&#34;cup&#34;</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="n">step</span> <span class="o">=</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">rand</span> <span class="ow">in</span> <span class="n">games</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">vec</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="n">step</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sigma</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">@</span> <span class="n">company</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span> <span class="o">*</span> <span class="n">company</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>  <span class="c1"># pull toward company, by how far short of sure</span>
+</span></span><span class="line"><span class="cl">            <span class="n">vec</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">-=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">@</span> <span class="n">company</span><span class="p">[</span><span class="n">rand</span><span class="p">])</span> <span class="o">*</span> <span class="n">company</span><span class="p">[</span><span class="n">rand</span><span class="p">]</span>  <span class="c1"># push from random word, by how sure it wrongly was</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="s2">&#34;tea&#34;</span><span class="p">]</span> <span class="o">-</span> <span class="n">vec</span><span class="p">[</span><span class="s2">&#34;coffee&#34;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>   <span class="c1"># 0.42</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>A few names come with this. The vector for each word is called an embedding. The guessing game with random words is called negative sampling. Moving the vectors a little after each pair is stochastic gradient descent. That is the algorithm word2vec<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>.</p>
+<div class="philo"><div class="philo-label">The philosophy</div><p>So word2vec is the saying, made precise for words. A word is defined by the words around it. We turned that into a game of predicting the company, and an algorithm fell out.</p>
+</div>
+
+<p>But look at what word2vec hands back: one vector per word, the same in every sentence. Take &ldquo;bank&rdquo;, start it at (0, 0), and run the same game on two more sentences, with engine as the random word:</p>
+<pre class="diagram"><code>I sat on the river bank    bank&#39;s company: river = (1, 0)
+I took a bank loan         bank&#39;s company: loan  = (0, 1)
+
+after 50 rounds:   bank matches river and loan almost exactly equally</code></pre>
+<p>Bank ends up almost exactly between the two. In &ldquo;I sat on the river bank&rdquo;, half of that vector is about money. word2vec has no way to choose, because the vector was settled before this sentence was read.</p>
+<blockquote>
+<p>One vector has to serve both banks, and the sentence that says which bank is right in front of you. What does the sentence know that the vector does not?</p></blockquote>
+<hr>
+<h2 id="different-company-different-mask">Different company, different mask</h2>
+<h3 id="you-wear-masks">You wear masks</h3>
+<div class="philo"><div class="philo-label">The philosophy</div><p>The saying leaves something out. You are different in different company. You talk one way to your parents and another way to your friends. You wear multiple masks, and the company you are in decides which one.</p>
+<p>This is old for words too. In 1935, Firth argued that a word&rsquo;s full meaning always depends on its context, and that you cannot study meaning apart from context[^firth35]. The same word means different things in different sentences, because it keeps different company there.</p>
+</div>
+
+<pre class="diagram"><code>   I sat on the river bank                 I took a bank loan
+
+   sat     river                           took     loan
+      \     /                                 \     /
+       bank                                    bank
+        |                                       |
+   [ mask: the edge of a river ]          [ mask: money ]
+
+             same word, different company, different mask</code></pre>
+<div class="philo"><div class="philo-label">The philosophy</div><p>So the saying, for a word in a sentence, becomes:</p>
+<blockquote>
+<p>A word wears a different mask in different company.</p></blockquote>
+</div>
+
+<h3 id="one-face-for-all-company">One face for all company</h3>
+<p>word2vec took the first half of the saying and dropped the second. It learns one vector per word from all of the word&rsquo;s company, in every sentence at once. Then it uses that one vector everywhere. We saw what this does to bank: it ended halfway between the two. One face for all company.</p>
+<p>Researchers had already seen this problem in earlier one-vector models, and they named it in technical terms. In 2010, Reisinger and Mooney wrote that one vector per word is a problem because many words are ambiguous<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>. In 2012, Huang and co-authors wrote that a vector built from all the contexts of a word with several meanings cannot represent any one of them well, because every meaning pulls on it<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>.</p>
+<div class="pause"><strong>Before you read on:</strong> how would you give bank a different mask in "I sat on the river bank" than in "I took a bank loan"?</div>
+<h3 id="the-first-fix-a-few-masks">The first fix: a few masks</h3>
+<p>The first fix you would try is the one these papers tried. Give a word a few vectors, one per meaning<sup id="fnref1:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup><sup id="fnref1:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>. Bank gets two masks: one for rivers and one for money. In a sentence, compare the words around bank with each mask, and wear the closest one.</p>
+<pre class="diagram"><code>word2vec       bank ──► one vector                    the same mask in every sentence
+
+a few masks    bank ──► mask 1: rivers  ─┐
+                    └─► mask 2: money   ─┴─► compare each with the sentence,
+                                             wear the closest</code></pre>
+<p>This is the &ldquo;several masks&rdquo; step, and it helps. But it leaves two problems. First, how many masks does a word need? Bank has two clear meanings. A word like &ldquo;run&rdquo; has many, and they shade into each other. Second, which mask fits this sentence? To choose, you already have to read the words around bank and decide which of them matter.</p>
+<p>That second problem is the hint. If we have to read the company to pick a mask, why not build the mask from the company directly?</p>
+<h3 id="build-the-mask-from-the-company">Build the mask from the company</h3>
+<p>So build bank&rsquo;s vector fresh in each sentence, from the words around it there. Picture each word as an arrow. River points far toward river things, loan points far toward money things, and I, sat, on, the, took and a are short arrows that point nowhere much. Bank is in the sentence too, so it is one of its own neighbours.</p>
+<p>The simplest version is an equal average of every word in the sentence, bank included. It lands almost exactly where word2vec put bank: halfway (the grey mark in the picture). &ldquo;River&rdquo; counts 1/6, exactly as much as &ldquo;on&rdquo;. The one word that settles the mask is outweighed by the words that do not.</p>
+<p>So weigh each neighbour by how well it matches what bank is looking for. That is a vector too. Bank carries one more vector, which says what it looks for in its company. A word&rsquo;s own vector says what the word is. The look-for vector says what it needs from its neighbours, and the two need not be the same. In this toy we chose it to reward words that lean far toward the river or toward money, so it barely matches the short words.</p>
+<p>Here is what that does in both sentences. Each line joins bank to a word in the sentence, and its thickness is that word&rsquo;s weight. Under each sentence, bank&rsquo;s new vector sits on a line that runs from the river end to the money end:</p>
+<p>
+  <img src="bank-masks.svg" alt="Two sentences. In &ldquo;I sat on the river bank&rdquo;, bank&rsquo;s lines to river and to itself are thick and the rest thin, and bank moves from word2vec&rsquo;s halfway point toward the river end. In &ldquo;I took a bank loan&rdquo;, the lines to loan and bank are thick, and bank moves toward the money end">
+</p>
+<p><em>Same word, looking for the same thing. The company decides which lines are thick, and so which way bank moves.</em></p>
+<p>What bank looks for did not change between the two sentences. The company did, so the weights did, so the mask did. &ldquo;River&rdquo; got 0.40 of the say, not 1/6. Bank&rsquo;s own line is thick too, because bank matches what it looks for as well as river does. The short words still count a little, but they can no longer outweigh the word that matters.</p>
+<p>Every sentence builds its own mask, so we never choose how many masks bank has or which one to wear.</p>
+<p>One more rule: where does the look-for vector come from? It is learned, like word2vec&rsquo;s vectors. After each example it is moved, so the weights it picks help the model with the prediction it is trained on, for example translating the sentence into another language, the way word2vec&rsquo;s vectors were moved to predict the company. And every word has one, not only bank.</p>
+<h3 id="now-the-names-2">Now the names</h3>
+<p>There are three steps. Match each word against what bank looks for, with the same multiply-and-add word2vec uses. Turn the matches into weights: raise e to each match, so every weight is positive, then divide by the total, so the weights add up to one. The new bank is the weighted average.</p>
+<p>This is attention. The look-for vector is called the query. The step that turns matches into positive weights that add up to one is called softmax. For a word with query $q$ and words $x_1, \dots, x_n$ in the sentence:</p>
+<p>$$a_j = \frac{e^{\,q \cdot x_j}}{\sum_{k=1}^{n} e^{\,q \cdot x_k}}, \qquad \text{new vector} = \sum_{j=1}^{n} a_j\, x_j$$</p>
+<p>Here are both bank sentences in code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-10-1"><a class="lnlinks" href="#hl-10-1"> 1</a>
+</span><span class="lnt" id="hl-10-2"><a class="lnlinks" href="#hl-10-2"> 2</a>
+</span><span class="lnt" id="hl-10-3"><a class="lnlinks" href="#hl-10-3"> 3</a>
+</span><span class="lnt" id="hl-10-4"><a class="lnlinks" href="#hl-10-4"> 4</a>
+</span><span class="lnt" id="hl-10-5"><a class="lnlinks" href="#hl-10-5"> 5</a>
+</span><span class="lnt" id="hl-10-6"><a class="lnlinks" href="#hl-10-6"> 6</a>
+</span><span class="lnt" id="hl-10-7"><a class="lnlinks" href="#hl-10-7"> 7</a>
+</span><span class="lnt" id="hl-10-8"><a class="lnlinks" href="#hl-10-8"> 8</a>
+</span><span class="lnt" id="hl-10-9"><a class="lnlinks" href="#hl-10-9"> 9</a>
+</span><span class="lnt" id="hl-10-10"><a class="lnlinks" href="#hl-10-10">10</a>
+</span><span class="lnt" id="hl-10-11"><a class="lnlinks" href="#hl-10-11">11</a>
+</span><span class="lnt" id="hl-10-12"><a class="lnlinks" href="#hl-10-12">12</a>
+</span><span class="lnt" id="hl-10-13"><a class="lnlinks" href="#hl-10-13">13</a>
+</span><span class="lnt" id="hl-10-14"><a class="lnlinks" href="#hl-10-14">14</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;I&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&#34;sat&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="s2">&#34;on&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&#34;the&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;river&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="s2">&#34;bank&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;took&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="s2">&#34;a&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&#34;loan&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]}</span>
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>   <span class="c1"># what bank looks for: the query</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&#34;I sat on the river bank&#34;</span><span class="p">,</span> <span class="s2">&#34;I took a bank loan&#34;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">vec</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">matches</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">q</span>
+</span></span><span class="line"><span class="cl">    <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>   <span class="c1"># softmax</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="s2">&#34;-&gt;&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">weights</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># I sat on the river bank -&gt; [1.22 0.5 ]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># I took a bank loan -&gt; [0.44 1.35]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In this code, river&rsquo;s match is 3.00 and a short word&rsquo;s is 0.90, about 3 times smaller. After the e^ step, river&rsquo;s weight is about 8 times larger. That is why the good matches pull ahead.</p>
+<p>A softmax-weighted average like this was in use by 2014<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. In 2017, Vaswani and co-authors built a whole model out of it, the Transformer<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>. In the Transformer, every word weighs every other word in the same sentence, all at once, each with its own query. It adds a few details, but the core is the formula above. The same word gets a different vector in each sentence: a different mask in each company.</p>
+<p>Bahdanau and co-authors in 2014 were fixing a bottleneck. The basic encoder-decoder they started from had to squeeze a whole sentence into one fixed-length vector, and <span class="quote">&ldquo;the use of a fixed-length vector is a bottleneck&rdquo;</span><sup id="fnref1:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. Vaswani and co-authors in 2017 wanted a model that trains in parallel: computing one word at a time <span class="quote">&ldquo;precludes parallelization within training examples&rdquo;</span><sup id="fnref1:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>.</p>
+<p>When I first thought through this chain, I got as far as asking: what if word2vec, instead of one fixed vector learned from all of a word&rsquo;s company, had a weighted average, or a function in there? I was pretty sure extensions like this existed. That is attention, and I missed it at the time. But it shows how the blocks lead you there.</p>
+<div class="philo"><div class="philo-label">The philosophy</div><p>So attention is still the saying, with its second half put back. A word is defined by its company, and in different company it wears a different mask. Attention builds that mask from the company at hand.</p>
+</div>
+
+<blockquote>
+<p>Two kinds of company, three tools. What if we swap them, and try every tool on every kind of company?</p></blockquote>
+<hr>
+<h2 id="swap-the-tools">Swap the tools</h2>
+<p>Look at what we have. The saying was the same each time. What changed was the table and the tool. For pages, the company was links, and the tool was &ldquo;pass it around until it settles&rdquo;. For words, the company was nearby words, and the tool was &ldquo;predict the company&rdquo;. For attention, the company was the same nearby words, and the tool was &ldquo;weigh the company&rdquo;.</p>
+<p>If the saying is the same, the tools should work on any table. They do. Each filled cell below is a real paper:</p>
 <table>
   <thead>
       <tr>
           <th></th>
-          <th>PageRank</th>
-          <th>word2vec</th>
+          <th>Pass it around until it settles</th>
+          <th>Predict the company</th>
+          <th>Weigh the company</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>The saying</td>
-          <td>a page is important if important pages link to it</td>
-          <td>words that keep similar company mean similar things</td>
+          <td>Pages and graphs</td>
+          <td>PageRank, 1998<sup id="fnref4:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></td>
+          <td>DeepWalk, 2014<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>; node2vec, 2016<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></td>
+          <td>Graph attention networks, 2018<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></td>
       </tr>
       <tr>
-          <td>The matrix</td>
-          <td>links between pages</td>
-          <td>co-occurrence of words</td>
+          <td>Words and sentences</td>
+          <td>TextRank, 2004<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></td>
+          <td>word2vec, 2013<sup id="fnref4:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></td>
+          <td>Transformer, 2017<sup id="fnref2:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></td>
       </tr>
       <tr>
-          <td>What we want</td>
-          <td>one score per page</td>
-          <td>one vector per word</td>
-      </tr>
-      <tr>
-          <td>How we solve it</td>
-          <td>power iteration to a fixed point</td>
-          <td>SGD, which in effect factorizes that matrix</td>
+          <td>People</td>
+          <td>Who to Follow at Twitter, 2013<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></td>
+          <td>DeepWalk, 2014, tested on social networks<sup id="fnref1:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></td>
+          <td>GraphRec, 2019, weights learned from the two people&rsquo;s vectors<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup></td>
       </tr>
   </tbody>
 </table>
-<p>Later the two ideas met. DeepWalk<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup> and node2vec<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> take a graph and walk randomly on it, like the PageRank surfer. They write down the walks as if they were sentences, and run word2vec on them. The result is a vector for every node.</p>
-<p>Now the next what-if. In word2vec, every word in the window counts the same.</p>
-<h2 id="attention-what-the-matrix-throws-away">Attention: what the matrix throws away</h2>
-<p>In both algorithms, the company is flattened into one matrix. In word2vec, for a pair of words, there is one number: how often they appear together. Every word in the window is treated the same way, apart from a fixed discount for distance. And every word gets one vector, whatever sentence it is in. &ldquo;Bank&rdquo; in &ldquo;river bank&rdquo; and &ldquo;bank&rdquo; in &ldquo;bank loan&rdquo; get the same vector, because the matrix added both kinds of company into one row.</p>
-<p>So ask the question the saying asks: which company? The neighbours do not all matter equally, and which ones matter depends on the sentence.</p>
-<p>So weight them. Instead of treating every neighbour the same, take a weighted average of them. Let the weights be a learned function of the word and its neighbours. Now &ldquo;bank&rdquo; looks at &ldquo;river&rdquo; and gets one meaning, and looks at &ldquo;loan&rdquo; and gets another.</p>
+<p>Take the first swap: PageRank&rsquo;s company, word2vec&rsquo;s tool. PageRank gives a page one number, how important it is. But we could also ask what a page means, by the company it keeps. Start at a page and click links at random, like the PageRank surfer. Write down the pages you pass, in order. That list is a sentence, and the pages are its words. Run word2vec on many such walks, and every page gets a vector. Pages that keep turning up in the same walks get similar vectors, because they keep the same company. That is DeepWalk, from 2014<sup id="fnref2:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>.</p>
+<pre class="diagram"><code>a random walk:   page 7 → page 2 → page 0 → page 2 → page 5
+read it as:      &#34;page7 page2 page0 page2 page5&#34;     ← a sentence
+word2vec:        pages that share walks get nearby vectors</code></pre>
+<p>The second swap goes the other way: a new kind of company, PageRank&rsquo;s tool. Make the sentences of a long document the things, link two sentences by how much they share, and pass scores around until they settle. The sentences that end on top are the ones the rest of the document keeps pointing back to. That is TextRank, from 2004<sup id="fnref1:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>.</p>
+<p>Graph attention networks are the third kind. They let each node weigh its neighbours by a learned score, instead of splitting equally as PageRank does<sup id="fnref1:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>.</p>
+<p>The bottom row is people. Who to Follow, at Twitter, starts from you, walks the follow graph, and suggests the people you keep landing on<sup id="fnref1:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>. GraphRec makes your vector a mix of your friends&rsquo; vectors, and learns how much each friend counts<sup id="fnref1:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>.</p>
+<div class="philo"><div class="philo-label">The philosophy</div><p>The saying gives the table. The tool is a separate choice.</p>
+</div>
+
+<blockquote>
+<p>What does each tool say about a person?</p></blockquote>
+<hr>
+<h2 id="people-the-same-saying-a-new-table">People: the same saying, a new table</h2>
+<p>So far, a page&rsquo;s company has been the pages that link to it, and a word&rsquo;s company has been the words around it. Let&rsquo;s try the saying on people, using the office from the TV show The Office. What company does a person keep? At work, it is mostly the people they talk to.</p>
+<p>Every message Kevin sends Oscar is a small vote. When Kevin needs something, Oscar is one of the people he turns to. Suppose we write down, for everyone in the office, who they message and how often. We get a table that looks exactly like the link table for the web. The rows are people and the columns are people. Each cell says how much of one person&rsquo;s attention goes to another.</p>
+<h3 id="who-matters">Who matters?</h3>
+<p>With pages, we asked: if a reader clicks links at random, which page do they keep landing on? Here is the same question for an office.</p>
+<p>Take a question nobody can answer alone, such as where the expense form lives. Kevin has it first. He doesn&rsquo;t know, so he asks the person he usually asks, Oscar. Oscar doesn&rsquo;t know either, so he asks the person he usually asks. The question moves through the office one conversation at a time. At each step it follows the habits the table records.</p>
+<p>Now picture this all month, with hundreds of small questions starting at random desks. Some get answered and stop. Some get dropped, and a new one starts somewhere else. That is the random jump from the PageRank section, and it does the same job here. It stops a question from bouncing forever between two friends who only talk to each other.</p>
+<div class="pause"><strong>Before you read on:</strong> at the end of the month, count how many times each person was handed a question. Who ends up on top: the person with the most messages, or someone else? Why?</div>
+<p>Pam is far ahead of everyone. She isn&rsquo;t the manager, and nobody gave her this job. She is ahead because many people ask her, and because the people who ask her are asked a lot themselves.</p>
+<p>That second part makes this more than counting messages. Being asked by someone who is asked a lot counts for more than being asked by someone nobody talks to. This is the recursive definition we had for pages: important pages are linked to by important pages. The fix is also the same: pass the questions around until the counts stop changing.</p>
 <p>
-  <img src="bank-attention.svg" alt="The word bank in two sentences, with lines of different thickness to the other words: heavy to river in one, heavy to loan in the other">
+  <img src="office-questions.svg" alt="An office floor plan with a question moving desk to desk, from Kevin to Oscar onward, and Pam&rsquo;s desk handed the most questions">
 </p>
-<p><em>Attention chooses the company per sentence. &lsquo;Bank&rsquo; looks at &lsquo;river&rsquo; in one sentence and at &rsquo;loan&rsquo; in the other.</em></p>
-<p>That is the core of attention. Bahdanau and co-authors first used it to let a translation model look back at the right source words<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>. The Transformer built the whole model out of attention over the sentence itself: self-attention<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>. For each word, it scores every word in the sentence, itself included. A softmax turns the scores into weights. The word&rsquo;s new vector is the weighted sum of what its neighbours carry.</p>
-<p>The meaning of a word is still defined by its company. The company is now chosen per sentence, by a function that is learned. To be honest, this step changes more than one block. The training objective and the depth of the model change too. But the block that changes the meaning of &ldquo;company&rdquo; is the weighting.</p>
-<p>When I first thought this through, I got as far as: maybe word2vec, instead of a global average, could have a weighted average, or a function embedded in there. That is attention, and I missed it at the time. But that is the point: at each step you get down to a deeper nuance, and the building blocks lead you to new algorithms.</p>
-<p>Now ask the same kind of question of attention.</p>
-<h2 id="the-fourth-column">The fourth column</h2>
-<p>Attention is not the end of this chain. It is the latest block.</p>
-<p>Look at one object, the matrix, across the three steps.</p>
-<p>
-  <img src="the-matrix.svg" alt="Four boxes: PageRank, M is given; word2vec, M is learned; Attention, M is computed from the input; and a dashed fourth box with a question mark">
-</p>
-<p><em>One matrix, three levels of abstraction, and a fourth to fill.</em></p>
-<p>In PageRank the matrix is given: $r = M r$, with $M$ fixed by the links. In word2vec it is learned: $M \approx W C^{\top}$, one vector per word on each side. In attention it is computed from the input, per sample: $M_{ij} = \mathrm{softmax}_j(q_i \cdot k_j)$, and the output is $M V$. Given, learned, computed. So the fourth column is whatever you do to $M$ next. Two what-ifs are live right now. Both are math, not applications.</p>
-<p><strong>What if $M$ had structure?</strong> Attention&rsquo;s $M$ is dense, so applying it costs $n^2$ for a sequence of $n$ tokens. Keep $M$ dependent on the input, but force it to be a recurrence:</p>
-<p>$$h_t = A_t h_{t-1} + B_t x_t, \qquad y_t = C_t h_t$$</p>
-<p>with $A_t$, $B_t$ and $C_t$ computed from $x_t$. That is a selective state-space model, Mamba<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>. A year later the same authors showed that linear attention and state-space models are one family of structured matrices<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. Linear time, same saying.</p>
-<p><strong>What if the average became a fit?</strong> Written out, attention is kernel regression, a method from 1964<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>: my value is the average of my company&rsquo;s values, weighted by similarity. So instead of averaging the company, fit a model to it. One gradient step of linear regression on the company gives linear attention, also called fast weights<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. A small network trained by gradient descent on the sequence, at inference time, gives test-time training<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> and Titans<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>. The hidden state becomes a model, and the company trains it. This is also the math under in-context learning: a linear attention layer can implement one gradient step on the examples in the prompt<sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup>.</p>
-<p>Neither road has replaced attention at scale yet. Whichever wins, it will be one more thing done to the matrix.</p>
-<h2 id="why-the-building-blocks-matter">Why the building blocks matter</h2>
-<p>It feels like LEGO. You build a block, then you complicate it.</p>
-<p>Let&rsquo;s step back and look at what we did. We took a philosophy, turned it into math, and solved it in the simplest setup. Then we changed the blocks, step by step:</p>
-<ol>
-<li>What counts as company: links, then words in a window, then words chosen by attention.</li>
-<li>What we want back: a score, then a vector, then a vector per sentence.</li>
-<li>How we solve it: power iteration, then SGD, then a network trained end to end.</li>
-</ol>
-<p>
-  <img src="block-grid.svg" alt="A grid with columns PageRank, word2vec and Attention and rows company, output and solver, with the changed cells highlighted">
-</p>
-<p><em>Three algorithms, one saying, and a fourth column to fill.</em></p>
-<p>At each step there was a choice. You can only see the choices if you understand the basic setup and why it works. If you do not, you take what somebody built and apply it, or extend it a little. So pick a cell in the grid, change the function in it, and see what it becomes.</p>
-<p>This is the kind of intuition Hinton is known for. Take dropout. The paper by Srivastava, Hinton and co-authors<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> starts from an idea in evolution. Sexual reproduction mixes genes, so a gene cannot rely on one exact set of partners. It has to be useful on its own. Randomly dropping units while training does the same to a network. A philosophy, then a mechanism.</p>
-<h2 id="where-i-have-used-this">Where I have used this</h2>
-<p>Two of my own what-ifs.</p>
-<p><strong>Walmart, 2014: what if queries shared clicks with their neighbours?</strong> The usual way to use click engagement is one query at a time: a query, the items it returns, and the clicks on those items. I built a graph over queries instead. Each query was connected to its neighbours by a weighted, probabilistic similarity. I think it was a function of things like text overlap and queries that came up in the same sessions. Click engagement was then shared with the neighbours, along those weights. If you search for &ldquo;Samsung TVs&rdquo;, some of what we know about which TVs people click for &ldquo;TVs&rdquo; carries over.</p>
-<p>A cousin in the literature is random walks on the click graph<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>, which walk between queries and the documents clicked for them. Mine linked queries to queries directly. It is the same shape as PageRank: a node&rsquo;s score depends on its neighbours, spread along weighted edges.</p>
-<p><strong>Needl, 2024: what if sentences were the pages?</strong> The usual way to fit a long document into an LLM is chunking, and chunking loses important sentences. I used a TextRank-style approach<sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup> instead: sentences as nodes, edges from how similar they are, and the most central sentences kept as context. That is PageRank with sentences as the pages.</p>
-<p>Both came the same way: understand the basic setup really well, then extend it.</p>
+<p><em>A question moves through the office along the habits in the table. Count who is handed questions most often.</em></p>
+<p>There is no new maths here. Swap pages for people and links for messages, and PageRank tells you who the office actually routes through.</p>
+<h3 id="who-is-like-whom">Who is like whom?</h3>
+<p>PageRank gives each person one number. It tells you how central Pam is, but not what kind of person she is. For that we need the tool word2vec used: predict the company.</p>
+<p>Recall how word2vec learns: each word&rsquo;s vector has to predict the company around it, and words with the same company end up close. That is why tea and coffee sit close together, even when they never appear in the same sentence.</p>
+<p>We can write a person&rsquo;s week as a sentence in the same way. Dwight&rsquo;s week reads: sales calls, client lunch, quota sheet, beet farm. Andy works in the Stamford branch. His week reads: sales calls, client lunch, quota sheet, a cappella practice. Angela&rsquo;s week reads: accounts, expense reports, party-planning committee.</p>
+<p>A real week is spread across apps. The calendar says what a person did, the chat app says who they talked to, and their messages and documents say how they do it. All of it can go into the same sentence.</p>
+<p>Now hide the name and ask the model who fits: &ldquo;___ spent Tuesday on sales calls, then updated the quota sheet.&rdquo; The model is right whether it answers Dwight or Andy. To be right both times, it has to give the two of them nearby vectors.</p>
+<p>Notice what did not happen. Dwight and Andy have never messaged each other. PageRank would never connect them, because no chain of conversations joins them. word2vec connects them anyway, because they keep the same kind of company. That is the difference between the two tools. The first follows the links that exist. The second finds people who could stand in for each other.</p>
+<h3 id="who-is-right-for-this-job">Who is right for this job?</h3>
+<p>One vector per person is still a compromise. Dwight&rsquo;s vector has to describe the salesman and the beet farmer at once. So for any one question, it is a little wrong. Dwight is &ldquo;bank&rdquo; again: one face for all company, when he wears a different mask in each.</p>
+<blockquote>
+<p>Ask the office &ldquo;who should close this client?&rdquo;, then ask &ldquo;who should plan the office party?&rdquo;. Dwight has one vector for both questions. Which part of Dwight should answer each one, and who decides? You have already met the tool.</p></blockquote>
+<hr>
+<h2 id="try-it-on-something-new">Try it on something new</h2>
+<p>Here is the test of whether the building blocks are yours. Take songs.</p>
+<p>What company does a song keep? The songs next to it on people&rsquo;s playlists. Write that as a table: songs in the rows, neighbouring songs in the columns. Now pick the tool by the question. &ldquo;Which song should be on everyone&rsquo;s party list?&rdquo; is a question about importance, so pass it around until it settles. &ldquo;What sounds like this song?&rdquo; is a question about similarity, so predict the company: treat each playlist as a sentence and each song as a word. &ldquo;What should play next, for this listener, right now?&rdquo; depends on the songs this listener just played, so weigh the company.</p>
+<div class="philo"><div class="philo-label">The philosophy</div><p>You are defined by the company you keep. Decide what the company is. Write it as a table. Pick the tool that answers your question. The algorithm falls out.</p>
+</div>
+
+<h2 id="further-reading-intuition-first">Further reading, intuition first</h2>
+<ul>
+<li>Brin and Page, <a href="http://infolab.stanford.edu/~backrub/google.html" target="_blank" >The Anatomy of a Large-Scale Hypertextual Web Search Engine</a> (1998). Section 2.1 gives the random surfer and the citation argument in the authors&rsquo; own words, in about a page.</li>
+<li>Jay Alammar, <a href="https://jalammar.github.io/illustrated-word2vec/" target="_blank" >The Illustrated Word2vec</a>. The guessing game, drawn step by step, with no maths needed.</li>
+<li>Chris Olah and Shan Carter, <a href="https://distill.pub/2016/augmented-rnns/" target="_blank" >Attention and Augmented Recurrent Neural Networks</a> (Distill, 2016). Interactive diagrams that show which words attention weights, step by step.</li>
+<li>Jay Alammar, <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" >The Illustrated Transformer</a>. How every word weighs every other word in the sentence, one picture at a time.</li>
+<li>3Blue1Brown, <a href="https://www.3blue1brown.com/lessons/attention" target="_blank" >Attention in transformers, step-by-step</a>. A video that builds the weights from the matches before it shows the formula.</li>
+<li>Perozzi, Al-Rfou and Skiena, <a href="https://arxiv.org/abs/1403.6652" target="_blank" >DeepWalk</a> (2014). The swap from the table above, in a short paper: random walks as sentences.</li>
+</ul>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>C. J. C. Burges, <em>From RankNet to LambdaRank to LambdaMART: An Overview</em>, Microsoft Research Technical Report MSR-TR-2010-82, 2010.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>L. Page, S. Brin, R. Motwani and T. Winograd, <em>The PageRank Citation Ranking: Bringing Order to the Web</em>, Stanford technical report, 1998.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>S. Brin and L. Page, <em>The Anatomy of a Large-Scale Hypertextual Web Search Engine</em>, 1998.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>S. Brin and L. Page, <em>The Anatomy of a Large-Scale Hypertextual Web Search Engine</em>, WWW7, 1998.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>J. R. Firth, <em>A Synopsis of Linguistic Theory 1930-1955</em>, 1957.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Y. Bengio, R. Ducharme, P. Vincent and C. Jauvin, <em>A Neural Probabilistic Language Model</em>, JMLR 2003.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>Z. Harris, <em>Distributional Structure</em>, Word, 1954.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>T. Mikolov, K. Chen, G. Corrado and J. Dean, <em>Efficient Estimation of Word Representations in Vector Space</em>, 2013.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p>T. Mikolov et al., <em>Efficient Estimation of Word Representations in Vector Space</em>, 2013.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Y. Goldberg and O. Levy, <em>word2vec Explained: Deriving Mikolov et al.&rsquo;s Negative-Sampling Word-Embedding Method</em>, arXiv 1402.3722, 2014. Section 2.2 points out this trivial solution and why the random pairs are needed.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
 <p>T. Mikolov et al., <em>Distributed Representations of Words and Phrases and their Compositionality</em>, NeurIPS 2013.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7">
-<p>For the curious: O. Levy and Y. Goldberg, <em>Neural Word Embedding as Implicit Matrix Factorization</em> (NeurIPS 2014), showed that skip-gram with negative sampling in effect factorizes the co-occurrence matrix rescaled by PMI (how much more often two words appear together than chance), shifted by the log of the number of negative samples. O. Levy, Y. Goldberg and I. Dagan, <em>Improving Distributional Similarity with Lessons Learned from Word Embeddings</em> (TACL 2015), then factorized positive PMI directly with SVD and, with the right settings, came close to word2vec.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>O. Levy and Y. Goldberg, <em>Neural Word Embedding as Implicit Matrix Factorization</em>, NeurIPS 2014. A year after word2vec, this paper showed that its guessing game is, in effect, compressing the same word-by-company table we decided not to build. The tool changed. The saying and the table stayed the same. For the curious: the table it factorizes is the word-by-context table rescaled by PMI (how much more often two words appear together than chance), shifted by the log of the number of random words.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8">
-<p>B. Perozzi, R. Al-Rfou and S. Skiena, <em>DeepWalk: Online Learning of Social Representations</em>, KDD 2014.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Two differences from the toy matter here. Every word has two vectors, one for when it is the word and one for when it is the company, and both move. And the company is every word within a few positions, with nearer words counting a little more<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9">
-<p>A. Grover and J. Leskovec, <em>node2vec: Scalable Feature Learning for Networks</em>, KDD 2016.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>J. Reisinger and R. J. Mooney, <em>Multi-Prototype Vector-Space Models of Word Meaning</em>, NAACL-HLT 2010.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10">
-<p>D. Bahdanau, K. Cho and Y. Bengio, <em>Neural Machine Translation by Jointly Learning to Align and Translate</em>, 2014.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>E. H. Huang, R. Socher, C. D. Manning and A. Y. Ng, <em>Improving Word Representations via Global Context and Multiple Word Prototypes</em>, ACL 2012.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:11">
-<p>A. Vaswani et al., <em>Attention Is All You Need</em>, NeurIPS 2017.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>D. Bahdanau, K. Cho and Y. Bengio, <em>Neural Machine Translation by Jointly Learning to Align and Translate</em>, 2014.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:12">
-<p>A. Gu and T. Dao, <em>Mamba: Linear-Time Sequence Modeling with Selective State Spaces</em>, 2023.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>A. Vaswani et al., <em>Attention Is All You Need</em>, NeurIPS 2017.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:13">
-<p>T. Dao and A. Gu, <em>Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality</em>, ICML 2024.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>B. Perozzi, R. Al-Rfou and S. Skiena, <em>DeepWalk: Online Learning of Social Representations</em>, KDD 2014.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:14">
-<p>E. A. Nadaraya, <em>On Estimating Regression</em>, 1964, and G. S. Watson, <em>Smooth Regression Analysis</em>, 1964. For attention read as kernel regression: Y.-H. H. Tsai et al., <em>Transformer Dissection: A Unified Understanding of Transformer&rsquo;s Attention via the Lens of Kernel</em>, EMNLP 2019.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>A. Grover and J. Leskovec, <em>node2vec: Scalable Feature Learning for Networks</em>, KDD 2016.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:15">
-<p>I. Schlag, K. Irie and J. Schmidhuber, <em>Linear Transformers Are Secretly Fast Weight Programmers</em>, ICML 2021.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>P. Veličković et al., <em>Graph Attention Networks</em>, ICLR 2018.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:16">
-<p>Y. Sun et al., <em>Learning to (Learn at Test Time): RNNs with Expressive Hidden States</em>, 2024.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>R. Mihalcea and P. Tarau, <em>TextRank: Bringing Order into Texts</em>, EMNLP 2004.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:17">
-<p>A. Behrouz, P. Zhong and V. Mirrokni, <em>Titans: Learning to Memorize at Test Time</em>, 2025.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>P. Gupta, A. Goel, J. Lin, A. Sharma, D. Wang and R. Zadeh, <em>WTF: The Who to Follow Service at Twitter</em>, WWW 2013.&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:18">
-<p>J. von Oswald et al., <em>Transformers Learn In-Context by Gradient Descent</em>, ICML 2023.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>W. Fan, Y. Ma, Q. Li, Y. He, E. Zhao, J. Tang and D. Yin, <em>Graph Neural Networks for Social Recommendation</em>, WWW 2019.&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:19">
-<p>N. Srivastava, G. Hinton et al., <em>Dropout: A Simple Way to Prevent Neural Networks from Overfitting</em>, JMLR 2014.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:20">
-<p>N. Craswell and M. Szummer, <em>Random Walks on the Click Graph</em>, SIGIR 2007.&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:21">
-<p>R. Mihalcea and P. Tarau, <em>TextRank: Bringing Order into Texts</em>, EMNLP 2004.&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>O. Levy, Y. Goldberg and I. Dagan, <em>Improving Distributional Similarity with Lessons Learned from Word Embeddings</em>, TACL 2015. Discusses word2vec&rsquo;s dynamic window, which gives nearer words more weight.&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>

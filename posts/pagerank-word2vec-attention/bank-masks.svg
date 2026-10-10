@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 720" width="700" height="720" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Bank's lines to its company, thickness by weight</title>
+<desc id="d">Two sentences, I sat on the river bank and I took a bank loan. In each, bank is joined to every word by a line whose thickness is that word's weight. In the first sentence the lines to river (0.40) and to bank itself are thick and the rest thin, and bank moves from word2vec's halfway point, where an equal average of the sentence also lands, toward the river end of a river-to-money line. In the second, the lines to loan (0.43) and bank are thick, and bank moves toward the money end.</desc>
+<defs>
+<marker id="ha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker>
+<marker id="hg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/></marker>
+</defs>
+<rect width="700" height="720" fill="#fafaf7"/>
+<line x1="350" y1="160" x2="55.0" y2="86" stroke="#8a8f98" stroke-width="3.3" stroke-linecap="round"/>
+<line x1="350" y1="160" x2="173.0" y2="86" stroke="#8a8f98" stroke-width="3.3" stroke-linecap="round"/>
+<line x1="350" y1="160" x2="291.0" y2="86" stroke="#8a8f98" stroke-width="3.3" stroke-linecap="round"/>
+<line x1="350" y1="160" x2="409.0" y2="86" stroke="#8a8f98" stroke-width="3.1" stroke-linecap="round"/>
+<line x1="350" y1="160" x2="527.0" y2="86" stroke="#d9480f" stroke-width="12.5" stroke-linecap="round"/>
+<line x1="350" y1="160" x2="645.0" y2="86" stroke="#d9480f" stroke-width="12.5" stroke-linecap="round"/>
+<text x="55.0" y="70.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">I</text>
+<text x="173.0" y="70.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">sat</text>
+<text x="291.0" y="70.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">on</text>
+<text x="409.0" y="70.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">the</text>
+<text x="527.0" y="70.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">river</text>
+<text x="527.0" y="38.0" font-size="22" fill="#b93c08" text-anchor="middle" font-weight="600">0.40</text>
+<text x="645.0" y="70.0" font-size="24" fill="#222" text-anchor="middle" font-weight="600">bank</text>
+<rect x="300" y="160" width="100" height="40" rx="10" fill="#fff" stroke="#222" stroke-width="2.5"/>
+<text x="350.0" y="188.0" font-size="24" fill="#222" text-anchor="middle" font-weight="600">bank</text>
+<line x1="120" y1="268" x2="580" y2="268" stroke="#8a8f98" stroke-width="2.5"/>
+<text x="108.0" y="276.0" font-size="22" fill="#5f646d" text-anchor="end" font-weight="400">river</text>
+<text x="592.0" y="276.0" font-size="22" fill="#5f646d" text-anchor="start" font-weight="400">money</text>
+<text x="350.0" y="248.0" font-size="22" fill="#5f646d" text-anchor="middle" font-weight="400">word2vec's bank ≈ equal average</text>
+<path d="M338.4,253 L352.4,253 L345.4,263 z" fill="#8a8f98"/>
+<line x1="338.0" y1="268" x2="248.7" y2="268" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<circle cx="350.0" cy="268" r="9" fill="#fafaf7" stroke="#222" stroke-width="2.5"/>
+<circle cx="234.7" cy="268" r="10" fill="#d9480f"/>
+<text x="234.7" y="308.0" font-size="22" fill="#b93c08" text-anchor="middle" font-weight="600">bank in this sentence</text>
+<line x1="40" y1="350" x2="660" y2="350" stroke="#8a8f98" stroke-width="1" opacity="0.6"/>
+<line x1="350" y1="510" x2="94.0" y2="436" stroke="#8a8f98" stroke-width="3.4" stroke-linecap="round"/>
+<line x1="350" y1="510" x2="222.0" y2="436" stroke="#8a8f98" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="350" y1="510" x2="350.0" y2="436" stroke="#8a8f98" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="350" y1="510" x2="478.0" y2="436" stroke="#d9480f" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="350" y1="510" x2="606.0" y2="436" stroke="#d9480f" stroke-width="13.1" stroke-linecap="round"/>
+<text x="94.0" y="420.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">I</text>
+<text x="222.0" y="420.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">took</text>
+<text x="350.0" y="420.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">a</text>
+<text x="478.0" y="420.0" font-size="24" fill="#222" text-anchor="middle" font-weight="600">bank</text>
+<text x="606.0" y="420.0" font-size="24" fill="#222" text-anchor="middle" font-weight="400">loan</text>
+<text x="606.0" y="388.0" font-size="22" fill="#b93c08" text-anchor="middle" font-weight="600">0.43</text>
+<rect x="300" y="510" width="100" height="40" rx="10" fill="#fff" stroke="#222" stroke-width="2.5"/>
+<text x="350.0" y="538.0" font-size="24" fill="#222" text-anchor="middle" font-weight="600">bank</text>
+<line x1="120" y1="618" x2="580" y2="618" stroke="#8a8f98" stroke-width="2.5"/>
+<text x="108.0" y="626.0" font-size="22" fill="#5f646d" text-anchor="end" font-weight="400">river</text>
+<text x="592.0" y="626.0" font-size="22" fill="#5f646d" text-anchor="start" font-weight="400">money</text>
+<text x="350.0" y="598.0" font-size="22" fill="#5f646d" text-anchor="middle" font-weight="400">word2vec's bank</text>
+<line x1="362.0" y1="618" x2="474.2" y2="618" stroke="#d9480f" stroke-width="2.5" marker-end="url(#ha)"/>
+<circle cx="350.0" cy="618" r="9" fill="#fafaf7" stroke="#222" stroke-width="2.5"/>
+<circle cx="488.2" cy="618" r="10" fill="#d9480f"/>
+<text x="488.2" y="658.0" font-size="22" fill="#b93c08" text-anchor="middle" font-weight="600">bank in this sentence</text>
+</svg>
