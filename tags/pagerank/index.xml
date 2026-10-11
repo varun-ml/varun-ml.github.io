@@ -20,12 +20,12 @@
       <guid>https://varun-ml.github.io/posts/pagerank-word2vec-attention/</guid>
       <description>&lt;p&gt;&lt;em&gt;You are defined by the company you keep: one saying, three algorithms.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;video controls preload=&#34;metadata&#34; playsinline style=&#34;width:100%;border-radius:8px&#34; src=&#34;pagerank-tutor-full.mp4&#34;&gt;&lt;/video&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Fermi&amp;rsquo;s AI tutor teaching the PageRank part of this post. To learn the whole post, download the PDF and upload it at &lt;a href=&#34;https://beta.fermi.ai&#34; target=&#34;_blank&#34; &gt;beta.fermi.ai&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Fermi&amp;rsquo;s AI tutor teaching the PageRank part of this post. To learn the whole post, &lt;a href=&#34;pagerank-word2vec-attention.pdf&#34; &gt;download the PDF&lt;/a&gt; and upload it at &lt;a href=&#34;https://beta.fermi.ai&#34; target=&#34;_blank&#34; &gt;beta.fermi.ai&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;is-minimax-even-relevant&#34;&gt;Is minimax even relevant?&lt;/h2&gt;
 &lt;p&gt;I was explaining to Tanmay how PageRank works: in-links, out-links, and a loop that runs until the scores stop changing. Somewhere in that conversation he made a point. In college we learn basic things, like the minimax algorithm. He felt they are not really relevant anymore.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p><em>You are defined by the company you keep: one saying, three algorithms.</em></p>
 <p><video controls preload="metadata" playsinline style="width:100%;border-radius:8px" src="pagerank-tutor-full.mp4"></video></p>
-<p><em>Fermi&rsquo;s AI tutor teaching the PageRank part of this post. To learn the whole post, download the PDF and upload it at <a href="https://beta.fermi.ai" target="_blank" >beta.fermi.ai</a>.</em></p>
+<p><em>Fermi&rsquo;s AI tutor teaching the PageRank part of this post. To learn the whole post, <a href="pagerank-word2vec-attention.pdf" >download the PDF</a> and upload it at <a href="https://beta.fermi.ai" target="_blank" >beta.fermi.ai</a>.</em></p>
 <h2 id="is-minimax-even-relevant">Is minimax even relevant?</h2>
 <p>I was explaining to Tanmay how PageRank works: in-links, out-links, and a loop that runs until the scores stop changing. Somewhere in that conversation he made a point. In college we learn basic things, like the minimax algorithm. He felt they are not really relevant anymore.</p>
 <p>I disagreed. You need to understand the foundations to build your intuition. When you have that intuition, you can apply it.</p>
