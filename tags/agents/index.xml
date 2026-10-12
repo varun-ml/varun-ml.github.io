@@ -11,8 +11,48 @@
     </image>
     <generator>Hugo -- 0.149.1</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 01:58:27 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 08:30:00 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buddy is now open source</title>
+      <link>https://varun-ml.github.io/posts/buddy-open-source/</link>
+      <pubDate>Mon, 12 Oct 2026 08:30:00 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/buddy-open-source/</guid>
+      <description>&lt;p&gt;&lt;em&gt;A small pet on your Mac that watches your Claude Code and Codex sessions&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;img src=&#34;demo.gif&#34; alt=&#34;Buddy on the desktop&#34;&gt;
+&lt;/p&gt;
+&lt;p&gt;Buddy is now open source: &lt;a href=&#34;https://github.com/varun-ml/buddy&#34; target=&#34;_blank&#34; &gt;github.com/varun-ml/buddy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Buddy is a small pet that lives on your Mac. It tells you when Claude Code or Codex has finished a task or needs your input, so you don&amp;rsquo;t have to keep checking every session.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s also just fun. The cat runs around your screen, the bear eats honey, and the robot dances every time you merge a PR. Stitch turns into a full alien when a PR&amp;rsquo;s checks fail. This month the pug is dressed up for Pujo and plays the dhak.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p><em>A small pet on your Mac that watches your Claude Code and Codex sessions</em></p>
+<p>
+  <img src="demo.gif" alt="Buddy on the desktop">
+</p>
+<p>Buddy is now open source: <a href="https://github.com/varun-ml/buddy" target="_blank" >github.com/varun-ml/buddy</a>.</p>
+<p>Buddy is a small pet that lives on your Mac. It tells you when Claude Code or Codex has finished a task or needs your input, so you don&rsquo;t have to keep checking every session.</p>
+<p>It&rsquo;s also just fun. The cat runs around your screen, the bear eats honey, and the robot dances every time you merge a PR. Stitch turns into a full alien when a PR&rsquo;s checks fail. This month the pug is dressed up for Pujo and plays the dhak.</p>
+<p>
+  <img src="buddies-9.png" alt="The nine buddies">
+</p>
+<p>I started it as an experiment with mods, because I was getting frustrated with Codex and wanted more from it. I shared it at work, people liked it, and I kept vibe coding on it. How I use it: I focus on the short sessions like debugging, and let the long-running agents ping me when they need me. The longer story is in <a href="/posts/buddy/" >my earlier post</a>.</p>
+<h3 id="install">Install</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-0-1"><a class="lnlinks" href="#hl-0-1">1</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://github.com/varun-ml/buddy.git ~/buddy <span class="o">&amp;&amp;</span> ~/buddy/install.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It needs macOS 13 or later, and builds on your Mac in about a minute. Everything stays on your Mac: no account, no tracking.</p>
+<p>
+  <img src="costumes.png" alt="Costumes">
+</p>
+<h3 id="contribute">Contribute</h3>
+<p>The bear was made by <a href="https://github.com/siddharth-meraki" target="_blank" >Siddharth Sahu</a>, and the whole thing was built with Claude Code. PRs are welcome: add a pet, a costume for your festival, or support for Cursor or Gemini CLI.</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Your work is driven through Claude now. Stay in touch with it.</title>
       <link>https://varun-ml.github.io/posts/buddy/</link>
@@ -49,7 +89,7 @@
 </div>
 </div><p>Hooks and agents reach Buddy through files on my Mac. A long running agent can use it as its notification tool and send me updates, and add <code>--urgent</code> when I must act.</p>
 <h3 id="whats-next">What&rsquo;s next</h3>
-<p>Different people are interested in different things, so I am making the profiles customisable. Buddy is private source for now, open source is coming soon. Message me on <a href="https://www.linkedin.com/in/varuntulsian/" target="_blank" >LinkedIn</a> with your GitHub username and I will send you an invite.</p>
+<p>Different people are interested in different things, so I am making the profiles customisable. <strong>Update, 12 Oct 2026:</strong> Buddy is now open source at <a href="https://github.com/varun-ml/buddy" target="_blank" >github.com/varun-ml/buddy</a>. See <a href="/posts/buddy-open-source/" >Buddy is now open source</a>.</p>
 ]]></content:encoded>
     </item>
   </channel>
