@@ -11,8 +11,123 @@
     </image>
     <generator>Hugo -- 0.149.1</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 08:30:00 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 19:15:10 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Let the machine explore too</title>
+      <link>https://varun-ml.github.io/posts/sbet/</link>
+      <pubDate>Thu, 15 Oct 2026 19:15:10 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/sbet/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Exploratory testing with coding agents&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Exploratory testing is a 40-year-old idea. With coding agents, the machine can explore too, and what it finds turns into tests.&lt;/p&gt;
+&lt;h2 id=&#34;the-idea-a-person-explores-a-machine-checks&#34;&gt;The idea: a person explores, a machine checks&lt;/h2&gt;
+&lt;p&gt;Many of the bugs we chase in a live AI product don&amp;rsquo;t sit inside one function. They sit between the parts. At Fermi we build a voice tutor: it talks, writes on a board, and asks the student questions. Its bugs look like this: the tutor says &amp;ldquo;pick A, B or C&amp;rdquo; while the screen shows 1, 2, 3. Or the student asks to learn Ampère&amp;rsquo;s law, and the tutor receives &amp;ldquo;teach me Teach me Ampère&amp;rsquo;s law&amp;rdquo;.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p><em>Exploratory testing with coding agents</em></p>
+<p>Exploratory testing is a 40-year-old idea. With coding agents, the machine can explore too, and what it finds turns into tests.</p>
+<h2 id="the-idea-a-person-explores-a-machine-checks">The idea: a person explores, a machine checks</h2>
+<p>Many of the bugs we chase in a live AI product don&rsquo;t sit inside one function. They sit between the parts. At Fermi we build a voice tutor: it talks, writes on a board, and asks the student questions. Its bugs look like this: the tutor says &ldquo;pick A, B or C&rdquo; while the screen shows 1, 2, 3. Or the student asks to learn Ampère&rsquo;s law, and the tutor receives &ldquo;teach me Teach me Ampère&rsquo;s law&rdquo;.</p>
+<p>Each part&rsquo;s own tests can pass while this happens, because each part does its job. A person using the product notices some of it. &ldquo;That felt off.&rdquo; But a report from memory rarely says what happened first, so the developer starts by trying to make it happen again.</p>
+<p>So we split the job in two.</p>
+<ul>
+<li><strong>A person explores.</strong> They use the product the way a student would, and try to break it.</li>
+<li><strong>A machine checks.</strong> It records every message passing through one point between the parts, and checks each one against a few rules we wrote down before we started. When a rule breaks, it writes a line, with the message that broke it.</li>
+</ul>
+<p>The person is good at &ldquo;this feels wrong&rdquo;. The machine is good at &ldquo;this message broke rule 3 at 17:50&rdquo;. Together, the bug report comes with its evidence.</p>
+<p>A coding agent can use the product too. Once it can, the machine explores as well, and what it finds, we keep as tests.</p>
+<h2 id="one-session-start-to-finish">One session, start to finish</h2>
+<p>Here is a real session from 13 July 2026: one tester, one lesson on Ampère&rsquo;s law.</p>
+<p><strong>1. Write down what you will try.</strong> Before starting, the tester listed six things:</p>
+<ol>
+<li>Run a normal lesson.</li>
+<li>Pause to think for a long time while the tutor is mid-explanation.</li>
+<li>Answer a quick check-your-understanding question wrong, then right.</li>
+<li>Ask something beyond the topic.</li>
+<li>Interrupt the tutor while it is speaking.</li>
+<li>Steer it in the middle of an explanation.</li>
+</ol>
+<p>This list is called a <strong>charter</strong>. It keeps a free session pointed at the parts most likely to break.</p>
+<p><strong>2. Write down what must always be true.</strong> These are rules the machine can check without understanding the lesson. Three from our sessions:</p>
+<ul>
+<li>Math on screen is drawn as a formula, never left as code like <code>$1/r$</code>.</li>
+<li>The student&rsquo;s first message reaches the tutor as they sent it.</li>
+<li>While the tutor is teaching, no more than 30 seconds pass without a message. Not while it waits for the student to answer.</li>
+</ul>
+<p>These are <strong>invariants</strong>: things that hold whatever the tester does.</p>
+<p><strong>3. Listen at one place.</strong> Most of what the tutor does passes through one point: the server sending messages to the browser. We copy every message there into a log. That listening point is the <strong>tap</strong>. Before exploring, we check that messages are actually arriving in the log. When a rule needs something that never passes this point, we add a second tap.</p>
+<p><strong>4. Explore, while a script checks.</strong> The tester works through the list. A small script reads the log as it grows and checks the rules. When one breaks, it adds a line to a file called ISSUES.md. The tester adds what they notice to the same file. From that session, shortened:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt" id="hl-0-1"><a class="lnlinks" href="#hl-0-1">1</a>
+</span><span class="lnt" id="hl-0-2"><a class="lnlinks" href="#hl-0-2">2</a>
+</span><span class="lnt" id="hl-0-3"><a class="lnlinks" href="#hl-0-3">3</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[machine] first message arrived as &#34;teach me Teach me Ampère&#39;s law&#34;
+</span></span><span class="line"><span class="cl">[person]  tutor says &#34;Pick A, B, or C&#34;, the screen shows numbered badges
+</span></span><span class="line"><span class="cl">[machine] math left as code in a note on the board: &#34;B falls off as $1/r$&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>5. Hand over the file.</strong> ISSUES.md plus the log is the bug report. For the doubled &ldquo;teach me&rdquo;, the developer doesn&rsquo;t need the tester to describe what they did. The log shows the first message as it arrived, and the cause sits one step back: the page added &ldquo;teach me&rdquo; to text that already started with it.</p>
+<p>
+  <img src="session-loop.svg" alt="One session, step by step">
+</p>
+<p><em>One session: a person, or the agent, uses the product while a script checks the log.</em></p>
+<p>That is the whole loop: a person explores, a machine checks, and the evidence travels with the bug.</p>
+<h2 id="what-each-side-caught">What each side caught</h2>
+<p>In that session, the script flagged math left as code in the text the server sent, 10 times. The tester noticed it on screen twice. They were repeats of a few bugs, not 10 different ones, but nobody had to spot every one.</p>
+<p>The tester caught what the rules didn&rsquo;t cover. In one diagram, a circle that should have been centred on a wire wasn&rsquo;t. The script had no rule for &ldquo;this picture is wrong&rdquo;. An agent that looks at the screen could be asked to look for that; in this session, the person did.</p>
+<p>That is why we keep both: the person notices what looks wrong, and the script checks every message.</p>
+<p>The log also explains bugs the person finds. On 15 July 2026 a tester reported that a question appeared on the board and was never spoken. Several fixes had gone in over the previous 16 hours, each right on its own. The log showed the order of events:</p>
+<ol>
+<li>The tutor&rsquo;s spoken lines wait in a line to be played, the audio queue. The spoken question was in it, waiting its turn.</li>
+<li>A safety net added a matching question card, with no audio.</li>
+<li>With no audio, the card didn&rsquo;t wait in the queue. It showed at once.</li>
+<li>Another fix says: when a question is on the board, pause the lesson until the student answers. So the queue paused, with the spoken question still in it.</li>
+</ol>
+<p>
+  <img src="silent-question.svg" alt="The silent question: before and after the repair">
+</p>
+<p><em>Three correct changes, one silent lesson.</em></p>
+<p>Three correct changes, one silent lesson. The repair put silent cards in the same queue as everything else, so they show in turn. Live runs then checked it.</p>
+<h2 id="the-checker-was-wrong-too">The checker was wrong too</h2>
+<p>The script is code too, and early on it was wrong. Our first sessions filled ISSUES.md with things that weren&rsquo;t bugs:</p>
+<ul>
+<li>A request to an outside tool took a while, and was flagged as dropped, because the time limit was shorter than the request.</li>
+<li>When the student interrupted, the stop signal arrived a moment before the tutor stopped speaking. The script expected the opposite order, and flagged a missed interruption.</li>
+<li>A &ldquo;the tutor went silent&rdquo; alarm turned out to be the student&rsquo;s silence.</li>
+<li>On a new part of the product, the script reported nothing at all. It wasn&rsquo;t receiving that part&rsquo;s messages.</li>
+</ul>
+<p>The last one is the dangerous one. An empty ISSUES.md can mean a healthy product, or a script that can&rsquo;t see anything.</p>
+<p>So now the checker gets tested before we trust it. We replay a recorded log with a bug planted in it, and the script must flag it. We replay a clean log, and it must stay quiet. That tests the script&rsquo;s logic. It can&rsquo;t tell you the live log is connected, which is why each session starts by checking that messages are arriving.</p>
+<p>
+  <img src="test-the-checker.svg" alt="A planted bug must fire; a clean log must stay quiet">
+</p>
+<p><em>Test the script before you trust a quiet run.</em></p>
+<p>One more rule: a problem that repeats is one issue. A stall that trips the rule every 10 seconds goes in once, not sixty times.</p>
+<h2 id="let-the-machine-explore">Let the machine explore</h2>
+<p>So far a person drives and the machine checks. But a coding agent can drive too. It opens the product in a browser, works through the same list of things to try, and records each step: what it did, what should have happened, what did, and a screenshot.</p>
+<p>Two things we learned. First, the person decides when the agent drives, never the agent. Second, screenshots mislead. Two screenshots a few seconds apart once led the agent to report that no loading spinner appeared. It had appeared, between the two frames. So the agent now records short-lived states, not only screenshots.</p>
+<p>Once the agent can run a session, the useful findings don&rsquo;t have to stay in ISSUES.md. In September 2026 we ran a session on grading handwritten answer sheets. Its notes became 30 test scenarios. Each one is an input, the result we expect, and the evidence to capture. One of them: upload the same answer sheet twice, grade the paper, and check that questions answered on both pages are still graded.</p>
+<p>A list of scenarios like that, run against every new build, is a <strong>BVT</strong>: a build verification test. Ours started from exploration instead of being written up front. Most of the 30 are automated, and they run as a report; none of them blocks a release. A smaller set of quick checks is set up to run on each build we consider shipping.</p>
+<p>
+  <img src="session-to-bvt.svg" alt="From a session to a BVT">
+</p>
+<p><em>What a session finds becomes a test.</em></p>
+<p>So the person explores, the machine checks, the agent re-runs, and what is worth keeping becomes a test.</p>
+<h2 id="where-this-comes-from">Where this comes from</h2>
+<p>None of this starts with agents. The six things our tester tried on 13 July are a charter in exactly the sense below. Cem Kaner named exploratory testing in 1984: the tester designs and runs tests at the same time, learning as they go. In 2000 Jonathan and James Bach made it manageable. They split it into sessions of about 90 minutes, each with a charter, notes, and a review at the end. In 2006 Kaner was already writing about automated exploration with checks built in.</p>
+<p>
+  <img src="origins.svg" alt="Where it comes from">
+</p>
+<p><em>We kept the charter and the session.</em></p>
+<p>What we added on top: rules agreed before the session starts, a listening point that records what passes through it, an agent that explores too, and findings that become a BVT.</p>
+<h2 id="try-it">Try it</h2>
+<p>Pick something you shipped this week. Write five things you will try on it, the way our tester did for the lesson. Write three rules that must always hold. Copy the messages at one point into a log, and run a small script over it while you explore. Test the script with one planted bug first.</p>
+<p>For our tutor, one line of that would be: try &ldquo;interrupt the tutor mid-sentence&rdquo;; rule &ldquo;no 30-second gap while it teaches&rdquo;; planted bug: a recorded log with a 40-second gap, which must produce exactly one line in ISSUES.md.</p>
+<p>A starter kit is here: <a href="https://gist.github.com/varun-ml/317f1cd80995bb1b12244125ceec4c3c" target="_blank" >https://gist.github.com/varun-ml/317f1cd80995bb1b12244125ceec4c3c</a>. It has the list template, a small server that writes the log, and a script with three rules and a self-test. It is a starting point, not our full setup: it pauses the silence rule while the tutor waits for an answer, and it notices a gap when the next message arrives, not while it is happening.</p>
+<p>A person explores, the machine checks, the agent re-runs, and what is worth keeping becomes a test.</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Buddy is now open source</title>
       <link>https://varun-ml.github.io/posts/buddy-open-source/</link>
