@@ -11,13 +11,13 @@
     </image>
     <generator>Hugo -- 0.149.1</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 19:15:10 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 09:00:09 +0530</lastBuildDate>
     <atom:link href="https://varun-ml.github.io/tags/ai-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Let the machine explore too</title>
-      <link>https://varun-ml.github.io/posts/sbet/</link>
-      <pubDate>Thu, 15 Oct 2026 19:15:10 +0530</pubDate>
-      <guid>https://varun-ml.github.io/posts/sbet/</guid>
+      <link>https://varun-ml.github.io/posts/test-with-claude-watching/</link>
+      <pubDate>Fri, 16 Oct 2026 09:00:09 +0530</pubDate>
+      <guid>https://varun-ml.github.io/posts/test-with-claude-watching/</guid>
       <description>&lt;p&gt;&lt;em&gt;Exploratory testing with coding agents&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Exploratory testing is a 40-year-old idea. With coding agents, the machine can explore too, and what it finds turns into tests.&lt;/p&gt;
 &lt;h2 id=&#34;the-idea-a-person-explores-a-machine-checks&#34;&gt;The idea: a person explores, a machine checks&lt;/h2&gt;
@@ -104,11 +104,41 @@
 </p>
 <p><em>Test the script before you trust a quiet run.</em></p>
 <p>One more rule: a problem that repeats is one issue. A stall that trips the rule every 10 seconds goes in once, not sixty times.</p>
-<h2 id="let-the-machine-explore">Let the machine explore</h2>
-<p>So far a person drives and the machine checks. But a coding agent can drive too. It opens the product in a browser, works through the same list of things to try, and records each step: what it did, what should have happened, what did, and a screenshot.</p>
-<p>Two things we learned. First, the person decides when the agent drives, never the agent. Second, screenshots mislead. Two screenshots a few seconds apart once led the agent to report that no loading spinner appeared. It had appeared, between the two frames. So the agent now records short-lived states, not only screenshots.</p>
-<p>Once the agent can run a session, the useful findings don&rsquo;t have to stay in ISSUES.md. In September 2026 we ran a session on grading handwritten answer sheets. Its notes became 30 test scenarios. Each one is an input, the result we expect, and the evidence to capture. One of them: upload the same answer sheet twice, grade the paper, and check that questions answered on both pages are still graded.</p>
-<p>A list of scenarios like that, run against every new build, is a <strong>BVT</strong>: a build verification test. Ours started from exploration instead of being written up front. Most of the 30 are automated, and they run as a report; none of them blocks a release. A smaller set of quick checks is set up to run on each build we consider shipping.</p>
+<h2 id="let-the-machine-drive">Let the machine drive</h2>
+<p>So far a person drives and the machine checks. A coding agent can drive too. It opens the product in a headless browser, talks to the tutor, answers questions (some wrong on purpose), and records its steps. The rules and the log checker stay the same.</p>
+<p>Here is what that looked like on 17 July 2026. An agent ran ten lessons on ten topics, four turns each, with no one typing. In one of the ten, on entropy, the lesson outline showed <code>ΔS_system</code> as raw text, while the board drew it properly. An earlier fix had cleaned up math on the board, but the outline took a different path and never got it. We fixed the outline and wrote tests with those exact strings. Undo the fix, and the tests fail. The bug showed up in one topic out of ten.</p>
+<p>Two runs, side by side:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>13 July: a person drives</th>
+          <th>17 July: an agent drives</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>What ran</td>
+          <td>one lesson, Ampère&rsquo;s law</td>
+          <td>ten topics, four turns each</td>
+      </tr>
+      <tr>
+          <td>What it found</td>
+          <td>dozens of notes, including a wrong diagram no rule covered</td>
+          <td>math left as code in the outline, in one topic of ten</td>
+      </tr>
+      <tr>
+          <td>What came next</td>
+          <td>notes in ISSUES.md for the developers</td>
+          <td>the failing strings, kept as tests</td>
+      </tr>
+  </tbody>
+</table>
+<p>The agent also re-runs the exact failing steps after a fix. On 16 July an agent re-ran the silent-question sequence twice to check its repair. In a session on grading answer sheets on 22 September 2026, each fix let the agent&rsquo;s run get one step further before it stopped, until a final pass went all the way through. One fix landed at 21:11 IST; the agent had re-checked it by 21:27.</p>
+<p>The person still matters. On 13 July a person corrected the numbers in an agent&rsquo;s own report. Two screenshots once led an agent to say no loading spinner appeared; it had appeared, between the frames. The rule since then: record short-lived states, not only screenshots, and the person decides when the agent drives. What the agent adds is coverage and repetition.</p>
+<h2 id="keep-what-it-finds">Keep what it finds</h2>
+<p>Once the agent can run a session, the useful findings don&rsquo;t have to stay in ISSUES.md. Notes from the grading sessions on 22 and 23 September became 30 test scenarios. Each one is an input, the result we expect, and the evidence to capture. One of them: upload the same answer sheet twice, grade the paper, and check that questions answered on both pages are still graded.</p>
+<p>A list of scenarios like that, run against every new build, is a build verification test, or <strong>BVT</strong>. Ours started from exploration instead of being written up front. Most of the 30 are automated and set up to run as a report; none of them blocks a release. A smaller set of quick checks is set up to run on each build we consider shipping.</p>
 <p>
   <img src="session-to-bvt.svg" alt="From a session to a BVT">
 </p>
